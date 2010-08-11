@@ -1,0 +1,12 @@
+# What's ELM? 
+
+ELM is Emacs Lisp Manager! Our goal is to make it simple to manage Emacs's lisp. We supply package.sh(and .php),
+a simple package manager for Emacs. After you download the source code, just move the directory to ~/.emacs.d, then run command:
+    
+    cd ~/.emacs.d
+    ./script/package.sh init OS
+
+which OS is one of linux, mac, win, that's all you need to do to use ELM!
+
+*IMPORT NOES*: the ELM using init.el to load everything, delete or move your .emacs file before try ELM.
+
