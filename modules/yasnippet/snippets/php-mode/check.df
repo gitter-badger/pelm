@@ -1,0 +1,8 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : validate the DateTime filed
+#group : LvShiWang
+# --
+
+if (!$this->isValidDate($in_$1))
+    throw new LSWBackendInvalidArgumentException('$1 not valid date');
+$0

@@ -1,0 +1,24 @@
+#contributor : Caker <eggccaker@gmail.com>
+#name : Frontend Page Class
+#group : LvShiWang
+# --
+require '${1:../}../requires.php';
+
+class Page${2:PageClass} extends PageFrontend
+{
+    public function generate()
+    {
+        $${3:obj} = $this->collectData();
+        parent::generate();
+    }
+
+    protected function collectData()
+    {
+        $0
+        return $3;
+    }
+}
+
+
+$p = new Page$2('${4:page_name}', _L("${5:page_title}"), PageFrontend::${7:AUTH_LOGGED_IN});
+$p->render();

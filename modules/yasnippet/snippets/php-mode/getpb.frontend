@@ -1,0 +1,6 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : Get Boolean POST Item for Frontend
+#group : LvShiWang
+# --
+$${1:obj} = $this->getPOSTBoolean('$1', YES, ServiceFrontend::NOT_EXIST_FALSE);
+$0

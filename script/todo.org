@@ -1,0 +1,49 @@
+* TODO package manger
+
+* TODO setup this http://play.org/links/lisp-setup
+
+
+
+* the things for emacs blog system 
+
+** org-jekyll : http://juanreyero.com/open/org-jekyll/
+**  jekyll : http://github.com/mojombo/jekyll
+** disqus : http://disqus.com
+
+
+(require 'org-publish)
+(require 'org-jekyll)
+
+(setq sourcesmouth-org "~/git/sourcesmouth")
+(setq sourcesmouth-org-publish (concat sourcesmouth-org "/publish/"))
+
+(add-to-list 'org-publish-project-alist
+             `("sourcesmouth-org"
+               :base-directory ,sourcesmouth-org
+               :recursive t
+               :base-extension "org"
+               :publishing-directory ,sourcesmouth-org-publish
+               :publishing-function org-publish-org-to-html
+               :section-numbers nil
+               :headline-levels 4
+               :table-of-contents nil
+               :auto-index nil
+               :inline-images t
+               :todo-keywords t
+               :auto-preamble nil
+               :body-only t
+               :auto-postamble nil))
+
+(add-to-list 'org-publish-project-alist
+             `("sourcesmouth-img"
+               :base-directory ,sourcesmouth-org
+               :recursive t
+               :exclude "^publish"
+               :base-extension "jpg\\|gif\\|png"
+               :publishing-directory ,sourcesmouth-org-publish
+               :publishing-function org-publish-attachment))
+
+(add-to-list 'org-publish-project-alist
+             '("sourcesmouth" :components ("sourcesmouth-org"
+                                           "sourcesmouth-img")))
+

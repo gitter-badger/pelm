@@ -1,0 +1,34 @@
+# contributor : Caker <eggcaker@gmail.com>
+# name: Frontend Control Calss skeleton
+# group: LvShiWang
+# --
+
+        if (($accound = MemcacheAccount::fetch()->load($in_aid)) == null)
+                    {
+
+                                    $url = bizUrls::accountById();
+                                                $d = self::requestFromBizServer($url,
+                                                                                        array("aid" => $in_aid),
+                                                                                                                                null);
+                                                            $accound = $d['objectdata'];
+                                                                        MemcacheAccount::fetch()->cache($accound);
+                                                                                }
+
+                                                                                        return new ControlAccount($accound);
+
+class ${1:class_name}Service
+{
+}
+
+class __Control$1Skeleton extends $1Service
+{
+    // DATAGEN START
+    // DATAGEN END
+}
+
+class Control$1 extends __Control$1Skeleton
+{
+}
+
+
+

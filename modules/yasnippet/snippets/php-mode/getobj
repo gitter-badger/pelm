@@ -1,0 +1,7 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : Get POST STRING
+#group : LvShiWang
+# --
+$row = $${1:result}->fetch_assoc();
+$$1->close();
+$0

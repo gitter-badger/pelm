@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Create a test script
+# group: LvShiWang
+# --
+#!/bin/bash
+
+curl -X POST \
+-d "\
+ $0\
+"\
+ http://lswbackend/service/${1:contact}/${2:create}.php

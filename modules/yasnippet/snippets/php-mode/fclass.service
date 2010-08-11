@@ -1,0 +1,27 @@
+# contributor : Caker <eggcaker@gmail.com>
+# name: Frontend Service Class
+# group: LvShiWang
+# --
+require '../../requires.php';
+
+class Service${1:class_name} extends ServiceFrontend
+{
+    public function generate()
+    {
+        return $this->${2:fun_name}FromPOSTData();
+    }
+
+    protected function $2FromPOSTData()
+    {
+        $0
+    }
+
+    public function render()
+    {
+        $${3:obj} = $this->generate();
+        $this->redirect(pUrls::${4:url_fun}($$3));
+    }
+}
+
+$r = new Service$1(ServiceFrontend::${5:AUTH_LOGGED_IN});
+$r->render();

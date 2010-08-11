@@ -1,0 +1,22 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : File doc
+#group : Brayma
+# --
+
+/**
+ * 
+ * ${1:功能描述}
+ * 
+ * ----------------------------------------------------------------------------- 
+ *
+ * POST参数: 
+ * 
+ *  ${2: param1 type name }
+ * 
+ * -----------------------------------------------------------------------------
+ * @category	Brayma
+ * @package     Brayma_Service
+ * @subpackage  ${3:subpackge}
+ *
+ */
+$0

@@ -1,0 +1,7 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : <button>...</button>
+# --
+<button type='submit' calss='button positive'>
+  <img src='<?php echo coreUrls::cssimg('tick.png');?>'/><?php echo $this->t('$1');?>
+</button>
+$0

@@ -1,0 +1,33 @@
+# contributor : Caker <eggcaker@gmail.com>
+# name: Backend Service Calss 
+# group: LvShiWang
+# --
+
+class Response${1:class_name} extends BackendResponse
+{
+    public function generate()
+    {
+        $${2:obj} = $this->${3:fun_name}${4:FromPOSTData}();
+        $this->transmitDataOk(array('objectdata' => $$2->rawData()));
+    }
+
+    protected function $3$4()
+    {
+        $0
+    }
+
+    public function render()
+    {
+        try
+        {
+            $this->generate();
+        }
+        catch(Exception $e)
+        {
+            $this->transmitExceptionDetails($e);
+        }
+    }
+}
+
+$r = new Response$1();
+$r->render();

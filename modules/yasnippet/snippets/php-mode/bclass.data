@@ -1,0 +1,20 @@
+# contributor : Caker <eggcaker@gmail.com>
+# name: Backend Data class
+# group: LvShiWang
+# --
+class ${1:class_name}Data extends DataCore
+{
+    protected static $s_instance = NULL;
+
+    public static function fetch()
+    {
+        if (self::$s_instance === NULL)
+        {
+            self::$s_instance = new $1Data();
+        }
+
+        return self::$s_instance;
+    }
+
+    $0
+}
