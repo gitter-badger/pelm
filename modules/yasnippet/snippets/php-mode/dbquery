@@ -1,0 +1,11 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : $this->escape....
+#group : LvShiWang
+# --
+$conn = $this->connection();
+${1:$result = }$conn->query($query);
+
+if ($conn->errno != 0)
+    throw new LSWBackendDatabaseErrorException($conn->error, $query);
+
+$0

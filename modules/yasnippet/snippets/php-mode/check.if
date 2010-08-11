@@ -1,0 +1,8 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : Check Integer Field on Data class
+#group : LvShiWang
+# --
+
+if (! $this->isValidInter($in_$1))
+    throw new LSWBackendInvalidArgumentException('$1 <= 0 ');
+$0

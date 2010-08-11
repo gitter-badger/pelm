@@ -1,0 +1,7 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : throw new LSWBakendDatabaseErrorException()
+#group : LvShiWang
+# --
+if ($conn->errno != 0)
+    throw new LSWBackendDatabaseErrorException($conn->error, $${1:query});
+$0

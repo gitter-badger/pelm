@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: callservice
+# group: LvShiWang
+# --
+$url = bizUrls::${1:method_url}();
+$${2:data} = ModelService::requestFromBizServer($url,
+               ${3:null},
+               $${4:post_params});

@@ -1,0 +1,8 @@
+#contributor : Caker <eggcaker@gmail.com>
+#name : SQL defined
+#group : LvShiWang
+# --
+$$sql =<<<EOSQL
+SELECT * FROM ${1:table} 
+WHERE $${2:field} = $3
+$0
