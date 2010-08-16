@@ -24,7 +24,9 @@ $packages = array(
         'format' => array('name' => 'format.el',
                           'description' => 'Code formating lisp'),
         'misc' => array('name' => 'misc.el',
-                        'description' => 'Misc Configurations')
+                        'description' => 'Misc Configurations'),
+        'textmate' => array('name' => 'tt.el',
+                            'description' => 'textmate mode ')
         ),
     'modules' => array(
         'php' => array('name'=>'init.el',
@@ -44,13 +46,16 @@ $packages = array(
                              'description'=>' yansippet module'),
         'blog' => array('name'=>'init.el',
                         'folder' => 'blog',
-                        'description' =>' a blog engine for Emacs with org-mode'),
+                        'description' =>' a blog engine for Emacs with hyde'),
         'markups' => array('name' => 'init.el', 
                            'folder' => 'markups',
                            'description' => 'Markdown and Textile '),
         'yaml' => array('name'=>'init.el',
                         'folder' => 'yaml',
-                        'description' => 'ymal-mode')
+                        'description' => 'ymal-mode'),
+        'firefox' => array('name'=>'init.el',
+                           'folder' =>'firefox',
+                           'description' => 'firefox staff')
         ),
     'apps' => array(
         //emms or mail ?
