@@ -2,7 +2,7 @@ What's PELM?
 ==============
 PELM is an Emacs Lisp Manager! What's mean P? the P can be one of Php or Private or Personal,
 because my main programming language is php now and the package created by php. At begin I named the package to ELM, 
-but has conflict with [tarsius'elm](http://http://github.com/tarsius/elm). He asked me to change the name,
+but has conflict with [tarsius's elm](http://http://github.com/tarsius/elm). He asked me to change the name,
 so, I changed to PELM, if you use Emacs to do PHP language, you can download it and have a try. any fork is wellcome!
 
 **Usage:** After you download the source code, just move the directory to ~/.emacs.d, then run command:
