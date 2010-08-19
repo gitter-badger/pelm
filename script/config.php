@@ -24,9 +24,9 @@ $packages = array(
         'format' => array('name' => 'format.el',
                           'description' => 'Code formating lisp'),
         'misc' => array('name' => 'misc.el',
-                        'description' => 'Misc Configurations'),
-        'textmate' => array('name' => 'tt.el',
-                            'description' => 'textmate mode ')
+                        'description' => 'Misc Configurations')
+//        'textmate' => array('name' => 'tt.el',
+ //                           'description' => 'textmate mode ')
         ),
     'modules' => array(
         'php' => array('name'=>'init.el',
@@ -55,7 +55,10 @@ $packages = array(
                         'description' => 'ymal-mode'),
         'firefox' => array('name'=>'init.el',
                            'folder' =>'firefox',
-                           'description' => 'firefox staff')
+                           'description' => 'firefox staff'),
+        'git' => array('name'=>'init.el',
+                       'folder' => 'git',
+                       'description' => 'magit support ')
         ),
     'apps' => array(
         //emms or mail ?
