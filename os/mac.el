@@ -1,5 +1,5 @@
 ;;font set only for mac OSx
-(set-frame-font "Menlo-13")
+(set-frame-font "Menlo-14")
 
 ;;;
 ;;; Almost maximum size on a 13.3" MacBook
