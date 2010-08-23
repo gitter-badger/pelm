@@ -33,3 +33,5 @@
 (add-to-list 'iswitchb-buffer-ignore "*bsh")
 (add-to-list 'iswitchb-buffer-ignore "^[tT][aA][gG][sS]$")
 
+;; auto rebuffer 
+(global-auto-revert-mode t) 

@@ -25,8 +25,6 @@ $packages = array(
                           'description' => 'Code formating lisp'),
         'misc' => array('name' => 'misc.el',
                         'description' => 'Misc Configurations')
-//        'textmate' => array('name' => 'tt.el',
- //                           'description' => 'textmate mode ')
         ),
     'modules' => array(
         'php' => array('name'=>'init.el',
