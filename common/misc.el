@@ -35,3 +35,5 @@
 
 ;; auto rebuffer 
 (global-auto-revert-mode t) 
+
+(require 'scratch)
