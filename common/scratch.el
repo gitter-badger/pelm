@@ -108,6 +108,7 @@ for those buffers."
           (t
            (setq buf (get-buffer-create name))
            (pop-to-buffer buf)
+	   (save-buffer buf '/tmp/temp_emacs) 
            (let ((scratch-buffer t))
              (funcall mode))
            (setq scratch-buffer t)))))

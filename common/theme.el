@@ -2,7 +2,7 @@
 
 (require 'color-theme)
 (color-theme-initialize)
-;(color-theme-classic)
+(color-theme-classic)
 
 
 ;;disable splash screen and tools bar

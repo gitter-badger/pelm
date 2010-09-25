@@ -37,3 +37,17 @@
 (global-auto-revert-mode t) 
 
 (require 'scratch)
+
+
+(defun kill-buffer-no-question ()
+  (interactive)
+  (kill-buffer (buffer-name)))
+(global-set-key "\C-xk" 'kill-buffer-no-question)
+
+;;go away stupid mouse !
+(mouse-avoidance-mode 'animate)
+
+;; highlight the bracket 
+(show-paren-mode t)
+;; disable jumping betwen bracket
+(setq show-paren-style 'parentheses)
