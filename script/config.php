@@ -8,7 +8,7 @@ define('DS', DIRECTORY_SEPARATOR);
 error_reporting(E_ERROR); //only show the error if goes problem
 
 //.emacs.d directory, you can define by hand
-defined('EDD') or define('EDD', dirname(dirname(dirname(__FILE__).DS.'..'.DS)).DS);   
+defined('EDD') or define('EDD', dirname(dirname(dirname(__FILE__).DS.'..'.DS)).DS);
 
 
 $packages = array(
