@@ -54,6 +54,7 @@ $packages = array(
         'geben' => array('name'=>'init.el',
                          'folder' =>'geben',
                            'description' => 'xdebug plugin for Emacs'),
+
         'git' => array('name'=>'init.el',
                        'folder' => 'git',
                        'description' => 'magit support ')
