@@ -54,7 +54,12 @@ $packages = array(
         'geben' => array('name'=>'init.el',
                          'folder' =>'geben',
                            'description' => 'xdebug plugin for Emacs'),
-
+        'cedet' => array('name'=>'common/cedet.el',
+                       'folder' => 'cedet',
+                        'description' => 'cedet'),
+        'ecb' => array('name'=>'init.el',
+                       'folder' => 'ecb',
+                        'description' => 'ecb - Emacs Code Browser'),
         'git' => array('name'=>'init.el',
                        'folder' => 'git',
                        'description' => 'magit support ')

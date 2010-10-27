@@ -52,3 +52,5 @@
 ;; disable jumping betwen bracket
 (setq show-paren-style 'parentheses)
 
+(require 'growl)
+(growl "Hello World.")
