@@ -32,7 +32,7 @@
 	       (file-list-cache  "/Users/eggcaker/.backend/files")
 	       (open-files-cache "/Users/eggcaker/.backend/open-files")
 	       (vcs              svn)
-	       (ack-args         "--php")
+	       (ack-args         "--php --sql")
 	       (shutdown-hook    nil)))
 
 (project-def "frontend"
