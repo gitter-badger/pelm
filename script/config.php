@@ -60,6 +60,9 @@ $packages = array(
         'ecb' => array('name'=>'init.el',
                        'folder' => 'ecb',
                         'description' => 'ecb - Emacs Code Browser'),
+        'project' => array('name'=>'init.el',
+                       'folder' => 'mk-project',
+                           'description' => 'Make Project '),
         'git' => array('name'=>'init.el',
                        'folder' => 'git',
                        'description' => 'magit support ')
