@@ -1,4 +1,3 @@
 ac-comphist.dat
 auto-save-list
-init-20*.el
-init.el.*
+init.el*
