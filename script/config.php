@@ -1,6 +1,7 @@
 <?php
 /**
- * Configuration of ELM
+ * Configuration of PELM
+ * Website: http://webcaker.com/pelm
  * Author: Caker <eggcaker@gmail.com>
  */
 
@@ -13,7 +14,7 @@ defined('EDD') or define('EDD', dirname(dirname(dirname(__FILE__).DS.'..'.DS)).D
 
 $packages = array(
     'runtime' => array(
-        'init' => array('name' => 'init.el',
+        'init' => array('name' => 'loader.el',
                         'description' => 'runtime functions')
         ),
     'common' => array(
@@ -26,50 +27,54 @@ $packages = array(
         'misc' => array('name' => 'misc.el',
                         'description' => 'Misc Configurations')
         ),
+    
     'modules' => array(
-        'php' => array('name'=>'init.el',
+        'php' => array('name'=>'loader.el',
                        'folder' =>'php',
                        'description' => 'PHP language'),
-        'objc' => array('name'=>'init.el',
+        'objc' => array('name'=>'loader.el',
                         'folder' => 'objc',
                         'description' => 'Objective-C mode'),
-        'org' => array('name' => 'init.el',
+        'org' => array('name' => 'loader.el',
                        'folder' => 'org',
                        'description' => 'org-mode'),
-        'ac' => array('name' => 'init.el',
+        'ac' => array('name' => 'loader.el',
                       'folder' => 'ac',
                       'description' => 'auto-complete mode'),
-        'yasnippet' => array('name' => 'init.el',
+        'yasnippet' => array('name' => 'loader.el',
                              'folder' =>'yasnippet',
                              'description'=>' yansippet module'),
-        'blog' => array('name'=>'init.el',
+        'blog' => array('name'=>'loader.el',
                         'folder' => 'blog',
                         'description' =>'blog staff jekyll'),
-        'markups' => array('name' => 'init.el', 
+        'markups' => array('name' => 'loader.el', 
                            'folder' => 'markups',
                            'description' => 'Markdown and Textile '),
-        'yaml' => array('name'=>'init.el',
+        'yaml' => array('name'=>'loader.el',
                         'folder' => 'yaml',
                         'description' => 'yaml-mode'),
-        'geben' => array('name'=>'init.el',
+        'geben' => array('name'=>'loader.el',
                          'folder' =>'geben',
                            'description' => 'xdebug plugin for Emacs'),
         'cedet' => array('name'=>'common/cedet.el',
                        'folder' => 'cedet',
                         'description' => 'cedet'),
-        'ecb' => array('name'=>'init.el',
+        'ecb' => array('name'=>'loader.el',
                        'folder' => 'ecb',
                         'description' => 'ecb - Emacs Code Browser'),
-        'project' => array('name'=>'init.el',
+        'project' => array('name'=>'loader.el',
                        'folder' => 'mk-project',
                            'description' => 'Make Project '),
-        'git' => array('name'=>'init.el',
+        'git' => array('name'=>'loader.el',
                        'folder' => 'git',
-                       'description' => 'magit support ')
+                       'description' => 'magit support '),
+        'android' => array('name' => 'loader.el',
+                           'folder' => 'android',
+                           'description' => 'android development staff')
         ),
-    'apps' => array(
-        //emms or mail ?
-        ),
+    
+    'apps' => array(  ), //some apps ?? like mail irc ?
+    
     'os' => array(
         'win' => array('name' => 'win.el',
                        'description' => 'customize for windows'),
@@ -78,6 +83,7 @@ $packages = array(
         'mac' => array('name' => 'mac.el',
                        'description' => 'customize for mac os x')
         ),
+
     //for personal customzie
     'private' => array(
         'caker' => array('name' => 'caker.el',

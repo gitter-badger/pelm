@@ -4,7 +4,7 @@
  *
  * Features:
  * 1. generate init.el file based on config.php
- * 2.  display the loading time
+ * 2. display the loading time
  * 3. byte compile all el file (v2)
  */
 
