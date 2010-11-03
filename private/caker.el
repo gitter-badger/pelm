@@ -45,5 +45,22 @@
 	       (vcs              svn)
 	       (ack-args         "--php --js --html --sql")
 	       (shutdown-hook    nil)))
-                                                               
+
+
+
+;; android configurations
+(add-hook 'gud-mode-hook
+	  (lambda ()
+            (add-to-list 'gud-jdb-classpath "~/Library/android-sdk-mac_x86/platforms/android-8/android.jar ")
+	    )
+)
+
+(custom-set-variables
+  '(android-mode-avd "version2.2")
+  '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
+)
+
+
+
+;;emacs  server start
 (server-start)
