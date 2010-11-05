@@ -1740,7 +1740,7 @@ revert operation, instead popping up a commit buffer."
 (defun gitx ()
   "Launch gitx in the current directory."
   (interactive)
-  (compile "gitx master" nil )
+  (shell-command  "gitx" )
   )
 ;;
 ;;  (start-process "gitx ." nil gitx-program))
