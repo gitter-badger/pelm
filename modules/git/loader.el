@@ -1,6 +1,14 @@
-;; load magit
+;; load git-emacs
+(require 'git-emacs)
 
-(require 'magit)
-;;(require 'magit-svn)
-;;(autoload 'magit-status "magit" nil t)
+(defun run-gitx()
+  "Run gitx..."
+  (interactive)
+  (shell-command "gitx")
+  )
+
+
+(define-key global-map  "\C-cx" 'run-gitx)
+
+
 
