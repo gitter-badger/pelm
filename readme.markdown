@@ -1,5 +1,5 @@
-What's PELM? 
-==============
+# What's PELM? 
+
 PELM is an Emacs Lisp Manager! What's mean P? the P can be one of Php or Private or Personal,
 because my main programming language is php now and the package created by php. At begin I named the package to ELM, 
 but has conflict with [tarsius's elm](http://github.com/tarsius/elm). He asked me to change the name,
@@ -12,7 +12,10 @@ $ cd ~/.emacs.d
 $ ./script/package.sh init OS
 </pre>
 
-which OS is one of linux, mac, win, that's all you need to do to use PELM!
+which OS is one of linux, mac, win(not test), that's all you need to do to use PELM!
 
 **IMPORT NOES**: the PELM using init.el to load everything, delete or move your .emacs file somewhere  before try PELM.
 
+## TODO
+
+* added a bat file for windows
