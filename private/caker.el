@@ -23,29 +23,17 @@
  '(ecb-source-path (quote (
 			   ("~/src/brayma" "brayma")
 			   ))))
-
-(project-def "backend"
-	     '((basedir          "~/src/brayma/backend/")
-	       (src-patterns     ("*.php" "*.sql"))
-	       (ignore-patterns  (".svn" "docs"))
-	       (tags-file        "/Users/eggcaker/src/brayma/backend/TAGS.emacs")
-	       (file-list-cache  "/Users/eggcaker/.backend/files")
-	       (open-files-cache "/Users/eggcaker/.backend/open-files")
-	       (vcs              svn)
-	       (ack-args         "--php --sql")
+(project-def "atl"
+	     '((basedir          "~/src/android/t4l")
+	       (src-patterns     ("*.java" "*.xml"))
+	       (ignore-patterns  (".git" "*.class" "*.wsdl"))
+	       (tags-file        "~/src/android/t4l/TAGS")
+	       (file-list-cache  "~/.t4l")
+	       (open-files-cache "~/.t4l/open-files")
+	       (vcs              git)
+	       (compile-cmd      "ant")
+	       (ack-args         "--java --xml")
 	       (shutdown-hook    nil)))
-
-(project-def "frontend"
-	     '((basedir          "~/src/brayma/frontend")
-	       (src-patterns     ("*.php" "*.sql" "*.js" "*.html"))
-	       (ignore-patterns  (".svn" "docs"))
-	       (tags-file        "~/src/brayma/frontend/TAGS.emacs")
-	       (file-list-cache  "~/.frontend")
-	       (open-files-cache "~/.frontend/open-files")
-	       (vcs              svn)
-	       (ack-args         "--php --js --html --sql")
-	       (shutdown-hook    nil)))
-
 
 
 ;; android configurations
@@ -59,8 +47,6 @@
   '(android-mode-avd "version2.2")
   '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
 )
-
-
 
 ;;emacs  server start
 (server-start)
