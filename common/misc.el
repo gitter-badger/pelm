@@ -56,3 +56,6 @@
 ;;diabeld bell
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
+
+;; disabed scratch message
+(setq initial-scratch-message nil)
