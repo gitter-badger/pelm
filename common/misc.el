@@ -49,5 +49,10 @@
 
 ;; highlight the bracket 
 (show-paren-mode t)
+
 ;; disable jumping betwen bracket
 (setq show-paren-style 'parentheses)
+
+;;diabeld bell
+(setq visible-bell t)
+(setq ring-bell-function 'ignore)
