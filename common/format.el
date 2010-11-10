@@ -8,13 +8,13 @@
 ;;
 (defconst my-c-style
   '((c-offsets-alist . ((substatement-open . 0)
-               (defun-block-intro . 4)
-               (statement-block-intro . 4)
-               (case-label . 4)
-              ; (inclass . 0)
-              ; (topmost-intro . 0)
-               (inher-cont . 4)
-               (inline-open . 4)))
+						(defun-block-intro . 4)
+						(statement-block-intro . 4)
+						(case-label . 4)
+										; (inclass . 0)
+										; (topmost-intro . 0)
+						(inher-cont . 4)
+						(inline-open . 4)))
     (c-echo-syntactic-information-p . t)
     )
   "My style for C-like languages")
@@ -26,30 +26,35 @@
 (defun my-c-mode-common-hook ()
   (c-add-style "PERSONAL" my-c-style t)
   (setq tab-width 4 indent-tabs-mode nil); Indent with spaces not tabs, dammit!
-)
+  )
 
 ;; Added the hook to environment
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
-;; start of test
+;; format 
 
 (setq c-default-style "bsd"
-     c-basic-offset 4)
+	  c-basic-offset 4)
 
 (setq c-mode-hook
-    (function (lambda ()
-                (setq indent-tabs-mode nil)
-                (setq c-indent-level 4))))
+	  (function (lambda ()
+				  (setq indent-tabs-mode nil)
+				  (setq c-indent-level 4))))
 (setq objc-mode-hook
-    (function (lambda ()
-                (setq indent-tabs-mode nil)
-                (setq c-indent-level 4))))
+	  (function (lambda ()
+				  (setq indent-tabs-mode nil)
+				  (setq c-indent-level 4))))
 (setq c++-mode-hook
-    (function (lambda ()
-                (setq indent-tabs-mode nil)
-                (setq c-indent-level 4))))
+      (function (lambda ()
+				  (setq indent-tabs-mode nil)
+				  (setq c-indent-level 4))))
+
+(setq nxml-mode-hook
+      (function (lambda ()
+				  (setq indent-tabs-mode nil)
+				  (setq c-indent-level 4))))
 
 ;; 
 (setq tab-width 4)
-(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))
-(setq indent-tabs-mode nil)
+
+

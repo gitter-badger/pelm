@@ -27,8 +27,11 @@ $packages = array(
         'misc' => array('name' => 'misc.el',
                         'description' => 'Misc Configurations')
         ),
-    
+
     'modules' => array(
+        'jabber' => array('name' =>'loader.el',
+                          'folder' => 'jabber',
+                          'description' => 'jabber client'),
         'php' => array('name'=>'loader.el',
                        'folder' =>'php',
                        'description' => 'PHP language'),
@@ -63,8 +66,8 @@ $packages = array(
                        'folder' => 'ecb',
                         'description' => 'ecb - Emacs Code Browser'),
         'project' => array('name'=>'loader.el',
-                       'folder' => 'mk-project',
-                           'description' => 'Make Project '),
+                       'folder' => 'project',
+                           'description' => 'Project support '),
         'git' => array('name'=>'loader.el',
                        'folder' => 'git',
                        'description' => 'magit support '),
