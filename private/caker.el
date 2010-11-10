@@ -46,7 +46,14 @@
 (custom-set-variables
   '(android-mode-avd "version2.2")
   '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
+
 )
+
+
+(setq jabber-account-list
+      '(("eggcaker@gmail.com" 
+	 (:network-server . "talk.google.com")
+	 (:connection-type . ssl))))
 
 ;;emacs  server start
 (server-start)
