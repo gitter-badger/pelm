@@ -6,23 +6,14 @@
   (goto-char (point-min))
   (while (search-forward (string ?\C-m) nil t)))
 
-(global-set-key (kbd "C-x p")
-                (lambda ()
-                  (interactive)
-                  (comint-send-string (inferior-moz-process)
-                                      "BrowserReload();")))
-
-
 ;; set project main directory
-(setq default-directory "~/src/brayma/")
+(setq default-directory "~/src/")
                
 ;; ecb defined 
 (custom-set-variables
  '(ecb-layout-name "left1")
- '(ecb-layout-window-sizes (quote (("left1" (0.3076923076923077 . 0.29545454545454547) (0.14102564102564102 . 0.3409090909090909) (0.16666666666666666 . 0.3409090909090909) (0.3076923076923077 . 0.3409090909090909)))))
- '(ecb-source-path (quote (
-			   ("~/src/brayma" "brayma")
-			   ))))
+ '(ecb-layout-window-sizes (quote (("left1" (0.30 . 0.30) (0.15 . 0.35) (0.15 . 0.35) (0.30 . 0.35)))))
+ )
 (project-def "atl"
 	     '((basedir          "~/src/android/t4l")
 	       (src-patterns     ("*.java" "*.xml"))
@@ -49,11 +40,13 @@
 
 )
 
-
+;; jabber start 
 (setq jabber-account-list
       '(("eggcaker@gmail.com" 
 	 (:network-server . "talk.google.com")
 	 (:connection-type . ssl))))
+
+(jabber-connect-all)
 
 ;;emacs  server start
 (server-start)
