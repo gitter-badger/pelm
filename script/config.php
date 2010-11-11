@@ -29,6 +29,9 @@ $packages = array(
         ),
 
     'modules' => array(
+        'twitter' => array('name' =>'loader.el',
+                          'folder' => 'twitter',
+                          'description' => 'twitter client'),
         'jabber' => array('name' =>'loader.el',
                           'folder' => 'jabber',
                           'description' => 'jabber client'),
@@ -75,9 +78,8 @@ $packages = array(
                            'folder' => 'android',
                            'description' => 'android development staff')
         ),
-    
     'apps' => array(  ), //some apps ?? like mail irc ?
-    
+
     'os' => array(
         'win' => array('name' => 'win.el',
                        'description' => 'customize for windows'),
