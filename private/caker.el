@@ -7,31 +7,25 @@
   (while (search-forward (string ?\C-m) nil t)))
 
 ;; set project main directory
-(setq default-directory "~/src/")
-               
+(setq default-directory "~/src/Android")
+
 ;; ecb defined 
 (custom-set-variables
  '(ecb-layout-name "left1")
  '(ecb-layout-window-sizes (quote (("left1" (0.30 . 0.30) (0.15 . 0.35) (0.15 . 0.35) (0.30 . 0.35)))))
+ '(jabber-alert-message-hooks (quote (jabber-message-awesome jabber-message-echo jabber-message-scroll)))
+ '(jabber-alert-presence-hooks (quote (jabber-presence-awesome jabber-presence-echo)))
+ '(jabber-avatar-verbose nil)
+ '(jabber-show-offline-contacts nil)
+ '(jabber-vcard-avatars-publish nil)
+ '(jabber-vcard-avatars-retrieve nil)
  )
-(project-def "atl"
-	     '((basedir          "~/src/android/t4l")
-	       (src-patterns     ("*.java" "*.xml"))
-	       (ignore-patterns  (".git" "*.class" "*.wsdl"))
-	       (tags-file        "~/src/android/t4l/TAGS")
-	       (file-list-cache  "~/.t4l")
-	       (open-files-cache "~/.t4l/open-files")
-	       (vcs              git)
-	       (compile-cmd      "ant")
-	       (ack-args         "--java --xml")
-	       (shutdown-hook    nil)))
-
 
 ;; android configurations
 (add-hook 'gud-mode-hook
-	  (lambda ()
+    (lambda ()
             (add-to-list 'gud-jdb-classpath "~/Library/android-sdk-mac_x86/platforms/android-8/android.jar ")
-	    )
+    )
 )
 
 (custom-set-variables
@@ -43,8 +37,8 @@
 ;; jabber start 
 (setq jabber-account-list
       '(("eggcaker@gmail.com" 
-	 (:network-server . "talk.google.com")
-	 (:connection-type . ssl))))
+    (:network-server . "talk.google.com")
+    (:connection-type . ssl))))
 
 ;;(jabber-connect-all)
 
