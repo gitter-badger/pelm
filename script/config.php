@@ -29,9 +29,6 @@ $packages = array(
         ),
 
     'modules' => array(
-        'twitter' => array('name' =>'loader.el',
-                          'folder' => 'twitter',
-                          'description' => 'twitter client'),
         'jabber' => array('name' =>'loader.el',
                           'folder' => 'jabber',
                           'description' => 'jabber client'),

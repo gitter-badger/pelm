@@ -46,7 +46,7 @@
 	 (:network-server . "talk.google.com")
 	 (:connection-type . ssl))))
 
-(jabber-connect-all)
+;;(jabber-connect-all)
 
 ;;emacs  server start
 (server-start)
