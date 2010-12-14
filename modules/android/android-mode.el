@@ -90,7 +90,7 @@
 (defun android-logcat ()
   "Switch to ADB logcat buffer, create it when it doesn't exists yet."
   (interactive)
-  (android-start-exclusive-command "*android-logcat*" (concat android-mode-sdk-dir "/tools/adb") "logcat")
+  (android-start-exclusive-command "*android-logcat*" (concat android-mode-sdk-dir "/platform-tools/adb") "logcat")
   (switch-to-buffer "*android-logcat*"))
 
 (defun android-root ()
@@ -123,7 +123,7 @@
 (android-defun-ant-task "clean")
 (android-defun-ant-task "compile")
 (android-defun-ant-task "install")
-(android-defun-ant-task "reinstall")
+(android-defun-ant-task "run")
 (android-defun-ant-task "uninstall")
 
 (defconst android-mode-keys
@@ -133,7 +133,7 @@
     ("C" . android-ant-clean)
     ("c" . android-ant-compile)
     ("i" . android-ant-install)
-    ("r" . android-ant-reinstall)
+    ("r" . android-ant-run)
     ("u" . android-ant-uninstall)))
 
 (defvar android-mode-map (make-sparse-keymap))
