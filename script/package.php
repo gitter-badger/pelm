@@ -33,33 +33,27 @@ function init($packages, $argv)
     $init_el_content =";; init.el of emacs\n;; Author: Caker\n\n";
     $init_el_content .= '(setq ROOT-PATH "'.EDD.'")'."\n\n";
 
-    foreach ($packages as $folder=>$config)
-    {
-        if (count($config) > 0)
-        {
+    foreach ($packages as $folder=>$config) {
+        if (count($config) > 0) {
             $init_el_content .= ";; $folder\n";
             $init_el_content .= '(setq load-path (append (list "'.EDD.$folder.'") load-path))'."\n";
 
-            foreach ($config as $key => $value)
-            {
-                if (isset($value['folder']))
-                {
-                    $init_el_content .= '(setq load-path (append (list "'.EDD.$folder.DS.$value['folder'].DS.'") load-path))'."\n";
-                    $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].DS.$value['name']."\")\n";
-                }
-                else
-                {
-                    if (strtoupper($folder) == 'OS')
-                    {
+            foreach ($config as $key => $value) {
+                if (isset($value['folder'])) {
+                    if (!isset($value['disabled']) || !$value['disabled']) {
+                        echo $value['disabled'];
+                        $init_el_content .= '(setq load-path (append (list "'.EDD.$folder.DS.$value['folder'].DS.'") load-path))'."\n";
+                        $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].DS.$value['name']."\")\n";
+                    }
+                } else {
+                    if (strtoupper($folder) == 'OS') {
                         $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].$argv[2].".el\")\n";
                         break;
-                    }   
-                    else
+                    } else {
                         $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['name'].'")'."\n";
+                    }
                 }
-
             }
-
             $init_el_content .= "\n";
         }
     }
