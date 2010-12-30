@@ -3,9 +3,9 @@
 (require 'color-theme)
 (color-theme-initialize)
 ;(color-theme-classic)
-;(color-theme-github)
+(color-theme-github)
 ;(color-theme-twilight)
-(color-theme-merbivore)
+;(color-theme-merbivore)
 
 
 ;;disable splash screen and tools bar
