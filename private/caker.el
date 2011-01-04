@@ -10,6 +10,9 @@
  '(jabber-avatar-verbose nil)
  '(jabber-show-offline-contacts nil)
  '(jabber-vcard-avatars-publish nil)
+ '(jabber-show-resources nil)
+ '(jabber-roster-show-bindings nil)
+ '(jabber-roster-show-title nil)
  '(jabber-vcard-avatars-retrieve nil)
  )
 
