@@ -1,7 +1,6 @@
 (require 'jde)
 (add-hook 'jde-abbrev-mode-hook 'auto-complete-mode)
 
-
 ;;(setq auto-mode-alist
 ;;      (append
 ;;       (list
