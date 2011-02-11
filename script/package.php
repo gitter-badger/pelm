@@ -5,7 +5,7 @@
  * Features:
  * 1. generate init.el file based on config.php
  * 2. display the loading time
- * 3. byte compile all el file (v2)
+ * 3. can use the org-mode write the el file,load automatictlly 
  */
 
 require 'config.php';
@@ -41,12 +41,17 @@ function init($packages, $argv)
             foreach ($config as $key => $value) {
                 if (isset($value['folder'])) {
                     if (!isset($value['disabled']) || !$value['disabled']) {
-                        echo $value['disabled'];
                         $init_el_content .= '(setq load-path (append (list "'.EDD.$folder.DS.$value['folder'].DS.'") load-path))'."\n";
-                        $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].DS.$value['name']."\")\n";
+                        $name_array = split(".", $value['name']);
+                        if ( strtolower($name_array[count($name_array)-1]) == 'el') {
+                            $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].DS.$value['name']."\")\n";
+                        } else  if ( strtolower($name_array[count($name_array)-1]) == 'org') {
+                            $init_el_content .= '(org-babel-load-file "'.EDD.$folder.DS.$value['folder'].DS.$value['name']."\")\n";
+                        } 
                     }
                 } else {
                     if (strtoupper($folder) == 'OS') {
+
                         $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].$argv[2].".el\")\n";
                         break;
                     } else {
