@@ -81,6 +81,7 @@ $packages = array(
                            'disabled' => true,
                            'description' => 'Project support '),
         'git' => array('name'=>'loader.el',
+                       'disabled' => true,
                        'folder' => 'git',
                        'description' => 'magit support '),
         'android' => array('name' => 'loader.el',
