@@ -1,2 +1,0 @@
-(load "jabber-autoloads")
-
