@@ -41,7 +41,6 @@ $packages = array(
                         'description' => 'Objective-C mode'),
         'org' => array('name' => 'org.org',
                        'folder' => 'org',
-                       'disabled' => true,
                        'description' => 'org-mode configurations '),
         'ac' => array('name' => 'loader.el',
                       'folder' => 'ac',
