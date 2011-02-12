@@ -29,7 +29,7 @@ $packages = array(
         ),
 
     'modules' => array(
-        'jabber' => array('name' =>'jabber.org',
+        'jabber' => array('name' =>'pelm-jabber.org',
                           'folder' => 'jabber',
                           'description' => 'jabber client'),
         'php' => array('name'=>'php.org',
