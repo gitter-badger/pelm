@@ -5,7 +5,7 @@
  * Features:
  * 1. generate init.el file based on config.php
  * 2. display the loading time
- * 3. can use the org-mode write the el file,load automatictlly 
+ * 3. can use the org-mode file,load automatictlly 
  */
 
 require 'config.php';
@@ -42,7 +42,7 @@ function init($packages, $argv)
                 if (isset($value['folder'])) {
                     if (!isset($value['disabled']) || !$value['disabled']) {
                         $init_el_content .= '(setq load-path (append (list "'.EDD.$folder.DS.$value['folder'].DS.'") load-path))'."\n";
-                        $name_array = split(".", $value['name']);
+                        $name_array = explode(".", $value['name']);
                         if ( strtolower($name_array[count($name_array)-1]) == 'el') {
                             $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].DS.$value['name']."\")\n";
                         } else  if ( strtolower($name_array[count($name_array)-1]) == 'org') {
@@ -51,15 +51,23 @@ function init($packages, $argv)
                     }
                 } else {
                     if (strtoupper($folder) == 'OS') {
-
-                        $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].$argv[2].".el\")\n";
+                        if (file_exists(EDD.$folder.DS.$value['folder'].$argv[2].".el")) {
+                            $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['folder'].$argv[2].".el\")\n";
+                        } else if (file_exists(EDD.$folder.DS.$value['folder'].$argv[2].".org")) {
+                            $init_el_content .= '(org-babel-load-file "'.EDD.$folder.DS.$value['folder'].$argv[2].".org\")\n";
+                        }
                         break;
                     } else {
-                        $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['name'].'")'."\n";
+                        $name_array = explode(".", $value['name']);
+                        if ( strtolower($name_array[count($name_array)-1]) == 'el') {
+                            $init_el_content .= '(load-file "'.EDD.$folder.DS.$value['name'].'")'."\n";
+                        } else if ( strtolower($name_array[count($name_array)-1]) == 'org') {
+                            $init_el_content .= '(org-babel-load-file "'.EDD.$folder.DS.$value['name'].'")'."\n";
+                        }
                     }
                 }
             }
-            $init_el_content .= "\n";
+            $init_el_content .= "\n;end of init.el here\n";
         }
     }
 
