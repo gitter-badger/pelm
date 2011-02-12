@@ -14,7 +14,7 @@
 
 * Autoload the Jabber 
 #+BEGIN_SRC emacs-lisp
-  (load 'jabber-autoloads')
+  (load "jabber-autoloads")
 #+END_SRC  
 
 * Custome variables
@@ -38,3 +38,6 @@
  '(scroll-bar-width nil t)
 )
 #+END_SRC
+
+#+results:
+

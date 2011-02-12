@@ -1,0 +1,56 @@
+#+TITLE: org-mode configurations
+#+OPTIONS: toc:nil num:nil  ^:nil
+#+AUTHOR: eggcaker
+#+EMAIL: eggcaker@gmail.com
+
+* Directory setup
+
+#+BEGIN_SRC emacs-lisp
+
+(setq org-directory "~/.org-files")
+(setq org-agenda-files (file-expand-wildcards "~/.org-files/*.org"))
+(setq org-default-notes-file (concat org-directory "/journal.org"))
+
+#+end_src
+
+* Capture templates
+
+#+BEGIN_SRC emacs-lisp
+
+(setq org-capture-templates 
+      '(("t" "Todo" entry (file+headline "~/.org-files/gtd.org" "Tasks") "* TODO %?\n %i\n %a") 
+	("j" "Journal" entry (file+datetree "~/.org-files/journal.org")  "* %?\nEntered on %U\n %i\n %a")
+	))
+
+#+END_SRC
+
+* Keys
+
+#+BEGIN_SRC emacs-lisp
+
+(define-key global-map "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
+#+END_SRC
+
+* Babel languages 
+#+BEGIN_SRC emacs-lisp
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sh . t)
+   (js . t)
+   (ditaa . t)
+   (python . t) 
+   ))
+#+END_SRC
+
+* Misc 
+
+#+BEGIN_SRC emacs-lisp
+
+(setq org-log-done t)
+
+#+END_SRC
+
