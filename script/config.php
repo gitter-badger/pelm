@@ -18,13 +18,13 @@ $packages = array(
                         'description' => 'runtime functions')
         ),
     'common' => array(
-        'theme' => array('name' => 'theme.el',
+        'theme' => array('name' => 'pelm-theme.org',
                          'description' => 'Theme configuration'),
-        'shortkyes' => array('name' => 'shortkeys.el',
+        'shortkyes' => array('name' => 'pelm-shortkeys.org',
                              'description' => 'Keyboard remark'),
-        'format' => array('name' => 'format.el',
+        'format' => array('name' => 'pelm-format.org',
                           'description' => 'Code formating lisp'),
-        'misc' => array('name' => 'misc.el',
+        'misc' => array('name' => 'pelm-misc.org',
                         'description' => 'Misc Configurations')
         ),
 

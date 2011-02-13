@@ -1,6 +1,10 @@
+#+TITLE: Format
+#+OPTIONS: toc:nil num:nil ^:nil
+
+#+BEGIN_SRC emacs-lisp
+
 ;; format configurations 
 
-;; TODO 
 ;;
 ;; A bunch of customizations for the C-family languages under CC-mode...
 ;; These things define a "style" with various indentations and behaviors
@@ -56,5 +60,5 @@
 
 ;; 
 (setq tab-width 4)
-
+#+END_SRC
 
