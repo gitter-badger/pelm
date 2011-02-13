@@ -67,12 +67,12 @@ function init($packages, $argv)
                     }
                 }
             }
-            $init_el_content .= "\n;end of init.el here\n";
+            $init_el_content .= "\n"
         }
     }
 
     $init_el_content .= "(package-manager-show-load-time)\n";
-
+    $init_el_content .=";;; ends init.el here";
     file_put_contents(EDD.'init.el', $init_el_content);
 
     echo "generated the init.el.\n";
