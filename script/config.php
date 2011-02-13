@@ -101,7 +101,7 @@ $packages = array(
 
     //for personal customzie
     'private' => array(
-        'caker' => array('name' => 'caker.el',
+        'caker' => array('name' => 'pelm-caker.org',
                          'description' => "caker's emacs config")
         )
     );

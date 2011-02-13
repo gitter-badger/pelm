@@ -1,7 +1,14 @@
-;; set project main directory
-(setq default-directory "~/src/Android/BuzzLists/")
+* Personal configurations for Emacs 
 
-;; ecb defined 
+** Main Project Directory 
+
+#+begin_src eamcs-lisp
+(setq default-directory "~/src/Android/BuzzLists/")
+#+end_src
+
+** Custom variables 
+#+begin_src emacs-lisp
+
 (custom-set-variables
  '(ecb-layout-name "left1")
  '(ecb-layout-window-sizes (quote (("left1" (0.30 . 0.30) (0.15 . 0.35) (0.15 . 0.35) (0.30 . 0.35)))))
@@ -14,21 +21,23 @@
  '(jabber-roster-show-bindings nil)
  '(jabber-roster-show-title nil)
  '(jabber-vcard-avatars-retrieve nil)
+ '(android-mode-avd "version2.2")
+ '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
  )
+#+end_src
 
-;; android configurations
+** Android configurations
+#+begin_src emacs-lisp
+
 (add-hook 'gud-mode-hook
     (lambda ()
             (add-to-list 'gud-jdb-classpath "~/Library/android-sdk-mac_x86/platforms/android-8/android.jar ")
     )
 )
+#+end_src
 
-(custom-set-variables
-  '(android-mode-avd "version2.2")
-  '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
-
-)
-
+** Jabber
+#+begin_src emacs-lisp
 ;; jabber start 
 (setq jabber-account-list
       '(("eggcaker@gmail.com" 
@@ -36,6 +45,12 @@
     (:connection-type . ssl))))
 
 ;;(jabber-connect-all)
+#+end_src
 
+** Emacs Server 
+
+#+begin_src emacs-lisp
 ;;emacs  server start
 (server-start)
+#+end_src
+
