@@ -1,9 +1,16 @@
-;;misc configurations
+#+TITLE: Misc 
+#+OPTIONS: toc:nil num:nil ^:nil
 
-;yes -> y no -> n
+* Setup
+
+** TODO need more org things \
+
+#+BEGIN_SRC emacs-lisp
+
+;; yes -> y no -> n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; no backups
+;;  no backups
 (setq make-backup-files nil)
 
 ;;hidden scroll-bar
@@ -59,3 +66,5 @@
 
 ;; disabed scratch message
 (setq initial-scratch-message nil)
+
+#+END_SRC
