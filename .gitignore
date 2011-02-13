@@ -1,3 +1,5 @@
 ac-comphist.dat
 auto-save-list
 init*.el
+pelm-*.el
+*.elc
