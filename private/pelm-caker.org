@@ -10,28 +10,29 @@
 
 ** Custom variables 
 #+begin_src emacs-lisp
-
-(custom-set-variables
- '(ecb-layout-name "left1")
- '(ecb-layout-window-sizes (quote (("left1" (0.30 . 0.30) (0.15 . 0.35) (0.15 . 0.35) (0.30 . 0.35)))))
- '(jabber-alert-message-hooks (quote (jabber-message-awesome jabber-message-echo jabber-message-scroll)))
- '(jabber-alert-presence-hooks (quote (jabber-presence-awesome jabber-presence-echo)))
- '(jabber-avatar-verbose nil)
- '(jabber-show-offline-contacts nil)
- '(jabber-vcard-avatars-publish nil)
- '(jabber-show-resources nil)
- '(jabber-roster-show-bindings nil)
- '(jabber-roster-show-title nil)
- '(jabber-vcard-avatars-retrieve nil)
- '(android-mode-avd "version2.2")
- '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
- )
-
-;; set PATH for eshell
-(setq path-as-list (split-string (getenv "PATH") ":"))
-(add-to-list 'path-as-list "/Users/eggcaker/.bin") ; they need path form "/"
-(setenv "PATH" (mapconcat 'identity path-as-list ":"))
-
+  
+  (custom-set-variables
+   '(ecb-layout-name "left1")
+   '(ecb-layout-window-sizes (quote (("left1" (0.30 . 0.30) (0.15 . 0.35) (0.15 . 0.35) (0.30 . 0.35)))))
+   '(jabber-alert-message-hooks (quote (jabber-message-awesome jabber-message-echo jabber-message-scroll)))
+   '(jabber-alert-presence-hooks (quote (jabber-presence-awesome jabber-presence-echo)))
+   '(jabber-avatar-verbose nil)
+   '(jabber-show-offline-contacts nil)
+   '(jabber-vcard-avatars-publish nil)
+   '(jabber-show-resources nil)
+   '(jabber-roster-show-bindings nil)
+   '(jabber-roster-show-title nil)
+   '(jabber-vcard-avatars-retrieve nil)
+   '(android-mode-avd "version2.2")
+   '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
+   )
+  
+  ;; set PATH for eshell
+  (setq path-as-list (split-string (getenv "PATH") ":"))
+  (add-to-list 'path-as-list "/Users/eggcaker/.bin") ; they need path form "/"
+  (add-to-list 'path-as-list"/usr/local/bin");
+  (setenv "PATH" (mapconcat 'identity path-as-list ":"))
+  
 #+end_src
 
 ** Android configurations
