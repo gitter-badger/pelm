@@ -36,21 +36,30 @@
 
 * Babel languages 
 #+BEGIN_SRC emacs-lisp
-;; active Babel languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((sh . t)
-   (js . t)
-   (ditaa . t)
-   (python . t) 
-   ))
+  ;; active Babel languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((sh . t)
+     (js . t)
+     (ditaa . t)
+     (python . t) 
+     ))
 #+END_SRC
 
 * Misc 
 
 #+BEGIN_SRC emacs-lisp
-
-(setq org-log-done t)
-
+    
+  (setq org-log-done t)
+  
+  ;; tab key fix for yasnippet
+  (add-hook 'org-mode-hook
+            (let ((original-command (lookup-key org-mode-map [tab])))
+              `(lambda ()
+                 (yas/minor-mode t)
+                 (setq yas/fallback-behavior
+                       '(apply ,original-command))
+                 (local-set-key [tab] 'yas/expand))))
+  
 #+END_SRC
 

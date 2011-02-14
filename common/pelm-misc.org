@@ -1,9 +1,8 @@
 #+TITLE: Misc 
 #+OPTIONS: toc:nil num:nil ^:nil
 
-* Setup
 
-** TODO need more org things \
+* Setup
 
 #+BEGIN_SRC emacs-lisp
 
@@ -67,4 +66,10 @@
 ;; disabed scratch message
 (setq initial-scratch-message nil)
 
+
 #+END_SRC
+
+
+
+
+
