@@ -13,16 +13,25 @@
 
 #+end_src
 
+
 * Capture templates
-
+** TODO added idea template and journal template
 #+BEGIN_SRC emacs-lisp
-
-(setq org-capture-templates 
-      '(("t" "Todo" entry (file+headline "~/.org-files/gtd.org" "Tasks") "* TODO %?\n %i\n %a") 
-	("j" "Journal" entry (file+datetree "~/.org-files/journal.org")  "* %?\nEntered on %U\n %i\n %a")
-	))
-
+  
+  (setq org-capture-templates 
+    '(("y" "Task" entry
+           (file+headline "inbox.org" "Inbox")
+           "* TODO %^{description} %^g%^{effort}p\n  :LOGBOOK:\n  - State \"TODO\"       from \"\"           %U\n  :END:\n\n  %?%i \n  :%a:")
+          ("t" "Task woL" entry
+           (file+headline "inbox.org" "Inbox")
+           "* TODO %^{description} %^g%^{effort}p\n  :LOGBOOK:\n  - State \"TODO\"       from \"\"           %U\n  :END:\n\n  %?%i \n")
+          ("s" "Someday" entry
+           (file+headline "inbox.org" "Inbox")
+           "* %^{description} :someday:%^g%^{effort}p\n  :PROPERTIES:\n  :added:    %U\n  :END:\n\n  %?%i \n")
+  ))
+  
 #+END_SRC
+
 
 * Keys
 
@@ -32,7 +41,12 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key "\C-cr" 'org-capture)
+(global-set-key "\C-cg" 'ra/gtd)
+(global-set-key "\C-cn" 'ra/note)
+(global-set-key "\C-cw" 'ra/review)
 #+END_SRC
+  
 
 * Babel languages 
 #+BEGIN_SRC emacs-lisp
@@ -42,14 +56,45 @@
    '((sh . t)
      (js . t)
      (ditaa . t)
-     (python . t) 
+;     (python . t) 
      ))
 #+END_SRC
+
+
+* Functions for special org-files
+#+BEGIN_SRC emacs-lisp
+
+(defun ra/gtd ()
+   (interactive)
+   (find-file 
+    (cond
+     ((eq system-type 'darwin)
+      "~/.org-files/tasks.org")
+)))
+
+(defun ra/note ()
+  (interactive)
+   (find-file "~/.org-files/journal.org"))
+
+(defun ra/review ()
+   (interactive)
+   (find-file  "~/gtd/review.org"))
+
+(defun ra/order ()
+  (interactive)
+  (find-file "~/.org-files/orders.org"))
+
+(defun ra/inbox ()
+  (interactive)
+  (find-file "~/.org-files/inbox.org"))
+
+#+END_SRC
+
 
 * Misc 
 
 #+BEGIN_SRC emacs-lisp
-    
+  
   (setq org-log-done t)
   
   ;; tab key fix for yasnippet
@@ -60,6 +105,82 @@
                  (setq yas/fallback-behavior
                        '(apply ,original-command))
                  (local-set-key [tab] 'yas/expand))))
+  
+  
+  
+  ;; misc setup
+  (setq org-modules
+        '(org-bbdb org-bibtex org-vm org-crypt org-mairix)
+  
+        ;; how to archive
+        org-archive-location "archive/%s.old::* Archive"
+        
+        ;; logging
+        org-log-done nil ; using the logbook instead
+        org-log-into-drawer "LOGBOOK"
+        org-clock-into-drawer t
+  
+        ;; refiling
+        org-refile-targets
+        '(("someday.org" :level . 1)
+          ("inbox.org" :level . 1)
+          ("tasks.org" :level . 1)
+          ("projects.org" :maxlevel . 2))
+  
+        ;; setup todo keywords and efforts
+        org-todo-keywords 
+        '("TODO(t!)" "NEXT(n!)" "WAITING(w@/!)" "|" "CANCELLED(c@)" "DEFERRED(m@)" "DONE(d!)")
+  
+        org-effort-property "effort"
+        org-global-properties 
+        '(("effort_ALL" . "0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 8:00"))
+        ;; global tags
+        org-tag-alist
+        '(("@home" . ?h)
+          ("@office" . ?o)
+          ("@phone" . ?p)
+          ("@cms" . ?w)
+          ("@computer" . ?c)
+          ("@errands" . ?e)
+          ("someday" . ?s)
+          ("@emacs" . ?g))
+        
+        ;; blank lines
+        org-cycle-separator-lines 2
+        org-blank-before-new-entry
+        '((heading)
+          (plain-list-item))
+        ;; links
+        org-link-mailto-program '(vm-mail "%a" "%s")
+        org-link-frame-setup
+        '((vm . vm-visit-folder)
+          (gnus . gnus)
+          (file . find-file-other-window)))
+  
+;; agenda setup
+(setq org-agenda-include-diary t
+      org-agenda-include-all-todo t
+      org-columns-default-format "%60ITEM %TODO %TAGS %6effort(EFFORT){:}"
+      org-tags-column -90)
+
+;; custom agenda commands
+(setq org-agenda-custom-commands
+      '(("i" "Inbox entries" tags "CATEGORY=\"Stuff\"")))
+
+;; higiligt the cursor row in agenda view
+(add-hook 'org-agenda-mode-hook 
+          (lambda ()
+            (hl-line-mode t)
+            (local-set-key (kbd "r") 'org-agenda-refile)))
+
+;; adding shortcuts
+(add-hook 'org-mode-hook 
+          (lambda () 
+            (auto-fill-mode 1)
+            (local-set-key (kbd "C-c t") 'org-todo)
+            (local-set-key (kbd "C-c e") 'org-set-effort)
+            (local-set-key (kbd "C-c i") 'ra/inbox)))
+
   
 #+END_SRC
 

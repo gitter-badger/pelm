@@ -1,3 +1,5 @@
+#+TITLE: Personal 
+
 * Personal configurations for Emacs 
 
 ** Main Project Directory 
@@ -64,4 +66,11 @@
 #+begin_src emacs-lisp
 (setq user-mail-address "eggcaker@gmail.com")
 #+end_src
+
+** Personal Information
+#+BEGIN_SRC eamcs-lisp
+(setq user-full-name    "Egg Caker"
+      user-mail-address "eggcaker@gmail.com")
+#+END_SRC
+
 
