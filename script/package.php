@@ -67,7 +67,7 @@ function init($packages, $argv)
                     }
                 }
             }
-            $init_el_content .= "\n"
+            $init_el_content .= "\n";
         }
     }
 
