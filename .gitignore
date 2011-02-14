@@ -3,3 +3,4 @@ auto-save-list
 init*.el
 pelm-*.el
 *.elc
+abbrev_defs
