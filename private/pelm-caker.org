@@ -4,7 +4,7 @@
 
 ** Main Project Directory 
 
-#+begin_src eamcs-lisp
+#+begin_src emacs-lisp
 (setq default-directory "~/src/Android/BuzzLists/")
 #+end_src
 

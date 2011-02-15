@@ -42,11 +42,9 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cr" 'org-capture)
-(global-set-key "\C-cg" 'ra/gtd)
 (global-set-key "\C-cn" 'ra/note)
 (global-set-key "\C-cw" 'ra/review)
 #+END_SRC
-  
 
 * Babel languages 
 #+BEGIN_SRC emacs-lisp
@@ -63,14 +61,6 @@
 
 * Functions for special org-files
 #+BEGIN_SRC emacs-lisp
-
-(defun ra/gtd ()
-   (interactive)
-   (find-file 
-    (cond
-     ((eq system-type 'darwin)
-      "~/.org-files/tasks.org")
-)))
 
 (defun ra/note ()
   (interactive)
