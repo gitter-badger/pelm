@@ -69,9 +69,10 @@
 #+end_src
 
 ** Personal Information
-#+BEGIN_SRC eamcs-lisp
-(setq user-full-name    "Egg Caker"
+#+BEGIN_SRC emacs-lisp
+ (setq user-full-name    "Egg Caker"
       user-mail-address "eggcaker@gmail.com")
 #+END_SRC
 
 
+   
