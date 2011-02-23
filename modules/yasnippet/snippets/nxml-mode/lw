@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: android:layout_width
+# --
+android:layout_width="${1:fill_parent}"
+$0

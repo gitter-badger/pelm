@@ -80,7 +80,7 @@ $packages = array(
                        'disabled' => true,
                        'folder' => 'git',
                        'description' => 'magit support '),
-        'android' => array('name' => 'loader.el',
+        'android' => array('name' => 'pelm-android.org',
                            'folder' => 'android',
                            'description' => 'android development staff')
         ),
