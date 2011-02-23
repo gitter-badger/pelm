@@ -171,3 +171,12 @@
   
 #+END_SRC
 
+
+* Jekyll
+
+#+BEGIN_SRC emacs-lisp
+(require 'org-jekyll)
+
+#+END_SRC
+
+
