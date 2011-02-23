@@ -81,7 +81,10 @@
 #+END_SRC
 
 
-* Misc 
+* TODO Misc 
+  :LOGBOOK:
+  - State "TODO"       from ""           [2011-02-15 Tue 17:44]
+  :END:
 
 #+BEGIN_SRC emacs-lisp
   
@@ -147,12 +150,6 @@
           (gnus . gnus)
           (file . find-file-other-window)))
   
-;; agenda setup
-(setq org-agenda-include-diary t
-      org-agenda-include-all-todo t
-      org-columns-default-format "%60ITEM %TODO %TAGS %6effort(EFFORT){:}"
-      org-tags-column -90)
-
 ;; custom agenda commands
 (setq org-agenda-custom-commands
       '(("i" "Inbox entries" tags "CATEGORY=\"Stuff\"")))

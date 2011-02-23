@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: android:text
+# --
+android:id="@+id/${1:id}" $0

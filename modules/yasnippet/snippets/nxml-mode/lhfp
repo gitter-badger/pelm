@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: android:layout_height:fill_parent
+# --
+android:layout_height="fill_parent
+$0
