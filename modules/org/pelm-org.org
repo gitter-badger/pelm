@@ -168,9 +168,7 @@
             (local-set-key (kbd "C-c e") 'org-set-effort)
             (local-set-key (kbd "C-c i") 'ra/inbox)))
 
-  
 #+END_SRC
-
 
 * Jekyll
 
