@@ -1,4 +1,3 @@
-(require 'cl) ; a rare necessary use of REQUIRE
 (defvar *emacs-load-start* (current-time))
 
 (defun package-manager-time-delta (old-time)

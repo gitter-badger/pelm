@@ -72,3 +72,7 @@
  (setq user-full-name    "Egg Caker"
       user-mail-address "eggcaker@gmail.com")
 #+END_SRC
+** Byte compile
+#+BEGIN_EXAMPLE
+C-u 0 M-x byte-recompile-directory
+#+END_EXAMPLE
