@@ -3,6 +3,37 @@
 #+AUTHOR: Caker
 #+EMAIL: eggcaker@gmail.com
 
+* Jekyll
+#+BEGIN_SRC emacs-lisp
+(require 'org-jekyll)
+
+(setq org-publish-project-alist
+      '(
+  ("org-webcaker"
+          ;; Path to your org files.
+          :base-directory "~/blog/_org/"
+          :base-extension "org"
+          ;; Path to your Jekyll project.
+          :publishing-directory "~/blog/"
+          :recursive t
+          :publishing-function org-publish-org-to-html
+          :headline-levels 4 
+          :html-extension "html"
+          :body-only t ;; Only export section between <body> </body>
+    )
+
+
+    ("org-static-webcaker"
+          :base-directory "~/blog/_org/"
+          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
+          :publishing-directory "~/blog/"
+          :recursive t
+          :publishing-function org-publish-attachment)
+
+    ("webcaker" :components ("org-webcaker" "org-static-webcaker"))
+))
+
+#+END_SRC
 
 * Hyde
 #+BEGIN_SRC emacs-lisp
@@ -13,4 +44,5 @@
   "Root directory where your entire blog resides")
 
 #+END_SRC
+
 
