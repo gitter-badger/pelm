@@ -1,0 +1,16 @@
+#+TITLE: Blog
+#+OPTIONS: num:nil toc:nil ^:nil
+#+AUTHOR: Caker
+#+EMAIL: eggcaker@gmail.com
+
+
+* Hyde
+#+BEGIN_SRC emacs-lisp
+(require 'hyde)
+
+(defcustom hyde-home
+  "~/blog"
+  "Root directory where your entire blog resides")
+
+#+END_SRC
+
