@@ -5,4 +5,4 @@
 
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
-(require 'textile)
+(require 'textile2)

@@ -81,11 +81,8 @@
 #+END_SRC
 
 
-* TODO Misc 
-  :LOGBOOK:
-  - State "TODO"       from ""           [2011-02-15 Tue 17:44]
-  :END:
-
+* Misc 
+  
 #+BEGIN_SRC emacs-lisp
   
   (setq org-log-done t)
@@ -173,8 +170,35 @@
 * Jekyll
 
 #+BEGIN_SRC emacs-lisp
-(require 'org-jekyll)
-
+(setq org-publish-project-alist
+      '(
+        ("blog-posts"
+         :base-directory "~/blog/_org/posts/"
+         :base-extension "org"
+         :publishing-directory "~/blog/_posts"
+         :inline-images t
+         :table-of-contents nil
+         :drawers nil
+         :todo-keywords nil ; Skip todo keywords
+         :exclude "draft*" ; TODO fix
+         :section-numbers nil
+         :auto-preamble nil
+         :auto-postamble nil
+         )
+        ("blog-pages" ;; This section is optional.
+         :base-directory "~/blog/_org/pages/"
+         :base-extension "org"
+         :publishing-directory "~/blog/pages"
+         :inline-images t
+         :table-of-contents nil
+         :drawers nil
+         :todo-keywords nil ; Skip todo keywords
+         :section-numbers nil
+         :auto-preamble nil
+         :auto-postamble nil
+         ;; :completion-function
+         )
+        ("blog" :components ("blog-posts" "blog-pages"))))
 #+END_SRC
 
 
