@@ -54,10 +54,10 @@
    '((sh . t)
      (js . t)
      (ditaa . t)
+     (R . t)
 ;     (python . t) 
      ))
 #+END_SRC
-
 
 * Functions for special org-files
 #+BEGIN_SRC emacs-lisp
