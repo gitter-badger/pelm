@@ -1,5 +1,6 @@
 # contributor : eggcaker <eggcaker@gmail.com>
-# name: import Button class 
+# name: import Log class 
 # group: Android 
+# key:iu 
 # --
 import android.util.Log;
