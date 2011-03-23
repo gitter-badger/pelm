@@ -40,7 +40,6 @@ $packages = array(
                        'description' => 'ess package'),
         'objc' => array('name'=>'loader.el',
                         'folder' => 'objc',
-                        'disabled' => true,
                         'description' => 'Objective-C mode'),
         'org' => array('name' => 'pelm-org.org',
                        'folder' => 'org',
