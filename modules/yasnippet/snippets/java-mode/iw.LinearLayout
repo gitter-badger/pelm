@@ -2,4 +2,4 @@
 # name: import Button class 
 # group: Android 
 # --
-import android.widget.TextView;
+import android.widget.LinearLayout;
