@@ -9,7 +9,3 @@
 (yas/reload-all)
 
 (add-hook 'jabber-chat-mode-hook 'yas/minor-mode)
-(add-hook 'android-mode-hook
-      '(lambda ()
-              (setq yas/mode-symbol 'android-mode))
-      )

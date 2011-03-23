@@ -1,4 +1,5 @@
 ;;objc configurations
+;(require 'objc-c-mode)
 (add-to-list 'auto-mode-alist '("\\.mm?$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
 
@@ -21,9 +22,9 @@
      ))))
 
 (add-hook 'objc-mode-hook
-	  (lambda ()
-	    (define-key objc-mode-map (kbd "C-c r") 'xcode:buildandrun)
-	    ))
+      (lambda ()
+      (define-key objc-mode-map (kbd "C-c r") 'xcode:buildandrun)
+))
 
 (setq ff-other-file-alist
       '(("\\.mm?$" (".h"))
@@ -39,8 +40,12 @@
 	("\\.cpp$" (".hpp" ".hh" ".h"))
 	("\\.hpp$" (".cpp" ".c"))))
 
+;;(defun my-objc-mode-hook ()
+;;   (auto-complete-mode 1))
+;;(add-hook 'objc-mode-hook 'my-objc-mode-hook)
+
 (add-hook 'objc-mode-hook
-	  (lambda ()
-	    (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
-	    (define-key c-mode-base-map (kbd "C-c a") 'auto-complete-mode)
-	    ))
+    (lambda ()
+    (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
+    (define-key c-mode-base-map (kbd "C-c a") 'auto-complete-mode)
+))
