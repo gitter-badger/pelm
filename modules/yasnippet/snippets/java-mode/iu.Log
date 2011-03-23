@@ -1,6 +1,5 @@
 # contributor : eggcaker <eggcaker@gmail.com>
 # name: import Log class 
 # group: Android 
-# key:iu 
 # --
 import android.util.Log;
