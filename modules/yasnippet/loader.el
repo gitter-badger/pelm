@@ -8,4 +8,5 @@
                              yas/completing-prompt))
 (yas/reload-all)
 
+(add-hook 'jabber-chat-mode-hook 'yas/minor-mode)
 
