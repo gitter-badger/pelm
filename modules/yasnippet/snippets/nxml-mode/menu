@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: android:text
+# --
+<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group android:id="@+id/${1:menu_group}">
+    <item android:id="@+id/${2:item_id}"
+          android:icon="@drawable/${3:icon}"
+          android:title="${4:item_title}"/>
+  </group>
+</menu>
+$0
+
