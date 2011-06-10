@@ -5,7 +5,7 @@
 ** Main Project Directory 
 
 #+begin_src emacs-lisp
-(setq default-directory "~/src/Android/DoItTomorrow/")
+(setq default-directory "~/src/Android/DIT/src/")
 #+end_src
 
 ** Custom variables 
