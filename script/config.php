@@ -82,7 +82,10 @@ $packages = array(
                        'description' => 'magit support '),
         'android' => array('name' => 'pelm-android.org',
                            'folder' => 'android',
-                           'description' => 'android development staff')
+                           'description' => 'android development staff'),
+        'csharp' => array('name' => 'pelm-csharp.org',
+                          'folder' => 'csharp', 
+                          'description' => 'c # development stuff ')
         ),
     'apps' => array(  ), //some apps ?? like mail irc ?
 

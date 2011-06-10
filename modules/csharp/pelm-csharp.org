@@ -1,0 +1,26 @@
+#+TITLE: C#
+#+OPTIONS: toc:nil num:nil ^:nil
+#+AUTHOR:    Caker
+#+EMAIL:     eggcaker@gmail.com
+#+DATE:      2011-06-10
+#+DESCRIPTION: configurations for C# 
+#+LANGUAGE:  en
+
+
+* Requires csharp-mode
+#+BEGIN_SRC emacs-lisp
+  (require 'csharp-mode)
+#+END_SRC
+
+
+
+* Hooks for csharp development 
+#+BEGIN_SRC emacs-lisp
+ (setq auto-mode-alist
+        (append
+         '(("\\.xaml$" . nxml-mode))  auto-mode-alist  ))
+
+
+;; added the yasnippet support for csharp mode 
+(add-hook 'csharp-mode-hook 'yas/minor-mode)
+#+END_SRC
