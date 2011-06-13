@@ -2,7 +2,6 @@
 #+AUTHOR: caker
 
 
-
 * require the twiiter-mode
 #+BEGIN_SRC emacs-lisp
  (require 'twittering-mode)
@@ -11,22 +10,5 @@
 
 * configs
 #+BEGIN_SRC emacs-lisp
- (setq twittering-user-master-password t)
- (setq twittering-allow-insecure-server-cert t)
- (setq twittering-oauth-use-ssl nil)
- (setq twittering-use-ssl nil)
- (twittering-enable-unread-status-notifier)
- (setq-default twittering-icon-mode t)
- (setq twittering-initial-timeline-spec-string `(“:home@sina”
- ; “:home@douban”
- ))
 
 #+END_SRC
-
-#+results:
-| “:home@sina” |
-
-
-
-
-  
