@@ -23,4 +23,29 @@
 
 ;; added the yasnippet support for csharp mode 
 (add-hook 'csharp-mode-hook 'yas/minor-mode)
+
+
+(setq ff-other-file-alist
+ '(
+   ("\\.xaml$" (".xaml.cs"))
+   ("\\.xaml\\.cs$" (".xaml")
+)))
+
+
+(add-hook 'csharp-mode-hook
+  (lambda ()
+  (define-key c-mode-base-map (kbd "C-c a") 'ff-find-other-file)
+))
+
+
+(add-hook 'nxml-mode-hook
+  (lambda ()
+  ( define-key nxml-mode-map (kbd "C-c c") 'ff-find-other-file)
+))
+
 #+END_SRC
+
+
+
+
+
