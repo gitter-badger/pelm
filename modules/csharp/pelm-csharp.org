@@ -20,10 +20,10 @@
         (append
          '(("\\.xaml$" . nxml-mode))  auto-mode-alist  ))
 
-
 ;; added the yasnippet support for csharp mode 
 (add-hook 'csharp-mode-hook 'yas/minor-mode)
-
+(add-hook 'csharp-mode-hook 'yas/minor-mode)
+(add-hook 'csharp-mode-hook 'auto-complete-mode)
 
 (setq ff-other-file-alist
  '(
@@ -42,6 +42,13 @@
   (lambda ()
   ( define-key nxml-mode-map (kbd "C-c c") 'ff-find-other-file)
 ))
+
+
+(defun my-sharp-mode-hook ()
+  (auto-complete-mode 1)
+  (yas/minor-mode 1)
+)
+(add-hook 'csharp-mode-hook 'my-sharp-mode-hook)
 
 #+END_SRC
 
