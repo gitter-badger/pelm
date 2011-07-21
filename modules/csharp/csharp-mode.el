@@ -5239,7 +5239,7 @@ The return value is meaningless, and is ignored by cc-mode.
                                    (comment-intro         . c-lineup-comment)
                                    (cpp-macro             . 0)
                                    (cpp-macro-cont        . c-lineup-dont-change)
-                                   (defun-block-intro     . +)
+                                   (defun-block-intro     . 0)
                                    (defun-close           . 0)
                                    (defun-open            . 0)
                                    (do-while-closure      . 0)

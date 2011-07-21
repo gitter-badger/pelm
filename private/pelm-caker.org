@@ -2,10 +2,11 @@
 
 * Personal configurations for Emacs 
 
+
 ** Main Project Directory 
 
 #+begin_src emacs-lisp
-(setq default-directory "~/src/Android/DIT/src/")
+(setq default-directory "~/src/Windows/DIT/")
 #+end_src
 
 ** Custom variables 
