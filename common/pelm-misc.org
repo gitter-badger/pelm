@@ -90,9 +90,10 @@
                    (column-marker-1 98) 
                    (column-marker-2 99) 
                    (column-marker-3 100)))) 
+
+
+
+
+;; show line number on the left panel
+(linum-on)
 #+END_SRC
-
-
-
-
-
