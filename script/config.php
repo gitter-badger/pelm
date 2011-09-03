@@ -71,7 +71,7 @@ $packages = array(
         'twitter' => array('name'=>'pelm-twitter.org',
                        'folder' => 'twitter',
                        'description' => 'twitter mode for emacs'),
-        'weibo' => array('name'=>'pel-weibo.org',
+        'weibo' => array('name'=>'pelm-weibo.org',
                        'folder' => 'weibo',
                        'description' => 'weibo mode for emacs'),
         'jde' => array('name'=>'loader.el',
@@ -91,7 +91,11 @@ $packages = array(
                            'description' => 'android development staff'),
         'csharp' => array('name' => 'pelm-csharp.org',
                           'folder' => 'csharp', 
-                          'description' => 'c # development stuff ')
+                          'disabled' => true,
+                          'description' => 'c # development stuff '),
+        'groovy' => array('name' => 'pelm-groovy.org',
+                          'folder' => 'groovy',
+                          'description' => 'groovy mode ' )
         ),
     'apps' => array(  ), //some apps ?? like mail irc ?
 
