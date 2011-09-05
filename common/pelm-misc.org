@@ -95,5 +95,5 @@
 
 
 ;; show line number on the left panel
-(linum-on)
+(global-linum-mode 1)
 #+END_SRC
