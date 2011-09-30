@@ -3,8 +3,8 @@
 #+AUTHOR:    Caker
 #+EMAIL:     eggcaker@gmail.com
 #+DATE:      2011-02-12 Sat
-#+DESCRIPTION: configurations of Jabber
-#+KEYWORDS: Jabber
+#+DESCRIPTION: configurations of PHP
+#+KEYWORDS: PHP
 #+LANGUAGE:  en
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
