@@ -6,7 +6,7 @@
 ** Main Project Directory 
 
 #+begin_src emacs-lisp
-(setq default-directory "~/src/Windows/DIT/")
+(setq default-directory "~/src/Android/DIT/dit-app")
 #+end_src
 
 ** Custom variables 
