@@ -7,9 +7,11 @@
 
 #+BEGIN_SRC emacs-lisp
 
+(org-remember-insinuate)
 (setq org-directory "~/.org-files")
+(define-key global-map "\C-cr" 'org-remember)
 (setq org-agenda-files (file-expand-wildcards "~/.org-files/*.org"))
-(setq org-default-notes-file (concat org-directory "/journal.org"))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 #+end_src
 
@@ -17,21 +19,15 @@
 * Capture templates
 ** TODO added idea template and journal template
 #+BEGIN_SRC emacs-lisp
-  
-  (setq org-capture-templates 
-    '(("y" "Task" entry
-           (file+headline "inbox.org" "Inbox")
-           "* TODO %^{description} %^g%^{effort}p\n  :LOGBOOK:\n  - State \"TODO\"       from \"\"           %U\n  :END:\n\n  %?%i \n  :%a:")
-          ("t" "Task woL" entry
-           (file+headline "inbox.org" "Inbox")
-           "* TODO %^{description} %^g%^{effort}p\n  :LOGBOOK:\n  - State \"TODO\"       from \"\"           %U\n  :END:\n\n  %?%i \n")
-          ("s" "Someday" entry
-           (file+headline "inbox.org" "Inbox")
-           "* %^{description} :someday:%^g%^{effort}p\n  :PROPERTIES:\n  :added:    %U\n  :END:\n\n  %?%i \n")
-  ))
-  
-#+END_SRC
 
+(setq org-remember-templates
+'(
+   ("Todo" ?t "* TODO %?\n %i\n %a" "~/.org-files/todo.org" "Tasks")
+   ("Notes" ?j "* %U %?\n\n %i\n %a" "~/.org-files/notes.org")
+   ("Idea" ?i "* %^{Title}\n %i\n %a" "~/.org-files/ideas.org" "New Ideas")
+ ))
+#+END_SRC
+   
 
 * Keys
 
