@@ -1,0 +1,6 @@
+#+TITLE: Haml
+
+
+#+BEGIN_SRC emacs-lisp
+(require 'haml-mode)
+#+END_SRC
