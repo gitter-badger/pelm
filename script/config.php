@@ -68,9 +68,6 @@ $packages = array(
         'twitter' => array('name'=>'pelm-twitter.org',
                        'folder' => 'twitter',
                        'description' => 'twitter mode for emacs'),
-        'weibo' => array('name'=>'pelm-weibo.org',
-                       'folder' => 'weibo',
-                       'description' => 'weibo mode for emacs'),
         'jde' => array('name'=>'loader.el',
                        'folder' => 'jde',
                        'disabled' => true, // some bugs 
