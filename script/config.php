@@ -93,6 +93,9 @@ $packages = array(
                           'folder' => 'csharp', 
                           'disabled' => true,
                           'description' => 'c # development stuff '),
+        'haml' => array('name'=>'pelm-haml.org',
+                        'folder' => 'haml', 
+                        'description' => 'haml mode'),
         'groovy' => array('name' => 'pelm-groovy.org',
                           'folder' => 'groovy',
                           'description' => 'groovy mode ' )
