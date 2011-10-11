@@ -6,7 +6,7 @@
 ** Main Project Directory 
 
 #+begin_src emacs-lisp
-(setq default-directory "~/src/Android/DIT/dit-app")
+(setq default-directory "~/src/Android/DIT/dit-app/")
 #+end_src
 
 ** Custom variables 
@@ -29,12 +29,14 @@
   
   ;; set PATH for eshell
   (setq path-as-list (split-string (getenv "PATH") ":"))
-  (add-to-list 'path-as-list "/Users/eggcaker/.bin") ; they need path form "/"
+  (add-to-list 'path-as-list "/Users/eggcaker/.dotfiles/bin") ; they need path form "/"
   (add-to-list 'path-as-list"/usr/local/bin");
   (setenv "PATH" (mapconcat 'identity path-as-list ":"))
   
 #+end_src
 
+
+   
 ** Android configurations
 #+begin_src emacs-lisp
 
@@ -73,6 +75,7 @@
  (setq user-full-name    "Egg Caker"
       user-mail-address "eggcaker@gmail.com")
 #+END_SRC
+
 ** Byte compile
 #+BEGIN_EXAMPLE
 C-u 0 M-x byte-recompile-directory

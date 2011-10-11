@@ -73,6 +73,7 @@ $packages = array(
                        'description' => 'weibo mode for emacs'),
         'jde' => array('name'=>'loader.el',
                        'folder' => 'jde',
+                       'disabled' => true, // some bugs 
                        'description' => 'Java Development Envriment for Emacs '),
         'project' => array('name'=>'loader.el',
                            'folder' => 'project',
