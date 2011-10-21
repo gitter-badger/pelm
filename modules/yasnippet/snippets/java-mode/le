@@ -2,5 +2,5 @@
 # name: Log a message
 # group: Android 
 # --
-android.util.Log.i("CAKER_DEBUG", "${1:message}");
+android.util.Log.e(TAG, "${1:message}", e);
 $0
