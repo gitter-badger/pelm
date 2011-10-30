@@ -1,5 +1,0 @@
-#+TITLE: ess package
-
-#+BEGIN_SRC emacs-lisp
- (require 'ess-site)
-#+END_SRC

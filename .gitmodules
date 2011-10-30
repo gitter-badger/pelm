@@ -1,0 +1,3 @@
+[submodule "modules/js3"]
+	path = modules/js3
+	url = git://github.com/thomblake/js3-mode.git
