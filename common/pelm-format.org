@@ -66,6 +66,3 @@
           (lambda () (setq indent-tabs-mode nil)))
 
 #+END_SRC
-
-#+results:
-

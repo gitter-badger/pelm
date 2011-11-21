@@ -2,7 +2,6 @@
 
 * Personal configurations for Emacs 
 
-
 ** Main Project Directory 
 
 #+begin_src emacs-lisp
@@ -29,14 +28,13 @@
   
   ;; set PATH for eshell
   (setq path-as-list (split-string (getenv "PATH") ":"))
-  (add-to-list 'path-as-list "/Users/eggcaker/.dotfiles/bin") ; they need path form "/"
+  (add-to-list 'path-as-list "/Users/eggcaker/.oh-my-zsh/bin") ; they need path form "/"
   (add-to-list 'path-as-list"/usr/local/bin");
   (setenv "PATH" (mapconcat 'identity path-as-list ":"))
   
 #+end_src
 
 
-   
 ** Android configurations
 #+begin_src emacs-lisp
 
