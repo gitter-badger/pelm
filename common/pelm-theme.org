@@ -11,6 +11,7 @@
 ;(color-theme-merbivore)
 #+END_SRC
 
+
 * Misc setup for theme
 #+BEGIN_SRC emacs-lisp
 

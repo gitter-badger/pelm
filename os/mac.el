@@ -1,11 +1,11 @@
 ;;font set only for mac OSx
-(set-frame-font "Menlo-14")
-
+;(set-frame-font "Menlo-15")
+(set-frame-font "DejaVu Sans Mono-15")
 ;;;
-;;; Almost maximum size on a 13.3" MacBook
+;;; Almost maximum size oln a iMac 27"
 ;;;
 (setq default-frame-alist
       '((top . 20)
-        (left . 5)
-        (width . 180)
-        (height . 65)))
+        (left . 25)
+        (width . 250)
+        (height . 70)))
