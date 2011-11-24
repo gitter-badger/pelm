@@ -32,6 +32,7 @@ function init($packages, $argv)
 
     $init_el_content =";; init.el of emacs\n;; Author: Caker\n\n";
     $init_el_content .= '(setq ROOT-PATH "'.EDD.'")'."\n\n";
+    $init_el_content .= "(require 'org)\n\n"; //temp for emacs23 ,not load org-mode correctly
 
     foreach ($packages as $folder=>$config) {
         if (count($config) > 0) {
