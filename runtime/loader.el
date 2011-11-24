@@ -13,7 +13,20 @@
   (message "EMACS LOADED at %f seconds"
            (/ (package-manager-time-delta *emacs-load-start*) (float 1000000))))
 
+
+(defconst pelm-version-number "0.2.0"
+  "PELM version number.")
+
+(defun pelm-version ()
+  "Display string describing the version of PELM."
+  (interactive)
+  (message "PELM version: %s"
+           pelm-version-number))
+
 (defun package-manager-timer (start)
   (if start
       (setq package-manager-timer-start (current-time))
     (package-manager-time-delta package-manager-timer-start)))
+
+
+
