@@ -1,7 +1,2 @@
-#!/bin/bash
-PHP=`which php`
-reldir=`dirname $0`
-cd $reldir
-directory=`pwd`
+#!/usr/bin/env ruby
 
-$PHP $directory/package.php  $*
