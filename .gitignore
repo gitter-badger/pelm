@@ -6,3 +6,5 @@ pelm-*.el
 abbrev_defs
 twittering
 weibo
+local.el
+local.org
