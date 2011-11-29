@@ -72,6 +72,16 @@ function init($packages, $argv)
         }
     }
 
+    $init_el_content .= '(if (file-exists-p "~/.emacs.d/local.el")';
+    $init_el_content .= "\n";
+    $init_el_content .= '(load-file "~/.emacs.d/local.el"))';
+    $init_el_content .= "\n\n";
+
+    $init_el_content .= '(if (file-exists-p "~/.emacs.d/local.org")';
+    $init_el_content .= "\n";
+    $init_el_content .= '(org-babel-load-file "~/.emacs.d/local.org"))';
+    $init_el_content .= "\n\n";
+    
     $init_el_content .= "(package-manager-show-load-time)\n";
     $init_el_content .=";;; ends init.el here";
     file_put_contents(EDD.'init.el', $init_el_content);
