@@ -1,3 +1,7 @@
+#+TITLE: PELM runtime
+
+#+BEGIN_SRC emacs-lisp
+
 (defvar *emacs-load-start* (current-time))
 
 (defun package-manager-time-delta (old-time)
@@ -17,3 +21,6 @@
   (if start
       (setq package-manager-timer-start (current-time))
     (package-manager-time-delta package-manager-timer-start)))
+
+
+#+END_SRC
