@@ -1,8 +1,7 @@
 ac-comphist.dat
 auto-save-list
-init*.el
 pelm-*.el
 *.elc
 abbrev_defs
-twittering
-weibo
+local.el
+local.org

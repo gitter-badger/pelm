@@ -1,0 +1,28 @@
+* What is PELM?
+
+PELM  - a "literate" Emacs Lisp Manager  based on Org-mode.
+What's mean P? the P  is Personal or Public (if you like it)
+I hope every body like it, but maybe not. any fork is welcome!
+
+** Install
+
+after download the source fromg github, move the directory to ~/.emacs.d, run comand :
+
+    $ cd ~/.emacs.d
+    $ make install 
+
+the PELM using the init.el in the .emacs.d to load everything, so delete your .emacs file in you home folder.
+
+h** License
+
+check out the LICENSE file 
+
+** Help out!
+
+fork me and make a pull request.
+
+
+
+
+
+
