@@ -1,6 +1,5 @@
 ac-comphist.dat
 auto-save-list
-pelm-*.el
 *.elc
 abbrev_defs
 post-init-local.*
