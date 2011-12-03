@@ -6,6 +6,7 @@ I hope every body like it, but maybe not. any fork is welcome!
 
 ** Install
 - clone source code from github to .emacs.d
+
     $ cd ~
     $ git clone http://github.com/eggckaer/pelm.git .emacs.d
 
