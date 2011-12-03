@@ -46,6 +46,8 @@
 (require 'pelm-shell)
 (require 'pelm-server)
 
+;; load mode
+(require 'pelm-c)
 
 
 ;; You're expected to populate .emacs.d/post-init-local.org
