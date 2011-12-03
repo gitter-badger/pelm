@@ -1,0 +1,42 @@
+* What is PELM?
+
+PELM  - a "literate" Emacs Lisp Manager  for Emacs (24.0 and greater),
+What's mean P? the P  is Personal or Public (if you like it)
+I hope every body like it, but maybe not. any fork is welcome!
+
+** Install
+- clone source code from github to .emacs.d
+    $ cd ~
+    $ git clone http://github.com/eggckaer/pelm.git .emacs.d
+
+- clone source code to some where in your folder and ln it 
+
+** Notes
+the PELM using init.el of to load everything, 
+so delete your .emacs file in you home folder.
+
+** Customize 
+after you clone the PELM, check the init.el, you can add your own code 
+in 2 files :
+ - pre-init-local.org 
+the PELM loaded  it before load plugins but after the pre-init.el
+
+- post-init-local.org 
+the PELM loaded after all plugins  
+
+both of them ignore by git, so can add some experimental code.
+
+** License
+
+check out the LICENSE file 
+
+** Help out!
+
+fork me and make a pull request.
+
+** Authors
+- eggcaker <eggcaker@gmail.com>
+
+
+
+
