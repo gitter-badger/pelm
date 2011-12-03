@@ -3,5 +3,6 @@ auto-save-list
 pelm-*.el
 *.elc
 abbrev_defs
-local.el
-local.org
+post-init-local.*
+pre-init.local.*
+*~
