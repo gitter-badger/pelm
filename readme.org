@@ -33,11 +33,11 @@ $ ln -s ~/pelm ~/.emacs.d
 ** Customize 
    after you clone the PELM, check the init.el, you can add your own code 
    in 2 files :
- - pre-init-local.org 
+- pre-init-local.org 
    the PELM loaded  it before load plugins but after the pre-init.el
 
 - post-init-local.org 
-   the PELM loaded after all plugins  
+  the PELM loaded after all plugins  
 
    both of them ignore by git, so can add some experimental code.
 
