@@ -49,6 +49,9 @@
 ;; load mode
 (require 'pelm-c)
 
+;; load the personal settings 
+(when (file-exists-p pelm-personal-dir)
+  (mapc 'load (directory-files pelm-personal-dir nil "^[^#].*el$")))
 
 ;; You're expected to populate .emacs.d/post-init-local.org
 ;; with your own code after the PELM loaded(kind of overide ?).
