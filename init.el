@@ -1,4 +1,3 @@
-;;
 ;; PELM's init.el
 ;; Author: caker
 ;; Last modified: 2011-12-04
@@ -47,6 +46,8 @@
 (require 'pelm-server)
 (require 'pelm-ac)
 
+;; android development
+(require 'pelm-android)
 
 ;; load mode
 (require 'pelm-c)
