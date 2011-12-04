@@ -45,6 +45,8 @@
 (require 'pelm-keys)
 (require 'pelm-shell)
 (require 'pelm-server)
+(require 'pelm-ac)
+
 
 ;; load mode
 (require 'pelm-c)
