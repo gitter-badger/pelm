@@ -1,3 +1,0 @@
-;;;
-;;; customie for linux os
-;;;
