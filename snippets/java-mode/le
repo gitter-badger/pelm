@@ -1,0 +1,6 @@
+# contributor : eggcaker <eggcaker@gmail.com>
+# name: Log a message
+# group: Android 
+# --
+android.util.Log.e(TAG, "${1:message}", e);
+$0

@@ -15,6 +15,7 @@
   I hope every body like it, but maybe not. any fork is welcome!
 
 ** Install
+*** Basic install 
 - clone source code from github to .emacs.d
   
 #+BEGIN_SRC sh
@@ -37,6 +38,10 @@ $ git submodule init
 $ git submodule update
 #+END_SRC
 
+*** Byte compile (optional but recommented)
+#+BEGIN_EXAMPLE
+C-u 0 M-x byte-recompile-directory
+#+END_EXAMPLE
 
 ** Customize 
    after you clone the PELM, check the init.el, you can add your own code 

@@ -47,6 +47,7 @@
 (require 'pelm-ac)
 (require 'pelm-android)
 (require 'pelm-git)
+(require 'pelm-yas)
 
 ;; load mode
 (require 'pelm-c)
