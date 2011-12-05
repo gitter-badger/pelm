@@ -1,0 +1,5 @@
+# contributor : eggcaker <eggcaker@gmail.com>
+# name: import TextView class 
+# group: Android 
+# --
+import android.widget.TextView;

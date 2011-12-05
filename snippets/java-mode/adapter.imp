@@ -1,0 +1,24 @@
+# contributor : eggcaker <eggcaker@gmail.com>
+# name: Adapter implements methods 
+# group: Android 
+# --
+
+    public int getCount() {
+        return ${1:data}.size();
+    }
+
+    public ${2:Object} getItem(int position) {
+        return (null == $1) ? null : $1.get(position);
+    }
+
+    public long getItemId(int position) {
+    	return position; 
+    }
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+    	//TODO here!
+        View vi = null;
+	return vie;
+    }
+
+

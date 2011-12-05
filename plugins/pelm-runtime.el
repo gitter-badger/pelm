@@ -17,8 +17,6 @@
 
 ;;; Code:
 
-(require 'cl)
-
 
 (defvar *emacs-load-start* (current-time))
 
