@@ -38,16 +38,15 @@
 (if (file-exists-p "~/.emacs.d/pre-init-private.org")
     (org-babel-load-file "~/.emacs.d/pre-init-local.org"))
 
-;; load the core plugins 
+;; load plugins 
 (require 'pelm-runtime)
 (require 'pelm-ui)
 (require 'pelm-keys)
 (require 'pelm-shell)
 (require 'pelm-server)
 (require 'pelm-ac)
-
-;; android development
 (require 'pelm-android)
+(require 'pelm-git)
 
 ;; load mode
 (require 'pelm-c)
