@@ -9,11 +9,11 @@
 ;; This file is not part of GNU Emacs
 
 ;;; Code:
-i
+
 ;; load git-emacs
 (require 'git-emacs)
 
-(define-key global-map "\C-cx" gitx)
+(define-key global-map "\C-cx" 'gitx)
 
 (provide 'pelm-git)
 ;;perlm-git.el ends here
