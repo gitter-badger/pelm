@@ -1,5 +1,6 @@
 # contributor : eggcaker <eggcaker@gmail.com>
-# name: Log a message
+# name: Log.i a message
+# key: li
 # group: Android 
 # --
 android.util.Log.i(TAG, "${1:message}");
