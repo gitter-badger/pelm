@@ -51,6 +51,14 @@
 ;; add the first level subfolders of vendor 
 (pelm-add-sub-folders-to-load-path pelm-vendor-dir)
 
+(defconst pelm-version-number "0.5.0"
+  "PELM version number.")
+ 
+(defun pelm-version ()
+  "Display string describing the version of PELM."
+   (interactive)
+   (message "PELM version: %s"
+    pelm-version-number))
 
 ;; set encodding to utf8
 (prefer-coding-system 'utf-8)
