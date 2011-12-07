@@ -44,14 +44,14 @@
 (defun pelm-enable-transparent()
   "Enable transparent mode"
   (interactive)
-  (add-to-list 'default-frame-alist '(alpha 90 50))
-  (set-frame-parameter (selected-frame) 'alpha '(80 50)))
+  (add-to-list 'default-frame-alist '(alpha 95 50))
+  (set-frame-parameter (selected-frame) 'alpha '(70 50)))
 
 (defun pelm-disable-transparent()
   "Disable transparent mode"
   (interactive)
-  (add-to-list 'default-frame-alist '(alpha 95 50))
-  (set-frame-parameter (selected-frame) 'alpha '(95 50)))
+  (add-to-list 'default-frame-alist '(alpha 95 95))
+  (set-frame-parameter (selected-frame) 'alpha '(95 95)))
 
 ;;enable transparent mode
 (global-set-key (kbd "\C-c t e") 'pelm-enable-transparent)
@@ -118,4 +118,3 @@
 
 (provide 'pelm-ui)
 ;; pelm-ui.el ends here
-
