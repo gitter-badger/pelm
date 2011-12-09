@@ -1,5 +1,0 @@
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: import Log class 
-# group: Android 
-# --
-import android.util.Log;
