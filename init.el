@@ -51,6 +51,8 @@
 
 ;; load mode
 (require 'pelm-c)
+(require 'pelm-yml)
+
 
 ;; load the personal settings 
 (when (file-exists-p pelm-personal-dir)
