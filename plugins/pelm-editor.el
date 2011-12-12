@@ -30,6 +30,6 @@
 ;; no backups
 (setq make-backup-files nil)
 
-(provide pelm-editor)
+(provide 'pelm-editor)
 
 ;;; pelm-editor.el ends here				   
