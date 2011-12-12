@@ -41,6 +41,7 @@
 ;; load plugins 
 (require 'pelm-runtime)
 (require 'pelm-ui)
+(require 'pelm-editor)
 (require 'pelm-keys)
 (require 'pelm-shell)
 (require 'pelm-server)
