@@ -42,6 +42,7 @@
 (require 'pelm-runtime)
 (require 'pelm-editor)
 (require 'pelm-ui)
+(require 'pelm-editor)
 (require 'pelm-keys)
 (require 'pelm-shell)
 (require 'pelm-server)
@@ -52,6 +53,8 @@
 
 ;; load mode
 (require 'pelm-c)
+(require 'pelm-yml)
+
 
 
 ;; load the personal settings 
