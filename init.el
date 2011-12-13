@@ -40,6 +40,7 @@
 
 ;; load plugins 
 (require 'pelm-runtime)
+(require 'pelm-editor)
 (require 'pelm-ui)
 (require 'pelm-keys)
 (require 'pelm-shell)
@@ -51,6 +52,7 @@
 
 ;; load mode
 (require 'pelm-c)
+
 
 ;; load the personal settings 
 (when (file-exists-p pelm-personal-dir)
