@@ -54,6 +54,7 @@
 ;; load mode
 (require 'pelm-c)
 (require 'pelm-yml)
+(require 'pelm-markdown)
 
 
 

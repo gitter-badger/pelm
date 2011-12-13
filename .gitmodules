@@ -10,3 +10,6 @@
 [submodule "vendor/yaml-mode"]
 	path = vendor/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
+[submodule "vendor/markdown-mode"]
+	path = vendor/markdown-mode
+	url = https://github.com/defunkt/markdown-mode.git
