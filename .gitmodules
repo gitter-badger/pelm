@@ -7,3 +7,6 @@
 [submodule "snippets/java-mode"]
 	path = snippets/java-mode
 	url = git://github.com/eggcaker/android-snippets.git
+[submodule "vendor/yaml-mode"]
+	path = vendor/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode.git

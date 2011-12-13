@@ -24,10 +24,10 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 
-(setq yas/root-directory '("~/.emacs.d/snippets"
-                           "~/.emacs.d/vendor/yasnippet/snippets"))
+;(setq yas/root-directory '(
+;                           "~/.emacs.d/vendor/yasnippet/snippets"))
 
-(mapc 'yas/load-directory yas/root-directory)
+(yas/load-directory "~/.emacs.d/snippets")
 
 (require 'dropdown-list)
 
