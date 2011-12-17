@@ -13,3 +13,9 @@
 [submodule "vendor/markdown-mode"]
 	path = vendor/markdown-mode
 	url = https://github.com/defunkt/markdown-mode.git
+[submodule "vendor/scss-mode"]
+	path = vendor/scss-mode
+	url = https://github.com/antonj/scss-mode.git
+[submodule "vendor/ajc-java-complete"]
+	path = vendor/ajc-java-complete
+	url = https://github.com/jixiuf/ajc-java-complete.git
