@@ -24,10 +24,11 @@
 (define-key ac-complete-mode-map "\C-p" 'ac-previous); auto completion 
 
 
+; should be add to the pelm  local file,
+; it's too slow on my poor mac book !
+;(require 'ajc-java-complete-config)
+;(add-hook 'java-mode-hook 'ajc-java-complete-mode)
 
-(require 'ajc-java-complete-config)
-(add-hook 'java-mode-hook 'ajc-java-complete-mode)
-(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
 
 (provide 'pelm-ac)
 ;;perlm-ac.el ends here
