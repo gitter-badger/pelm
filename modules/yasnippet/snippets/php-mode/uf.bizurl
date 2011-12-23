@@ -1,9 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : Create a BizUrl Function
-#group : LvShiWang
-# --
-public static function ${1:name}(${2:\$in_${3:args}})
-{
-    return BIZLOGIC_SERVER . "/service/$4/$5.php$6";
-}
-$0

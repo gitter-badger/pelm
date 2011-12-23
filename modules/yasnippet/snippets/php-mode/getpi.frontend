@@ -1,6 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : Get Integer POST Item for Frontend
-#group : LvShiWang
-# --
-$${1:obj} = $this->getPOSTInteger('$1', YES, ServiceFrontend::NOT_EXIST_EXCEPTION);
-$0

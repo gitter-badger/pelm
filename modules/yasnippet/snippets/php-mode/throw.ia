@@ -1,6 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : throw new LSWBakendIvalidArgumentException()
-#group : LvShiWang
-# --
-throw new LSWBackendInvalidArgumentException('${1:field}');
-$0

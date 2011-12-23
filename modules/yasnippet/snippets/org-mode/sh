@@ -1,6 +1,0 @@
-#name : Source Code Block
-#contributor : eggcaker<eggcaker@gmail.com>
-# --
-#+BEGIN_SRC sh
-$0$>
-#+END_SRC$>

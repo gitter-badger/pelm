@@ -1,6 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : Get POST STRING For Backend
-#group : LvShiWang
-# --
-$${1:obj} = $this->getPOSTString('$1');
-$0
