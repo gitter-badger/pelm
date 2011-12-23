@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: callservice
-# group: LvShiWang
-# --
-'${1:lawoffice_id}' =>array(
-    'table'=> '${2:Lawoffices}',
-    'field' => '${3:lawoffice_id}',
-    ),
-$0

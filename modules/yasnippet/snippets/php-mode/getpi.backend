@@ -1,6 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : Get Ingeger POST Item for Backend
-#group : LvShiWang
-# --
-$${1:obj} = $this->getPOSTInteger('$1');
-$0

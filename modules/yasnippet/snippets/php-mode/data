@@ -1,6 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : get data class call
-#group : Brayma 
-# --
-${1:Project}Data::fetch()->$0;
-

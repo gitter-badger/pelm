@@ -1,7 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : <button>...</button>
-# --
-<button type='submit' calss='button degtive'>
-  <img src='<?php echo coreUrls::cssimg('cross.png');?>'/><?php echo $this->t('$1');?>
-</button>
-$0

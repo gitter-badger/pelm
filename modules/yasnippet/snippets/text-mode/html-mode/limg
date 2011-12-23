@@ -1,5 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : <img src="..." border='0'/>
-# --
-<img src='<?php echo coreUrls::image('${1:logo.home.png}') ?>' border='0' />
-$0

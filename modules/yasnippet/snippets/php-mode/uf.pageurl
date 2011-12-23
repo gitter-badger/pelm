@@ -1,9 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : Create a pUrls Function
-#group : LvShiWang
-# --
-public static function ${1:name}(${2:\$in_${3:args}})
-{
-    return SERVER_HOST . "/page/$4/$5.php$6";
-}
-$0

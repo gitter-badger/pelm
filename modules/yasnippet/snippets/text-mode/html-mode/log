@@ -1,8 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name :  print debug informationd
-#group : LvShiWang
-# --
-echo "<pre>";
-echo print_r($1);
-echo "</pre>";
-$0

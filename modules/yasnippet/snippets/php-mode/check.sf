@@ -1,8 +1,0 @@
-#contributor : Caker <eggcaker@gmail.com>
-#name : validate the string filed not empty
-#group : LvShiWang
-# --
-
-if (!$this->isNotEmpty($in_$1))
-    throw new LSWBackendInvalidArgumentException('$1 is empty');
-$0

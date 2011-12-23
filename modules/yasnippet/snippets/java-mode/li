@@ -1,6 +1,0 @@
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: Log a message
-# group: Android 
-# --
-android.util.Log.i(TAG, "${1:message}");
-$0

@@ -23,6 +23,12 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.mdown$" . markdown-mode))
 
+(defun markdown-custom ()
+  "markdown-mode-hook"
+  (setq markdown-command "markdown | smartypants"))
+
+(add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
+
 (provide 'pelm-markdown)
 
 ;;; pelm-markdown.el ends here
