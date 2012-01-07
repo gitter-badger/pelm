@@ -9,6 +9,7 @@
  '(jabber-avatar-verbose nil)
  '(jabber-show-offline-contacts nil)
  '(jabber-vcard-avatars-publish nil)
+ '(scala-interpreter "/usr/local/bin/scala")
  '(jabber-show-resources nil)
  '(jabber-roster-show-bindings nil)
  '(jabber-roster-show-title nil)

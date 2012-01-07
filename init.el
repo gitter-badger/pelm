@@ -76,32 +76,3 @@
 (package-manager-show-load-time)
 
 ;;; ends init.el here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(android-mode-sdk-dir "~/Library/android-sdk-mac_x86")
- '(column-number-mode t)
- '(ecb-layout-name "left1")
- '(ecb-layout-window-sizes (quote (("left1" (0.3 . 0.3) (0.15 . 0.35) (0.15 . 0.35) (0.3 . 0.35)))))
- '(git-baseline-alist (quote (("/Users/eggcaker/src/Android/DIT/" . "origin/sync-1.0"))) t)
- '(inhibit-startup-screen t)
- '(jabber-alert-message-hooks (quote (jabber-message-awesome jabber-message-echo jabber-message-scroll)))
- '(jabber-alert-presence-hooks (quote (jabber-presence-awesome jabber-presence-echo)))
- '(jabber-avatar-verbose nil)
- '(jabber-roster-show-bindings nil)
- '(jabber-roster-show-title nil)
- '(jabber-show-offline-contacts nil)
- '(jabber-show-resources nil)
- '(jabber-vcard-avatars-publish nil)
- '(jabber-vcard-avatars-retrieve nil)
- '(joc-eshell-prompt-newline t)
- '(scroll-bar-width nil t)
- '(tool-bar-mode nil nil (tool-bar)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
