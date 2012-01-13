@@ -16,3 +16,6 @@
 [submodule "vendor/scss-mode"]
 	path = vendor/scss-mode
 	url = https://github.com/antonj/scss-mode.git
+[submodule "vendor/git-emacs"]
+	path = vendor/git-emacs
+	url = https://github.com/tsgates/git-emacs.git
