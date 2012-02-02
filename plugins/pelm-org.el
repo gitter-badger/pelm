@@ -123,7 +123,7 @@
       (quote (("CANCELLED" ("CANCELLED" . t))
               ("WAITING" ("WAITING" . t))
               ("HOLD" ("WAITING" . t) ("HOLD" . t))
-              (done g("WAITING") ("HOLD"))
+              (done ("WAITING") ("HOLD"))
               ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
               ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
