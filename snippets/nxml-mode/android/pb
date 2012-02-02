@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor : eggcaker <eggcaker@gmail.com>
+# name: android:paddingBottom
+# key: pb
+# --
+android:paddingBottom="${1:2dp}"

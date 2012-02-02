@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: eggcaker <eggcaker@gmail.com>
+# name: android xmlns
+# key: xmlns
+# --
+    xmlns:android="http://schemas.android.com/apk/res/android"
+$0
+
