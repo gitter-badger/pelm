@@ -1202,6 +1202,39 @@ Late deadlines first, then scheduled, then non-late deadlines"
   ;; If there is more than one, they won't work right.
  '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))
 
+
+(defun bh/prepare-meeting-notes ()
+  "Prepare meeting notes for email
+   Take selected region and convert tabs to spaces, mark TODOs with leading >>>, and copy to kill ring for pasting"
+  (interactive)
+  (let (prefix)
+    (save-excursion
+      (save-restriction
+        (narrow-to-region (region-beginning) (region-end))
+        (untabify (point-min) (point-max))
+        (goto-char (point-min))
+        (while (re-search-forward "^\\( *-\\\) \\(TODO\\|DONE\\): " (point-max) t)
+          (replace-match (concat (make-string (length (match-string 1)) ?>) " " (match-string 2) ": ")))
+        (goto-char (point-min))
+        (kill-ring-save (point-min) (point-max))))))
+
+(setq org-remove-highlights-with-change nil)
+
+(setq org-list-demote-modify-bullet (quote (("+" . "-")
+                                            ("*" . "-")
+                                            ("1." . "-")
+                                            ("1)" . "-"))))
+
+(setq org-tags-match-list-sublevels t)
+(setq org-agenda-persistent-filter t)
+(setq org-agenda-skip-additional-timestamps-same-entry t)
+(setq org-clone-delete-id t)
+
+(setq org-agenda-window-setup 'current-window)
+(setq org-enable-priority-commands nil)
+(setq org-src-preserve-indentation nil)
+
+
 (provide 'pelm-org)
 ;; pelm-org.el ends here
 
