@@ -1131,6 +1131,77 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (require 'org-checklist)
 
+(run-at-time "06:00" 86400 '(lambda () (setq org-habit-show-habits t)))
+
+(setq global-auto-revert-mode t)
+(setq org-crypt-disable-auto-save nil)
+
+;;;speed command 
+(setq org-use-speed-commands t)
+(setq org-speed-commands-user (quote (("0" . ignore)
+                                      ("1" . ignore)
+                                      ("2" . ignore)
+                                      ("3" . ignore)
+                                      ("4" . ignore)
+                                      ("5" . ignore)
+                                      ("6" . ignore)
+                                      ("7" . ignore)
+                                      ("8" . ignore)
+                                      ("9" . ignore)
+
+                                      ("a" . ignore)
+                                      ("d" . ignore)
+                                      ("h" . bh/hide-other)
+                                      ("i" progn
+                                       (forward-char 1)
+                                       (call-interactively 'org-insert-heading-respect-content))
+                                      ("k" . org-kill-note-or-show-branches)
+                                      ("l" . ignore)
+                                      ("m" . ignore)
+                                      ("q" . bh/show-org-agenda)
+                                      ("r" . ignore)
+                                      ("s" . org-save-all-org-buffers)
+                                      ("w" . org-refile)
+                                      ("x" . ignore)
+                                      ("y" . ignore)
+                                      ("z" . org-add-note)
+
+                                      ("A" . ignore)
+                                      ("B" . ignore)
+                                      ("E" . ignore)
+                                      ("F" . ignore)
+                                      ("G" . ignore)
+                                      ("H" . ignore)
+                                      ("J" . org-clock-goto)
+                                      ("K" . ignore)
+                                      ("L" . ignore)
+                                      ("M" . ignore)
+                                      ("N" . bh/narrow-to-subtree)
+                                      ("P" . bh/narrow-to-project)
+                                      ("Q" . ignore)
+                                      ("R" . ignore)
+                                      ("S" . ignore)
+                                      ("T" . (org-show-todo-tree nil))
+                                      ("U" . bh/narrow-up-one-level)
+                                      ("V" . ignore)
+                                      ("W" . bh/widen)
+                                      ("X" . ignore)
+                                      ("Y" . ignore)
+                                      ("Z" . ignore))))
+
+(defun bh/show-org-agenda ()
+  (interactive)
+  (switch-to-buffer "*Org Agenda*")
+  (delete-other-windows)
+  (org-agenda-redo))
+
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))
+
 (provide 'pelm-org)
 ;; pelm-org.el ends here
 

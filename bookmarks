@@ -9,7 +9,7 @@
  (position . 529))
 ("org-capture-last-stored"
  (filename . "~/.org-files/refile.org")
- (front-context-string . "* PHONE call chu")
- (rear-context-string . "-02 Thu 16:32]\n\n")
- (position . 406))
+ (front-context-string . "* TODO setup the")
+ (rear-context-string . "TAGS: REFILE\n  \n")
+ (position . 23))
 )
