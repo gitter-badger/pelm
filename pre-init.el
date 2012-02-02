@@ -1,1 +1,3 @@
-(setq exec-path (split-string (concat "/usr/local/bin:" (getenv "PATH")) path-separator))
+(setq exec-path (split-string 
+                 (concat "/usr/local/bin:~/.oh-my-zsh/bin:" (getenv "PATH"))
+                 path-separator))
