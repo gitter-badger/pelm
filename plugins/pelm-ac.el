@@ -31,4 +31,4 @@
 
 
 (provide 'pelm-ac)
-;;perlm-ac.el ends here
+;;pelm-ac.el ends here

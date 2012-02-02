@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# contributor : eggcaker <eggcaker@gmail.com>
+# name: android:paddingLeft
+# key : pl
+# --
+android:paddingLeft="${1:5dp}"
+$0

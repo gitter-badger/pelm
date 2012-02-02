@@ -30,13 +30,16 @@
 ;; (require 'org)  or you can load it from pre-init-private.org, see below
 (load-file "~/.emacs.d/pre-init.el")
 
-;; load the pre-init-private.org file if it exists
-;; this file is under .gitignore,
+;; load the pre-init-local files if they exists
+;; both of files are under .gitignore,
 ;; so it' wont' be version-controlled. The idea is to make
 ;; this file load other version-controlled or private stuff
 ;; before the pelm load.
-(if (file-exists-p "~/.emacs.d/pre-init-private.org")
+(if (file-exists-p "~/.emacs.d/pre-init-local.org")
     (org-babel-load-file "~/.emacs.d/pre-init-local.org"))
+
+(if (file-exists-p "~/.emacs.d/pre-init-local.el")
+    (load-file "~/.emacs.d/pre-init-local.el"))
 
 ;; load plugins 
 (require 'pelm-runtime)
@@ -65,13 +68,12 @@
   (mapc 'load (directory-files pelm-personal-dir nil "^[^#].*el$")))
 
 ;; You're expected to populate .emacs.d/post-init-local.org
-;; with your own code after the PELM loaded(kind of overide ?).
-;; This file is under .gitignore
-;; so it won't be version-controlled. The idea is to
-;; make this file load other version-controlled files.
-
+;; with your own code after the PELM loaded(kind of override ?).
 (if (file-exists-p "~/.emacs.d/post-init-local.org")
     (org-babel-load-file "~/.emacs.d/post-init-local.org"))
+
+(if (file-exists-p "~/.emacs.d/post-init-local.el")
+    (load-file "~/.emacs.d/post-init-local.el"))
 
 (package-manager-show-load-time)
 

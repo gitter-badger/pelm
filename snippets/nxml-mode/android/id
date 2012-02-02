@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor : eggcaker <eggcaker@gmail.com>
+# name: android:@+id
+# key : id
+# --
+android:id="@+id/${1:test}"
