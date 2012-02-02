@@ -1,7 +1,7 @@
 ;; PELM's init.el
 ;; Author: caker
-;; Last modified: 2011-12-04
-;; Version: 0.5.0
+;; Last modified: 2012-02-02
+;; Version: 0.6.0
 
 (add-to-list 'load-path "~/.emacs.d")
 
@@ -53,6 +53,7 @@
 (require 'pelm-android)
 (require 'pelm-git)
 (require 'pelm-yas)
+(require 'pelm-org)
 
 ;; load mode
 (require 'pelm-c)
