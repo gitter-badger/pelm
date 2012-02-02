@@ -107,6 +107,8 @@
                           org-wl
                           org-w3m)))
 
+(require 'org-habit)
+
 ;;; position the habit graph on the agenda to the right of the default
 (setq org-habit-graph-column 50)
 
