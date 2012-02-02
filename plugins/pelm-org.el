@@ -1234,6 +1234,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-enable-priority-commands nil)
 (setq org-src-preserve-indentation nil)
 
+;; auto save org files
+(run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
 (provide 'pelm-org)
 ;; pelm-org.el ends here
