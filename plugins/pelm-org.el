@@ -57,7 +57,7 @@
 
 
 ;; flyspell mode for spell checking everywhere
-(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
+;(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
 
 ;; Disable C-c [ and C-c ] in org-mode
 (add-hook 'org-mode-hook
@@ -1115,6 +1115,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-enforce-todo-dependencies t)
 
+;; TODO try and remove if I don't like it 
 (setq org-startup-indented t)
 
 (setq org-cycle-separator-lines 1)
