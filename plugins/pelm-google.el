@@ -12,6 +12,9 @@
 
 (require 'google-contacts)
 
+
+
+
 ;n or p to go the next or previous record;
 ;g to refresh the result, bypassing the cache;
 ;m to send an e-mail to a contact;
@@ -21,6 +24,9 @@
 
 (require 'google-contacts-gnus)
 (require 'google-contacts-message)
+
+
+(setq gnus-ignored-newsgroups "")
 
 (provide 'pelm-google)
 

@@ -13,10 +13,11 @@
 ;;require contrib lisps
 (require 'org-checklist)
 (require 'org-contacts)
+(require 'org-crypt)
 
 (setq org-directory "~/.org-files")
 (setq org-default-notes-file (concat org-directory "/refile.org"))
-(setq org-contacts-files (concat org-directory "/contacts.org"))
+(setq org-contacts-files (list(concat org-directory "/contacts.org")))
 
 (setq org-agenda-files (quote ("~/.org-files"
                                )))
@@ -42,10 +43,17 @@
       (quote (("t" "todo" entry (file (concat org-directory "/refile.org"))
                "* TODO %?\n%U\n %a\n  %i" :clock-in t :clock-resume t)
               ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
-                                          "* %(org-contacts-template-name)
- :PROPERTIES:
- :EMAIL: %(org-contacts-template-email)
- :END:")
+
+               "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
+:PROPERTIES:
+:URL:
+:WORK:
+:HOME:
+:MOBILE:
+:LOCATION:
+:BIRTHDAY: 
+:NOTE:
+:END:")
 
               ("n" "note" entry (file (concat org-directory "/refile.org"))
                "* %? :NOTE:\n%U\n%a\n  %i" :clock-in t :clock-resume t)
@@ -1250,6 +1258,13 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
 
+
+
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+;; GPG key to use for encryption
+;; Either the Key ID or set to nil to use symmetric encryption.
+(setq org-crypt-key "84D33E67")
 
 (provide 'pelm-org)
 ;; pelm-org.el ends here
