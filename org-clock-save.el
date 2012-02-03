@@ -1,2 +1,2 @@
-;; org-persist.el - mac at <2012-02-03 Fri 10:45>
-(setq stored-clock-history '(("/Users/eggcaker/.org-files/dit.org" . 250) ("/Users/eggcaker/.org-files/refile.org" . 20) ("/Users/eggcaker/.org-files/dit.org" . 26) ("/Users/eggcaker/.org-files/refile.org" . 23) ("/Users/eggcaker/.org-files/dit.org" . 169) ("/Users/eggcaker/.org-files/refile.org" . 127) ("/Users/eggcaker/.org-files/refile.org" . 237) ("/Users/eggcaker/.org-files/refile.org" . 343)))
+;; org-persist.el - mac at <2012-02-03 Fri 11:25>
+(setq stored-clock-history '(("/Users/eggcaker/.org-files/dit.org" . 250) ("/Users/eggcaker/.org-files/refile.org" . 20) ("/Users/eggcaker/.org-files/dit.org" . 26) ("/Users/eggcaker/.org-files/refile.org" . 23) ("/Users/eggcaker/.org-files/dit.org" . 169) ("/Users/eggcaker/.org-files/refile.org" . 127) ("/Users/eggcaker/.org-files/refile.org" . 237) ("/Users/eggcaker/.org-files/refile.org" . 343) ("/Users/eggcaker/.org-files/refile.org" . 539)))

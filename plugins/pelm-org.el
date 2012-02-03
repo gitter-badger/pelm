@@ -1206,6 +1206,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
   (delete-other-windows)
   (org-agenda-redo))
 
+
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.

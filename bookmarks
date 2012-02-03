@@ -10,6 +10,6 @@
 ("org-capture-last-stored"
  (filename . "~/.org-files/refile.org")
  (front-context-string . "* TODO clean up ")
- (rear-context-string . "rg::*OUT][OUT]]\n")
- (position . 343))
+ (rear-context-string . "s/pelm-org.el]]\n")
+ (position . 539))
 )
