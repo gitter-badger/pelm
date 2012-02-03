@@ -51,7 +51,10 @@
 ;; add the first level subfolders of vendor 
 (pelm-add-sub-folders-to-load-path pelm-vendor-dir)
 
-(defconst pelm-version-number "0.5.0"
+;; add the first level subfolders of elpa 
+(pelm-add-sub-folders-to-load-path pelm-elpa-dir)
+
+(defconst pelm-version-number "0.8.0"
   "PELM version number.")
  
 (defun pelm-version ()
