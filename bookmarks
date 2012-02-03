@@ -9,7 +9,7 @@
  (position . 529))
 ("org-capture-last-stored"
  (filename . "~/.org-files/refile.org")
- (front-context-string . "* TODO save pass")
- (rear-context-string . "/expenses.org]]\n")
- (position . 127))
+ (front-context-string . "* TODO clean up ")
+ (rear-context-string . "rg::*OUT][OUT]]\n")
+ (position . 343))
 )

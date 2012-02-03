@@ -30,6 +30,18 @@
 ;; no backups
 (setq make-backup-files nil)
 
+
+;;ido setups 
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(setq ido-file-extensions-order '(".java" ".xml" ".org" ".el"))
+(setq ido-ignore-extensions t)
+
+
+
 (provide 'pelm-editor)
 
 ;;; pelm-editor.el ends here				   

@@ -10,8 +10,13 @@
 
 ;;; Code:
 
+;;require contrib lisps
+(require 'org-checklist)
+(require 'org-contacts)
+
 (setq org-directory "~/.org-files")
 (setq org-default-notes-file (concat org-directory "/refile.org"))
+(setq org-contacts-files (concat org-directory "/contacts.org"))
 
 (setq org-agenda-files (quote ("~/.org-files"
                                )))
@@ -36,6 +41,12 @@
 (setq org-capture-templates
       (quote (("t" "todo" entry (file (concat org-directory "/refile.org"))
                "* TODO %?\n%U\n %a\n  %i" :clock-in t :clock-resume t)
+              ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
+                                          "* %(org-contacts-template-name)
+ :PROPERTIES:
+ :EMAIL: %(org-contacts-template-email)
+ :END:")
+
               ("n" "note" entry (file (concat org-directory "/refile.org"))
                "* %? :NOTE:\n%U\n%a\n  %i" :clock-in t :clock-resume t)
               ("j" "Journal" entry (file+datetree (concat org-directory "/refile.org"))
@@ -1129,7 +1140,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-table-export-default-format "orgtbl-to-csv")
 
-(require 'org-checklist)
+
 
 (run-at-time "06:00" 86400 '(lambda () (setq org-habit-show-habits t)))
 
@@ -1236,6 +1247,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 ;; auto save org files
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
+
+
 
 (provide 'pelm-org)
 ;; pelm-org.el ends here
