@@ -58,6 +58,8 @@
 (require 'pelm-git)
 (require 'pelm-yas)
 (require 'pelm-org)
+
+;; lab
 (require 'pelm-google)
 
 ;; load mode
@@ -66,7 +68,6 @@
 (require 'pelm-markdown)
 (require 'pelm-scss)
 (require 'pelm-scala)
-
 
 
 ;; load the personal settings 
