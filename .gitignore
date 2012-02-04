@@ -7,3 +7,5 @@ auto-save-list
 post-init-local.*
 pre-init.local.*
 *~
+bookmarks
+org-clock-save.el
