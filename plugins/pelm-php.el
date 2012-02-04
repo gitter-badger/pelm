@@ -1,3 +1,13 @@
+;;; pelm-php.el --- PELM  PHP
+;;
+;; Copyright (c) 2011-2015 eggcaker
+;;
+;; Authors: eggcaker <eggcaker@gmail.com>
+;; URL: http://caker.me/pelm
+
+;; This file is not part of GNU Emacs
+
+;;; Code:
 
 (require 'flymake)
 (require 'php-mode)
@@ -25,3 +35,7 @@
 (define-key php-mode-map "\C-cen" 'flymake-goto-next-error)
 (define-key php-mode-map "\C-csm" 'flymake-display-err-menu-for-current-line)
 (define-key php-mode-map "\C-cr" 'run-php)
+
+(provide 'pelm-php)
+
+;; pelm-php.el ends here

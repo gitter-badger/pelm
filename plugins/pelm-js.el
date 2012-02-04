@@ -1,3 +1,13 @@
+;;; pelm-js.el --- PELM  js-mode
+;;
+;; Copyright (c) 2011-2015 eggcaker
+;;
+;; Authors: eggcaker <eggcaker@gmail.com>
+;; URL: http://caker.me/pelm
+
+;; This file is not part of GNU Emacs
+
+;;; Code:
 
 ;;;Add the following custom-set-variables to use 'lazy' modes
 (custom-set-variables
@@ -19,3 +29,8 @@
 
 (autoload 'js3-mode "js3" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+
+
+(provide 'pelm-js)
+
+;; pelm-js.el ends here

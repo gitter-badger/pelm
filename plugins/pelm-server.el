@@ -1,10 +1,9 @@
-;;; pelm-server.el --- PELM  emac-server
+;;; pelm-server.el --- PELM  emacs server
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
 ;; Authors: eggcaker <eggcaker@gmail.com>
 ;; URL: http://caker.me/pelm
-;; Version: 0.5.0
 
 ;; This file is not part of GNU Emacs
 
@@ -14,4 +13,5 @@
 (server-start)
 
 (provide 'pelm-server)
-;;perlm-server ends here
+
+;;perlm-server.el ends here

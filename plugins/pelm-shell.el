@@ -4,13 +4,12 @@
 ;;
 ;; Authors: eggcaker <eggcaker@gmail.com>
 ;; URL: http://caker.me/pelm
-;; Version: 0.5.0
 
 ;; This file is not part of GNU Emacs
 
 ;;; Code:
 
-; shortcut for shell
+;; shortcut for shell
 (global-set-key "\C-x\C-z" 'shell) 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 

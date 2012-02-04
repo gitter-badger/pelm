@@ -4,7 +4,6 @@
 ;;
 ;; Authors: eggcaker <eggcaker@gmail.com>
 ;; URL: http://caker.me/pelm
-;; Version: 0.5.0
 
 ;; This file is not part of GNU Emacs
 
@@ -107,10 +106,9 @@
                           org-wl
                           org-w3m)))
 
-(require 'org-habit)
-
 ;;; position the habit graph on the agenda to the right of the default
 (setq org-habit-graph-column 50)
+(setq org-agenda-start-with-follow-mode t)
 
 (add-to-list 'auto-mode-alist
              '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
@@ -1260,8 +1258,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
 
-
-
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
 ;; GPG key to use for encryption
@@ -1269,5 +1265,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-crypt-key "84D33E67")
 
 (provide 'pelm-org)
+
 ;; pelm-org.el ends here
 
