@@ -14,6 +14,12 @@
 (require 'org-contacts)
 (require 'org-crypt)
 
+ (add-hook 'org-mode-hook
+           '(lambda()
+               (yas/minor-mode-on)
+               (auto-complete-mode)
+            ))
+
 (setq org-directory "~/.org-files")
 (setq org-default-notes-file (concat org-directory "/refile.org"))
 (setq org-contacts-files (list(concat org-directory "/contacts.org")))
