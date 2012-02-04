@@ -4,7 +4,7 @@
 ;;
 ;; Authors: eggcaker <eggcaker@gmail.com>
 ;; URL: http://caker.me/pelm
-;; Version: 0.5.0
+
 
 ;; This file is not part of GNU Emacs
 

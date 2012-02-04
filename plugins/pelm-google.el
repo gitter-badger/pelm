@@ -4,15 +4,12 @@
 ;;
 ;; Authors: eggcaker <eggcaker@gmail.com>
 ;; URL: http://caker.me/pelm
-;; Version: 0.5.0
 
 ;; This file is not part of GNU Emacs
 
 ;;; Code:
 
 (require 'google-contacts)
-
-
 
 
 ;n or p to go the next or previous record;
