@@ -59,16 +59,15 @@
 (require 'pelm-yas)
 (require 'pelm-org)
 
-;; lab
-(require 'pelm-google)
-
 ;; load mode
 (require 'pelm-c)
 (require 'pelm-yml)
 (require 'pelm-markdown)
 (require 'pelm-scss)
 (require 'pelm-scala)
+(require 'pelm-php)
 
+;; lab
 
 ;; load the personal settings 
 (when (file-exists-p pelm-personal-dir)
