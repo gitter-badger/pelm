@@ -22,9 +22,13 @@
 
 ;; color-theme
 (require 'color-theme)
-(color-theme-initialize)
-(color-theme-high-contrast)
-;(color-theme-github)
+(require 'color-theme-github)
+(add-to-list 'custom-theme-load-path (concat pelm-dir "/themes/"))
+;(require 'color-theme-zenburn)
+;(color-theme-zenburn)
+;(color-theme-high-contrast)
+
+(color-theme-github)
 
 
 ;;disable splash screen and tools bar

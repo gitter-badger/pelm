@@ -60,7 +60,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
 
 (provide 'pelm-runtime)
 
