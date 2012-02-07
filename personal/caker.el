@@ -2,7 +2,7 @@
 ;;; maybe need ignore this file??
 ;;;
 
-(setq default-directory "~/src/Android/DIT/dit-app/")
+;(setq default-directory "~/src/Android/DIT/dit-app/")
 
 ;; jabber start 
 (setq jabber-account-list

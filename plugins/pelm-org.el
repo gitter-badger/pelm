@@ -45,7 +45,7 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, and org-protocol
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file (concat org-directory "/refile.org"))
+      (quote (("t" "Toto" entry (file (concat org-directory "/refile.org"))
                "* TODO %?\n%U\n %a\n  %i" :clock-in t :clock-resume t)
               ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
 
@@ -60,17 +60,8 @@
 :NOTE:
 :END:")
 
-              ("n" "note" entry (file (concat org-directory "/refile.org"))
-               "* %? :NOTE:\n%U\n%a\n  %i" :clock-in t :clock-resume t)
-              ("j" "Journal" entry (file+datetree (concat org-directory "/refile.org"))
-               "* %?\n%U\n  %i" :clock-in t :clock-resume t)
-              ("w" "org-protocol" entry (file (concat org-directory "/refile.org"))
-               "* TODO Review %c\n%U\n  %i" :immediate-finish t)
-              ("p" "Phone call" entry (file (concat org-directory "/refile.org"))
-               "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-              ("h" "Habit" entry (file (concat org-directory "/refile.org"))
-               "* NEXT %?\n%U\n%a\nSCHEDULED: %t .+1d/3d\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i"))))
-
+              ("n" "Note" entry (file (concat org-directory "/refile.org"))
+               "* %? :NOTE:\n%U\n%a\n  %i" :clock-in t :clock-resume t))))
 
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
@@ -113,8 +104,10 @@
                           org-w3m)))
 
 ;;; position the habit graph on the agenda to the right of the default
-(setq org-habit-graph-column 50)
-(setq org-agenda-start-with-follow-mode t)
+(setq org-habit-graph-column 70)
+
+;; not really good to me!
+(setq org-agenda-start-with-follow-mode nil)
 
 (add-to-list 'auto-mode-alist
              '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
@@ -723,11 +716,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 
 ; Tags with fast selection keys
-(setq org-tag-alist (quote ((:startgroup)
-                            ("@dit" . ?d)
-                            ("@office" . ?o)
-                            ("@home" . ?H)
-                            (:endgroup)
+(setq org-tag-alist (quote (
                             ("PHONE" . ?p)
                             ("WAITING" . ?w)
                             ("HOLD" . ?h)
@@ -1261,7 +1250,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-src-preserve-indentation nil)
 
 ;; auto save org files
-(run-at-time "00:59" 3600 'org-save-all-org-buffers)
+(run-at-time "00:55" 3600 'org-save-all-org-buffers)
 
 
 (org-crypt-use-before-save-magic)
