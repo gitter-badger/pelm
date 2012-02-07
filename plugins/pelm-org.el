@@ -59,9 +59,11 @@
 :BIRTHDAY: 
 :NOTE:
 :END:")
+              ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org")
+                                                  "* %?\n%U\n  %i"))
 
-              ("n" "Note" entry (file (concat org-directory "/refile.org"))
-               "* %? :NOTE:\n%U\n%a\n  %i" :clock-in t :clock-resume t))))
+              ("b" "Blog Draft" entry (file (concat org-directory "/draft.org"))
+               "* %? \n %i"))))
 
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
@@ -152,6 +154,19 @@
 (setq ido-everywhere t)
 (setq ido-max-directory-size 100000)
 (ido-mode (quote both))
+
+
+(setq ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-ignore-buffers
+      '("\\` " "^\\*ESS\\*" "^\\*Messages\\*" "^\\*Help\\*" "^\\*Buffer"
+              "^\\*.*Completions\\*$" "^\\*Ediff" "^\\*tramp" "^\\*cvs-"
+              "_region_" " output\\*$" "^TAGS$" "^\*Ido")
+      ido-ignore-directories
+      '("\\`auto/" "\\.prv/" "\\`CVS/" "\\`\\.\\./" "\\`\\./" "\\.git/")
+      ido-ignore-files
+      '("\\`auto/" "\\.prv/" "_region_" "\\`CVS/" "\\`#" "\\`.#" "\\.DS_Store"
+        "\\`\\.\\./" "\\`\\./"))
 
 ;;;; Refile settings
 ; Exclude DONE state tasks from refile targets
@@ -254,10 +269,9 @@
 (defun bh/org-auto-exclude-function (tag)
   "Automatic task exclusion in the agenda with / RET"
   (and (cond
-        ((string= tag "hold")
-         t)
-        ((string= tag "farm")
-         t))
+        (
+         (string= tag "hold") t)
+        )
        (concat "-" tag)))
 
 (setq org-agenda-auto-exclude-function 'bh/org-auto-exclude-function)
@@ -271,7 +285,6 @@
   (global-set-key (kbd "<f7>") 'bh/set-truncate-lines)
   (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
   (global-set-key (kbd "<f9> <f9>") 'bh/show-org-agenda)
-  (global-set-key (kbd "<f9> b") 'bbdb)
   (global-set-key (kbd "<f9> c") 'calendar)
   (global-set-key (kbd "<f9> f") 'boxquote-insert-file)
   (global-set-key (kbd "<f9> g") 'gnus)
@@ -948,18 +961,19 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 (org-babel-do-load-languages
  (quote org-babel-load-languages)
  (quote ((emacs-lisp . t)
-         (dot . t)
+ ;        (dot . t)
          (ditaa . t)
-         (R . t)
+;         (R . t)
          (python . t)
          (ruby . t)
          (gnuplot . t)
-         (clojure . t)
+  ;       (clojure . t)
          (sh . t)
-         (ledger . t)
+   ;      (ledger . t)
          (org . t)
          (plantuml . t)
-         (latex . t))))
+         ;(latex . t)
+         )))
 
 ; Do not prompt to confirm evaluation
 ; This may be dangerous - make sure you understand the consequences

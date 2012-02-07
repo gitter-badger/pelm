@@ -2,7 +2,7 @@
 ;;; maybe need ignore this file??
 ;;;
 
-;(setq default-directory "~/src/Android/DIT/dit-app/")
+(setq default-directory "~/src/Android/DIT/dit-app/")
 
 ;; jabber start 
 (setq jabber-account-list
@@ -14,7 +14,7 @@
 
 
 ;;gnus setup
-(setq gnus-invalid-group-regexp "[:`'\"]\\|^$|[Gmail]/Spam")
+(setq gnus-invalid-group-regexp "[:`'\"]\\|^$")
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
 (setq gnus-summary-thread-gathering-function
@@ -27,6 +27,20 @@
           (signature "Tongzhu Zhang\n http://caker.me\n")
           ("X-URL" "http://caker.me")
           )))
+
+(setq gnus-inhibit-startup-message t)
+
+(setq nnimap-split-inbox '("INBOX"))
+(setq nnimap-split-rule 'nnmail-split-fancy)
+(setq gnus-parameters
+      '(("nnimap+imap.gmail.com.*" (gcc-self . t))))
+(setq gnus-fetch-old-headers t) 
+
+(eval-after-load "mm-decode" 
+'(progn 
+(add-to-list 'mm-discouraged-alternatives "text/html") 
+(add-to-list 'mm-discouraged-alternatives "text/richtext"))) 
+
 
 (setq user-full-name "Tongzhu Zhang")
 (setq user-mail-address "eggcaker@gmail.com")
