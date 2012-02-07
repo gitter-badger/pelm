@@ -68,40 +68,21 @@
 (require 'pelm-php)
 
 ;; lab
-
-
 (require 'pelm-android)
+
+;; marmalade repository
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
 ;; load the personal settings 
 (when (file-exists-p pelm-personal-dir)
   (mapc 'load (directory-files pelm-personal-dir nil "^[^#].*el$")))
 
-;; You're expected to populate .emacs.d/post-init-local.org
-;; with your own code after the PELM loaded(kind of override ?).
-(if (file-exists-p "~/.emacs.d/post-init-local.org")
-    (org-babel-load-file "~/.emacs.d/post-init-local.org"))
-
+;; sanbox for test 
 (if (file-exists-p "~/.emacs.d/post-init-local.el")
     (load-file "~/.emacs.d/post-init-local.el"))
+
 
 (package-manager-show-load-time)
 
 ;;; ends init.el here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(inhibit-startup-screen t)
- '(joc-eshell-prompt-newline t)
- '(org-mobile-agendas (quote default))
- '(org-mobile-directory "~/.mobileorg/")
- '(org-mobile-inbox-for-pull "~/.org-files/refile.org")
- '(scroll-bar-width nil t)
- '(tool-bar-mode nil nil (tool-bar)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))

@@ -104,7 +104,7 @@
                           org-w3m)))
 
 ;;; position the habit graph on the agenda to the right of the default
-(setq org-habit-graph-column 70)
+(setq org-habit-graph-column 50)
 
 ;; not really good to me!
 (setq org-agenda-start-with-follow-mode nil)
