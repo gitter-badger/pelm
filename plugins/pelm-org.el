@@ -21,7 +21,7 @@
             ))
 
 (setq org-directory "~/.org-files")
-(setq org-default-notes-file (concat org-directory "/refile.org"))
+(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (setq org-contacts-files (list(concat org-directory "/contacts.org")))
 
 (setq org-agenda-files (quote ("~/.org-files"
@@ -45,7 +45,7 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, and org-protocol
 (setq org-capture-templates
-      (quote (("t" "Toto" entry (file (concat org-directory "/refile.org"))
+      (quote (("t" "Toto" entry (file (concat org-directory "/inbox.org"))
                "* TODO %?\n%U\n %a\n  %i" :clock-in t :clock-resume t)
               ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
 
@@ -61,9 +61,7 @@
 :END:")
               ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org")
                                                   "* %?\n%U\n  %i"))
-
-              ("b" "Blog Draft" entry (file (concat org-directory "/draft.org"))
-               "* %? \n %i"))))
+              )))
 
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
@@ -1004,13 +1002,15 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 ; Activate appointments so we get notifications
 (appt-activate t)
 
+;; alert time 
+(setq appt-message-warning-time 2)   
+
 ; If we leave Emacs running overnight - reset the appointments one minute after midnight
 (run-at-time "24:01" nil 'bh/org-agenda-to-appt)
 
-
-
-(setq org-agenda-include-diary nil)
-(setq org-agenda-diary-file "~/.org-files/diary.org")
+;; disable diary event
+;(setq org-agenda-include-diary nil)
+;(setq org-agenda-diary-file "~/.org-files/diary.org")
 
 ;; Include agenda archive files when searching for things
 (setq org-agenda-text-search-extra-files (quote (agenda-archives)))
@@ -1272,6 +1272,16 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;; GPG key to use for encryption
 ;; Either the Key ID or set to nil to use symmetric encryption.
 (setq org-crypt-key "84D33E67")
+
+;; tab key
+;; not working on java-mode
+;(add-hook 'org-mode-hook
+;          (let ((original-command (lookup-key org-mode-map [tab])))
+;            `(lambda ()
+;               (setq yas/fallback-behavior
+;                     '(apply ,original-command))
+;               (local-set-key [tab] 'yas/expand))))
+
 
 (provide 'pelm-org)
 
