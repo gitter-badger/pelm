@@ -59,6 +59,8 @@
 :BIRTHDAY: 
 :NOTE:
 :END:")
+              ("w" "org-protocol" entry (file "~/.org-files/5m.org")
+               "* TODO Review %c\n%U\n  %i" :immediate-finish t)
               ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org")
                                                   "* %?\n%U\n  %i"))
               )))
@@ -1265,7 +1267,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 ;; auto save org files
 (run-at-time "00:55" 3600 'org-save-all-org-buffers)
-
+(setq org-mobile-directory "~/Dropbox/org")                                                         
+(setq org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
