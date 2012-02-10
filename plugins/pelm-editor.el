@@ -23,8 +23,6 @@
 (setq ido-ignore-extensions t)
 
 
-;; bookmark+ 
-(require 'bookmark+)
 (defun ska-point-to-register()
   "Store cursorposition _fast_ in a register.
   Use ska-jump-to-register to jump back to the stored
@@ -46,5 +44,5 @@
 (global-set-key "\C-x." 'ska-point-to-register)
 (global-set-key "\C-x," 'ska-jump-to-register)
 
-provide 'pelm-editor)
+(provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   
