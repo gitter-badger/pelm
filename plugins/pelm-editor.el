@@ -23,7 +23,31 @@
 (setq ido-ignore-extensions t)
 
 
+;; bookmark+ 
+(require 'bookmark+)
+(defun ska-point-to-register()
+  "Store cursorposition _fast_ in a register.
+  Use ska-jump-to-register to jump back to the stored
+  position."
+  (interactive)
+  (setq zmacs-region-stays t)
+  (point-to-register 8))
 
-(provide 'pelm-editor)
+(defun ska-jump-to-register()
+  "Switches between current cursorposition and position
+  that was stored with ska-point-to-register."
+  (interactive)
+  (setq zmacs-region-stays t)
+  (let ((tmp (point-marker)))
+    (jump-to-register 8)
+    (set-register 8 tmp)))
 
+;; check pelm-editor.el for more information
+(global-set-key "\C-x." 'ska-point-to-register)
+(global-set-key "\C-x," 'ska-jump-to-register)
+(global-set-key "\C-\," 'ska-jump-to-register)
+
+(global-set-key "\C-," 'ska-jump-to-register)
+
+provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   
