@@ -22,6 +22,10 @@
 (global-set-key (kbd "\e <right>") 'windmove-right)
 (global-set-key (kbd "\C-co") 'org-mode)
 
+;; no M-x 
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+(define-key org-mode-map "\C-xa" 'org-insert-subheading)
 (provide 'pelm-keys)
 
 ;;; pelm-keys.el ends here

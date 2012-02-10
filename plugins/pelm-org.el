@@ -1179,7 +1179,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                       ("8" . ignore)
                                       ("9" . ignore)
 
-                                      ("a" . ignore)
+                                      ("a" . org-insert-subheading)
                                       ("d" . ignore)
                                       ("h" . bh/hide-other)
                                       ("i" progn
