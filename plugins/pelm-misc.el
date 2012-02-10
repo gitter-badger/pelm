@@ -12,6 +12,8 @@
 
 (autoload 'scratch "scratch" nil t)
 
+;; 24 hr
+(setq display-time-24hr-format t )
 
 (provide 'pelm-misc)
 
