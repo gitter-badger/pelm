@@ -7,6 +7,11 @@
 
 ;; This file is not part of GNU Emacs
 
+
+(global-set-key [(control .)] 'pelm-keymap)
+(define-prefix-command 'pelm-keymap)
+
+
 ;; keyboard remark
 (global-set-key "\M-h" 'delete-backward-char)
 (global-set-key "\C-cG" 'end-of-buffer)
@@ -20,12 +25,18 @@
 (global-set-key (kbd "\e <down>") 'windmove-down)
 (global-set-key (kbd "\e <up>") 'windmove-up)
 (global-set-key (kbd "\e <right>") 'windmove-right)
-(global-set-key (kbd "\C-co") 'org-mode)
+
 
 ;; no M-x 
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
-(define-key org-mode-map "\C-xa" 'org-insert-subheading)
+
+(define-key pelm-keymap "\C-i" 'org-insert-subheading)
+(define-key pelm-keymap "\C-o" 'org-mode)
+
+
+
+
 (provide 'pelm-keys)
 
 ;;; pelm-keys.el ends here
