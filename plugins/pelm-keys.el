@@ -22,10 +22,6 @@
 (global-set-key (kbd "\e <right>") 'windmove-right)
 (global-set-key (kbd "\C-co") 'org-mode)
 
-;; check pelm-editor.el for more information
-(global-set-key [(control ?.)] 'ska-point-to-register)
-(global-set-key [(control ?\,)] 'ska-jump-to-register)
-
 (provide 'pelm-keys)
 
 ;;; pelm-keys.el ends here
