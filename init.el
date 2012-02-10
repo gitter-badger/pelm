@@ -50,14 +50,13 @@
 (require 'pelm-editor)
 (require 'pelm-ui)
 (require 'pelm-editor)
-(require 'pelm-keys)
 (require 'pelm-shell)
 (require 'pelm-server)
 (require 'pelm-ac)
 (require 'pelm-git)
 (require 'pelm-yas)
 (require 'pelm-org)
-
+(require 'pelm-keys)
 
 ;; load mode
 (require 'pelm-c)
@@ -66,6 +65,9 @@
 (require 'pelm-scss)
 (require 'pelm-scala)
 (require 'pelm-php)
+
+;;misc
+(require 'pelm-misc)
 
 ;; lab
 (require 'pelm-android)
@@ -86,3 +88,20 @@
 (package-manager-show-load-time)
 
 ;;; ends init.el here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(column-number-mode t)
+ '(inhibit-startup-screen t)
+ '(joc-eshell-prompt-newline t)
+ '(scroll-bar-width nil t)
+ '(tool-bar-mode nil nil (tool-bar)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))

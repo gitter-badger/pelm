@@ -283,7 +283,7 @@
   (global-set-key (kbd "<f5>") 'bh/org-todo)
   (global-set-key (kbd "<S-f5>") 'bh/widen)
   (global-set-key (kbd "<f7>") 'bh/set-truncate-lines)
-  (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
+;  (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
   (global-set-key (kbd "<f9> <f9>") 'bh/show-org-agenda)
   (global-set-key (kbd "<f9> c") 'calendar)
   (global-set-key (kbd "<f9> f") 'boxquote-insert-file)
@@ -1204,12 +1204,12 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                       ("H" . ignore)
                                       ("J" . org-clock-goto)
                                       ("K" . ignore)
-                                      ("L" . ignore)
+;                                      ("L" . ignore)
                                       ("M" . ignore)
                                       ("N" . bh/narrow-to-subtree)
                                       ("P" . bh/narrow-to-project)
                                       ("Q" . ignore)
-                                      ("R" . ignore)
+                                      ;("R" . ignore)
                                       ("S" . ignore)
                                       ("T" . (org-show-todo-tree nil))
                                       ("U" . bh/narrow-up-one-level)
@@ -1218,6 +1218,79 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                       ("X" . ignore)
                                       ("Y" . ignore)
                                       ("Z" . ignore))))
+
+(defun bh/org-todo (arg)
+  (interactive "p")
+  (if (equal arg 4)
+      (save-restriction
+        (widen)
+        (org-narrow-to-subtree)
+        (org-show-todo-tree nil))
+    (widen)
+    (org-narrow-to-subtree)
+    (org-show-todo-tree nil)))
+
+(global-set-key (kbd "<S-f5>") 'bh/widen)
+
+(defun bh/widen ()
+  (interactive)
+  (widen)
+  (org-agenda-remove-restriction-lock))
+
+(add-hook 'org-agenda-mode-hook
+          '(lambda () (org-defkey org-agenda-mode-map "W" 'bh/widen))
+          'append)
+
+(defun bh/narrow-to-org-subtree ()
+  (widen)
+  (org-narrow-to-subtree)
+  (save-restriction
+    (org-agenda-set-restriction-lock)))
+
+(defun bh/narrow-to-subtree ()
+  (interactive)
+  (if (equal major-mode 'org-agenda-mode)
+      (org-with-point-at (org-get-at-bol 'org-hd-marker)
+        (bh/narrow-to-org-subtree))
+    (bh/narrow-to-org-subtree)))
+
+(add-hook 'org-agenda-mode-hook
+          '(lambda () (org-defkey org-agenda-mode-map "N" 'bh/narrow-to-subtree))
+          'append)
+
+(defun bh/narrow-up-one-org-level ()
+  (widen)
+  (save-excursion
+    (outline-up-heading 1 'invisible-ok)
+    (bh/narrow-to-org-subtree)))
+
+(defun bh/narrow-up-one-level ()
+  (interactive)
+  (if (equal major-mode 'org-agenda-mode)
+      (org-with-point-at (org-get-at-bol 'org-hd-marker)
+        (bh/narrow-up-one-org-level))
+    (bh/narrow-up-one-org-level)))
+
+(add-hook 'org-agenda-mode-hook
+          '(lambda () (org-defkey org-agenda-mode-map "U" 'bh/narrow-up-one-level))
+          'append)
+
+(defun bh/narrow-to-org-project ()
+  (widen)
+  (save-excursion
+    (bh/find-project-task)
+    (bh/narrow-to-org-subtree)))
+
+(defun bh/narrow-to-project ()
+  (interactive)
+  (if (equal major-mode 'org-agenda-mode)
+      (org-with-point-at (org-get-at-bol 'org-hd-marker)
+        (bh/narrow-to-org-project))
+    (bh/narrow-to-org-project)))
+
+(add-hook 'org-agenda-mode-hook
+          '(lambda () (org-defkey org-agenda-mode-map "P" 'bh/narrow-to-project))
+          'append)
 
 (defun bh/show-org-agenda ()
   (interactive)
