@@ -45,9 +45,6 @@
 ;; check pelm-editor.el for more information
 (global-set-key "\C-x." 'ska-point-to-register)
 (global-set-key "\C-x," 'ska-jump-to-register)
-(global-set-key "\C-\," 'ska-jump-to-register)
-
-(global-set-key "\C-," 'ska-jump-to-register)
 
 provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   
