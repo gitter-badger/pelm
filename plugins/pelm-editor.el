@@ -44,5 +44,8 @@
 (global-set-key "\C-x." 'ska-point-to-register)
 (global-set-key "\C-x," 'ska-jump-to-register)
 
+;;C-n add new line
+(setq next-line-add-newlines t)
+
 (provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   
