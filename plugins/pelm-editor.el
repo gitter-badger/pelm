@@ -47,5 +47,19 @@
 ;;C-n add new line
 (setq next-line-add-newlines t)
 
+
+(require 'recentf)
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(recentf-mode t)
+
+(setq recentf-max-saved-item 15)
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file:")
+    (message "Aborting")))
+
 (provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   
