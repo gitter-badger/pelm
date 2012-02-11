@@ -31,10 +31,9 @@
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 
-(define-key pelm-keymap "\C-i" 'org-insert-subheading)
-(define-key pelm-keymap "\C-o" 'org-mode)
-
-
+(define-key pelm-keymap "i" 'org-insert-subheading)
+(define-key pelm-keymap "o" 'org-mode)
+(define-key pelm-keymap "c" 'execute-extended-command)
 
 
 (provide 'pelm-keys)
