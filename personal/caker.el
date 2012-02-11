@@ -73,3 +73,10 @@
 (setq mm-text-html-renderer 'w3m)
 (setq mm-inline-text-html-with-images t)
 (setq mm-inline-text-html-with-w3m-keymap nil)
+
+
+
+
+
+
+
