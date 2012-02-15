@@ -225,7 +225,7 @@
                             (org-agenda-skip-function 'bh/skip-projects-and-habits)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)))
-                (tags "-REFILE/"
+                (tags "-ARCHIVE/"
                       ((org-agenda-overriding-header "Tasks to Archive")
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))
                nil)
@@ -260,7 +260,7 @@
                (org-agenda-skip-function 'bh/skip-projects-and-habits)
                (org-agenda-todo-ignore-scheduled 'future)
                (org-agenda-todo-ignore-deadlines 'future))
-              ("A" "Tasks to Archive" tags "-REFILE/"
+              ("A" "Tasks to Archive" tags "-ARCHIVE/"
                ((org-agenda-overriding-header "Tasks to Archive")
                 (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))))
 
@@ -964,9 +964,9 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
  ;        (dot . t)
          (ditaa . t)
 ;         (R . t)
-         (python . t)
+ ;        (python . t)
          (ruby . t)
-         (gnuplot . t)
+;         (gnuplot . t)
   ;       (clojure . t)
          (sh . t)
    ;      (ledger . t)
