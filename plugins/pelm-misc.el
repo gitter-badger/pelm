@@ -10,14 +10,10 @@
 
 ;;; Code:
 
-(autoload 'scratch "scratch" nil t)
-
-;; 24 hr
-(setq display-time-24hr-format t )
 
 (defun mp-insert-date ()
   (interactive)
-  (insert (format-time-string "%x")))
+  (insert (format-time-string "%Y-%m-%d %A")))
  
 (defun mp-insert-time ()
   (interactive)
@@ -29,6 +25,10 @@
 
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+
+(setq display-time-day-and-date t
+      display-time-24hr-format t)
+(display-time)
 
 (provide 'pelm-misc)
 
