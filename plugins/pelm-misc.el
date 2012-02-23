@@ -28,7 +28,14 @@
 
 (setq display-time-day-and-date t
       display-time-24hr-format t)
-(display-time)
+
+;  (setq system-time-locale "en_US.utf8")
+   (setq system-time-locale "C")
+
+(display-time )
+
+;(setq system-time-locale "C")
+
 
 (provide 'pelm-misc)
 
