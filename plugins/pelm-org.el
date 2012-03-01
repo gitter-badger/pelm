@@ -1359,6 +1359,22 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;               (local-set-key [tab] 'yas/expand))))
 
 
+
+;; 阴历生日支持
+(defun diary-chinese-anniversary (lunar-month lunar-day &optional year mark)
+  (let* ((ddate (diary-make-date lunar-month lunar-day year))
+         (dd (calendar-extract-day ddate))
+         (mm (calendar-extract-month ddate))
+         (yy (calendar-extract-year ddate))
+         (a-date (calendar-absolute-from-gregorian date))
+         (c-date (calendar-chinese-from-absolute a-date))
+         (mm2 (nth 2 c-date))
+         (dd2 (nth 3 c-date))
+         (y (calendar-extract-year date))
+         (diff (if year (- y year) 100)))
+    (and (> diff 0) (= mm mm2) (= dd dd2)
+         (cons mark (format entry diff (diary-ordinal-suffix diff))))))
+
 (provide 'pelm-org)
 
 ;; pelm-org.el ends here
