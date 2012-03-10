@@ -1,4 +1,4 @@
-;;; pelm-markdown.el --- PELM markdown mode
+;;; pelm-markups.el --- PELM markup mode
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-
+;;; markdown
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
@@ -21,6 +21,15 @@
 
 (add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
 
-(provide 'pelm-markdown)
+;;; jade 
+(require 'stylus-mode)
+(require 'jade-mode)    
+(add-to-list 'auto-mode-alist '("\\.styl$" . stylus-mode))
+(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
-;;; pelm-markdown.el ends here
+;;; yml
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+(provide 'pelm-markups)
+;;; pelm-markups.el ends here

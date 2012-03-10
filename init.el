@@ -60,9 +60,7 @@
 
 ;; load mode
 (require 'pelm-c)
-(require 'pelm-yml)
-(require 'pelm-markdown)
-(require 'pelm-scss)
+(require 'pelm-markups)
 (require 'pelm-scala)
 (require 'pelm-php)
 
