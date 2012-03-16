@@ -675,10 +675,10 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 ;; shows 1 minute clocking gaps
 (setq org-agenda-clock-consistency-checks
-      (quote (:max-duration "4:00"
+      (quote (:max-duration "8:05"
               :min-duration 0
               :max-gap 0
-              :gap-ok-around ("4:00"))))
+              :gap-ok-around ("8:05"))))
 
 (setq org-time-stamp-rounding-minutes (quote (1 1)))
 
