@@ -37,6 +37,14 @@
 ;(setq system-time-locale "C")
 
 
+
+(fset 'format_xml
+      (lambda (&optional arg)
+        "Keyboard macro."
+        (interactive "p")
+        (kmacro-exec-ring-item (quote ([19 34 32 13 return] 0 "%d")) arg)))
+
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here
