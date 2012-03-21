@@ -34,7 +34,7 @@
 (define-key pelm-keymap "i" 'org-insert-subheading)
 (define-key pelm-keymap "o" 'org-mode)
 (define-key pelm-keymap "c" 'execute-extended-command)
-
+(global-set-key (kbd "C-c C-x C-j") 'org-clock-jump-to-current-clock)
 
 (provide 'pelm-keys)
 

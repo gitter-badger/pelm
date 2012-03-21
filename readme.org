@@ -11,7 +11,7 @@
 
   PELM  - a "literate" Emacs Lisp Manager  for Emacs (24.0 and greater).
 
-  What's mean P? the P  is Personal or Public (if you like it)
+  What's the P means? the P  can be one of Personal or Public (if you like it)
   I hope every body like it, but maybe not. any fork is welcome!
 
 ** Install
@@ -37,7 +37,6 @@ $ cd ~/pelm
 $ git submodule init
 $ git submodule update
 #+END_SRC
-
 *** Byte compile (optional but recommented)
 #+BEGIN_EXAMPLE
 C-u 0 M-x byte-recompile-directory
