@@ -20,6 +20,23 @@
                (auto-complete-mode)
             ))
 
+
+;; 阴历生日支持
+;; TODO not working 
+(defun diary-chinese-anniversary (lunar-month lunar-day &optional year mark)
+  (let* ((ddate (diary-make-date lunar-month lunar-day year))
+         (dd (calendar-extract-day ddate))
+         (mm (calendar-extract-month ddate))
+         (yy (calendar-extract-year ddate))
+         (a-date (calendar-absolute-from-gregorian date))
+         (c-date (calendar-chinese-from-absolute a-date))
+         (mm2 (nth 2 c-date))
+         (dd2 (nth 3 c-date))
+         (y (calendar-extract-year date))
+         (diff (if year (- y year) 100)))
+    (and (> diff 0) (= mm mm2) (= dd dd2)
+         (cons mark (format entry diff (diary-ordinal-suffix diff))))))
+
 (setq org-directory "~/.org-files")
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
 (setq org-contacts-files (list(concat org-directory "/contacts.org")))
@@ -46,7 +63,7 @@
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, and org-protocol
 (setq org-capture-templates
       (quote (("t" "Toto" entry (file (concat org-directory "/inbox.org"))
-               "* TODO %?\n%U\n %a\n  %i" :clock-in t :clock-resume t)
+               "* TODO %?\n%U\n %a\n " :clock-in t :clock-resume t)
               ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
 
                "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
@@ -196,7 +213,7 @@
                        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-CANCELLED/!"
                            ((org-agenda-overriding-header "Stuck Projects")
-                            (org-tags-match-list-sublevels 'indented)
+                            ;(org-tags-match-list-sublevels 'indented)
                             (org-agenda-skip-function 'bh/skip-non-stuck-projects)))
                 (tags-todo "-WAITING-CANCELLED/!NEXT"
                            ((org-agenda-overriding-header "Next Tasks")
@@ -714,7 +731,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 ;; Agenda clock report parameters
 (setq org-agenda-clockreport-parameter-plist
-      (quote (:link t :maxlevel 5 :fileskip0 t :compact t)))
+      (quote (:link t :maxlevel 5 :fileskip0 t :compact t :narrow 80)))
 
 
 
@@ -1360,20 +1377,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 
 
-;; 阴历生日支持
-(defun diary-chinese-anniversary (lunar-month lunar-day &optional year mark)
-  (let* ((ddate (diary-make-date lunar-month lunar-day year))
-         (dd (calendar-extract-day ddate))
-         (mm (calendar-extract-month ddate))
-         (yy (calendar-extract-year ddate))
-         (a-date (calendar-absolute-from-gregorian date))
-         (c-date (calendar-chinese-from-absolute a-date))
-         (mm2 (nth 2 c-date))
-         (dd2 (nth 3 c-date))
-         (y (calendar-extract-year date))
-         (diff (if year (- y year) 100)))
-    (and (> diff 0) (= mm mm2) (= dd dd2)
-         (cons mark (format entry diff (diary-ordinal-suffix diff))))))
+
 
 (provide 'pelm-org)
 
