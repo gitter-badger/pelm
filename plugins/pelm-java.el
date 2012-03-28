@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-
+(autoload 'gtags-mode "gtags" "" t)
 
 (provide 'pelm-java)
 
