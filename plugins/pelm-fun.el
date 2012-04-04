@@ -19,7 +19,8 @@
 (global-set-key (kbd "\C-c h i i a m c a k e r h o w a r e y o u") 'hello_caker)
 
 
-
+(autoload 'bongo "bongo"
+  "Start Bongo by switching to a Bongo buffer." t)
 
 
 (provide 'pelm-fun)
