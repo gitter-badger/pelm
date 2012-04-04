@@ -66,7 +66,7 @@
 
 ;;misc
 (require 'pelm-misc)
-
+(require 'pelm-fun)
 ;; lab
 (require 'pelm-android)
 
