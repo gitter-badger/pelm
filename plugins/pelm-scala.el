@@ -16,6 +16,10 @@
              (auto-complete-mode)
              ))
 
+(add-hook 'scala-mode-hook
+          '(lambda ()
+             (yas/minor-mode-on)
+             ))
 
 (add-hook 'inferior-scala-mode
           '(lambda()
