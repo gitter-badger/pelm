@@ -34,7 +34,16 @@
 (define-key pelm-keymap "i" 'org-insert-subheading)
 (define-key pelm-keymap "o" 'org-mode)
 (define-key pelm-keymap "c" 'execute-extended-command)
-(global-set-key (kbd "C-c C-x C-j") 'org-clock-jump-to-current-clock)
+
+(defun split_window_3 ()
+  "split window horizontally and go to it"
+  (interactive)
+  (split-window-horizontally)
+  (windmove-right))
+
+
+(define-key pelm-keymap "3" 'split_window_3)
+
 
 (provide 'pelm-keys)
 
