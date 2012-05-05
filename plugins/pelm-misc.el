@@ -45,6 +45,23 @@
         (kmacro-exec-ring-item (quote ([19 34 32 13 return] 0 "%d")) arg)))
 
 
+(defun swap-buffers-in-windows ()
+  "Put the buffer from the selected window in next window, and vice versa"
+  (interactive)
+  (let* ((this (selected-window))
+     (other (next-window))
+     (this-buffer (window-buffer this))
+     (other-buffer (window-buffer other)))
+    (set-window-buffer other this-buffer)
+    (set-window-buffer this other-buffer)
+    )
+  )
+
+(define-key pelm-keymap "s" 'swap-buffers-in-windows)
+
+
+
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here
