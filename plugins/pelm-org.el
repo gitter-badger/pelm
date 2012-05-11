@@ -21,22 +21,6 @@
             ))
 
 
-;; 阴历生日支持
-;; TODO not working 
-(defun diary-chinese-anniversary (lunar-month lunar-day &optional year mark)
-  (let* ((ddate (diary-make-date lunar-month lunar-day year))
-         (dd (calendar-extract-day ddate))
-         (mm (calendar-extract-month ddate))
-         (yy (calendar-extract-year ddate))
-         (a-date (calendar-absolute-from-gregorian date))
-         (c-date (calendar-chinese-from-absolute a-date))
-         (mm2 (nth 2 c-date))
-         (dd2 (nth 3 c-date))
-         (y (calendar-extract-year date))
-         (diff (if year (- y year) 100)))
-    (and (> diff 0) (= mm mm2) (= dd dd2)
-         (cons mark (format entry diff (diary-ordinal-suffix diff))))))
-
 (setq org-directory "~/.org-files")
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
 (setq org-contacts-files (list(concat org-directory "/contacts.org")))
@@ -145,13 +129,13 @@
               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
 ;; Remove empty LOGBOOK drawers on clock out
-(defun bh/remove-empty-drawer-on-clock-out ()
+(defun pelm/remove-empty-drawer-on-clock-out ()
   (interactive)
   (save-excursion
     (beginning-of-line 0)
     (org-remove-empty-drawer-at "LOGBOOK" (point))))
 
-(add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
+(add-hook 'org-clock-out-hook 'pelm/remove-empty-drawer-on-clock-out 'append)
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
@@ -187,11 +171,11 @@
 
 ;;;; Refile settings
 ; Exclude DONE state tasks from refile targets
-(defun bh/verify-refile-target ()
+(defun pelm/verify-refile-target ()
   "Exclude todo keywords with a done state from refile targets"
   (not (member (nth 2 (org-heading-components)) org-done-keywords)))
 
-(setq org-refile-target-verify-function 'bh/verify-refile-target)
+(setq org-refile-target-verify-function 'pelm/verify-refile-target)
 
 
 ;; Do not dim blocked tasks
@@ -214,10 +198,10 @@
                 (tags-todo "-CANCELLED/!"
                            ((org-agenda-overriding-header "Stuck Projects")
                             ;(org-tags-match-list-sublevels 'indented)
-                            (org-agenda-skip-function 'bh/skip-non-stuck-projects)))
+                            (org-agenda-skip-function 'pelm/skip-non-stuck-projects)))
                 (tags-todo "-WAITING-CANCELLED/!NEXT"
                            ((org-agenda-overriding-header "Next Tasks")
-                            (org-agenda-skip-function 'bh/skip-projects-and-habits-and-single-tasks)
+                            (org-agenda-skip-function 'pelm/skip-projects-and-habits-and-single-tasks)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-tags-match-list-sublevels t)
@@ -225,36 +209,36 @@
                              '(todo-state-down effort-up category-keep))))
                 (tags-todo "-REFILE-CANCELLED/!-HOLD-WAITING"
                            ((org-agenda-overriding-header "Tasks")
-                            (org-agenda-skip-function 'bh/skip-project-tasks-maybe)
+                            (org-agenda-skip-function 'pelm/skip-project-tasks-maybe)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
                 (tags-todo "-CANCELLED/!"
                            ((org-agenda-overriding-header "Projects")
-                            (org-agenda-skip-function 'bh/skip-non-projects)
+                            (org-agenda-skip-function 'pelm/skip-non-projects)
                             (org-agenda-todo-ignore-scheduled 'future)
                             (org-agenda-todo-ignore-deadlines 'future)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
                 (tags-todo "-CANCELLED/!WAITING|HOLD"
                            ((org-agenda-overriding-header "Waiting and Postponed Tasks")
-                            (org-agenda-skip-function 'bh/skip-projects-and-habits)
+                            (org-agenda-skip-function 'pelm/skip-projects-and-habits)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)))
                 (tags "-ARCHIVE/"
                       ((org-agenda-overriding-header "Tasks to Archive")
-                       (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))
+                       (org-agenda-skip-function 'pelm/skip-non-archivable-tasks))))
                nil)
               ("r" "Tasks to Refile" tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")
                 (org-tags-match-list-sublevels nil)))
               ("#" "Stuck Projects" tags-todo "-CANCELLED/!"
                ((org-agenda-overriding-header "Stuck Projects")
-                (org-agenda-skip-function 'bh/skip-non-stuck-projects)))
+                (org-agenda-skip-function 'pelm/skip-non-stuck-projects)))
               ("n" "Next Tasks" tags-todo "-WAITING-CANCELLED/!NEXT"
                ((org-agenda-overriding-header "Next Tasks")
-                (org-agenda-skip-function 'bh/skip-projects-and-habits-and-single-tasks)
+                (org-agenda-skip-function 'pelm/skip-projects-and-habits-and-single-tasks)
                 (org-agenda-todo-ignore-scheduled t)
                 (org-agenda-todo-ignore-deadlines t)
                 (org-tags-match-list-sublevels t)
@@ -262,28 +246,28 @@
                  '(todo-state-down effort-up category-keep))))
               ("R" "Tasks" tags-todo "-REFILE-CANCELLED/!-HOLD-WAITING"
                ((org-agenda-overriding-header "Tasks")
-                (org-agenda-skip-function 'bh/skip-project-tasks-maybe)
+                (org-agenda-skip-function 'pelm/skip-project-tasks-maybe)
                 (org-agenda-sorting-strategy
                  '(category-keep))))
               ("p" "Projects" tags-todo "-CANCELLED/!"
                ((org-agenda-overriding-header "Projects")
-                (org-agenda-skip-function 'bh/skip-non-projects)
+                (org-agenda-skip-function 'pelm/skip-non-projects)
                 (org-agenda-todo-ignore-scheduled 'future)
                 (org-agenda-todo-ignore-deadlines 'future)
                 (org-agenda-sorting-strategy
                  '(category-keep))))
               ("w" "Waiting Tasks" tags-todo "-CANCELLED/!WAITING|HOLD"
                ((org-agenda-overriding-header "Waiting and Postponed tasks"))
-               (org-agenda-skip-function 'bh/skip-projects-and-habits)
+               (org-agenda-skip-function 'pelm/skip-projects-and-habits)
                (org-agenda-todo-ignore-scheduled 'future)
                (org-agenda-todo-ignore-deadlines 'future))
               ("A" "Tasks to Archive" tags "-ARCHIVE/"
                ((org-agenda-overriding-header "Tasks to Archive")
-                (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))))
+                (org-agenda-skip-function 'pelm/skip-non-archivable-tasks))))))
 
 
 
-(defun bh/org-auto-exclude-function (tag)
+(defun pelm/org-auto-exclude-function (tag)
   "Automatic task exclusion in the agenda with / RET"
   (and (cond
         (
@@ -291,51 +275,51 @@
         )
        (concat "-" tag)))
 
-(setq org-agenda-auto-exclude-function 'bh/org-auto-exclude-function)
+(setq org-agenda-auto-exclude-function 'pelm/org-auto-exclude-function)
 
 
 ;; keybinding 
  ;; Custom Key Bindings
   (global-set-key (kbd "<f12>") 'org-agenda)
-  (global-set-key (kbd "<f5>") 'bh/org-todo)
-  (global-set-key (kbd "<S-f5>") 'bh/widen)
-  (global-set-key (kbd "<f7>") 'bh/set-truncate-lines)
+  (global-set-key (kbd "<f5>") 'pelm/org-todo)
+  (global-set-key (kbd "<S-f5>") 'pelm/widen)
+  (global-set-key (kbd "<f7>") 'pelm/set-truncate-lines)
 ;  (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
-  (global-set-key (kbd "<f9> <f9>") 'bh/show-org-agenda)
+  (global-set-key (kbd "<f9> <f9>") 'pelm/show-org-agenda)
   (global-set-key (kbd "<f9> c") 'calendar)
   (global-set-key (kbd "<f9> f") 'boxquote-insert-file)
   (global-set-key (kbd "<f9> g") 'gnus)
-  (global-set-key (kbd "<f9> h") 'bh/hide-other)
+  (global-set-key (kbd "<f9> h") 'pelm/hide-other)
   (global-set-key (kbd "<f9> n") 'org-narrow-to-subtree)
   (global-set-key (kbd "<f9> w") 'widen)
-  (global-set-key (kbd "<f9> u") 'bh/narrow-up-one-level)
+  (global-set-key (kbd "<f9> u") 'pelm/narrow-up-one-level)
   
-  (global-set-key (kbd "<f9> I") 'bh/punch-in)
-  (global-set-key (kbd "<f9> O") 'bh/punch-out)
+  (global-set-key (kbd "<f9> I") 'pelm/punch-in)
+  (global-set-key (kbd "<f9> O") 'pelm/punch-out)
   
-  (global-set-key (kbd "<f9> o") 'bh/make-org-scratch)
+  (global-set-key (kbd "<f9> o") 'pelm/make-org-scratch)
   
   (global-set-key (kbd "<f9> r") 'boxquote-region)
-  (global-set-key (kbd "<f9> s") 'bh/switch-to-scratch)
+  (global-set-key (kbd "<f9> s") 'pelm/switch-to-scratch)
   
-  (global-set-key (kbd "<f9> t") 'bh/insert-inactive-timestamp)
+  (global-set-key (kbd "<f9> t") 'pelm/insert-inactive-timestamp)
   (global-set-key (kbd "<f9> T") 'tabify)
   (global-set-key (kbd "<f9> U") 'untabify)
   
   (global-set-key (kbd "<f9> v") 'visible-mode)
-  (global-set-key (kbd "<f9> SPC") 'bh/clock-in-last-task)
+  (global-set-key (kbd "<f9> SPC") 'pelm/clock-in-last-task)
   (global-set-key (kbd "C-<f9>") 'previous-buffer)
   (global-set-key (kbd "M-<f9>") 'org-display-inline-images)
   (global-set-key (kbd "C-x n r") 'narrow-to-region)
   (global-set-key (kbd "C-<f10>") 'next-buffer)
   (global-set-key (kbd "<f11>") 'org-clock-goto)
   (global-set-key (kbd "C-<f11>") 'org-clock-in)
-  (global-set-key (kbd "C-s-<f12>") 'bh/save-then-publish)
+  (global-set-key (kbd "C-s-<f12>") 'pelm/save-then-publish)
   (global-set-key (kbd "C-M-r") 'org-capture)
   (global-set-key (kbd "C-c r") 'org-capture)
 
 
- (defun bh/hide-other ()
+ (defun pelm/hide-other ()
     (interactive)
     (save-excursion
       (org-back-to-heading 'invisible-ok)
@@ -343,7 +327,7 @@
       (org-reveal)
       (org-cycle)))
   
-  (defun bh/set-truncate-lines ()
+  (defun pelm/set-truncate-lines ()
     "Toggle value of truncate-lines and refresh window display."
     (interactive)
     (setq truncate-lines (not truncate-lines))
@@ -352,17 +336,17 @@
       (set-window-start (selected-window)
                         (window-start (selected-window)))))
   
-  (defun bh/make-org-scratch ()
+  (defun pelm/make-org-scratch ()
     (interactive)
     (find-file "/tmp/publish/scratch.org")
     (gnus-make-directory "/tmp/publish"))
   
-  (defun bh/switch-to-scratch ()
+  (defun pelm/switch-to-scratch ()
     (interactive)
     (switch-to-buffer "*scratch*"))
 
 
-(defun bh/org-auto-exclude-function (tag)
+(defun pelm/org-auto-exclude-function (tag)
   "Automatic task exclusion in the agenda with / RET"
   (and (cond
         ((string= tag "hold")
@@ -371,7 +355,7 @@
          t))
        (concat "-" tag)))
 
-(setq org-agenda-auto-exclude-function 'bh/org-auto-exclude-function)
+(setq org-agenda-auto-exclude-function 'pelm/org-auto-exclude-function)
 
 
 ;;
@@ -383,7 +367,7 @@
 ;; Resume clocking task on clock-in if the clock is open
 (setq org-clock-in-resume t)
 ;; Change tasks to NEXT when clocking in
-(setq org-clock-in-switch-to-state 'bh/clock-in-to-next)
+(setq org-clock-in-switch-to-state 'pelm/clock-in-to-next)
 ;; Separate drawers for clocking and logs
 (setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
 ;; Save clock data and state changes and notes in the LOGBOOK drawer
@@ -401,22 +385,22 @@
 ;; Include current clocking task in clock reports
 (setq org-clock-report-include-clocking-task t)
 
-(setq bh/keep-clock-running nil)
+(setq pelm/keep-clock-running nil)
 
-(defun bh/clock-in-to-next (kw)
+(defun pelm/clock-in-to-next (kw)
   "Switch a task from TODO to NEXT when clocking in.
 Skips capture tasks, projects, and subprojects.
 Switch projects and subprojects from NEXT back to TODO"
   (when (not (and (boundp 'org-capture-mode) org-capture-mode))
     (cond
      ((and (member (org-get-todo-state) (list "TODO"))
-           (bh/is-task-p))
+           (pelm/is-task-p))
       "NEXT")
      ((and (member (org-get-todo-state) (list "NEXT"))
-           (bh/is-project-p))
+           (pelm/is-project-p))
       "TODO"))))
 
-(defun bh/find-project-task ()
+(defun pelm/find-project-task ()
   "Move point to the parent (project) task if any"
   (save-restriction
     (widen)
@@ -427,12 +411,12 @@ Switch projects and subprojects from NEXT back to TODO"
       (goto-char parent-task)
       parent-task)))
 
-(defun bh/punch-in (arg)
+(defun pelm/punch-in (arg)
   "Start continuous clocking and set the default task to the
 selected task.  If no task is selected set the Organization task
 as the default task."
   (interactive "p")
-  (setq bh/keep-clock-running t)
+  (setq pelm/keep-clock-running t)
   (if (equal major-mode 'org-agenda-mode)
       ;;
       ;; We're in the agenda
@@ -441,7 +425,7 @@ as the default task."
              (tags (org-with-point-at marker (org-get-tags-at))))
         (if (and (eq arg 4) tags)
             (org-agenda-clock-in '(16))
-          (bh/clock-in-organization-task-as-default)))
+          (pelm/clock-in-organization-task-as-default)))
     ;;
     ;; We are not in the agenda
     ;;
@@ -450,21 +434,21 @@ as the default task."
       ; Find the tags on the current task
       (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
           (org-clock-in '(16))
-        (bh/clock-in-organization-task-as-default)))))
+        (pelm/clock-in-organization-task-as-default)))))
 
-(defun bh/punch-out ()
+(defun pelm/punch-out ()
   (interactive)
-  (setq bh/keep-clock-running nil)
+  (setq pelm/keep-clock-running nil)
   (when (org-clock-is-active)
     (org-clock-out))
   (org-agenda-remove-restriction-lock))
 
-(defun bh/clock-in-default-task ()
+(defun pelm/clock-in-default-task ()
   (save-excursion
     (org-with-point-at org-clock-default-task
       (org-clock-in))))
 
-(defun bh/clock-in-parent-task ()
+(defun pelm/clock-in-parent-task ()
   "Move point to the parent (project) task if any and clock in"
   (let ((parent-task))
     (save-excursion
@@ -476,34 +460,34 @@ as the default task."
         (if parent-task
             (org-with-point-at parent-task
               (org-clock-in))
-          (when bh/keep-clock-running
-            (bh/clock-in-default-task)))))))
+          (when pelm/keep-clock-running
+            (pelm/clock-in-default-task)))))))
 
-(defvar bh/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
+(defvar pelm/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
 
-(defun bh/clock-in-organization-task-as-default ()
+(defun pelm/clock-in-organization-task-as-default ()
   (interactive)
-  (org-with-point-at (org-id-find bh/organization-task-id 'marker)
+  (org-with-point-at (org-id-find pelm/organization-task-id 'marker)
     (org-clock-in '(16))))
 
-(defun bh/clock-out-maybe ()
-  (when (and bh/keep-clock-running
+(defun pelm/clock-out-maybe ()
+  (when (and pelm/keep-clock-running
              (not org-clock-clocking-in)
              (marker-buffer org-clock-default-task)
              (not org-clock-resolving-clocks-due-to-idleness))
-    (bh/clock-in-parent-task)))
+    (pelm/clock-in-parent-task)))
 
-(add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
+(add-hook 'org-clock-out-hook 'pelm/clock-out-maybe 'append)
 
 (require 'org-id)
-(defun bh/clock-in-task-by-id (id)
+(defun pelm/clock-in-task-by-id (id)
   "Clock in a task by id"
   (org-with-point-at (org-id-find id 'marker)
     (org-clock-in nil)))
 
 
 
-(defun bh/clock-in-last-task (arg)
+(defun pelm/clock-in-last-task (arg)
   "Clock in the interrupted task if there is one
 Skip the default task and get the next one.
 A prefix arg forces clock in of the default task."
@@ -521,7 +505,7 @@ A prefix arg forces clock in of the default task."
       (org-clock-in nil))))
 
 
-(defun bh/is-project-p ()
+(defun pelm/is-project-p ()
   "Any task with a todo keyword subtask"
   (save-restriction
     (widen)
@@ -537,18 +521,18 @@ A prefix arg forces clock in of the default task."
             (setq has-subtask t))))
       (and is-a-task has-subtask))))
 
-(defun bh/is-project-subtree-p ()
+(defun pelm/is-project-subtree-p ()
   "Any task with a todo keyword that is in a project subtree.
 Callers of this function already widen the buffer view."
   (let ((task (save-excursion (org-back-to-heading 'invisible-ok)
                               (point))))
     (save-excursion
-      (bh/find-project-task)
+      (pelm/find-project-task)
       (if (equal (point) task)
           nil
         t))))
 
-(defun bh/is-task-p ()
+(defun pelm/is-task-p ()
   "Any task with a todo keyword and no subtask"
   (save-restriction
     (widen)
@@ -564,7 +548,7 @@ Callers of this function already widen the buffer view."
             (setq has-subtask t))))
       (and is-a-task (not has-subtask)))))
 
-(defun bh/is-subproject-p ()
+(defun pelm/is-subproject-p ()
   "Any task which is a subtask of another project"
   (let ((is-subproject)
         (is-a-task (member (nth 2 (org-heading-components)) org-todo-keywords-1)))
@@ -574,7 +558,7 @@ Callers of this function already widen the buffer view."
           (setq is-subproject t))))
     (and is-a-task is-subproject)))
 
-(defun bh/list-sublevels-for-projects-indented ()
+(defun pelm/list-sublevels-for-projects-indented ()
   "Set org-tags-match-list-sublevels so when restricted to a subtree we list all subtasks.
   This is normally used by skipping functions where this variable is already local to the agenda."
   (if (marker-buffer org-agenda-restrict-begin)
@@ -582,7 +566,7 @@ Callers of this function already widen the buffer view."
     (setq org-tags-match-list-sublevels nil))
   nil)
 
-(defun bh/list-sublevels-for-projects ()
+(defun pelm/list-sublevels-for-projects ()
   "Set org-tags-match-list-sublevels so when restricted to a subtree we list all subtasks.
   This is normally used by skipping functions where this variable is already local to the agenda."
   (if (marker-buffer org-agenda-restrict-begin)
@@ -590,12 +574,12 @@ Callers of this function already widen the buffer view."
     (setq org-tags-match-list-sublevels nil))
   nil)
 
-(defun bh/skip-non-stuck-projects ()
+(defun pelm/skip-non-stuck-projects ()
   "Skip trees that are not stuck projects"
   (save-restriction
     (widen)
     (let ((next-headline (save-excursion (or (outline-next-heading) (point-max)))))
-      (if (bh/is-project-p)
+      (if (pelm/is-project-p)
           (let* ((subtree-end (save-excursion (org-end-of-subtree t)))
                  (has-next (save-excursion
                              (forward-line 1)
@@ -606,32 +590,32 @@ Callers of this function already widen the buffer view."
               nil)) ; a stuck project, has subtasks but no next task
         next-headline))))
 
-(defun bh/skip-non-projects ()
+(defun pelm/skip-non-projects ()
   "Skip trees that are not projects"
-  (bh/list-sublevels-for-projects-indented)
-  (if (save-excursion (bh/skip-non-stuck-projects))
+  (pelm/list-sublevels-for-projects-indented)
+  (if (save-excursion (pelm/skip-non-stuck-projects))
       (save-restriction
         (widen)
         (let ((subtree-end (save-excursion (org-end-of-subtree t))))
-          (if (bh/is-project-p)
+          (if (pelm/is-project-p)
               nil
             subtree-end)))
     (org-end-of-subtree t)))
 
-(defun bh/skip-project-trees-and-habits ()
+(defun pelm/skip-project-trees-and-habits ()
   "Skip trees that are projects"
   (save-restriction
     (widen)
     (let ((subtree-end (save-excursion (org-end-of-subtree t))))
       (cond
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         subtree-end)
        ((org-is-habit-p)
         subtree-end)
        (t
         nil)))))
 
-(defun bh/skip-projects-and-habits-and-single-tasks ()
+(defun pelm/skip-projects-and-habits-and-single-tasks ()
   "Skip trees that are projects, tasks that are habits, single non-project tasks"
   (save-restriction
     (widen)
@@ -639,14 +623,14 @@ Callers of this function already widen the buffer view."
       (cond
        ((org-is-habit-p)
         next-headline)
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         next-headline)
-       ((and (bh/is-task-p) (not (bh/is-project-subtree-p)))
+       ((and (pelm/is-task-p) (not (pelm/is-project-subtree-p)))
         next-headline)
        (t
         nil)))))
 
-(defun bh/skip-project-tasks-maybe ()
+(defun pelm/skip-project-tasks-maybe ()
   "Show tasks related to the current restriction.
 When restricted to a project, skip project and sub project tasks, habits, NEXT tasks, and loose tasks.
 When not restricted, skip project and sub-project tasks, habits, and project related tasks."
@@ -656,37 +640,37 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
            (next-headline (save-excursion (or (outline-next-heading) (point-max))))
            (limit-to-project (marker-buffer org-agenda-restrict-begin)))
       (cond
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         next-headline)
        ((org-is-habit-p)
         subtree-end)
        ((and (not limit-to-project)
-             (bh/is-project-subtree-p))
+             (pelm/is-project-subtree-p))
         subtree-end)
        ((and limit-to-project
-             (bh/is-project-subtree-p)
+             (pelm/is-project-subtree-p)
              (member (org-get-todo-state) (list "NEXT")))
         subtree-end)
        (t
         nil)))))
 
-(defun bh/skip-projects-and-habits ()
+(defun pelm/skip-projects-and-habits ()
   "Skip trees that are projects and tasks that are habits"
   (save-restriction
     (widen)
     (let ((subtree-end (save-excursion (org-end-of-subtree t))))
       (cond
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         subtree-end)
        ((org-is-habit-p)
         subtree-end)
        (t
         nil)))))
 
-(defun bh/skip-non-subprojects ()
+(defun pelm/skip-non-subprojects ()
   "Skip trees that are not projects"
   (let ((next-headline (save-excursion (outline-next-heading))))
-    (if (bh/is-subproject-p)
+    (if (pelm/is-subproject-p)
         nil
       next-headline)))
 
@@ -712,7 +696,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 ;;;
 (defun ec/clock-in-dit-task ()
   (interactive)
-  (bh/clock-in-task-by-id "eb155a82-92b2-4f25-a3c6-0304591af2f9"))
+  (pelm/clock-in-task-by-id "eb155a82-92b2-4f25-a3c6-0304591af2f9"))
 
 (defun ec/resume-clock ()
   (interactive)
@@ -769,7 +753,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 (setq org-stuck-projects (quote ("" nil nil "")))
 
 
-(defun bh/is-project-p ()
+(defun pelm/is-project-p ()
   "Any task with a todo keyword subtask"
   (save-restriction
     (widen)
@@ -785,18 +769,18 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
             (setq has-subtask t))))
       (and is-a-task has-subtask))))
 
-(defun bh/is-project-subtree-p ()
+(defun pelm/is-project-subtree-p ()
   "Any task with a todo keyword that is in a project subtree.
 Callers of this function already widen the buffer view."
   (let ((task (save-excursion (org-back-to-heading 'invisible-ok)
                               (point))))
     (save-excursion
-      (bh/find-project-task)
+      (pelm/find-project-task)
       (if (equal (point) task)
           nil
         t))))
 
-(defun bh/is-task-p ()
+(defun pelm/is-task-p ()
   "Any task with a todo keyword and no subtask"
   (save-restriction
     (widen)
@@ -812,7 +796,7 @@ Callers of this function already widen the buffer view."
             (setq has-subtask t))))
       (and is-a-task (not has-subtask)))))
 
-(defun bh/is-subproject-p ()
+(defun pelm/is-subproject-p ()
   "Any task which is a subtask of another project"
   (let ((is-subproject)
         (is-a-task (member (nth 2 (org-heading-components)) org-todo-keywords-1)))
@@ -822,7 +806,7 @@ Callers of this function already widen the buffer view."
           (setq is-subproject t))))
     (and is-a-task is-subproject)))
 
-(defun bh/list-sublevels-for-projects-indented ()
+(defun pelm/list-sublevels-for-projects-indented ()
   "Set org-tags-match-list-sublevels so when restricted to a subtree we list all subtasks.
   This is normally used by skipping functions where this variable is already local to the agenda."
   (if (marker-buffer org-agenda-restrict-begin)
@@ -830,7 +814,7 @@ Callers of this function already widen the buffer view."
     (setq org-tags-match-list-sublevels nil))
   nil)
 
-(defun bh/list-sublevels-for-projects ()
+(defun pelm/list-sublevels-for-projects ()
   "Set org-tags-match-list-sublevels so when restricted to a subtree we list all subtasks.
   This is normally used by skipping functions where this variable is already local to the agenda."
   (if (marker-buffer org-agenda-restrict-begin)
@@ -838,12 +822,12 @@ Callers of this function already widen the buffer view."
     (setq org-tags-match-list-sublevels nil))
   nil)
 
-(defun bh/skip-non-stuck-projects ()
+(defun pelm/skip-non-stuck-projects ()
   "Skip trees that are not stuck projects"
   (save-restriction
     (widen)
     (let ((next-headline (save-excursion (or (outline-next-heading) (point-max)))))
-      (if (bh/is-project-p)
+      (if (pelm/is-project-p)
           (let* ((subtree-end (save-excursion (org-end-of-subtree t)))
                  (has-next (save-excursion
                              (forward-line 1)
@@ -854,32 +838,32 @@ Callers of this function already widen the buffer view."
               nil)) ; a stuck project, has subtasks but no next task
         next-headline))))
 
-(defun bh/skip-non-projects ()
+(defun pelm/skip-non-projects ()
   "Skip trees that are not projects"
-  (bh/list-sublevels-for-projects-indented)
-  (if (save-excursion (bh/skip-non-stuck-projects))
+  (pelm/list-sublevels-for-projects-indented)
+  (if (save-excursion (pelm/skip-non-stuck-projects))
       (save-restriction
         (widen)
         (let ((subtree-end (save-excursion (org-end-of-subtree t))))
-          (if (bh/is-project-p)
+          (if (pelm/is-project-p)
               nil
             subtree-end)))
     (org-end-of-subtree t)))
 
-(defun bh/skip-project-trees-and-habits ()
+(defun pelm/skip-project-trees-and-habits ()
   "Skip trees that are projects"
   (save-restriction
     (widen)
     (let ((subtree-end (save-excursion (org-end-of-subtree t))))
       (cond
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         subtree-end)
        ((org-is-habit-p)
         subtree-end)
        (t
         nil)))))
 
-(defun bh/skip-projects-and-habits-and-single-tasks ()
+(defun pelm/skip-projects-and-habits-and-single-tasks ()
   "Skip trees that are projects, tasks that are habits, single non-project tasks"
   (save-restriction
     (widen)
@@ -887,14 +871,14 @@ Callers of this function already widen the buffer view."
       (cond
        ((org-is-habit-p)
         next-headline)
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         next-headline)
-       ((and (bh/is-task-p) (not (bh/is-project-subtree-p)))
+       ((and (pelm/is-task-p) (not (pelm/is-project-subtree-p)))
         next-headline)
        (t
         nil)))))
 
-(defun bh/skip-project-tasks-maybe ()
+(defun pelm/skip-project-tasks-maybe ()
   "Show tasks related to the current restriction.
 When restricted to a project, skip project and sub project tasks, habits, NEXT tasks, and loose tasks.
 When not restricted, skip project and sub-project tasks, habits, and project related tasks."
@@ -904,37 +888,37 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
            (next-headline (save-excursion (or (outline-next-heading) (point-max))))
            (limit-to-project (marker-buffer org-agenda-restrict-begin)))
       (cond
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         next-headline)
        ((org-is-habit-p)
         subtree-end)
        ((and (not limit-to-project)
-             (bh/is-project-subtree-p))
+             (pelm/is-project-subtree-p))
         subtree-end)
        ((and limit-to-project
-             (bh/is-project-subtree-p)
+             (pelm/is-project-subtree-p)
              (member (org-get-todo-state) (list "NEXT")))
         subtree-end)
        (t
         nil)))))
 
-(defun bh/skip-projects-and-habits ()
+(defun pelm/skip-projects-and-habits ()
   "Skip trees that are projects and tasks that are habits"
   (save-restriction
     (widen)
     (let ((subtree-end (save-excursion (org-end-of-subtree t))))
       (cond
-       ((bh/is-project-p)
+       ((pelm/is-project-p)
         subtree-end)
        ((org-is-habit-p)
         subtree-end)
        (t
         nil)))))
 
-(defun bh/skip-non-subprojects ()
+(defun pelm/skip-non-subprojects ()
   "Skip trees that are not projects"
   (let ((next-headline (save-excursion (outline-next-heading))))
-    (if (bh/is-subproject-p)
+    (if (pelm/is-subproject-p)
         nil
       next-headline)))
 
@@ -942,7 +926,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 (setq org-archive-mark-done nil)
 (setq org-archive-location "%s_archive::* Archived Tasks")
 
-(defun bh/skip-non-archivable-tasks ()
+(defun pelm/skip-non-archivable-tasks ()
   "Skip trees that are not available for archiving"
   (save-restriction
     (widen)
@@ -968,9 +952,9 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.9/ditaa0_9.jar")
 (setq org-plantuml-jar-path "~/.oh-my-zsh/bin/plantuml.jar")
 
-(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+(add-hook 'org-babel-after-execute-hook 'pelm/display-inline-images 'append)
 
-(defun bh/display-inline-images ()
+(defun pelm/display-inline-images ()
   (condition-case nil
       (org-display-inline-images)
     (error nil)))
@@ -1007,16 +991,16 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 ;;; Reminder Setup
 
 ; Erase all reminders and rebuilt reminders for today from the agenda
-(defun bh/org-agenda-to-appt ()
+(defun pelm/org-agenda-to-appt ()
   (interactive)
   (setq appt-time-msg-list nil)
   (org-agenda-to-appt))
 
 ; Rebuild the reminders everytime the agenda is displayed
-(add-hook 'org-finalize-agenda-hook 'bh/org-agenda-to-appt 'append)
+(add-hook 'org-finalize-agenda-hook 'pelm/org-agenda-to-appt 'append)
 
 ; This is at the end of my .emacs - so appointments are set up when Emacs starts
-(bh/org-agenda-to-appt)
+(pelm/org-agenda-to-appt)
 
 ; Activate appointments so we get notifications
 (appt-activate t)
@@ -1025,7 +1009,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 (setq appt-message-warning-time 2)   
 
 ; If we leave Emacs running overnight - reset the appointments one minute after midnight
-(run-at-time "24:01" nil 'bh/org-agenda-to-appt)
+(run-at-time "24:01" nil 'pelm/org-agenda-to-appt)
 
 ;; disable diary event
 ;(setq org-agenda-include-diary nil)
@@ -1061,9 +1045,9 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 ;;
 ;; Agenda sorting functions
 ;;
-(setq org-agenda-cmp-user-defined 'bh/agenda-sort)
+(setq org-agenda-cmp-user-defined 'pelm/agenda-sort)
 
-(defun bh/agenda-sort (a b)
+(defun pelm/agenda-sort (a b)
   "Sorting strategy for agenda items.
 Late deadlines first, then scheduled, then non-late deadlines"
   (let (result num-a num-b)
@@ -1071,28 +1055,28 @@ Late deadlines first, then scheduled, then non-late deadlines"
      ; time specific items are already sorted first by org-agenda-sorting-strategy
 
      ; non-deadline and non-scheduled items next
-     ((bh/agenda-sort-test 'bh/is-not-scheduled-or-deadline a b))
+     ((pelm/agenda-sort-test 'pelm/is-not-scheduled-or-deadline a b))
 
      ; deadlines for today next
-     ((bh/agenda-sort-test 'bh/is-due-deadline a b))
+     ((pelm/agenda-sort-test 'pelm/is-due-deadline a b))
 
      ; late deadlines next
-     ((bh/agenda-sort-test-num 'bh/is-late-deadline '< a b))
+     ((pelm/agenda-sort-test-num 'pelm/is-late-deadline '< a b))
 
      ; scheduled items for today next
-     ((bh/agenda-sort-test 'bh/is-scheduled-today a b))
+     ((pelm/agenda-sort-test 'pelm/is-scheduled-today a b))
 
      ; late scheduled items next
-     ((bh/agenda-sort-test-num 'bh/is-scheduled-late '> a b))
+     ((pelm/agenda-sort-test-num 'pelm/is-scheduled-late '> a b))
 
      ; pending deadlines last
-     ((bh/agenda-sort-test-num 'bh/is-pending-deadline '< a b))
+     ((pelm/agenda-sort-test-num 'pelm/is-pending-deadline '< a b))
 
      ; finally default to unsorted
      (t (setq result nil)))
     result))
 
-(defmacro bh/agenda-sort-test (fn a b)
+(defmacro pelm/agenda-sort-test (fn a b)
   "Test for agenda sort"
   `(cond
     ; if both match leave them unsorted
@@ -1108,7 +1092,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
     ; if none match leave them unsorted
     (t nil)))
 
-(defmacro bh/agenda-sort-test-num (fn compfn a b)
+(defmacro pelm/agenda-sort-test-num (fn compfn a b)
   `(cond
     ((apply ,fn (list ,a))
      (setq num-a (string-to-number (match-string 1 ,a)))
@@ -1123,33 +1107,33 @@ Late deadlines first, then scheduled, then non-late deadlines"
      (setq result 1))
     (t nil)))
 
-(defun bh/is-not-scheduled-or-deadline (date-str)
-  (and (not (bh/is-deadline date-str))
-       (not (bh/is-scheduled date-str))))
+(defun pelm/is-not-scheduled-or-deadline (date-str)
+  (and (not (pelm/is-deadline date-str))
+       (not (pelm/is-scheduled date-str))))
 
-(defun bh/is-due-deadline (date-str)
+(defun pelm/is-due-deadline (date-str)
   (string-match "Deadline:" date-str))
 
 
-(defun bh/is-late-deadline (date-str)
+(defun pelm/is-late-deadline (date-str)
   (string-match "In *\\(-.*\\)d\.:" date-str))
 
-(defun bh/is-pending-deadline (date-str)
+(defun pelm/is-pending-deadline (date-str)
   (string-match "In \\([^-]*\\)d\.:" date-str))
 
-(defun bh/is-deadline (date-str)
-  (or (bh/is-due-deadline date-str)
-      (bh/is-late-deadline date-str)
-      (bh/is-pending-deadline date-str)))
+(defun pelm/is-deadline (date-str)
+  (or (pelm/is-due-deadline date-str)
+      (pelm/is-late-deadline date-str)
+      (pelm/is-pending-deadline date-str)))
 
-(defun bh/is-scheduled (date-str)
-  (or (bh/is-scheduled-today date-str)
-      (bh/is-scheduled-late date-str)))
+(defun pelm/is-scheduled (date-str)
+  (or (pelm/is-scheduled-today date-str)
+      (pelm/is-scheduled-late date-str)))
 
-(defun bh/is-scheduled-today (date-str)
+(defun pelm/is-scheduled-today (date-str)
   (string-match "Scheduled:" date-str))
 
-(defun bh/is-scheduled-late (date-str)
+(defun pelm/is-scheduled-late (date-str)
   (string-match "Sched\.\\(.*\\)x:" date-str))
 
 ;; disable q key
@@ -1171,17 +1155,17 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                          (plain-list-item . auto))))
 
 (setq org-reverse-note-order nil)
-
 (setq org-deadline-warning-days 30)
-
 (setq org-table-export-default-format "orgtbl-to-csv")
-
-
-
+(setq org-show-following-heading t)
+(setq org-show-hierarchy-above t)
+(setq org-show-siblings (quote ((default))))
 (run-at-time "06:00" 86400 '(lambda () (setq org-habit-show-habits t)))
-
 (setq global-auto-revert-mode t)
 (setq org-crypt-disable-auto-save nil)
+(setq org-special-ctrl-a/e 'reversed)
+(setq org-special-ctrl-k t)
+(setq org-yank-adjusted-subtrees t)
 
 ;;;speed command 
 (setq org-use-speed-commands t)
@@ -1198,14 +1182,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
                                       ("a" . org-insert-subheading)
                                       ("d" . ignore)
-                                      ("h" . bh/hide-other)
+                                      ("h" . pelm/hide-other)
                                       ("i" progn
                                        (forward-char 1)
                                        (call-interactively 'org-insert-heading-respect-content))
                                       ("k" . org-kill-note-or-show-branches)
                                       ("l" . ignore)
                                       ("m" . ignore)
-                                      ("q" . bh/show-org-agenda)
+                                      ("q" . pelm/show-org-agenda)
                                       ("r" . ignore)
                                       ("s" . org-save-all-org-buffers)
                                       ("w" . org-refile)
@@ -1223,20 +1207,20 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                       ("K" . ignore)
 ;                                      ("L" . ignore)
                                       ("M" . ignore)
-                                      ("N" . bh/narrow-to-subtree)
-                                      ("P" . bh/narrow-to-project)
+                                      ("N" . pelm/narrow-to-subtree)
+                                      ("P" . pelm/narrow-to-project)
                                       ("Q" . ignore)
                                       ;("R" . ignore)
                                       ("S" . ignore)
                                       ("T" . (org-show-todo-tree nil))
-                                      ("U" . bh/narrow-up-one-level)
+                                      ("U" . pelm/narrow-up-one-level)
                                       ("V" . ignore)
-                                      ("W" . bh/widen)
+                                      ("W" . pelm/widen)
                                       ("X" . ignore)
                                       ("Y" . ignore)
                                       ("Z" . ignore))))
 
-(defun bh/org-todo (arg)
+(defun pelm/org-todo (arg)
   (interactive "p")
   (if (equal arg 4)
       (save-restriction
@@ -1247,69 +1231,98 @@ Late deadlines first, then scheduled, then non-late deadlines"
     (org-narrow-to-subtree)
     (org-show-todo-tree nil)))
 
-(global-set-key (kbd "<S-f5>") 'bh/widen)
+(global-set-key (kbd "<S-f5>") 'pelm/widen)
 
-(defun bh/widen ()
+(defun pelm/widen ()
   (interactive)
   (widen)
   (org-agenda-remove-restriction-lock))
 
 (add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "W" 'bh/widen))
+          '(lambda () (org-defkey org-agenda-mode-map "W" 'pelm/widen))
           'append)
 
-(defun bh/narrow-to-org-subtree ()
+(defun pelm/narrow-to-org-subtree ()
   (widen)
   (org-narrow-to-subtree)
   (save-restriction
     (org-agenda-set-restriction-lock)))
 
-(defun bh/narrow-to-subtree ()
+(defun pelm/narrow-to-subtree ()
   (interactive)
   (if (equal major-mode 'org-agenda-mode)
       (org-with-point-at (org-get-at-bol 'org-hd-marker)
-        (bh/narrow-to-org-subtree))
-    (bh/narrow-to-org-subtree)))
+        (pelm/narrow-to-org-subtree))
+    (pelm/narrow-to-org-subtree)))
 
 (add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "N" 'bh/narrow-to-subtree))
+          '(lambda () (org-defkey org-agenda-mode-map "N" 'pelm/narrow-to-subtree))
           'append)
 
-(defun bh/narrow-up-one-org-level ()
+(defun pelm/narrow-up-one-org-level ()
   (widen)
   (save-excursion
     (outline-up-heading 1 'invisible-ok)
-    (bh/narrow-to-org-subtree)))
+    (pelm/narrow-to-org-subtree)))
 
-(defun bh/narrow-up-one-level ()
+(defun pelm/narrow-up-one-level ()
   (interactive)
   (if (equal major-mode 'org-agenda-mode)
       (org-with-point-at (org-get-at-bol 'org-hd-marker)
-        (bh/narrow-up-one-org-level))
-    (bh/narrow-up-one-org-level)))
+        (pelm/narrow-up-one-org-level))
+    (pelm/narrow-up-one-org-level)))
 
 (add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "U" 'bh/narrow-up-one-level))
+          '(lambda () (org-defkey org-agenda-mode-map "U" 'pelm/narrow-up-one-level))
           'append)
 
-(defun bh/narrow-to-org-project ()
+(defun pelm/narrow-to-org-project ()
   (widen)
   (save-excursion
-    (bh/find-project-task)
-    (bh/narrow-to-org-subtree)))
+    (pelm/find-project-task)
+    (pelm/narrow-to-org-subtree)))
 
-(defun bh/narrow-to-project ()
+(defun pelm/narrow-to-project ()
   (interactive)
   (if (equal major-mode 'org-agenda-mode)
       (org-with-point-at (org-get-at-bol 'org-hd-marker)
-        (bh/narrow-to-org-project))
-    (bh/narrow-to-org-project)))
+        (pelm/narrow-to-org-project))
+    (pelm/narrow-to-org-project)))
 
 (add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "P" 'bh/narrow-to-project))
+          '(lambda () (org-defkey org-agenda-mode-map "P" 'pelm/narrow-to-project))
           'append)
 
-(defun bh/show-org-agenda ()
+(setq org-show-entry-below (quote ((default))))
+
+(add-hook 'org-agenda-mode-hook
+          '(lambda () (org-defkey org-agenda-mode-map "\C-c\C-x<" 'pelm/set-agenda-restriction-lock))
+          'append)
+
+(defun pelm/set-agenda-restriction-lock (arg)
+  "Set restriction lock to current task subtree or file if prefix is specified"
+  (interactive "p")
+  (let* ((pom (or (org-get-at-bol 'org-hd-marker)
+                  org-agenda-restrict-begin))
+         (tags (org-with-point-at pom (org-get-tags-at))))
+    (let ((restriction-type (if (equal arg 4) 'file 'subtree)))
+      (save-restriction
+        (cond
+         ((equal major-mode 'org-agenda-mode)
+          (org-with-point-at pom
+            (org-agenda-set-restriction-lock restriction-type)))
+         ((and (equal major-mode 'org-mode) (org-before-first-heading-p))
+          (org-agenda-set-restriction-lock 'file))
+         (t
+          (org-with-point-at pom
+            (org-agenda-set-restriction-lock restriction-type))))))))
+
+
+(add-hook 'org-agenda-mode-hook 
+          '(lambda () (hl-line-mode t))
+          'append)
+
+(defun pelm/show-org-agenda ()
   (interactive)
   (switch-to-buffer "*Org Agenda*")
   (delete-other-windows)
@@ -1317,14 +1330,36 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))
+ '(highlight ((t (:background "cyan"))))
+ '(hl-line ((t (:inherit highlight :background "darkseagreen2"))))
+ '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t)
+ )
 
 
-(defun bh/prepare-meeting-notes ()
+;; Keep tasks with dates on the global todo lists
+(setq org-agenda-todo-ignore-with-date nil)
+
+;; Keep tasks with deadlines on the global todo lists
+(setq org-agenda-todo-ignore-deadlines nil)
+
+;; Keep tasks with scheduled dates on the global todo lists
+(setq org-agenda-todo-ignore-scheduled nil)
+
+;; Keep tasks with timestamps on the global todo lists
+(setq org-agenda-todo-ignore-timestamp nil)
+
+;; Remove completed deadline tasks from the agenda view
+(setq org-agenda-skip-deadline-if-done t)
+
+;; Remove completed scheduled tasks from the agenda view
+(setq org-agenda-skip-scheduled-if-done t)
+
+;; Remove completed items from search results
+(setq org-agenda-skip-timestamp-if-done t)
+
+
+
+(defun pelm/prepare-meeting-notes ()
   "Prepare meeting notes for email
    Take selected region and convert tabs to spaces, mark TODOs with leading >>>, and copy to kill ring for pasting"
   (interactive)
@@ -1366,18 +1401,24 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;; Either the Key ID or set to nil to use symmetric encryption.
 (setq org-crypt-key "84D33E67")
 
-;; tab key
-;; not working on java-mode
-;(add-hook 'org-mode-hook
-;          (let ((original-command (lookup-key org-mode-map [tab])))
-;            `(lambda ()
-;               (setq yas/fallback-behavior
-;                     '(apply ,original-command))
-;               (local-set-key [tab] 'yas/expand))))
+(global-set-key (kbd "<C-f6>") '(lambda() (interactive) (bookmark-set "SAVED")))
+(global-set-key (kbd "<f6>") '(lambda() (interactive) (bookmark-jump "SAVED")))
 
+(setq org-startup-folded 'content)
 
+(defun pelm/mark-next-parent-tasks-todo ()
+  "Visit each parent task and change NEXT states to TODO"
+  (let ((mystate (or (and (fboundp 'state)
+                          state)
+                     (nth 2 (org-heading-components)))))
+    (when (equal mystate "NEXT")
+      (save-excursion
+        (while (org-up-heading-safe)
+          (when (member (nth 2 (org-heading-components)) (list "NEXT"))
+            (org-todo "TODO")))))))
 
-
+(add-hook 'org-after-todo-state-change-hook 'pelm/mark-next-parent-tasks-todo 'append)
+(add-hook 'org-clock-in-hook 'pelm/mark-next-parent-tasks-todo 'append)
 
 (provide 'pelm-org)
 
