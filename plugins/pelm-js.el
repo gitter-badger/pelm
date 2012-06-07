@@ -10,6 +10,7 @@
 ;;; Code:
 
 ;;;Add the following custom-set-variables to use 'lazy' modes
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,6 +31,19 @@
 (autoload 'js3-mode "js3" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
 
+;;; coffee mode
+
+(require 'coffee-mode)
+
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook
+  '(lambda() (coffee-custom)))
 
 (provide 'pelm-js)
 

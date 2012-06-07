@@ -63,6 +63,7 @@
 (require 'pelm-markups)
 (require 'pelm-scala)
 (require 'pelm-php)
+(require 'pelm-js)
 
 ;;misc
 (require 'pelm-misc)
