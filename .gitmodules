@@ -34,3 +34,6 @@
 [submodule "vendor/bongo"]
 	path = vendor/bongo
 	url = https://github.com/juergenhoetzel/bongo.git
+[submodule "vendor/coffee-mode"]
+	path = vendor/coffee-mode
+	url = https://github.com/defunkt/coffee-mode.git
