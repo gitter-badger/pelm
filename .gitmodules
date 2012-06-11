@@ -37,3 +37,6 @@
 [submodule "vendor/coffee-mode"]
 	path = vendor/coffee-mode
 	url = https://github.com/defunkt/coffee-mode.git
+[submodule "vendor/ensime"]
+	path = vendor/ensime
+	url = https://github.com/aemoncannon/ensime.git
