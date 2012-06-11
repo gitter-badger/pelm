@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Pelm by eggcaker</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Pelm</h1>
+        <h2>an &quot;P&quot; Emacs Lisp Manager</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/eggcaker/pelm/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/eggcaker/pelm/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/eggcaker/pelm" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>+Title:   PELM README</h1>
+
+<h1>+AUTHOR:   eggcaker</h1>
+
+<h1>+EMAIL:    <a href="mailto:eggcaker@gmail.com">eggcaker@gmail.com</a>
+</h1>
+
+<h1>Configuration:</h1>
+
+<h1>+STARTUP:      odd</h1>
+
+<h1>+STARTUP:      hi</h1>
+
+<h1>+STARTUP:      hidestars</h1>
+
+<ul>
+<li>
+<p>What is PELM?</p>
+
+<p>PELM  - a "literate" Emacs Lisp Manager  for Emacs (24.0 and greater).</p>
+
+<p>What's the P means? the P  can be one of Personal or Public (if you like it)
+I hope every body like it, but maybe not. any fork is welcome!</p>
+</li>
+</ul><p>** Install
+*** Basic install </p>
+
+<ul>
+<li>clone source code from github to .emacs.d</li>
+</ul><h1>+BEGIN_SRC sh</h1>
+
+<p>$ cd ~
+$ git clone <a href="http://github.com/eggckaer/pelm.git">http://github.com/eggckaer/pelm.git</a> .emacs.d
+$ cd .emacs.d
+$ git submodule init
+$ git submodule update</p>
+
+<h1>+END_SRC</h1>
+
+<ul>
+<li>clone source code to some where in your folder and ln it 
+for example, you want clone to ~/pelm</li>
+</ul><h1>+BEGIN_SRC sh</h1>
+
+<p>$ git clone <a href="http://github.com/eggcaker/pelm.git">http://github.com/eggcaker/pelm.git</a> ~/pelm 
+$ ln -s ~/pelm ~/.emacs.d 
+$ cd ~/pelm
+$ git submodule init
+$ git submodule update</p>
+
+<h1>+END_SRC</h1>
+
+<p>*** Byte compile (optional but recommented)</p>
+
+<h1>+BEGIN_EXAMPLE</h1>
+
+<p>C-u 0 M-x byte-recompile-directory</p>
+
+<h1>+END_EXAMPLE</h1>
+
+<p>** Customize 
+   after you clone the PELM, check the init.el, you can add your own code 
+   in 2 files :</p>
+
+<ul>
+<li><p>pre-init-local.org 
+the PELM loaded  it before load plugins but after the pre-init.el</p></li>
+<li>
+<p>post-init-local.org 
+the PELM loaded after all plugins  </p>
+
+<p>both of them ignore by git, so can add some experimental code.</p>
+</li>
+</ul><p>** License</p>
+
+<p>check out the LICENSE file </p>
+
+<p>** Help out!</p>
+
+<p>fork me and make a pull request.</p>
+
+<p>** Authors</p>
+
+<ul>
+<li>eggcaker <a href="mailto:eggcaker@gmail.com">eggcaker@gmail.com</a>
+</li>
+</ul>
+      </section>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-7801853-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
