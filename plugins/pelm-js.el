@@ -30,6 +30,8 @@
 
 (autoload 'js3-mode "js3" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+(add-to-list 'auto-mode-alist '("\\.jake$" . js3-mode))
+(add-to-list 'auto-mode-alist '("jakefile$" . js3-mode))
 
 ;;; coffee mode
 
