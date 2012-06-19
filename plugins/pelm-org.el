@@ -72,6 +72,7 @@
 (define-key global-map "\C-cr" 'org-capture)
 (define-key global-map "\C-cl" 'org-store-link)
 (setq org-log-done t)
+(setq org-alphabetical-lists t)
 
 
 ;; flyspell mode for spell checking everywhere
@@ -177,9 +178,7 @@
 
 (setq org-refile-target-verify-function 'pelm/verify-refile-target)
 
-
-;; Do not dim blocked tasks
-(setq org-agenda-dim-blocked-tasks nil)
+(setq org-agenda-dim-blocked-tasks t)
 
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
@@ -223,9 +222,10 @@
                              '(category-keep))))
                 (tags-todo "-CANCELLED/!WAITING|HOLD"
                            ((org-agenda-overriding-header "Waiting and Postponed Tasks")
-                            (org-agenda-skip-function 'pelm/skip-projects-and-habits)
-                            (org-agenda-todo-ignore-scheduled t)
-                            (org-agenda-todo-ignore-deadlines t)))
+                            (org-agenda-skip-function 'pelm/skip-stuck-projects)
+                            (org-tags-match-list-sublevels nil)
+                            (org-agenda-todo-ignore-scheduled 'future)
+                            (org-agenda-todo-ignore-deadlines 'future)))
                 (tags "-ARCHIVE/"
                       ((org-agenda-overriding-header "Tasks to Archive")
                        (org-agenda-skip-function 'pelm/skip-non-archivable-tasks))))
@@ -265,6 +265,25 @@
                ((org-agenda-overriding-header "Tasks to Archive")
                 (org-agenda-skip-function 'pelm/skip-non-archivable-tasks))))))
 
+
+(defun pelm/skip-stuck-projects ()
+
+  "Skip trees that are not stuck projects"
+  (save-restriction
+    (widen)
+    (let ((next-headline (save-excursion (or (outline-next-heading) (point-max)))))
+      (if (bh/is-project-p)
+          (let* ((subtree-end (save-excursion (org-end-of-subtree t)))
+                 (has-next ))
+            (save-excursion
+              (forward-line 1)
+              (while (and (not has-next) (< (point) subtree-end) (re-search-forward "^\\*+ NEXT " subtree-end t))
+                (unless (member "WAITING" (org-get-tags-at))
+                  (setq has-next t))))
+            (if has-next
+                nil
+              next-headline)) ; a stuck project, has subtasks but no next task
+        nil))))
 
 
 (defun pelm/org-auto-exclude-function (tag)
@@ -1152,7 +1171,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-cycle-separator-lines 1)
 
 (setq org-blank-before-new-entry (quote ((heading)
-                                         (plain-list-item . auto))))
+                                         (plain-list-item ))))
 
 (setq org-reverse-note-order nil)
 (setq org-deadline-warning-days 30)
@@ -1225,10 +1244,10 @@ Late deadlines first, then scheduled, then non-late deadlines"
   (if (equal arg 4)
       (save-restriction
         (widen)
-        (org-narrow-to-subtree)
+        (org-narrow-to-org-subtree)
         (org-show-todo-tree nil))
     (widen)
-    (org-narrow-to-subtree)
+    (org-narrow-to-org-subtree)
     (org-show-todo-tree nil)))
 
 (global-set-key (kbd "<S-f5>") 'pelm/widen)
@@ -1404,12 +1423,12 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (global-set-key (kbd "<C-f6>") '(lambda() (interactive) (bookmark-set "SAVED")))
 (global-set-key (kbd "<f6>") '(lambda() (interactive) (bookmark-jump "SAVED")))
 
-(setq org-startup-folded 'content)
+
 
 (defun pelm/mark-next-parent-tasks-todo ()
   "Visit each parent task and change NEXT states to TODO"
   (let ((mystate (or (and (fboundp 'state)
-                          state)
+                          org-state)
                      (nth 2 (org-heading-components)))))
     (when (equal mystate "NEXT")
       (save-excursion
@@ -1419,6 +1438,9 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (add-hook 'org-after-todo-state-change-hook 'pelm/mark-next-parent-tasks-todo 'append)
 (add-hook 'org-clock-in-hook 'pelm/mark-next-parent-tasks-todo 'append)
+
+(setq org-startup-folded 'content)
+
 
 (provide 'pelm-org)
 
