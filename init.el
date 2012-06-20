@@ -8,8 +8,6 @@
 (defvar pelm-dir (file-name-directory load-file-name)
   "The root dir of the PELM distribution.")
 
-(defvar pelm-elpa-dir (concat pelm-dir "elpa/")
-  "Elpa directory ")
 
 (defvar pelm-plugins-dir (concat pelm-dir "plugins/")
   "This directory houses all of the built-in plem plugin.
@@ -18,15 +16,14 @@
 (defvar pelm-vendor-dir (concat pelm-dir "vendor/")
   "This directory house third part packages of emacs")
 
-(defvar pelm-personal-dir (concat pelm-dir "personal/")
-  "Users of PELM are encouraged to keep their personal configuration
-   changes in this directory. All Emacs Lisp files there are loaded
-   automatically by PELM.")
+(defvar pelm-el-get-dir (concat pelm-dir "el-get/")
+  "This directory house the el-get packages")
 
-(add-to-list 'load-path pelm-elpa-dir)
+
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
-(add-to-list 'load-path pelm-personal-dir)
+(add-to-list 'load-path pelm-el-get-dir)
+
 
 ;; the PELM have pre-init.el and post-init.el which you can do your own code
 ;; pre-init.el load at begin, for example: if you using emacs < 24,you
@@ -48,8 +45,8 @@
 
 
 ;; load plugins 
-(require 'pelm-runtime)
 (require 'pelm-package)
+(require 'pelm-runtime)
 (require 'pelm-editor)
 (require 'pelm-ui)
 (require 'pelm-editor)
@@ -76,11 +73,12 @@
 (require 'pelm-android)
 
 
-;;; personal configs ignore by git
+;;; personal configs ignored by git
+
 ;; orgmode file 
 (if (file-exists-p "~/.emacs.d/post-init-local.org")
     (org-babel-load-file "~/.emacs.d/post-init-local.org"))
-
+;; el file
 (if (file-exists-p "~/.emacs.d/post-init-local.el")
     (load-file "~/.emacs.d/post-init-local.el"))
 

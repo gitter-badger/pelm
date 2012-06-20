@@ -10,3 +10,4 @@ pre-init.local.*
 bookmarks
 org-clock-save.el
 .org-id-locations
+.loaddefs.el

@@ -12,4 +12,7 @@
 
 
 
+
+
+(provide 'pelm-linux)
 ;;; ends pelm-linux.el here
