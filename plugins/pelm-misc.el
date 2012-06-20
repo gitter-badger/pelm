@@ -59,8 +59,8 @@
 
 (define-key pelm-keymap "s" 'swap-buffers-in-windows)
 
-
-
+;;  copy/paste with C-c and C-v and C-x, check out C-RET too
+(cua-mode) 
 
 (provide 'pelm-misc)
 
