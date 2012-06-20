@@ -53,10 +53,14 @@ C-u 0 M-x byte-recompile-directory
 
    both of them ignore by git, so can add some experimental code.
 
+** Package Manager
+
+Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/dimitri/el-get][ el-get]]! I use it to install some third-part packages:
+- color-theme
 
 ** License
 
-   check out the LICENSE file 
+   check out the [[https://github.com/eggcaker/pelm/blob/master/LICENSE][LICENSE]] file 
 
 
 ** Help out!

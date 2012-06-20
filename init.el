@@ -45,8 +45,11 @@
 (if (file-exists-p "~/.emacs.d/pre-init-local.el")
     (load-file "~/.emacs.d/pre-init-local.el"))
 
+
+
 ;; load plugins 
 (require 'pelm-runtime)
+(require 'pelm-package)
 (require 'pelm-editor)
 (require 'pelm-ui)
 (require 'pelm-editor)
@@ -68,18 +71,16 @@
 ;;misc
 (require 'pelm-misc)
 (require 'pelm-fun)
+
 ;; lab
 (require 'pelm-android)
 
-;; marmalade repository
-(require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
-;; load the personal settings 
-(when (file-exists-p pelm-personal-dir)
-  (mapc 'load (directory-files pelm-personal-dir nil "^[^#].*el$")))
+;;; personal configs ignore by git
+;; orgmode file 
+(if (file-exists-p "~/.emacs.d/post-init-local.org")
+    (org-babel-load-file "~/.emacs.d/post-init-local.org"))
 
-;; sanbox for test 
 (if (file-exists-p "~/.emacs.d/post-init-local.el")
     (load-file "~/.emacs.d/post-init-local.el"))
 
