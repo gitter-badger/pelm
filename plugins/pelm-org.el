@@ -272,7 +272,7 @@
   (save-restriction
     (widen)
     (let ((next-headline (save-excursion (or (outline-next-heading) (point-max)))))
-      (if (bh/is-project-p)
+      (if (pelm/is-project-p)
           (let* ((subtree-end (save-excursion (org-end-of-subtree t)))
                  (has-next ))
             (save-excursion
