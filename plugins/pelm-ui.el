@@ -21,14 +21,14 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-(require 'color-theme)
-(require 'color-theme-github)
-(add-to-list 'custom-theme-load-path (concat pelm-dir "/themes/"))
+;(require 'color-theme)
+;(require 'color-theme-github)
+;(add-to-list 'custom-theme-load-path (concat pelm-dir "/themes/"))
 ;(require 'color-theme-zenburn)
 ;(color-theme-zenburn)
 ;(color-theme-high-contrast)
 
-(color-theme-github)
+;(color-theme-github)
 
 
 ;;disable splash screen and tools bar

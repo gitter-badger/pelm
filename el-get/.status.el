@@ -5,4 +5,5 @@
                      (progn
                        (color-theme-initialize)
                        (setq color-theme-is-global t))))
+ (color-theme-tomorrow status "removed" recipe nil)
  (el-get status "required" recipe nil))
