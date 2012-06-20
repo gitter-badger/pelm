@@ -40,6 +40,3 @@
 [submodule "vendor/ensime"]
 	path = vendor/ensime
 	url = https://github.com/aemoncannon/ensime.git
-[submodule "el-get/el-get"]
-	path = el-get/el-get
-	url = http://github.com/dimitri/el-get.git
