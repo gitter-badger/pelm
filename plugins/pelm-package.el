@@ -10,28 +10,23 @@
 
 ;;; Code:
 
+
+
 (require 'cl)
 
 (add-to-list 'load-path (concat pelm-dir "/el-get/el-get"))
 
 (unless (require 'el-get nil t)
   (url-retrieve 
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el" 
-   (lambda (s) 
-     (goto-char (point-max))
-     (eval-print-last-sexp))))
-
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (let (el-get-master-branch)
+       (goto-char (point-max))
+       (eval-print-last-sexp)))))
 
 ;; set pelm recipes
 (setq el-get-sources
-      '((:name buffer-move			; have to add your own keys
-               :after (lambda ()
-                        (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-                        (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-                        (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-                        (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-
-        (:name smex				; a better (ido like) M-x
+      '((:name smex				; a better (ido like) M-x
                :after (lambda ()
                         (setq smex-save-file (concat pelm-dir ".smex-items"))
                         (global-set-key (kbd "M-x") 'smex)
@@ -54,7 +49,9 @@
         auto-complete			; complete as you type with overlays
         zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
         color-theme	                ; nice looking emacs
-        color-theme-tango))             ; check out color-theme-solarized
+        color-theme-tango               ; check out color-theme-solarized
+        ensime
+        ))             
 
 ;;
 ;; Some recipes require extra tools to be installed
@@ -64,7 +61,7 @@
 
 (when (el-get-executable-find "svn")
   (loop for p in '(psvn    		; M-x svn-status
-		   ;yasnippet		; powerful snippet mode
+                   yasnippet		; powerful snippet mode
 		   )
 	do (add-to-list 'pelm:el-get-packages p)))
 
@@ -78,10 +75,9 @@
 (el-get 'sync pelm:el-get-packages)
 
 
-;;TODO: is really need this ?
-;(require '.loaddefs)
+
+
 
 (provide 'pelm-package)
-
 ;;; pelm-package.el ends here
 
