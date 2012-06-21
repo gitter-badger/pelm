@@ -58,15 +58,16 @@ C-u 0 M-x byte-recompile-directory
 ** Package Manager
 
 Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/dimitri/el-get][ el-get]]! I use it to install some third-part packages:
+- el-get
+- swtich-window
+- auto-compleate-mode
+- psvn 
+- fuzzy
+- yasnippet
 - color-theme
-
-install all packages by copy code below to 
-#+begin_src emacs-lisp
-(el-get-install 'color-theme)
-#+end_src
-
-#+results:
-: color-theme
+- smex
+- magit
+- goto-last-change 
 
 ** License
 
@@ -80,4 +81,7 @@ install all packages by copy code below to
 
 ** Authors
 - eggcaker <eggcaker@gmail.com>
+
+
+
 
