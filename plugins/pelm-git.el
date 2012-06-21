@@ -9,10 +9,7 @@
 
 ;;; Code:
 
-;; load git-emacs
-(require 'git-emacs)
 
-(define-key global-map "\C-cx" 'gitx)
 
 (provide 'pelm-git)
 ;;perlm-git.el ends here
