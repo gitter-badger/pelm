@@ -15,3 +15,5 @@ org-clock-save.el
 .org-id-locations
 .loaddefs.el
 .smex-items
+_site
+_deploy
