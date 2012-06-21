@@ -19,7 +19,7 @@
 (unless (require 'el-get nil t)
   (url-retrieve 
    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (progn
+   (lambda(s)
      (let (el-get-master-branch)
        (goto-char (point-max))
        (eval-print-last-sexp)))))
@@ -69,4 +69,5 @@
 
 (provide 'pelm-package)
 ;;; pelm-package.el ends here
+
 
