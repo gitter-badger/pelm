@@ -4,7 +4,7 @@ desc "Publish docs to gh-pages "
 task :docs do
   cd "./docs" do 
     deploy_dir = "./_deploy"
-    if !File.exists?  then 
+    if !File.exists? deploy_dir  then 
       sh 'git clone git@github.com:eggcaker/pelm.git -b gh-pages _deploy'
     end 
 
