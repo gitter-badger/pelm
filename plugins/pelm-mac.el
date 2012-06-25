@@ -12,17 +12,20 @@
 
 (if (eq system-type 'darwin)
   ;; font set only for mac OSx
-  (set-face-font 'default "Menlo-15"))
+  (set-face-font 'default "Menlo-14"))
   ;;(set-frame-font "DejaVu Sans Mono-15"))
 
 
-;; DOING: try the switch the option and command again !
+;; DOING: try switch the option and command again !
 ;; under mac, have Command as Meta and keep Option for localized input
 (when (string-match "apple-darwin" system-configuration)
   (setq mac-allow-anti-aliasing t)
   (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'none))      
+  (setq mac-option-modifier 'none))  
+
+;; toggle fullscreen short key
+
+(define-key pelm-keymap "f" 'ns-toggle-fullscreen)
 
 (provide 'pelm-mac)
-
 ;;; ends pelm-mac.el here

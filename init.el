@@ -1,7 +1,7 @@
-;; PELM's init.el
+;; PELM - init.el
 ;; Author: caker
-;; Last modified: 2012-02-04
-;; Version: 0.8.0
+;; Last modified: 2012-06-22
+;; Version: 1.0.0
 
 (add-to-list 'load-path "~/.emacs.d")
 
@@ -61,7 +61,7 @@
 ;; load mode
 (require 'pelm-c)
 (require 'pelm-markups)
-(require 'pelm-scala)
+;(require 'pelm-scala)
 (require 'pelm-php)
 (require 'pelm-js)
 
@@ -72,12 +72,15 @@
 ;; lab
 (require 'pelm-android)
 
+;;; os files
+(require 'pelm-mac)
 
 ;;; personal configs ignored by git
 
 ;; orgmode file 
 (if (file-exists-p "~/.emacs.d/post-init-local.org")
     (org-babel-load-file "~/.emacs.d/post-init-local.org"))
+
 ;; el file
 (if (file-exists-p "~/.emacs.d/post-init-local.el")
     (load-file "~/.emacs.d/post-init-local.el"))
