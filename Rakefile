@@ -21,3 +21,13 @@ task :docs do
   
 end
 
+
+desc 'clean all elc files' 
+task :clean do 
+  ` find . -type f -name "*.elc" |xargs rm -rf`
+end 
+
+desc 'byte-compile all el file'
+task :bytecompile do 
+  `find . -type f -name "*.el" |xargs emacs -batch -f batch-byte-compile `
+end 
