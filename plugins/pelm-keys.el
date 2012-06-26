@@ -13,11 +13,11 @@
 
 
 ;; keyboard remark
-(global-set-key "\M-h" 'delete-backward-char)
-(global-set-key "\C-cG" 'end-of-buffer)
-(global-set-key "\C-cg" 'beginning-of-buffer)
-(global-set-key "\C-c{" 'beginning-of-defun)
-(global-set-key "\C-c}" 'end-of-defun)
+
+(define-key pelm-keymap "G" 'end-of-buffer)
+(define-key pelm-keymap "g" 'beginning-of-buffer)
+(define-key pelm-keymap "{" 'beginning-of-defun)
+(define-key pelm-keymap "}" 'end-of-defun)
 
 
 ;;(windmove-default-keybindings)
@@ -43,7 +43,7 @@
 
 
 (define-key pelm-keymap "3" 'split_window_3)
-
+(define-key pelm-keymap "f" 'ns-toggle-fullscreen)
 
 (provide 'pelm-keys)
 
