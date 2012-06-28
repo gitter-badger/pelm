@@ -29,7 +29,7 @@
              ))
 
 ;;FIXME: ensime not working with el-get 
-;(add-to-list 'load-path (concat pelm-vendor-dir "ensime/dist_2.9.2/elisp"))
+(add-to-list 'load-path (concat pelm-el-get-dir "ensime/dist_2.9.2/elisp"))
 (require 'ensime)
 
 ;; This step causes the ensime-mode to be started whenever
