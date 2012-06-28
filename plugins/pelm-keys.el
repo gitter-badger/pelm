@@ -34,6 +34,8 @@
 (define-key pelm-keymap "i" 'org-insert-subheading)
 (define-key pelm-keymap "o" 'org-mode)
 (define-key pelm-keymap "c" 'execute-extended-command)
+(define-key pelm-keymap "l" 'downcase-region)
+(define-key pelm-keymap "u" 'upcase-region)
 
 (defun split_window_3 ()
   "split window horizontally and go to it"

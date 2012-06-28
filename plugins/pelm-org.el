@@ -14,15 +14,12 @@
 (require 'org-contacts)
 (require 'org-crypt)
 
- (add-hook 'org-mode-hook
-           '(progn 
-              (yas/minor-mode-on)
-              (auto-complete-mode)
-              ;; Undefine C-c [ and C-c ] since this breaks my
-              ;; org-agenda files when directories are include It
-              ;; expands the files in the directories individually
-              (org-defkey org-mode-map "\C-c["    'undefined)
-              (org-defkey org-mode-map "\C-c]"    'undefined)))
+(add-hook 'org-mode-hook
+          '(lambda ()
+             (yas/minor-mode-on)
+             (auto-complete-mode)
+             (org-defkey org-mode-map "\C-c[" 'undefined)
+             (org-defkey org-mode-map "\C-c]" 'undefined)))
 
 (add-to-list 'auto-mode-alist
              '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
@@ -241,7 +238,7 @@
                            ((org-agenda-overriding-header "Stuck Projects")
                             ;(org-tags-match-list-sublevels 'indented)
                             (org-agenda-skip-function 'pelm/skip-non-stuck-projects)))
-                (tags-todo "-WAITING-CANCELLED/!NEXT"
+                (tags-todo "-NEXT"
                            ((org-agenda-overriding-header "Next Tasks")
                             (org-agenda-skip-function 'pelm/skip-projects-and-habits-and-single-tasks)
                             (org-agenda-todo-ignore-scheduled t)
