@@ -13,9 +13,6 @@
 [submodule "vendor/scss-mode"]
 	path = vendor/scss-mode
 	url = https://github.com/antonj/scss-mode.git
-[submodule "vendor/git-emacs"]
-	path = vendor/git-emacs
-	url = https://github.com/tsgates/git-emacs.git
 [submodule "vendor/google-contacts"]
 	path = vendor/google-contacts
 	url = http://git.naquadah.org/git/google-contacts.el.git
@@ -34,6 +31,3 @@
 [submodule "vendor/coffee-mode"]
 	path = vendor/coffee-mode
 	url = https://github.com/defunkt/coffee-mode.git
-[submodule "vendor/ensime"]
-	path = vendor/ensime
-	url = https://github.com/aemoncannon/ensime.git

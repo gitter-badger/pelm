@@ -10,7 +10,7 @@
 ;;; Code:
 
 ;; shortcut for shell
-(global-set-key "\C-x\C-z" 'shell) 
+;(global-set-key "\C-x\C-z" 'shell) 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (eval-after-load 'shell

@@ -14,6 +14,7 @@ excerpt: a emacs lisp manager
 ** TODO pelm-java
 ** TODO pelm-js
 ** TODO pelm-keys
+
 ** TODO pelm-markups
 ** TODO pelm-misc
 ** TODO pelm-objc
@@ -21,7 +22,7 @@ excerpt: a emacs lisp manager
 ** TODO pelm-package
 ** TODO pelm-php
 ** TODO pelm-ruby
-** TODO pelm-runtime*
+** TODO pelm-runtime
 ** TODO pelm-scala
 ** TODO pelm-server
 ** TODO pelm-shell

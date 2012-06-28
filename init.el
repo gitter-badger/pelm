@@ -61,7 +61,7 @@
 ;; load mode
 (require 'pelm-c)
 (require 'pelm-markups)
-;(require 'pelm-scala)
+(require 'pelm-scala)
 (require 'pelm-php)
 (require 'pelm-js)
 
