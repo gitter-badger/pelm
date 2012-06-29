@@ -8,7 +8,7 @@
 ;; This file is not part of GNU Emacs
 
 ;;; Notes: 
-;; load this just when you real know what this file does
+;; load this  plugin only when you real know what this file does
 ;;
 
 (defun hello_caker() 
