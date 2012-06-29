@@ -26,16 +26,13 @@
 (global-set-key (kbd "\e <up>") 'windmove-up)
 (global-set-key (kbd "\e <right>") 'windmove-right)
 
-
-;; no M-x 
-(global-set-key "\C-x\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-m" 'execute-extended-command)
-
-(define-key pelm-keymap "i" 'org-insert-subheading)
 (define-key pelm-keymap "o" 'org-mode)
-(define-key pelm-keymap "c" 'execute-extended-command)
-;(define-key pelm-keymap "l" 'downcase-region)
-;(define-key pelm-keymap "u" 'upcase-region)
+;(define-key pelm-keymap "oi" 'org-insert-subheading)
+
+
+
+(define-key pelm-keymap "el" 'downcase-region)
+(define-key pelm-keymap "eu" 'upcase-region)
 
 (defun split_window_3 ()
   "split window horizontally and go to it"
@@ -43,9 +40,7 @@
   (split-window-horizontally)
   (windmove-right))
 
-
-(define-key pelm-keymap "3" 'split_window_3)
-(define-key pelm-keymap "f" 'ns-toggle-fullscreen)
+(define-key pelm-keymap "uf" 'ns-toggle-fullscreen)
 
 
 (provide 'pelm-keys)
