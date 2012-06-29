@@ -34,8 +34,8 @@
 (define-key pelm-keymap "i" 'org-insert-subheading)
 (define-key pelm-keymap "o" 'org-mode)
 (define-key pelm-keymap "c" 'execute-extended-command)
-(define-key pelm-keymap "l" 'downcase-region)
-(define-key pelm-keymap "u" 'upcase-region)
+;(define-key pelm-keymap "l" 'downcase-region)
+;(define-key pelm-keymap "u" 'upcase-region)
 
 (defun split_window_3 ()
   "split window horizontally and go to it"
@@ -46,6 +46,7 @@
 
 (define-key pelm-keymap "3" 'split_window_3)
 (define-key pelm-keymap "f" 'ns-toggle-fullscreen)
+
 
 (provide 'pelm-keys)
 

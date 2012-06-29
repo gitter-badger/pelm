@@ -9,7 +9,12 @@
 
 ;;; Code:
 
+(unless (require 'scala-mode nil t)
+  (el-get-install "scala-mode"))
+
+
 (require 'scala-mode-auto)
+
 (add-to-list 'auto-mode-alist '("\\.sbt$" . scala-mode))
 
 (add-hook 'scala-mode-hook
