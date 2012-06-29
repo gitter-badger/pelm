@@ -21,15 +21,8 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-;(require 'color-theme)
-;(require 'color-theme-github)
-;(add-to-list 'custom-theme-load-path (concat pelm-dir "/themes/"))
-;(require 'color-theme-zenburn)
-;(color-theme-zenburn)
-;(color-theme-high-contrast)
 
-;(color-theme-github)
-
+(color-theme-tomorrow)
 
 ;;disable splash screen and tools bar
 (custom-set-variables
@@ -52,14 +45,14 @@
 (defun pelm-disable-transparent()
   "Disable transparent mode"
   (interactive)
-  (add-to-list 'default-frame-alist '(alpha 95 95))
-  (set-frame-parameter (selected-frame) 'alpha '(95 95)))
+  (add-to-list 'default-frame-alist '(alpha 100 100))
+  (set-frame-parameter (selected-frame) 'alpha '(100 100)))
 
 ;;enable transparent mode
-(global-set-key (kbd "\C-c t e") 'pelm-enable-transparent)
-
+(define-key pelm-keymap "ute" 'pelm-enable-transparent)
 ;;disable transparent mode
-(global-set-key (kbd "\C-c t d") 'pelm-disable-transparent)
+(define-key pelm-keymap "utd" 'pelm-disable-transparent)
+
 
 
 ;; switch buffer
@@ -116,7 +109,8 @@
   (column-marker-3 100))))
 
 ;; show line-number on the left panel
-(global-linum-mode 1)
+(global-linum-mode 0)
+(define-key pelm-keymap "ul" 'global-linum-mode)
 
 (provide 'pelm-ui)
 ;; pelm-ui.el ends here

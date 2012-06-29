@@ -47,6 +47,7 @@
 ;; load plugins 
 (require 'pelm-package)
 (require 'pelm-runtime)
+(require 'pelm-keys)
 (require 'pelm-editor)
 (require 'pelm-ui)
 (require 'pelm-editor)
@@ -56,7 +57,7 @@
 (require 'pelm-git)
 (require 'pelm-yas)
 (require 'pelm-org)
-(require 'pelm-keys)
+
 
 ;; load mode
 (require 'pelm-c)

@@ -44,12 +44,12 @@
 ;; now set pelm packages
 (setq pelm:el-get-packages
       '(el-get				; el-get is self-hosting
-        switch-window			; takes over C-x o
+        ;switch-window			; takes over C-x o
         auto-complete			; complete as you type with overlays
         color-theme	                ; nice looking emacs
-        color-theme-tango               ; check out color-theme-solarized
+	color-theme-tomorrow
         psvn
-;	scala-mode
+        magithub
         fuzzy
         yasnippet ; powerfull sippet mode
         ))             

@@ -12,8 +12,8 @@
 
 (if (eq system-type 'darwin)
   ;; font set only for mac OSx
-  (set-face-font 'default "Menlo-14"))
-  ;;(set-frame-font "DejaVu Sans Mono-15"))
+ (set-face-font 'default "Menlo-15"))
+; (set-frame-font "DejaVu Sans Mono-15"))
 
 
 ;; DOING: try switch the option and command again !
