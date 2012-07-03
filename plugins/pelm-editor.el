@@ -61,5 +61,39 @@
       (message "Opening file:")
     (message "Aborting")))
 
+
+
+(setq el-get-evil
+      '((:name evil
+               :after (progn
+                        ))))
+
+(el-get 'sync (loop for src in el-get-evil collect (el-get-source-name src)))
+
+
+(evil-define-key 'normal pelm-minor-mode-map "gb" 'evil-mode)
+
+(evil-define-command pelm/evil-maybe-exit ()
+  :repeat change
+  (interactive)
+  (let ((modified (buffer-modified-p)))
+    (insert "j")
+    (let ((evt (read-event (format "Insert %c to exit insert state" ?n)
+               nil 0.5)))
+      (cond
+       ((null evt) (message ""))
+       ((and (integerp evt) (char-equal evt ?n))
+        (delete-char -1)
+        (set-buffer-modified-p modified)
+        (push 'escape unread-command-events))
+       
+       (t (setq unread-command-events (append unread-command-events
+                          (list evt))))))))
+
+(define-key evil-insert-state-map "j" #'pelm/evil-maybe-exit)
+
+
+
+
 (provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   

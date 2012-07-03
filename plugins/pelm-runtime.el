@@ -61,8 +61,14 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+(defvar pelm-minor-mode-map (make-keymap) "pelm-minor-mode keymap.")
 
+
+(define-minor-mode pelm-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " PELM" 'pelm-minor-mode-map)
+
+(pelm-minor-mode 1)
 
 (provide 'pelm-runtime)
-
 ;;; pelm-runtime.el ends here
