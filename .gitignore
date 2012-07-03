@@ -17,3 +17,4 @@ org-clock-save.el
 .smex-items
 _site
 _deploy
+weibo.emacs

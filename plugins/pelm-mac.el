@@ -23,9 +23,5 @@
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'none))  
 
-;; toggle fullscreen short key
-
-(define-key pelm-keymap "f" 'ns-toggle-fullscreen)
-
 (provide 'pelm-mac)
 ;;; ends pelm-mac.el here

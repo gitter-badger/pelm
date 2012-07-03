@@ -43,14 +43,12 @@
     (load-file "~/.emacs.d/pre-init-local.el"))
 
 
-
 ;; load plugins 
 (require 'pelm-package)
 (require 'pelm-runtime)
+(require 'pelm-editor)
 (require 'pelm-keys)
-(require 'pelm-editor)
 (require 'pelm-ui)
-(require 'pelm-editor)
 (require 'pelm-shell)
 (require 'pelm-server)
 (require 'pelm-ac)

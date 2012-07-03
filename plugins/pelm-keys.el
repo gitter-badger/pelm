@@ -11,7 +11,6 @@
 (global-set-key [(control .)] 'pelm-keymap)
 (define-prefix-command 'pelm-keymap)
 
-
 ;; keyboard remark
 
 (define-key pelm-keymap "G" 'end-of-buffer)
@@ -26,10 +25,6 @@
 (global-set-key (kbd "\e <up>") 'windmove-up)
 (global-set-key (kbd "\e <right>") 'windmove-right)
 
-(define-key pelm-keymap "o" 'org-mode)
-;(define-key pelm-keymap "oi" 'org-insert-subheading)
-
-
 
 (define-key pelm-keymap "el" 'downcase-region)
 (define-key pelm-keymap "eu" 'upcase-region)
@@ -40,9 +35,20 @@
   (split-window-horizontally)
   (windmove-right))
 
-(define-key pelm-keymap "uf" 'ns-toggle-fullscreen)
+;;evil setup 
 
+;pelm-keymap conflict with evil-mode key
+(define-key evil-normal-state-map (kbd "C-.") nil)
+(define-key pelm-keymap "uf" 'ns-toggle-fullscreen)
+(define-key pelm-keymap "ev" 'turn-on-evil-mode)
+
+(global-set-key  "\M-n" 'scroll-up-command)
+(global-set-key  "\M-p" 'scroll-down-command)
 
 (provide 'pelm-keys)
 
 ;;; pelm-keys.el ends here
+
+
+
+
