@@ -1,0 +1,15 @@
+---
+layout: default
+title: PELM - History of PELM
+excerpt: a emacs lisp manager 
+---
+
+* Changes Log
+** 1.1.0 [0/2]
+- [ ] add jdee support 
+- [ ] choice nice color theme 
+** 1.0.0 (statle version)　[1/2]
+- [X] convert to el-get format
+- [ ] convert some vendor lib to el-get 
+** 0.8.0 [1/1]
+- [X] init pelm  version 
