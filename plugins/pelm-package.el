@@ -47,11 +47,11 @@
         switch-window			; takes over C-x o
         auto-complete			; complete as you type with overlays
         color-theme	                ; nice looking emacs
-	color-theme-tomorrow
+        color-theme-tomorrow
         psvn
         magithub
         fuzzy
-	popup
+        popup
         yasnippet ; powerfull sippet mode
         ))             
 

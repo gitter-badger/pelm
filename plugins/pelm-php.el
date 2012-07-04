@@ -9,11 +9,9 @@
 
 ;;; Code:
 
+(el-get-install "php-mode-improved")
+
 (require 'flymake)
-(require 'php-mode)
-(setq auto-mode-alist
-      (append
-       '(("\\.php$" . php-mode))  auto-mode-alist  ))
 
 (defun flymake-php-init ()
   "Use php to check the syntax of the current file."
