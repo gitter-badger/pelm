@@ -62,6 +62,24 @@
 ;;  copy/paste with C-c and C-v and C-x, check out C-RET too
 (cua-mode) 
 
+
+;; o-blog 
+(setq pelm:o-blog-packages
+      '(
+        htmlize
+        o-blog
+        emacs-http-server))
+
+;; emacs-http-server 
+;; a emacs http server 
+;
+; usage:
+; (require 'httpd)
+; (setq httpd-root "/path/to/site")
+; (httpd-start)
+(el-get 'sync pelm:o-blog-packages)
+
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here
