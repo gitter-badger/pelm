@@ -67,16 +67,16 @@ Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/
 - magit
 - goto-last-change 
 
+** [[http://caker.me/pelm/history.html][Changes Log]]
+
 ** License
 
-   check out the [[https://github.com/eggcaker/pelm/blob/master/LICENSE][LICENSE]] file 
-
+check out the [[https://github.com/eggcaker/pelm/blob/master/LICENSE][LICENSE]] file 
 
 ** Help out!
 
    fork me and make a pull request.
-
-
+   
 ** Authors
 - eggcaker <eggcaker@gmail.com>
 
