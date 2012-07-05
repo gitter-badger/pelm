@@ -79,7 +79,7 @@
 ; (httpd-start)
 (el-get 'sync pelm:o-blog-packages)
 
-
+(define-key pelm-keymap "op" 'org-publish-blog)
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here
