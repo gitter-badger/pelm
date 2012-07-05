@@ -34,8 +34,8 @@
              ))
 
 ;;FIXME: ensime not working with el-get 
-(add-to-list 'load-path (concat pelm-el-get-dir "ensime/dist_2.9.2/elisp"))
-(require 'ensime)
+;(add-to-list 'load-path (concat pelm-el-get-dir "ensime/dist_2.9.2/elisp"))
+;(require 'ensime)
 
 ;; This step causes the ensime-mode to be started whenever
 ;; ;; scala-mode is started for a buffer. You may have to customize this step
