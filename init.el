@@ -73,6 +73,7 @@
 
 ;;; os files
 (require 'pelm-mac)
+(require 'pelm-linux)
 
 ;;; personal configs ignored by git
 
