@@ -61,6 +61,7 @@
 (require 'pelm-c)
 (require 'pelm-markups)
 (require 'pelm-scala)
+(require 'pelm-java)
 (require 'pelm-php)
 (require 'pelm-js)
 

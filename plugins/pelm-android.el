@@ -19,6 +19,8 @@
 
 (setenv "ANDROID_HOME" "/usr/local/Cellar/android-sdk/r20")
 
+
+(define-key pelm-keymap "ac" 'compile)
 (require 'android-mode)
 
 (provide 'pelm-android)
