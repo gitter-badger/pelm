@@ -116,14 +116,39 @@ language.")
                           ("ñ" . "n")
                           ("ç" . "s")
                           ("\\$" . "S")
-                          ("€" . "E")))
+                          ("€" . "E")
+			  ("\\." . "-")))
                (setq str (replace-regexp-in-string (car c) (cdr c) str)))
-             (replace-regexp-in-string "[^abcdefghijklmnopqrstuvwxyz-]" ""
-                                       (replace-regexp-in-string " +" "-" str)))
+             (replace-regexp-in-string
+	      "[^abcdefghijklmnopqrstuvwxyz0123456789-]" ""
+	      (replace-regexp-in-string " +" "-" str)))
     str))
+
+(defun get-header (header &optional all)
+  "Get HEADER from blog buffer as defined in BLOG global context
+variable.
+
+Returns only fist match except if ALL is defined."
+  (with-current-buffer
+      ;; Be sure we are in blog buffer
+      (if (boundp 'BLOG)
+	  (ob:blog-buffer BLOG)
+	(current-buffer))
+    (save-excursion
+      (save-restriction
+	(save-match-data
+	  (widen)
+	  (goto-char (point-min))
+	  (let (values)
+	    (while (re-search-forward (format "^#\\+%s:?[ \t]*\\(.*\\)" header) nil t)
+	      (add-to-list 'values (substring-no-properties (match-string 1))))
+	    (if all
+		values
+	      (car values))))))))
 
 (defun org-jekyll-export-entry (project)
   (let* ((props (org-entry-properties nil 'standard))
+         (propsspecial (org-entry-properties nil 'special))
          (time (cdr (or (assoc "on" props)
                         (assoc "ON" props))))
          (lang (cdr (or (assoc "lang" props)
@@ -131,9 +156,16 @@ language.")
          (category (if org-jekyll-category
                        (cdr (assoc org-jekyll-category props))
                      nil))
-         (yaml-front-matter (copy-alist props)))
+         (yaml-front-matter (copy-alist props))
+         (tags (cdr (or (assoc "TAGS" propsspecial))))
+         )
+
     (unless (assoc "layout" yaml-front-matter)
       (push '("layout" . "post") yaml-front-matter))
+    (unless (assoc "tags" yaml-front-matter)
+      (push (cons "tags" (mapconcat 'identity
+				    (split-string tags ":" t) ","))
+	    yaml-front-matter))
     (when time
       (let* ((heading (org-get-heading t))
              (title (replace-regexp-in-string "[:=\(\)\?]" ""
@@ -216,11 +248,10 @@ title. "
               ;; mode ensures that all of them are visible.
               (org-content)
               (org-map-entries (lambda () (org-jekyll-export-entry project))
-                               "blog|BLOG"))))
+                               org-jekyll-entry-match))))
       (org-publish-get-base-files project)))
     (org-release-buffers org-jekyll-new-buffers)))
 
 (provide 'org-jekyll)
 
 ;;; org-jekyll.el ends here
-
