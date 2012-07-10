@@ -74,7 +74,7 @@
 (require 'pelm-android)
 
 ;;; os files
-(require 'pelm-mac)
+;(require 'pelm-mac)
 (require 'pelm-linux)
 
 ;;; personal configs ignored by git
@@ -82,10 +82,6 @@
 ;; orgmode file 
 (if (file-exists-p "~/.emacs.d/post-init-local.org")
     (org-babel-load-file "~/.emacs.d/post-init-local.org"))
-
-;; el file
-(if (file-exists-p "~/.emacs.d/post-init-local.el")
-    (load-file "~/.emacs.d/post-init-local.el"))
 
 
 (package-manager-show-load-time)
