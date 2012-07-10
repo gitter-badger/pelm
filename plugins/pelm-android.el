@@ -17,6 +17,8 @@
   '(android-mode-sdk-dir "/usr/local/Cellar/android-sdk/r20")
 )
 
+(setenv "ANDROID_HOME" "/usr/local/Cellar/android-sdk/r20")
+
 (require 'android-mode)
 
 (provide 'pelm-android)
