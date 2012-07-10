@@ -63,23 +63,7 @@
 (cua-mode) 
 
 
-;; o-blog 
-(setq pelm:o-blog-packages
-      '(
-        htmlize
-        o-blog
-        emacs-http-server))
 
-;; emacs-http-server 
-;; a emacs http server 
-;
-; usage:
-; (require 'httpd)
-; (setq httpd-root "/path/to/site")
-; (httpd-start)
-(el-get 'sync pelm:o-blog-packages)
-
-(define-key pelm-keymap "op" 'org-publish-blog)
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here
