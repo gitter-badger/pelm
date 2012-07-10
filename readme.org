@@ -1,11 +1,25 @@
-#+Title:   PELM README
+# -*- mode: org; coding: utf-8;  -*-
+
+#+TITLE:   PELM 
+#+DESCRIPTION: a 'P' Emacs Lisp Manager
 #+AUTHOR:   eggcaker
 #+EMAIL:    eggcaker@gmail.com
 
 # Configuration:
-#+STARTUP:      odd
-#+STARTUP:      hi
-#+STARTUP:      hidestars
+#+FILENAME_SANITIZER: pelm-el-sanitizer
+
+
+#+STARTUP: logdone
+#+TEMPLATE_DIR: _deploy/themes/gh-pages
+#+STYLE_DIR:  style
+#+LANGUAGE:   zh
+#+PUBLISH_DIR:  _deploy
+#+URL: http://caker.me/pelm
+
+#+DEFAULT_CATEGORY: blog
+#+DISQUS: cakerweblog
+
+#+LINK: caker  http://github.com/eggcaker/
 
 * What is PELM?
 
@@ -85,3 +99,125 @@ Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/
 
 
 
+---
+layout: default
+title: PELM - Emacs Lisp Manager
+excerpt: a emacs lisp manager 
+---
+
+
+* What is  the PELM?
+
+  PELM  - a "literate" Emacs Lisp Manager  for Emacs (24.0 and greater).
+
+  What's the P means? the P  can be one of Personal or Public (if you like it)
+  I hope every body like it, but maybe not. any fork is welcome!
+
+** Install
+*** Basic install 
+- clone source code from github to .emacs.d
+  
+#+BEGIN_SRC sh
+$ cd ~
+$ git clone http://github.com/eggckaer/pelm.git .emacs.d
+$ cd .emacs.d
+$ git submodule init
+$ git submodule update
+
+#+END_SRC
+
+#+results:
+
+- clone source code to some where in your folder and ln it 
+  for example, you want clone to ~/pelm
+  
+#+BEGIN_SRC sh
+$ git clone http://github.com/eggcaker/pelm.git ~/pelm 
+$ ln -s ~/pelm ~/.emacs.d 
+$ cd ~/pelm
+$ git submodule init
+$ git submodule update
+#+END_SRC
+*** Byte compile (optional but recommented)
+#+BEGIN_EXAMPLE
+C-u 0 M-x byte-recompile-directory
+#+END_EXAMPLE
+
+** Customize 
+   after you clone the PELM, check the init.el, you can add your own code 
+   in 2 files :
+- pre-init-local.org 
+   the PELM loaded  it before load plugins but after the pre-init.el
+
+- post-init-local.org 
+  the PELM loaded after all plugins  
+
+   both of them ignore by git, so can add some experimental code.
+
+** Package Manager
+
+Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/dimitri/el-get][ el-get]]! I use it to install some third-part packages:
+- el-get
+- auto-compleate-mode
+- psvn 
+- fuzzy
+- yasnippet
+- color-theme
+- smex
+- magit
+- goto-last-change 
+
+** Changelog
+
++ 2012-07-10 Tuesday
+  - [X] remove switch-window
+  - [ ] added pelm-blog plugin
+  - [ ] change the document to o-blog 
+  - [ ] clean up documents 
+  - [ ] added init-blog.el for batch mode to generate blog
+
+** todo list
+  - [ ] change readme.org to o-blog format
+  - [ ] gh-pages theme 
+** License
+
+check out the [[https://github.com/eggcaker/pelm/blob/master/LICENSE][LICENSE]] file 
+
+** Help out!
+
+   fork me and make a pull request.
+   
+** Authors
+- eggcaker <eggcaker@gmail.com>
+
+
+---
+layout: default
+title: PELM - Emacs Lisp Manager
+excerpt: a emacs lisp manager 
+---
+
+* Plugin List [0/22]
+** TODO pelm-ac
+** TODO pelm-android
+** TODO pelm-c
+** TODO pelm-editor
+** TODO pelm-fun
+** TODO pelm-git
+** TODO pelm-java
+** TODO pelm-js
+** TODO pelm-keys
+
+** TODO pelm-markups
+** TODO pelm-misc
+** TODO pelm-objc
+** TODO pelm-org
+** TODO pelm-package
+** TODO pelm-php
+** TODO pelm-ruby
+** TODO pelm-runtime
+** TODO pelm-scala
+** TODO pelm-server
+** TODO pelm-shell
+** TODO pelm-ui
+** TODO pelm-yas
