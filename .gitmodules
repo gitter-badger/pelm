@@ -28,3 +28,6 @@
 [submodule "vendor/coffee-mode"]
 	path = vendor/coffee-mode
 	url = https://github.com/defunkt/coffee-mode.git
+[submodule "vendor/android-mode"]
+	path = vendor/android-mode
+	url = http://github.com/eggcaker/android-mode.git
