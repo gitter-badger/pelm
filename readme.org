@@ -169,16 +169,20 @@ Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/
 
 ** Changelog
 
++ 2012-07-11 Wednesday
+  - added pelm-lisp plugin
+  - updated android-mode to submodule
+  - added highlight-parentheses mode
+  - added pelm-blog plugin
 + 2012-07-10 Tuesday
-  - [X] remove switch-window
-  - [ ] added pelm-blog plugin
-  - [ ] change the document to o-blog 
-  - [ ] clean up documents 
-  - [ ] added init-blog.el for batch mode to generate blog
+  - remove switch-window
+  - added init-blog.el for batch mode to generate blog
+** Todo list
+  - change readme.org to o-blog format
+  - gh-pages theme 
+  - clean up documents 
+  - init-blog.el not working
 
-** todo list
-  - [ ] change readme.org to o-blog format
-  - [ ] gh-pages theme 
 ** License
 
 check out the [[https://github.com/eggcaker/pelm/blob/master/LICENSE][LICENSE]] file 

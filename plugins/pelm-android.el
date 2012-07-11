@@ -21,7 +21,15 @@
 
 
 (define-key pelm-keymap "ac" 'compile)
+
 (require 'android-mode)
+
+;; enabled error line number jumper 
+
+(add-to-list 'compilation-error-regexp-alist 'maven)
+(add-to-list 'compilation-error-regexp-alist-alist
+       '(maven "\\[ERROR\\] \\(.+?\\):\\[\\([0-9]+\\),\\([0-9]+\\)\\].*"
+           1 2 3))
 
 (provide 'pelm-android)
 

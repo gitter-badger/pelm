@@ -94,6 +94,7 @@
 ;;; TODO keywords 
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+              (sequence "TODO(t)" "READING(r)" "|" "FINISHED(f!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" )))
 
       org-todo-keyword-faces
