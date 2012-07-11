@@ -174,6 +174,8 @@ Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/
   - updated android-mode to submodule
   - added highlight-parentheses mode
   - added pelm-blog plugin
+  - convert vendor to el-get package
+
 + 2012-07-10 Tuesday
   - remove switch-window
   - added init-blog.el for batch mode to generate blog
