@@ -55,7 +55,10 @@
         magithub
         fuzzy
         popup
-        yasnippet ; powerfull sippet mode
+        coffee-mode
+        markdown-mode
+        yaml-mode
+        yasnippet
         ))             
 
 (setq pelm:el-get-packages
