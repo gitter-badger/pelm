@@ -10,7 +10,9 @@
 ;;; Code:
 
 ;; emacs server start
-(server-start)
+;; only started when running on GUI emacs
+(if window-system
+    (server-start))
 
 (provide 'pelm-server)
 
