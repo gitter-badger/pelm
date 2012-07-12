@@ -10,9 +10,9 @@
 ;;; Code:
 
 
-(if (eq system-type 'darwin)
+(if (and window-system  (eq system-type 'darwin))
   ;; font set only for mac OSx
- (set-face-font 'default "Menlo-15"))
+    (set-face-font 'default "Menlo-15"))
 ; (set-frame-font "DejaVu Sans Mono-15"))
 
 
@@ -22,6 +22,11 @@
   (setq mac-allow-anti-aliasing t)
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'none))  
+
+(defun pelm-mac-toggle-fullscreen() 
+  "Toggle full screen on Mac OS x"
+  (interactive)
+  )
 
 (provide 'pelm-mac)
 ;;; ends pelm-mac.el here
