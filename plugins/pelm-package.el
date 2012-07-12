@@ -37,6 +37,10 @@
                :after   (progn
                         (global-set-key (kbd "C-x C-z") 'magit-status)))
 
+        (:name highlight-parentheses
+               :after   (progn
+                          (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode )))
+
         (:name goto-last-change		; move pointer back to last change
                :after   (progn
                         ;; when using AZERTY keyboard, consider C-x C-_
@@ -53,7 +57,10 @@
         fuzzy
         lua-mode
         popup
-        yasnippet ; powerfull sippet mode
+        coffee-mode
+        markdown-mode
+        yaml-mode
+        yasnippet
         ))             
 
 (setq pelm:el-get-packages
