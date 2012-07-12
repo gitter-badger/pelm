@@ -51,6 +51,7 @@
         psvn
         magithub
         fuzzy
+        lua-mode
         popup
         yasnippet ; powerfull sippet mode
         ))             
