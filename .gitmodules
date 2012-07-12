@@ -1,15 +1,6 @@
 [submodule "snippets/java-mode"]
 	path = snippets/java-mode
 	url = git://github.com/eggcaker/android-snippets.git
-[submodule "vendor/yaml-mode"]
-	path = vendor/yaml-mode
-	url = https://github.com/yoshiki/yaml-mode.git
-[submodule "vendor/markdown-mode"]
-	path = vendor/markdown-mode
-	url = https://github.com/defunkt/markdown-mode.git
-[submodule "vendor/scss-mode"]
-	path = vendor/scss-mode
-	url = https://github.com/antonj/scss-mode.git
 [submodule "vendor/google-contacts"]
 	path = vendor/google-contacts
 	url = http://git.naquadah.org/git/google-contacts.el.git
@@ -25,6 +16,6 @@
 [submodule "vendor/bongo"]
 	path = vendor/bongo
 	url = https://github.com/juergenhoetzel/bongo.git
-[submodule "vendor/coffee-mode"]
-	path = vendor/coffee-mode
-	url = https://github.com/defunkt/coffee-mode.git
+[submodule "vendor/android-mode"]
+	path = vendor/android-mode
+	url = http://github.com/eggcaker/android-mode.git
