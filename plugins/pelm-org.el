@@ -26,6 +26,7 @@
 
 ;;; directories setup
 (setq org-directory "~/.org-files"
+      blog-directory "~/src/Mine/eggcaker.github.com/_src/org/"
       org-default-notes-file (concat org-directory "/inbox.org")
       org-contacts-files (list(concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
@@ -119,7 +120,13 @@
 (setq org-capture-templates
       (quote (("t" "Toto" entry (file (concat org-directory "/inbox.org"))
                "* TODO %?\n%U\n %a\n " :clock-in t :clock-resume t)
+              ("b" "Blog" entry (file (concat blog-directory "/blog-2012.org"))
+               "* TODO %^{TITLE}  %^g\n %?" ) 
+              ("n" "Notes" entry (file+datetree (concat org-directory "/notes.org"))
+               "* %^{Description} %^g %? 
+Added: %U") 
               ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
+
 
                "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
 :PROPERTIES:
