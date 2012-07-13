@@ -37,6 +37,7 @@
 (setq org-log-done (quote time)
       org-log-into-drawer "LOGBOOK"
       org-alphabetical-lists t
+      org-src-fontify-natively t
       org-use-fast-todo-selection t
       org-treat-S-cursor-todo-selection-as-state-change nil
       org-habit-graph-column 50
