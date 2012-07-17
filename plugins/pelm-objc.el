@@ -51,10 +51,23 @@
 	("\\.cxx$" (".hh" ".h"))
 	("\\.cpp$" (".hpp" ".hh" ".h"))
 	("\\.hpp$" (".cpp" ".c"))))
+(defconst my-objc-style
+  '("objc"
+    (c-indent-comments-syntactically-p . t)
+    (c-comment-only-line-offset . 0)
+    (c-cleanup-lisp  . (brace-else-brace
+                        brace-elseif-brace
+                        empty-defun-braces
+                        defun-close-semi
+                        compact-empty-funcall
+                        )))
+  "PELM Objective-C Programming style")
 
-;;(defun my-objc-mode-hook ()
-;;   (auto-complete-mode 1))
-;;(add-hook 'objc-mode-hook 'my-objc-mode-hook)
+(defun my-objc-mode-hook ()
+  (auto-complete-mode t)
+  (c-add-style "objc" my-objc-style))
+
+(add-hook 'objc-mode-hook 'my-objc-mode-hook)
 
 (add-hook 'objc-mode-hook
     (lambda ()
@@ -63,6 +76,6 @@
 ))
 
 
-(provide pelm-objc);
+(provide 'pelm-objc)
 
 ;;pelm-objc.el ends here
