@@ -65,6 +65,7 @@
 (require 'pelm-php)
 (require 'pelm-js)
 (require 'pelm-lisp)
+(require 'pelm-objc)
 ;;misc
 (require 'pelm-misc)
 (require 'pelm-blog)
