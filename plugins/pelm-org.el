@@ -126,9 +126,14 @@
               ("n" "Notes" entry (file+datetree (concat org-directory "/notes.org"))
                "* %^{Description} %^g %? 
 Added: %U") 
+
+              ("w" "" entry ;; 'w' for 'org-protocol'
+               (file+headline "notes.org" "Notes")
+               "* %^{Title}\n\nSource: %u, %c\n\n  %i")
+
               ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
 
-
+	       
                "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
 :PROPERTIES:
 :URL:
@@ -138,8 +143,7 @@ Added: %U")
 :LOCATION:
 :BIRTHDAY: 
 :NOTE:
-:END:")
-              )))
+:END:"))))
 
 ;; Custom Key Bindings
 (define-key global-map "\C-ca" 'org-agenda)

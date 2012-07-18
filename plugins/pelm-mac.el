@@ -21,12 +21,10 @@
 (when (string-match "apple-darwin" system-configuration)
   (setq mac-allow-anti-aliasing t)
   (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'none))  
+  (setq mac-option-modifier 'none)
+  (define-key pelm-keymap "uf" 'ns-toggle-fullscreen)
+  )  
 
-(defun pelm-mac-toggle-fullscreen() 
-  "Toggle full screen on Mac OS x"
-  (interactive)
-  )
 
 (provide 'pelm-mac)
 ;;; ends pelm-mac.el here

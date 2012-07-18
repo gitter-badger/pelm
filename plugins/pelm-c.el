@@ -27,9 +27,6 @@
 (add-hook 'c-mode-common-hook  'pelm-c-mode-common-hook)
 
 
-(setq c-default-style "bsd"
-      c-basic-offset 4)
-
 (setq c-mode-hook
       (function (lambda()
 		  (setq indent-tabs-mode nil)
