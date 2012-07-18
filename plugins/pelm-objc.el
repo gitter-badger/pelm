@@ -12,6 +12,20 @@
 
 (require 'objc-c-mode)
 
+(setq el-get-xcode
+      '((:name xcode
+               :after (progn
+                        (add-hook 'objc-mode-hook
+                                  (lambda ()
+                                    (define-key objc-mode-map (kbd "C-c C-c b") 'xcode-compile)
+                                    (define-key objc-mode-map (kbd "C-c r") 'xcode-compile-and-run))))
+               :type git
+               :url "https://github.com/mig/xcode.el.git"
+               :load "xcode.el")))
+
+
+(el-get 'sync (loop for src in el-get-xcode collect (el-get-source-name src)))
+
 (add-to-list 'auto-mode-alist '("\\.mm?$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
 
@@ -19,24 +33,7 @@
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@interface" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@protocol" . objc-mode))
 
-(defun xcode:buildandrun ()
-  (interactive)
-  (do-applescript
-   (format
-    (concat
-     "tell application \"Xcode\" to activate \r"
-     "tell application \"System Events\" \r"
-     "     tell process \"Xcode\" \r"
-     "          key code 36 using {command down} \r"
-     "          key code 36 using {command down} \r"
-     "    end tell \r"
-     "end tell \r"
-     ))))
 
-(add-hook 'objc-mode-hook
-      (lambda ()
-      (define-key objc-mode-map (kbd "C-c r") 'xcode:buildandrun)
-))
 
 (setq ff-other-file-alist
       '(("\\.mm?$" (".h"))
@@ -65,14 +62,14 @@
 
 (defun my-objc-mode-hook ()
   (auto-complete-mode t)
-  (c-add-style "objc" my-objc-style))
+  ;(c-add-style "objc" my-objc-style)
+  )
 
 (add-hook 'objc-mode-hook 'my-objc-mode-hook)
 
 (add-hook 'objc-mode-hook
     (lambda ()
     (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
-    (define-key c-mode-base-map (kbd "C-c a") 'auto-complete-mode)
 ))
 
 
