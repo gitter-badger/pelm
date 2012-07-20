@@ -984,7 +984,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
  (quote ((emacs-lisp . t)
  ;        (dot . t)
          (ditaa . t)
-;         (R . t)
+         (R . t)
  ;        (python . t)
          (ruby . t)
 ;         (gnuplot . t)
