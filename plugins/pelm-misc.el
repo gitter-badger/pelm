@@ -59,9 +59,24 @@
 
 (define-key pelm-keymap "s" 'swap-buffers-in-windows)
 
-;;  copy/paste with C-c and C-v and C-x, check out C-RET too
+;; copy/paste with C-c and C-v and C-x, check out C-RET too
 (cua-mode) 
 
+
+(defun start_work ()
+  "pull all repos before start work "
+  (interactive)
+  (org-mobile-pull)
+  (async-shell-command  "~/.oh-my-zsh/bin/start_work"))
+
+(defun go_home ()
+  "push all repos before go home "
+  (interactive)
+  (org-mobile-push)
+  (async-shell-command "~/.oh-my-zsh/bin/go_home"))
+
+(define-key pelm-keymap "," 'start_work)
+(define-key pelm-keymap "." 'go_home)
 
 
 (provide 'pelm-misc)
