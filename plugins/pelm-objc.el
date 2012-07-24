@@ -48,11 +48,14 @@
 	("\\.cxx$" (".hh" ".h"))
 	("\\.cpp$" (".hpp" ".hh" ".h"))
 	("\\.hpp$" (".cpp" ".c"))))
+
+(setq max-specpdl-size 5) 
 (defconst my-objc-style
   '("objc"
     (c-indent-comments-syntactically-p . t)
     (c-comment-only-line-offset . 0)
-    (c-cleanup-lisp  . (brace-else-brace
+    (c-cleanup-lisp  . (
+                        brace-else-brace
                         brace-elseif-brace
                         empty-defun-braces
                         defun-close-semi
@@ -62,6 +65,7 @@
 
 (defun my-objc-mode-hook ()
   (auto-complete-mode t)
+  ;;TODO: some bugs here
   ;(c-add-style "objc" my-objc-style)
   )
 
