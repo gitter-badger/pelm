@@ -1,0 +1,5 @@
+# name: return-YES
+# key: ry
+# --
+return YES; 
+$0

@@ -1,0 +1,5 @@
+# name: return-NO
+# key: rn
+# --
+return NO; 
+$0
