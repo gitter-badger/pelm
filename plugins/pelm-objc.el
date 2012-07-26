@@ -65,6 +65,8 @@
 
 (defun my-objc-mode-hook ()
   (auto-complete-mode t)
+  (setq tab-width 2)
+  (setq indent-tabs-mode nil)
   ;;TODO: some bugs here
   ;(c-add-style "objc" my-objc-style)
   )
@@ -76,6 +78,15 @@
     (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
 ))
 
+
+
+;;macros for obj-c
+
+(fset 'h2m
+      (lambda (&optional arg)
+        "Keyboard macro."
+        (interactive "p")
+        (kmacro-exec-ring-item (quote ([11 25 escape down return return 25 backspace 32 123 return 125 return escape up 14 1] 0 "%d")) arg)))
 
 (provide 'pelm-objc)
 
