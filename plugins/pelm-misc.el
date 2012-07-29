@@ -79,6 +79,6 @@
 (define-key pelm-keymap "." 'go_home)
 
 
-(provide 'pelm-misc)
+(provide 'pelm-misc)s
 
 ;; pelm-misc.el ends here
