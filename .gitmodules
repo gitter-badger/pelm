@@ -21,4 +21,4 @@
 	url = http://github.com/eggcaker/android-mode.git
 [submodule "vendor/jo-exporter"]
 	path = vendor/jo-exporter
-	url = https://github.com/eggcaker/jo-exporter.git
+	url = git://github.com/eggcaker/jo-exporter.git
