@@ -18,6 +18,7 @@
 * What is PELM?
 :PROPERTIES:
 :PAGE: index.html
+:TEMPLATE: blog_static_no_title.html
 :END:
 
   PELM  - a "literate" Emacs Lisp Manager  for Emacs (24.0 and greater).
@@ -82,19 +83,19 @@ MIT
 :PAGE: changelog.html
 :TEMPLATE: blog_static_no_title.html
 :END:
-+ 2012-07-29 Sunday
+
+- 2012-07-29 Sunday
   - [X] change readme.org to o-blog format
   - [X] gh-pages theme 
   - [X] clean up documents 
   - [X] removed init-blog.el
-+ 2012-07-11 Wednesday
+- 2012-07-11 Wednesday
   - added pelm-lisp plugin
   - updated android-mode to submodule
   - added highlight-parentheses mode
   - added pelm-blog plugin
   - convert vendor to el-get package
-
-+ 2012-07-10 Tuesday
+- 2012-07-10 Tuesday
   - remove switch-window
   - added init-blog.el for batch mode to generate blog
 ** Todo list [3/4]
