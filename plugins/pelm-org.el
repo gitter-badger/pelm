@@ -987,7 +987,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
          (R . t)
          (ledger . t)
  ;        (python . t)
-         (ruby . t)
+         ;(ruby . t)
 ;         (gnuplot . t)
   ;       (clojure . t)
          (sh . t)
