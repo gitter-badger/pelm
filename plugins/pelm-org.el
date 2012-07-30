@@ -985,6 +985,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
  ;        (dot . t)
          (ditaa . t)
          (R . t)
+         (ledger . t)
  ;        (python . t)
          (ruby . t)
 ;         (gnuplot . t)
