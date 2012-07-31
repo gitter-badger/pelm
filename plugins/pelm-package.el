@@ -61,6 +61,8 @@
         markdown-mode
         yaml-mode
         yasnippet
+        emacs-w3m
+        clojure-mode
         ))             
 
 (setq pelm:el-get-packages
