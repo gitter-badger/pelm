@@ -94,6 +94,18 @@
 
 
 
+(defun new_line_before ()
+   "create a new line before curreent cursor and go to "
+   (interactive)
+   (previous-line)
+   (end-of-line)
+   (newline-and-indent)
+   )
+
+
+(global-set-key (kbd "\C-o" ) 'new_line_before)
+
+
 
 (provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   

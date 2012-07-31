@@ -11,6 +11,7 @@
 
 (el-get-install "php-mode-improved")
 
+(require 'php-mode)
 ;(require 'flymake)
 
 ;(defun flymake-php-init ()
