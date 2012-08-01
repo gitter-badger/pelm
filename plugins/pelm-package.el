@@ -63,6 +63,7 @@
         yasnippet
         emacs-w3m
         clojure-mode
+        slime
         ))             
 
 (setq pelm:el-get-packages
