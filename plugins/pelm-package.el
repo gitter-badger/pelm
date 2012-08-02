@@ -41,6 +41,12 @@
                :after   (progn
                           (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode )))
 
+        (:name auto-pair-plus
+               :after   (progn
+                          (add-hook 'emacs-lisp-mode-hook 'autopair-mode )
+                          (add-hook 'clojure-mode-hook 'autopair-mode)
+                          ))
+
         (:name goto-last-change		; move pointer back to last change
                :after   (progn
                         ;; when using AZERTY keyboard, consider C-x C-_
@@ -64,6 +70,8 @@
         emacs-w3m
         clojure-mode
         slime
+        clojure-test-mode
+        clojurescript-mode
         ))             
 
 (setq pelm:el-get-packages
