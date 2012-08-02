@@ -25,6 +25,16 @@
 (require 'jo-exporter)
 
 
+
+(defun open_blog_file ()
+  "open the blog file "
+  (interactive)
+  (find-file "~/src/Mine/eggcaker.github.com/_src/org/blog-2012.org")
+  (end-of-buffer))
+
+(define-key pelm-keymap "b" 'open_blog_file)
+
+
 (provide 'pelm-blog)
 
 

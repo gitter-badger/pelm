@@ -12,6 +12,6 @@
 
 
 (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode )
-
+;(add-hook 'clojure-mode-hook 'autopair-mode)
 
 (provide 'pelm-lisp)
