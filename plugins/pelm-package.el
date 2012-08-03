@@ -70,8 +70,6 @@
         emacs-w3m
         clojure-mode
         slime
-        clojure-test-mode
-        clojurescript-mode
         ))             
 
 (setq pelm:el-get-packages
