@@ -14,4 +14,10 @@
 (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode )
 ;(add-hook 'clojure-mode-hook 'autopair-mode)
 
+(add-hook 'slime-repl-mode-hook
+          (defun clojure-mode-slime-font-lock ()
+            (require 'clojure-mode)
+            (let (font-lock-mode)
+              (clojure-mode-font-lock-setup))))
+
 (provide 'pelm-lisp)
