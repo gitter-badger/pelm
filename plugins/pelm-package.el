@@ -70,6 +70,7 @@
         emacs-w3m
         clojure-mode
         slime
+        nxhtml
         ))             
 
 (setq pelm:el-get-packages
