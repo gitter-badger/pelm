@@ -22,3 +22,6 @@
 [submodule "vendor/jo-exporter"]
 	path = vendor/jo-exporter
 	url = https://github.com/eggcaker/jo-exporter.git
+[submodule "vendor/org-sync"]
+	path = vendor/org-sync
+	url = git://orgmode.org/org-sync.git
