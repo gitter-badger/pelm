@@ -21,8 +21,9 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-
-(color-theme-tomorrow)
+;; try classic
+(color-theme-classic)
+;(color-theme-tomorrow)
 
 ;;disable splash screen and tools bar
 (custom-set-variables
