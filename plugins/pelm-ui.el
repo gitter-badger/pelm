@@ -21,8 +21,7 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-;; try classic
-(color-theme-classic)
+(color-theme-gnome2)
 ;(color-theme-tomorrow)
 
 ;;disable splash screen and tools bar
