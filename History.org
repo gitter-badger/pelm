@@ -1,3 +1,6 @@
+*** 1.5.2 / 2012-08-20
+
+- test version generate
 *** 1.5.1 / 2012-08-20
 
 - changed readme
