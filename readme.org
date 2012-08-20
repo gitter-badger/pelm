@@ -84,8 +84,7 @@ MIT
 :TEMPLATE: blog_static_no_title.html
 :END:
 
-#+INCLUDE: "./History.org" src orgmode
-
+#+INCLUDE: "./History.org" orgmode
 ** Todo list [3/4]
 :PROPERTIES:
 :PAGE: todo.html
@@ -93,7 +92,6 @@ MIT
 :END:
 
 Task list : 
-
 ** Plugin List [0/22]
 :PROPERTIES:
 :PAGE: plugins.html
@@ -101,7 +99,6 @@ Task list :
 :END:
 
 Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/dimitri/el-get][ el-get]]! I use it to install some third-part packages.
-
 *** TODO pelm-ac
 *** TODO pelm-android
 *** TODO pelm-c
