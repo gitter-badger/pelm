@@ -1,0 +1,520 @@
+* 1.5.0 / 2012-08-20
+
+- auto commit Mon Aug 20 12:36:10 CST 2012
+- added sunrise package
+- auto commit Fri Aug 17 16:54:01 CST 2012
+- daily commit Wed Aug 15 18:27:08 CST 2012
+- auto commit added org-sync
+- daily commit Wed Aug  8 18:38:23 CST 2012
+- daily commit Fri Aug  3 18:35:22 CST 2012
+- auto commit added clojure support
+- daily commit Wed Aug  1 18:40:19 CST 2012
+- daily commit Tue Jul 31 18:39:50 CST 2012
+- Merge branch 'master' of github.com:eggcaker/pelm
+- added ledger babel, update jo
+- daily commit Mon Jul 30 18:34:33 CST 2012
+- auto commit $1
+- update submodule
+- auto commit $1
+- auto commit $1
+- auto commit $1
+- auto commit
+- daily commit Fri Jul 27 18:47:53 CST 2012
+- daily commit Fri Jul 27 08:21:09 CST 2012
+- daily commit Thu Jul 26 18:38:06 CST 2012
+- daily commit Tue Jul 24 18:52:14 CST 2012
+- submodule
+- daily commit Fri Jul 20 18:23:01 CST 2012
+- Merge branch 'master' of github.com:eggcaker/pelm
+- something changes
+- auto commit
+- Merge branch 'master' of github.com:eggcaker/pelm
+- auto commit
+- enabled objc-mode
+- update module
+- code hightlight in orgmode src
+- added notes and blog capture template
+- update module
+- Merge branch 'master' of github.com:eggcaker/pelm
+- added jo-exporter
+- added sumodule
+- clean
+- submodule
+- Merge branch 'master' of github.com:eggcaker/pelm
+- lua-mode
+- added some check for window-system
+- update sumodule
+- conver vendor
+- changes
+- Merge branch 'master' of github.com:eggcaker/pelm
+- fix el-get install
+- remove rakefile
+- added jdee and extra libs
+- mvn works with android
+- renabled android-mode
+- lot of changes
+- shortkey for o-blog generate
+- Merge branch 'master' of github.com:eggcaker/pelm
+- added o-blog and httpd server support
+- docs changes, moved some vendor to el-get format
+- docs changes, moved some vendor to el-get format
+- evil changes
+- some changes
+- changed some short keys
+- some changes
+- ensime
+- cleanup
+- sumodules
+- changes
+- keys
+- orgmode clean up
+- orgmode
+- rakefile
+- added jekyll-org plugin
+- some submodule issue
+- convert to rakefile
+- gh-pages generated
+- gh-pages
+- readme
+- fixed the org-checklist bugs, damn it !!!!
+- remove yasnipet
+- remove submodule
+- packages
+- fixed some bugs and ignore
+- removed elpa ,use el-get right now
+- remove elpa ? and use el-get
+- remove elpa ? and use el-get-a
+- remove elpa ? and use el-get-a
+- chnages
+- added ensime for scala
+- some
+- some chnages
+- update submodule
+- Merge branch 'master' of github.com:eggcaker/pelm
+- some changes
+- Merge branch 'master' of github.com:eggcaker/pelm
+- scala mode
+- scala mode
+- update org-contact
+- bongo
+- mpg123
+- gtags
+- a
+- changes
+- Merge branch 'master' of github.com:eggcaker/pelm
+- readme
+- c
+- aded jade mode
+- org stuff
+- changed
+- fixed date format
+- submodule fixed
+- clean
+- changes
+- changes
+- key
+- keys
+- keys
+- jump
+- bookmark+ too big !!
+- a
+- changes
+- w3m
+- changes
+- changes
+- color font
+- color theme
+- add package
+- gnus setup
+- added auto-complete-mode for org
+- a
+- php-mode
+- ignore
+- changed version ,add some module
+- fixed habit bugg
+- Fri Feb  3 04:55:20 CST 2012
+- clean
+- version ,package
+- a
+- ignore
+- Fri Feb  3 10:58:04 CST 2012
+- Thu Feb  2 22:50:55 CST 2012
+- a
+- changes
+- some changes
+- a
+-  orgmode
+- a
+- pelm-org and exec-path
+- pelm-org
+- submodule git-emacs
+- changed git to submodule
+- Merge branch 'master' of github.com:eggcaker/pelm
+- remove ajc, clean
+- added ruby plugin
+- added scala support ,removed some unused model
+- diabled ajc
+- scss ,auto complete java
+- markdown
+- Merge branch 'master' of github.com:eggcaker/pelm
+- markdown
+- editor
+- yaml
+- yas
+- java-mode
+- remove java-mode
+- move java-mode to new repo
+- android function, make file and cleanup elpa
+- ui chnages
+- chnaged version
+- merge develop
+- snippet
+- yas
+- prernsonl config, git fix
+- migrate git
+- removed blog android
+- added android-mode
+- remove ac mode
+- added ac-mode
+-  mac font,frame size
+- a
+- readme
+- readme
+- readme
+- plugins added
+- Merge branch 'feature/rewrite' into develop
+- common done
+- basic stuff
+- a
+- changes
+- rewiter
+- rewrite
+- added local.el or local.org for private test
+- a
+- win.el for windows
+- theme
+- theme
+- fixed org-mode load
+- added version
+- frame size
+- updated github theme
+- js3-mode
+- js3
+- remove js3 submodule
+- merage
+- elpa
+- remove some module,add js3
+- remove some module,add js3
+-  snippet
+- haml, android
+- haml
+- haml
+- Merge branch 'master' of github.com:eggcaker/pelm
+- haml
+- stock
+- update package list
+- soem weird bug
+- some bugs
+- Merge branch 'master' of github.com:eggcaker/pelm
+- lc
+- adds groovy
+- added linenum
+- android stuff
+- jump between cs and axml.cs file
+- added weibo-mode
+- add twitter mode, need write a new mdde for weibo
+- added csharp mode
+- a
+- added snippet for android
+- added objc-mode
+- a
+- added few snippets
+- Merge branch 'master' of github.com:eggcaker/pelm
+- aaa
+- added a linux os file
+-  addd import snippets
+- added ess package
+- Merge branch 'master' of github.com:eggcaker/pelm
+- aaa
+- added blog stuff
+- adeed blog mode
+- a
+- aa
+- meger
+- aaa
+- a
+- a
+- a
+- added ignore
+-  added path
+- a
+- org-mdoe snippets
+- aaa
+- remove twitter
+-  syntax error
+-  comment
+-  remove cedet
+- caker.el -> pelm-caker.org
+-  el to pelm-org
+-  remove elc files
+- aa
+- a
+- aa
+- aaa
+- pelm-org
+- a
+- add
+- a
+- change readme
+- a
+- m
+- a
+-  aaa
+
+* 1.0.0 / 2012-08-20
+- daily commit Fri Jul 20 18:23:01 CST 2012
+- Merge branch 'master' of github.com:eggcaker/pelm
+- something changes
+- auto commit
+- Merge branch 'master' of github.com:eggcaker/pelm
+- auto commit
+- enabled objc-mode
+- update module
+- code hightlight in orgmode src
+- added notes and blog capture template
+- update module
+- Merge branch 'master' of github.com:eggcaker/pelm
+- added jo-exporter
+- added sumodule
+- clean
+- submodule
+- Merge branch 'master' of github.com:eggcaker/pelm
+- lua-mode
+- added some check for window-system
+- update sumodule
+- conver vendor
+- changes
+- Merge branch 'master' of github.com:eggcaker/pelm
+- fix el-get install
+- remove rakefile
+- added jdee and extra libs
+- mvn works with android
+- renabled android-mode
+- lot of changes
+- shortkey for o-blog generate
+- Merge branch 'master' of github.com:eggcaker/pelm
+- added o-blog and httpd server support
+- docs changes, moved some vendor to el-get format
+- docs changes, moved some vendor to el-get format
+- evil changes
+- some changes
+- changed some short keys
+- some changes
+- ensime
+- cleanup
+- sumodules
+- changes
+- keys
+- orgmode clean up
+- orgmode
+- rakefile
+- added jekyll-org plugin
+- some submodule issue
+- convert to rakefile
+- gh-pages generated
+- gh-pages
+- readme
+- fixed the org-checklist bugs, damn it !!!!
+- remove yasnipet
+- remove submodule
+- packages
+- fixed some bugs and ignore
+- removed elpa ,use el-get right now
+- remove elpa ? and use el-get
+- remove elpa ? and use el-get-a
+- remove elpa ? and use el-get-a
+- chnages
+- added ensime for scala
+- some
+- some chnages
+- update submodule
+- Merge branch 'master' of github.com:eggcaker/pelm
+- some changes
+- Merge branch 'master' of github.com:eggcaker/pelm
+- scala mode
+- scala mode
+- update org-contact
+- bongo
+- mpg123
+- gtags
+- a
+- changes
+- Merge branch 'master' of github.com:eggcaker/pelm
+- readme
+- c
+- aded jade mode
+- org stuff
+- changed
+- fixed date format
+- submodule fixed
+- clean
+- changes
+- changes
+- key
+- keys
+- keys
+- jump
+- bookmark+ too big !!
+- a
+- changes
+- w3m
+- changes
+- changes
+- color font
+- color theme
+- add package
+- gnus setup
+- added auto-complete-mode for org
+- a
+- php-mode
+- ignore
+- changed version ,add some module
+- fixed habit bugg
+- Fri Feb  3 04:55:20 CST 2012
+- clean
+- version ,package
+- a
+- ignore
+- Fri Feb  3 10:58:04 CST 2012
+- Thu Feb  2 22:50:55 CST 2012
+- a
+- changes
+- some changes
+- a
+-  orgmode
+- a
+- pelm-org and exec-path
+- pelm-org
+- submodule git-emacs
+- changed git to submodule
+- Merge branch 'master' of github.com:eggcaker/pelm
+- remove ajc, clean
+- added ruby plugin
+- added scala support ,removed some unused model
+- diabled ajc
+- scss ,auto complete java
+- markdown
+- Merge branch 'master' of github.com:eggcaker/pelm
+- markdown
+- editor
+- yaml
+- yas
+- java-mode
+- remove java-mode
+- move java-mode to new repo
+- android function, make file and cleanup elpa
+- ui chnages
+- chnaged version
+- merge develop
+- snippet
+- yas
+- prernsonl config, git fix
+- migrate git
+- removed blog android
+- added android-mode
+- remove ac mode
+- added ac-mode
+-  mac font,frame size
+- a
+- readme
+- readme
+- readme
+- plugins added
+- Merge branch 'feature/rewrite' into develop
+- common done
+- basic stuff
+- a
+- changes
+- rewiter
+- rewrite
+- added local.el or local.org for private test
+- a
+- win.el for windows
+- theme
+- theme
+- fixed org-mode load
+- added version
+- frame size
+- updated github theme
+- js3-mode
+- js3
+- remove js3 submodule
+- merage
+- elpa
+- remove some module,add js3
+- remove some module,add js3
+-  snippet
+- haml, android
+- haml
+- haml
+- Merge branch 'master' of github.com:eggcaker/pelm
+- haml
+- stock
+- update package list
+- soem weird bug
+- some bugs
+- Merge branch 'master' of github.com:eggcaker/pelm
+- lc
+- adds groovy
+- added linenum
+- android stuff
+- jump between cs and axml.cs file
+- added weibo-mode
+- add twitter mode, need write a new mdde for weibo
+- added csharp mode
+- a
+- added snippet for android
+- added objc-mode
+- a
+- added few snippets
+- Merge branch 'master' of github.com:eggcaker/pelm
+- aaa
+- added a linux os file
+-  addd import snippets
+- added ess package
+- Merge branch 'master' of github.com:eggcaker/pelm
+- aaa
+- added blog stuff
+- adeed blog mode
+- a
+- aa
+- meger
+- aaa
+- a
+- a
+- a
+- added ignore
+-  added path
+- a
+- org-mdoe snippets
+- aaa
+- remove twitter
+-  syntax error
+-  comment
+-  remove cedet
+- caker.el -> pelm-caker.org
+-  el to pelm-org
+-  remove elc files
+- aa
+- a
+- aa
+- aaa
+- pelm-org
+- a
+- add
+- a
+- change readme
+- a
+- m
+- a
+-  aaa
