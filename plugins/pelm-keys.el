@@ -41,6 +41,7 @@
 (define-key evil-normal-state-map (kbd "C-.") nil)
 ;(define-key pelm-keymap "uf" 'ns-toggle-fullscreen)
 (define-key pelm-keymap "ev" 'turn-on-evil-mode)
+(define-key pelm-keymap "d" 'sunrise)
 
 (global-set-key  "\M-n" 'scroll-up-command)
 (global-set-key  "\M-p" 'scroll-down-command)

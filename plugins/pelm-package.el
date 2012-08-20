@@ -41,6 +41,7 @@
                :after   (progn
                           (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode )))
 
+
         (:name auto-pair-plus
                :after   (progn
                           (add-hook 'emacs-lisp-mode-hook 'autopair-mode )
@@ -71,6 +72,7 @@
         clojure-mode
         slime
         nxhtml
+        sunrise
         ))             
 
 (setq pelm:el-get-packages
