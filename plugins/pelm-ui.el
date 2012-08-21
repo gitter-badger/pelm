@@ -21,7 +21,7 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-(color-theme-gnome2)
+;(color-theme-gnome2)
 ;(color-theme-tomorrow)
 
 ;;disable splash screen and tools bar
