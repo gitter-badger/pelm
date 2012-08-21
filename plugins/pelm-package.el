@@ -72,7 +72,7 @@
         clojure-mode
         slime
         nxhtml
-        sunrise
+        sunrise-commander
         ))             
 
 (setq pelm:el-get-packages
