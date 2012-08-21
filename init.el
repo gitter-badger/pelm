@@ -1,7 +1,7 @@
 ;; PELM - init.el
 ;; Author: caker
 ;; Last modified: 2012-06-22
-;; Version: 1.0.0
+;; Version: 1.5.1
 
 (add-to-list 'load-path "~/.emacs.d")
 
