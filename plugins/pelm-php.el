@@ -12,6 +12,9 @@
 (el-get-install "php-mode-improved")
 
 (require 'php-mode)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+
+
 ;(require 'flymake)
 
 ;(defun flymake-php-init ()
