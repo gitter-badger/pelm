@@ -71,7 +71,7 @@
         emacs-w3m
         clojure-mode
         slime
-        nxhtml
+        ;nxhtml
         sunrise-commander
         ))             
 
