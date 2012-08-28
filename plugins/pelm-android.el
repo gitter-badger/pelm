@@ -9,6 +9,7 @@
 
 ;;; Code:
 
+(require 'android-mode)
  (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -22,7 +23,7 @@
 
 (define-key pelm-keymap "ac" 'compile)
 
-(require 'android-mode)
+;(require 'android-mode)
 
 ;; enabled error line number jumper 
 
