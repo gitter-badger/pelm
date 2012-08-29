@@ -78,6 +78,15 @@
 (define-key pelm-keymap "," 'start_work)
 (define-key pelm-keymap "." 'go_home)
 
+(require 'jabber)
+(setq jabber-account-list
+      '(
+        ("eggcaker@gmail.com"
+         (:connection-type . ssl)
+         (:network-server . "talk.google.com")
+         (:port . 5223)
+        )
+       ))
 
 (provide 'pelm-misc)
 
