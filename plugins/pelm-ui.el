@@ -22,7 +22,7 @@
 
 ;; color-theme
 ;(color-theme-gnome2)
-;(color-theme-tomorrow)
+(color-theme-railscasts)
 
 ;;disable splash screen and tools bar
 (custom-set-variables
