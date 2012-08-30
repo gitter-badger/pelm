@@ -88,6 +88,22 @@
         )
        ))
 
+(custom-set-variables
+
+ '(jabber-auto-reconnect t)
+ '(jabber-avatar-verbose nil)
+ '(jabber-vcard-avatars-retrieve nil)
+ '(jabber-chat-buffer-format "*-jabber-%n-*")
+ '(jabber-history-enabled t)
+ '(jabber-mode-line-mode t)
+ '(jabber-roster-buffer "*-jabber-*")
+ '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
+ '(jabber-show-offline-contacts nil))
+
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here
+
+
+
