@@ -58,7 +58,6 @@
       '(el-get				; el-get is self-hosting
         auto-complete			; complete as you type with overlays
         color-theme	                ; nice looking emacs
-        color-theme-railscasts          ; try this one
         psvn
         magithub
         fuzzy

@@ -22,6 +22,8 @@
 
 ;; color-theme
 ;(color-theme-gnome2)
+
+(require 'color-theme-railscasts)
 (color-theme-railscasts)
 
 ;;disable splash screen and tools bar
