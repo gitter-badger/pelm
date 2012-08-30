@@ -25,6 +25,10 @@
 (global-set-key (kbd "\e <up>") 'windmove-up)
 (global-set-key (kbd "\e <right>") 'windmove-right)
 
+(define-key pelm-keymap "j" 'windmove-left)
+(define-key pelm-keymap "l" 'windmove-right)
+(define-key pelm-keymap "k" 'windmove-up)
+(define-key pelm-keymap "n" 'windmove-down)
 
 (define-key pelm-keymap "el" 'downcase-region)
 (define-key pelm-keymap "eu" 'upcase-region)
