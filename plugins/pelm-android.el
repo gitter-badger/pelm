@@ -32,6 +32,18 @@
        '(maven "\\[ERROR\\] \\(.+?\\):\\[\\([0-9]+\\),\\([0-9]+\\)\\].*"
            1 2 3))
 
+
+(require 'thingatpt)
+
+(defun pelm-search-android-doc ()
+  "search the string from android api document"
+  (interactive )
+  (browse-url (concat "http://developer.android.com/reference/packages.html#q=" 
+                                     (thing-at-point 'word))))
+
+(define-key  pelm-keymap "ad" 'pelm-search-android-doc)
+
+
 (provide 'pelm-android)
 
 ;;pelm-android.el ends here

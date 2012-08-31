@@ -11,10 +11,10 @@
 
 
 (if (and window-system  (eq system-type 'darwin))
-  ;; font set only for mac OSx
+    ;; font set only for mac OSx
     ;;(set-face-font 'default "Menlo-16"))
-    (set-face-font 'default "Anonymous_Pro-18"))
-; (set-frame-font "DejaVu Sans Mono-15"))
+    ;;(set-face-font 'default "Anonymous_Pro-18"))
+    (set-face-font 'default "BPtypewrite-18"))
 
 
 ;; DOING: try switch the option and command again !
