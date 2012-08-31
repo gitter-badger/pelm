@@ -67,13 +67,13 @@
   "pull all repos before start work "
   (interactive)
   (org-mobile-pull)
-  (async-shell-command  "~/.oh-my-zsh/bin/start_work"))
+  (async-shell-command  "~/.oh-my-zsh/bin/c.sw"))
 
 (defun go_home ()
   "push all repos before go home "
   (interactive)
   (org-mobile-push)
-  (async-shell-command "~/.oh-my-zsh/bin/go_home"))
+  (async-shell-command "~/.oh-my-zsh/bin/c.gh"))
 
 (define-key pelm-keymap "," 'start_work)
 (define-key pelm-keymap "." 'go_home)
