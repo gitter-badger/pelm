@@ -12,12 +12,11 @@
 
 (if (and window-system  (eq system-type 'darwin))
     ;; font set only for mac OSx
-    ;;(set-face-font 'default "Menlo-16"))
-    ;;(set-face-font 'default "Anonymous_Pro-18"))
-    (set-face-font 'default "BPtypewrite-18"))
+    (set-face-font 'default "Menlo-18"))
+;;(set-face-font 'default "Anonymous_Pro-20"))
+;;(set-face-font 'default "BPtypewrite-18"))
 
 
-;; DOING: try switch the option and command again !
 ;; under mac, have Command as Meta and keep Option for localized input
 (when (string-match "apple-darwin" system-configuration)
   (setq mac-allow-anti-aliasing t)
