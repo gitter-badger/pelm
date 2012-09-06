@@ -100,6 +100,11 @@
  '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
  '(jabber-show-offline-contacts nil))
 
+ (defun offlineimap-get-password (host port)
+         (let* ((netrc (netrc-parse (expand-file-name "~/.netrc.gpg")))
+                             (hostentry (netrc-machine netrc host port port)))
+                   (when hostentry (netrc-get hostentry "password"))))
+
 
 (provide 'pelm-misc)
 
