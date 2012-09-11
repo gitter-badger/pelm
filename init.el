@@ -71,6 +71,8 @@
 (require 'pelm-blog)
 
 
+(require 'pelm-mail)
+
 ;(require 'pelm-fun)
 
 ;; lab
