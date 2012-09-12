@@ -956,10 +956,10 @@ INFO is a plist used as a communication channel.
 Footnotes definitions are returned within \"\\footnotetxt{}\"
 commands.
 
-This functions is used within constructs that don't support
+This function is used within constructs that don't support
 \"\\footnote{}\" command (i.e. an item's tag).  In that case,
-\"\\footnotemark\" is used within the construct and this function
-outside of it."
+\"\\footnotemark\" is used within the construct and the function
+just outside of it."
   (mapconcat
    (lambda (ref)
      (format
@@ -1279,7 +1279,7 @@ INFO is a plist used as a communication channel."
 CONTENTS is nil.  INFO is a plist holding contextual information."
   (concat
    ;; Insert separator between two footnotes in a row.
-   (let ((prev (org-export-get-previous-element footnote-reference)))
+   (let ((prev (org-export-get-previous-element footnote-reference info)))
      (when (eq (org-element-type prev) 'footnote-reference)
        org-e-latex-footnote-separator))
    (cond
@@ -1406,14 +1406,14 @@ holding contextual information."
       (let ((low-level-body
 	     (concat
 	      ;; If the headline is the first sibling, start a list.
-	      (when (org-export-first-sibling-p headline)
+	      (when (org-export-first-sibling-p headline info)
 		(format "\\begin{%s}\n" (if numberedp 'enumerate 'itemize)))
 	      ;; Itemize headline
 	      "\\item " full-text "\n" headline-label pre-blanks contents)))
 	;; If headline is not the last sibling simply return
 	;; LOW-LEVEL-BODY.  Otherwise, also close the list, before any
 	;; blank line.
-	(if (not (org-export-last-sibling-p headline)) low-level-body
+	(if (not (org-export-last-sibling-p headline info)) low-level-body
 	  (replace-regexp-in-string
 	   "[ \t\n]*\\'"
 	   (format "\n\\\\end{%s}" (if numberedp 'enumerate 'itemize))
@@ -1453,10 +1453,20 @@ holding contextual information."
 (defun org-e-latex-horizontal-rule (horizontal-rule contents info)
   "Transcode an HORIZONTAL-RULE  object from Org to LaTeX.
 CONTENTS is nil.  INFO is a plist holding contextual information."
-  (let ((attr (mapconcat #'identity
-			 (org-element-property :attr_latex horizontal-rule)
-			 " ")))
-    (org-e-latex--wrap-label horizontal-rule (concat "\\hrule " attr))))
+  (let ((attr (org-export-read-attribute :attr_latex horizontal-rule))
+	(prev (org-export-get-previous-element horizontal-rule info)))
+    (concat
+     ;; Make sure the rule doesn't start at the end of the current
+     ;; line by separating it with a blank line from previous element.
+     (when (and prev
+		(let ((prev-blank (org-element-property :post-blank prev)))
+		  (or (not prev-blank) (zerop prev-blank))))
+       "\n")
+     (org-e-latex--wrap-label
+      horizontal-rule
+      (format "\\rule{%s}{%s}"
+	      (or (plist-get attr :width) "\\linewidth")
+	      (or (plist-get attr :thickness) "0.5pt"))))))
 
 
 ;;;; Inline Babel Call
@@ -1580,7 +1590,7 @@ contextual information."
 				 (concat checkbox
 					 (org-export-data tag info)))))))
     (concat counter "\\item" (or tag (concat " " checkbox))
-	    (org-trim contents)
+	    (and contents (org-trim contents))
 	    ;; If there are footnotes references in tag, be sure to
 	    ;; add their definition at the end of the item.  This
 	    ;; workaround is necessary since "\footnote{}" command is
@@ -1738,8 +1748,6 @@ INFO is a plist holding contextual information.  See
 		((member type '("http" "https" "ftp" "mailto"))
 		 (concat type ":" raw-path))
 		((string= type "file")
-		 (when (string-match "\\(.+\\)::.+" raw-path)
-		   (setq raw-path (match-string 1 raw-path)))
 		 (if (file-name-absolute-p raw-path)
 		     (concat "file://" (expand-file-name raw-path))
 		   (concat "file://" raw-path)))
@@ -1877,33 +1885,36 @@ contextual information."
   "Transcode a TEXT string from Org to LaTeX.
 TEXT is the string to transcode.  INFO is a plist holding
 contextual information."
-  ;; Protect %, #, &, $, ~, ^, _,  { and }.
-  (while (string-match "\\([^\\]\\|^\\)\\([%$#&{}~^_]\\)" text)
-    (setq text
-	  (replace-match (format "\\%s" (match-string 2 text)) nil t text 2)))
-  ;; Protect \
-  (setq text (replace-regexp-in-string
-	      "\\(?:[^\\]\\|^\\)\\(\\\\\\)\\(?:[^%$#&{}~^_\\]\\|$\\)"
-	      "$\\backslash$" text nil t 1))
-  ;; LaTeX into \LaTeX{} and TeX into \TeX{}.
-  (let ((case-fold-search nil)
-	(start 0))
-    (while (string-match "\\<\\(\\(?:La\\)?TeX\\)\\>" text start)
-      (setq text (replace-match
-		  (format "\\%s{}" (match-string 1 text)) nil t text)
-	    start (match-end 0))))
-  ;; Handle quotation marks
-  (setq text (org-e-latex--quotation-marks text info))
-  ;; Convert special strings.
-  (when (plist-get info :with-special-strings)
-    (while (string-match (regexp-quote "...") text)
-      (setq text (replace-match "\\ldots{}" nil t text))))
-  ;; Handle break preservation if required.
-  (when (plist-get info :preserve-breaks)
-    (setq text (replace-regexp-in-string "\\(\\\\\\\\\\)?[ \t]*\n" " \\\\\\\\\n"
-					 text)))
-  ;; Return value.
-  text)
+  (let ((specialp (plist-get info :with-special-strings)))
+    ;; Protect %, #, &, $, ~, ^, _,  { and }.
+    (while (string-match "\\([^\\]\\|^\\)\\([%$#&{}~^_]\\)" text)
+      (setq text
+	    (replace-match (format "\\%s" (match-string 2 text)) nil t text 2)))
+    ;; Protect \.  If special strings are used, be careful not to
+    ;; protect "\" in "\-" constructs.
+    (let ((symbols (if specialp "-%$#&{}~^_\\" "%$#&{}~^_\\")))
+      (setq text
+	    (replace-regexp-in-string
+	     (format "\\(?:[^\\]\\|^\\)\\(\\\\\\)\\(?:[^%s]\\|$\\)" symbols)
+	     "$\\backslash$" text nil t 1)))
+    ;; LaTeX into \LaTeX{} and TeX into \TeX{}.
+    (let ((case-fold-search nil)
+	  (start 0))
+      (while (string-match "\\<\\(\\(?:La\\)?TeX\\)\\>" text start)
+	(setq text (replace-match
+		    (format "\\%s{}" (match-string 1 text)) nil t text)
+	      start (match-end 0))))
+    ;; Handle quotation marks.
+    (setq text (org-e-latex--quotation-marks text info))
+    ;; Convert special strings.
+    (when specialp
+      (setq text (replace-regexp-in-string "\\.\\.\\." "\\ldots{}" text nil t)))
+    ;; Handle break preservation if required.
+    (when (plist-get info :preserve-breaks)
+      (setq text (replace-regexp-in-string "\\(\\\\\\\\\\)?[ \t]*\n" " \\\\\\\\\n"
+					   text)))
+    ;; Return value.
+    text))
 
 
 ;;;; Planning
@@ -2124,7 +2135,8 @@ contextual information."
 (defun org-e-latex-statistics-cookie (statistics-cookie contents info)
   "Transcode a STATISTICS-COOKIE object from Org to LaTeX.
 CONTENTS is nil.  INFO is a plist holding contextual information."
-  (org-element-property :value statistics-cookie))
+  (replace-regexp-in-string
+   "%" "\\%" (org-element-property :value statistics-cookie) nil t))
 
 
 ;;;; Strike-Through
@@ -2392,7 +2404,7 @@ a communication channel."
 		      (match-string 1 contents)
 		      (match-string 2 contents))
 	    contents)
-	  (when (org-export-get-next-element table-cell) " & ")))
+	  (when (org-export-get-next-element table-cell info) " & ")))
 
 
 ;;;; Table Row

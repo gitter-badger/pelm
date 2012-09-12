@@ -19,25 +19,30 @@
        mu4e-trash-folder  "/[Gmail].Trash"  
        mu4e-maildir-shortcuts '(
                                 ("/INBOX"       . ?i)
-                                ("/orgmode"        . ?o)
+                                ("/orgmode"        . ?O)
                                 ("/[Gmail].Important"        . ?I))
 
        ;;
        mu4e-get-mail-command "offlineimap"
-       ;; tell message-mode how to send mail
-       message-send-mail-function 'smtpmail-send-it
-       ;; if our mail server lives at smtp.example.org; if you have a local
-       ;; mail-server, simply use 'localhost' here.
-       smtpmail-smtp-server "smtp.gmail.com"
-       ;; don't save messages to Sent Messages, Gmail/IMAP will take care of this
        org-mu4e-convert-to-html t
+       ;; don't save messages to Sent Messages, Gmail/IMAP will take care of this
        mu4e-sent-messages-behavior 'trash)
 
+;;send mail
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-stream-type 'starttls
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587)
+     
+     ;; don't keep message buffers around
+     (setq message-kill-buffer-on-exit t)
+
 (setq mu4e-org-contacts-file  "~/.org-files/contacts.org")
-     (add-to-list 'mu4e-headers-actions
-       '("org-contact-add" . mu4e-action-add-org-contact) t)
-     (add-to-list 'mu4e-view-actions
-       '("org-contact-add" . mu4e-action-add-org-contact) t)
+(add-to-list 'mu4e-headers-actions
+             '("org-contact-add" . mu4e-action-add-org-contact) t)
+(add-to-list 'mu4e-view-actions
+             '("org-contact-add" . mu4e-action-add-org-contact) t)
  (require 'gnus-dired)
 ;; make the `gnus-dired-mail-buffers' function also work on message-mode derived
 ;; modes, such as mu4e-compose-mode
@@ -54,6 +59,38 @@
 
 (setq gnus-dired-mail-mode 'mu4e-user-agent)
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+;(setq mu4e-bookmarks '(("flag:unread AND NOT flag:trashed AND NOT 
+;  maildir:/[Gmail].Sent AND NOT maildir:/[Gmail].Spam" "Unread messages" ?u))) 
+
+(setq  mu4e-view-prefer-html t)
+(setq mail-user-agent 'mu4e-user-agent)
+
+;; something about ourselves
+(setq
+ user-mail-address "eggcaker@gmail.com"
+ user-full-name  "Tongzhu Zhang"
+ message-signature
+ (concat
+  "Tongzhu Zhang\n"
+  "http://caker.me\n"))
+
+(setq message-kill-buffer-on-exit t)
+(setq mu4e-html2text-command "w3m -dump -T text/html")
+(setq w3m-command "/usr/local/bin/w3m")
+
+
+;; password encrypt 
+(require 'epa-file)
+(epa-file-enable)
+(require 'netrc)
+(require 'offlineimap)
+(setq smtpmail-auth-credentials (expand-file-name "~/.netrc.gpg"))
+
+(defun offlineimap-get-password (host port)
+  (let* ((netrc (netrc-parse (expand-file-name "~/.netrc.gpg")))
+         (hostentry (netrc-machine netrc host port port)))
+    (when hostentry (netrc-get hostentry "password"))))
 
 (provide 'pelm-mail)
 ;;; pelm-mail.el ends here
