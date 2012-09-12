@@ -670,9 +670,9 @@ and corresponding declarations."
 		  (cons (string :tag "Extension")
 			(string :tag "Declaration")))))
 
-(defcustom org-e-html-coding-system org-export-coding-system
+(defcustom org-e-html-coding-system 'utf-8
   "Coding system for HTML export.
-Use `org-export-coding-system' as the default value."
+Use utf-8 as the default value."
   :group 'org-export-e-html
   :type 'coding-system)
 
@@ -1123,7 +1123,6 @@ that uses these same face definitions."
 	      (format "<span class=\"%s\">%s</span>" todo-type headline)))))
 
 (defun org-e-html-toc (depth info)
-  (assert (wholenump depth))
   (let* ((headlines (org-export-collect-headlines info depth))
 	 (toc-entries
 	  (loop for headline in headlines collect
@@ -1473,7 +1472,7 @@ original parsed data.  INFO is a plist holding export options."
 <h1 class=\"title\">%s</h1>\n" (org-export-data (plist-get info :title) info))
    ;; table of contents
    (let ((depth (plist-get info :with-toc)))
-     (when (wholenump depth) (org-e-html-toc depth info)))
+     (when depth (org-e-html-toc depth info)))
    ;; document contents
    contents
    ;; footnotes section
@@ -1823,7 +1822,7 @@ CONTENTS is nil.  INFO is a plist holding contextual information."
 CONTENTS is nil.  INFO is a plist holding contextual information."
   (concat
    ;; Insert separator between two footnotes in a row.
-   (let ((prev (org-export-get-previous-element footnote-reference)))
+   (let ((prev (org-export-get-previous-element footnote-reference info)))
      (when (eq (org-element-type prev) 'footnote-reference)
        org-e-html-footnote-separator))
    (cond
@@ -1917,10 +1916,10 @@ holding contextual information."
 	     (itemized-body (org-e-html-format-list-item
 			     contents type nil nil full-text)))
 	(concat
-	 (and (org-export-first-sibling-p headline)
+	 (and (org-export-first-sibling-p headline info)
 	      (org-e-html-begin-plain-list type))
 	 itemized-body
-	 (and (org-export-last-sibling-p headline)
+	 (and (org-export-last-sibling-p headline info)
 	      (org-e-html-end-plain-list type)))))
      ;; Case 3. Standard headline.  Export it as a section.
      (t
@@ -2084,10 +2083,10 @@ CONTENTS is nil.  INFO is a plist holding contextual information."
   (let ((key (org-element-property :key keyword))
 	(value (org-element-property :value keyword)))
     (cond
-     ((string= key "LATEX") value)
+     ((string= key "HTML") value)
      ((string= key "INDEX") (format "\\index{%s}" value))
      ;; Invisible targets.
-     ((string= key "TARGET") nil)	; FIXME
+     ((string= key "TARGET") nil)
      ((string= key "TOC")
       (let ((value (downcase value)))
 	(cond
@@ -2095,7 +2094,7 @@ CONTENTS is nil.  INFO is a plist holding contextual information."
 	  (let ((depth (or (and (string-match "[0-9]+" value)
 				(string-to-number (match-string 0 value)))
 			   (plist-get info :with-toc))))
-	    (when (wholenump depth) (org-e-html-toc depth info))))
+	    (org-e-html-toc depth info)))
 	 ((string= "tables" value) "\\listoftables")
 	 ((string= "figures" value) "\\listoffigures")
 	 ((string= "listings" value)
@@ -2278,10 +2277,6 @@ INFO is a plist holding contextual information.  See
 		((member type '("http" "https" "ftp" "mailto"))
 		 (concat type ":" raw-path))
 		((string= type "file")
-		 ;; Extract just the file path and strip all other
-		 ;; components.
-		 (when (string-match "\\(.+\\)::.+" raw-path)
-		   (setq raw-path (match-string 1 raw-path)))
 		 ;; Treat links to ".org" files as ".html", if needed.
 		 (setq raw-path (funcall --link-org-files-as-html-maybe
 					 raw-path info))
@@ -2835,10 +2830,9 @@ contextual information."
   				   (org-export-solidify-link-text label)))))))
        ;; Remove last blank line.
        (setq contents (substring contents 0 -1))
-       ;; FIXME: splice
-       (format "<table%s>\n<caption>%s</caption>\n%s\n%s\n</table>"
+       (format "<table%s>\n%s\n%s\n%s\n</table>"
   	       table-attributes
-  	       (or caption "")
+	       (if (not caption) "" (format "<caption>%s</caption>" caption))
   	       (funcall table-column-specs table info)
   	       contents)))))
 

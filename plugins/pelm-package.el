@@ -71,6 +71,7 @@
         clojure-mode
         slime
         ;nxhtml
+        offlineimap
         sunrise-commander
         ))             
 

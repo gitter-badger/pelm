@@ -33,6 +33,24 @@
 
 
 
+;;; User-Configurable Variables
+
+(defgroup org-export-md nil
+  "Options specific to Markdown export back-end."
+  :tag "Org Markdown"
+  :group 'org-export
+  :version "24.2")
+
+(defcustom org-md-headline-style 'atx
+  "Style used to format headlines.
+This variable can be set to either `atx' or `setext'."
+  :group 'org-export-md
+  :type '(choice
+	  (const :tag "Use \"atx\" style" atx)
+	  (const :tag "Use \"Setext\" style" setext)))
+
+
+
 ;;; Define Back-End
 
 (org-export-define-derived-backend md e-html
@@ -129,22 +147,47 @@ channel."
 CONTENTS is the headline contents.  INFO is a plist used as
 a communication channel."
   (unless (org-element-property :footnote-section-p headline)
-    (let ((level (org-export-get-relative-level headline info))
-	  (title (org-export-data (org-element-property :title headline) info))
-	  (todo (and (plist-get info :with-todo-keywords)
-		     (let ((todo (org-element-property :todo-keyword headline)))
-		       (and todo (org-export-data todo info)))))
-	  (tags (and (plist-get info :with-tags)
-		     (org-export-get-tags headline info)))
-	  (priority (and (plist-get info :with-priority)
-			 (org-element-property :priority headline))))
-      (concat (make-string level ?#)
-	      (and todo (concat " " todo))
-	      (and priority (concat " " priority))
-	      " " title
-	      (and tags (format " :%s:"
-				(mapconcat 'identity tags ":")))
-	      "\n\n" contents))))
+    (let* ((level (org-export-get-relative-level headline info))
+	   (title (org-export-data (org-element-property :title headline) info))
+	   (todo (and (plist-get info :with-todo-keywords)
+		      (let ((todo (org-element-property :todo-keyword
+							headline)))
+			(and todo (concat (org-export-data todo info) " ")))))
+	   (tags (and (plist-get info :with-tags)
+		      (let ((tag-list (org-export-get-tags headline info)))
+			(and tag-list
+			     (format "     :%s:"
+				     (mapconcat 'identity tag-list ":"))))))
+	   (priority
+	    (and (plist-get info :with-priority)
+		 (let ((char (org-element-property :priority headline)))
+		   (and char (format "[#%c] " char)))))
+	   ;; Headline text without tags.
+	   (heading (concat todo priority title)))
+      (cond
+       ;; Cannot create an headline.  Fall-back to a list.
+       ((or (org-export-low-level-p headline info)
+	    (not (memq org-md-headline-style '(atx setext)))
+	    (and (eq org-md-headline-style 'atx) (> level 6))
+	    (and (eq org-md-headline-style 'setext) (> level 2)))
+	(let ((bullet
+	       (if (not (org-export-numbered-headline-p headline info)) "-"
+		 (concat (number-to-string
+			  (car (last (org-export-get-headline-number
+				      headline info))))
+			 "."))))
+	  (concat bullet (make-string (- 4 (length bullet)) ? ) heading tags
+		  "\n\n"
+		  (and contents
+		       (replace-regexp-in-string "^" "    " contents)))))
+       ;; Use "Setext" style.
+       ((eq org-md-headline-style 'setext)
+	(concat heading tags "\n"
+		(make-string (length heading) (if (= level 1) ?= ?-))
+		"\n\n"
+		contents))
+       ;; Use "atx" style.
+       (t (concat (make-string level ?#) " " heading tags "\n\n" contents))))))
 
 
 ;;;; Horizontal Rule
@@ -264,10 +307,6 @@ a communication channel."
 			   ((member type '("http" "https" "ftp"))
 			    (concat type ":" raw-path))
 			   ((equal type "file")
-			    ;; Extract just the file path and strip
-			    ;; all other components.
-			    (when (string-match "\\(.+\\)::.+" raw-path)
-			      (setq raw-path (match-string 1 raw-path)))
 			    ;; Treat links to ".org" files as ".html",
 			    ;; if needed.
 			    (setq raw-path
@@ -288,7 +327,11 @@ a communication channel."
   "Transcode PARAGRAPH element into Markdown format.
 CONTENTS is the paragraph contents.  INFO is a plist used as
 a communication channel."
-  contents)
+  (let ((first-object (car (org-element-contents paragraph))))
+    ;; If paragraph starts with a #, protect it.
+    (if (and (stringp first-object) (string-match "\\`#" first-object))
+	(replace-regexp-in-string "\\`#" "\\#" contents nil t)
+      contents)))
 
 
 ;;;; Plain List
@@ -306,6 +349,10 @@ a communication channel."
   "Transcode a TEXT string into Markdown format.
 TEXT is the string to transcode.  INFO is a plist holding
 contextual information."
+  ;; Protect ambiguous #.  This will protect # at the beginning of
+  ;; a line, but not at the beginning of a paragraph.  See
+  ;; `org-md-paragraph'.
+  (setq text (replace-regexp-in-string "\n#" "\n\\\\#" text))
   ;; Protect ambiguous !
   (setq text (replace-regexp-in-string "\\(!\\)\\[" "\\\\!" text nil nil 1))
   ;; Protect `, *, _ and \
@@ -339,10 +386,7 @@ a communication channel."
   "Transcode SECTION element into Markdown format.
 CONTENTS is the section contents.  INFO is a plist used as
 a communication channel."
-  ;; Protect ambiguous #.  It isn't handled at the plain-text level
-  ;; since it requires a better view of the problem.
-  (replace-regexp-in-string
-   "^\\(?:[ \t]*>[ >]*\\)?\\(#\\)" "\\\\#" contents nil nil 1))
+  contents)
 
 
 ;;;; Template
@@ -373,10 +417,9 @@ first.
 When optional argument VISIBLE-ONLY is non-nil, don't export
 contents of hidden elements.
 
-When optional argument PUB-DIR is set, use it as the publishing
-directory.
-
-Return output file's name."
+Export is done in a buffer named \"*Org MD Export*\", which will
+be displayed when `org-export-show-temporary-export-buffer' is
+non-nil."
   (interactive)
   (let ((outbuf (org-export-to-buffer
 		 'md "*Org MD Export*" subtreep visible-only)))

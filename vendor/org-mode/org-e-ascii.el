@@ -38,6 +38,7 @@
 (eval-when-compile (require 'cl))
 (require 'org-export)
 
+(declare-function aa2u "ext:ascii-art-to-unicode" ())
 
 ;;; Define Back-End
 ;;
@@ -242,6 +243,15 @@ When nil, narrowed columns will look in ASCII export just like in
 Org mode, i.e. with \"=>\" as ellipsis."
   :group 'org-export-e-ascii
   :type 'boolean)
+
+(defcustom org-e-ascii-table-use-ascii-art nil
+  "Non-nil means table.el tables are turned into ascii-art.
+
+It only makes sense when export charset is `utf-8'.  It is nil by
+default since it requires ascii-art-to-unicode.el package.  You
+can download it here:
+
+  http://gnuvola.org/software/j/aa2u/ascii-art-to-unicode.el.")
 
 (defcustom org-e-ascii-caption-above nil
   "When non-nil, place caption string before the element.
@@ -498,7 +508,8 @@ title."
 		 'number-to-string
 		 (org-export-get-headline-number element info) ".")
 		" ")))
-	 (text (org-export-data (org-element-property :title element) info))
+	 (text (org-trim
+		(org-export-data (org-element-property :title element) info)))
 	 (todo
 	  (and (plist-get info :with-todo-keywords)
 	       (let ((todo (org-element-property :todo-keyword element)))
@@ -511,7 +522,8 @@ title."
 				   (mapconcat 'identity tag-list ":"))))))
 	 (priority
 	  (and (plist-get info :with-priority)
-	       (concat (org-element-property :priority element) " ")))
+	       (let ((char (org-element-property :priority element)))
+		 (and char (format "(#%c) " char)))))
 	 (first-part (concat numbers todo priority text)))
     (concat
      first-part
@@ -1350,15 +1362,15 @@ contextual information."
 (defun org-e-ascii-plain-text (text info)
   "Transcode a TEXT string from Org to ASCII.
 INFO is a plist used as a communication channel."
-  (if (not (and (eq (plist-get info :ascii-charset) 'utf-8)
-		(plist-get info :with-special-strings)))
-      text
-    ;; Usual replacements in utf-8 with proper option set.
-    (replace-regexp-in-string
-     "\\.\\.\\." "…"
-     (replace-regexp-in-string
-      "--" "–"
-      (replace-regexp-in-string "---" "—" text)))))
+  (if (not (plist-get info :with-special-strings)) text
+    (setq text (replace-regexp-in-string "\\\\-" "" text))
+    (if (not (eq (plist-get info :ascii-charset) 'utf-8)) text
+      ;; Usual replacements in utf-8 with proper option set.
+      (replace-regexp-in-string
+       "\\.\\.\\." "…"
+       (replace-regexp-in-string
+	"--" "–"
+	(replace-regexp-in-string "---" "—" text))))))
 
 
 ;;;; Planning
@@ -1522,8 +1534,19 @@ contextual information."
      ;; Possibly add a caption string above.
      (when (and caption org-e-ascii-caption-above) (concat caption "\n"))
      ;; Insert table.  Note: "table.el" tables are left unmodified.
-     (if (eq (org-element-property :type table) 'org) contents
-       (org-remove-indentation (org-element-property :value table)))
+     (cond ((eq (org-element-property :type table) 'org) contents)
+	   ((and org-e-ascii-table-use-ascii-art
+		 (eq (plist-get info :ascii-charset) 'utf-8)
+		 (require 'ascii-art-to-unicode nil t))
+	    (with-temp-buffer
+	      (insert (org-remove-indentation
+		       (org-element-property :value table)))
+	      (goto-char (point-min))
+	      (aa2u)
+	      (goto-char (point-max))
+	      (skip-chars-backward " \r\t\n")
+	      (buffer-substring (point-min) (point))))
+	   (t (org-remove-indentation (org-element-property :value table))))
      ;; Possible add a caption string below.
      (when (and caption (not org-e-ascii-caption-above))
        (concat "\n" caption)))))
@@ -1704,7 +1727,7 @@ This function only applies to `e-ascii' back-end.  See
 `org-e-ascii-headline-spacing' for information.
 
 For any other back-end, HEADLINE is returned as-is."
-  (if (not (and (eq back-end 'e-ascii) org-e-ascii-headline-spacing)) headline
+  (if (not org-e-ascii-headline-spacing) headline
     (let ((blanks (make-string (1+ (cdr org-e-ascii-headline-spacing)) ?\n)))
       (replace-regexp-in-string "\n\\(?:\n[ \t]*\\)*\\'" blanks headline))))
 
@@ -1736,10 +1759,9 @@ EXT-PLIST, when provided, is a property list with external
 parameters overriding Org default settings, but still inferior to
 file-local settings.
 
-When optional argument PUB-DIR is set, use it as the publishing
-directory.
-
-Return output file's name."
+Export is done in a buffer named \"*Org E-ASCII Export*\", which
+will be displayed when `org-export-show-temporary-export-buffer'
+is non-nil."
   (interactive)
   (let ((outbuf (org-export-to-buffer
 		 'e-ascii "*Org E-ASCII Export*"
