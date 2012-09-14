@@ -106,6 +106,14 @@
 (global-set-key (kbd "\C-o" ) 'new_line_before)
 
 
+(when (require 'browse-kill-ring nil 'noerror)
+  (browse-kill-ring-default-keybindings))
+
+(global-set-key "\C-cy" '(lambda ()
+   (interactive)
+   (popup-menu 'yank-menu)))
+
+
 
 (provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   

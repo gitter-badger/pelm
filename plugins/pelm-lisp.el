@@ -20,4 +20,6 @@
             (let (font-lock-mode)
               (clojure-mode-font-lock-setup))))
 
+
+(setq swank-clojure-classpath (directory-files "~/.emacs.d/el-get/jars" t ".jar$"))
 (provide 'pelm-lisp)
