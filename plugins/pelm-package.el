@@ -73,6 +73,7 @@
         ;nxhtml
         offlineimap
         sunrise-commander
+        browse-kill-ring
         ))             
 
 (setq pelm:el-get-packages
