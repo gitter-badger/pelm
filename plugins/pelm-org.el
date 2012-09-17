@@ -483,11 +483,10 @@ as the default task."
           (when pelm/keep-clock-running
             (pelm/clock-in-default-task)))))))
 
-(defvar pelm/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
 
-(defun pelm/clock-in-organization-task-as-default ()
+(defun pelm-clock-in-task-by-id (task-id)
   (interactive)
-  (org-with-point-at (org-id-find pelm/organization-task-id 'marker)
+  (org-with-point-at (org-id-find task-id 'marker)
     (org-clock-in '(16))))
 
 (defun pelm/clock-out-maybe ()
