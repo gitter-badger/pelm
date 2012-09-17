@@ -66,12 +66,15 @@
 (defun start_work ()
   "pull all repos before start work "
   (interactive)
+  (pelm-clock-in-task-by-id "4233C029-C856-422C-A0F6-8E6EF2E40698")
   (org-mobile-pull)
   (async-shell-command  "~/.oh-my-zsh/bin/c.sw"))
 
 (defun go_home ()
   "push all repos before go home "
   (interactive)
+  (org-save-all-org-buffers)
+  (pelm-clock-in-task-by-id "E84E9FE4-7BFF-41CD-A88A-B167DB8EA065")
   (org-mobile-push)
   (async-shell-command "~/.oh-my-zsh/bin/c.gh"))
 
