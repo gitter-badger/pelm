@@ -132,6 +132,13 @@
 (define-key evil-normal-state-map (kbd "M-J") 'org-shiftmetadown)
 (define-key evil-normal-state-map (kbd "<f12>") 'org-export-as-html)
 
+;;; initial set emacs state mode for some specie modes 
+(loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs) 
+(shell-mode . emacs) 
+(magit-branch-manager-mode-map . emacs) 
+(magit-mode . emacs) 
+(org-mode . emacs)) 
+do (evil-set-initial-state mode state)) 
 
 (provide 'pelm-evil)
 ;;; pelm-evil.el ends here.
