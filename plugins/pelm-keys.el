@@ -25,10 +25,10 @@
 (global-set-key (kbd "\e <up>") 'windmove-up)
 (global-set-key (kbd "\e <right>") 'windmove-right)
 
-(define-key pelm-keymap "j" 'windmove-left)
+(define-key pelm-keymap "h" 'windmove-left)
 (define-key pelm-keymap "l" 'windmove-right)
 (define-key pelm-keymap "k" 'windmove-up)
-(define-key pelm-keymap "n" 'windmove-down)
+(define-key pelm-keymap "j" 'windmove-down)
 
 (define-key pelm-keymap "el" 'downcase-region)
 (define-key pelm-keymap "eu" 'upcase-region)
@@ -39,11 +39,6 @@
   (split-window-horizontally)
   (windmove-right))
 
-;;evil setup 
-
-;pelm-keymap conflict with evil-mode key
-(define-key evil-normal-state-map (kbd "C-.") nil)
-;(define-key pelm-keymap "uf" 'ns-toggle-fullscreen)
 
 ;sunrise 
 (define-key pelm-keymap "d" 'sunrise)
@@ -54,6 +49,7 @@
 (provide 'pelm-keys)
 
 ;;; pelm-keys.el ends here
+
 
 
 

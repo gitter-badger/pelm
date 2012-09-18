@@ -2,7 +2,6 @@
 # contributor : eggcaker <eggcaker@gmail.com>
 # name: 每日回顾
 # key: dr
-# binding: C-. j
 # --
 - [ ] 今天有哪些收获？
   - ${1:somthing}

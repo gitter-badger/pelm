@@ -55,7 +55,7 @@
 (require 'pelm-git)
 (require 'pelm-yas)
 (require 'pelm-org)
-
+(require 'pelm-evil)
 
 ;; load mode
 (require 'pelm-c)
