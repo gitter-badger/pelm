@@ -66,19 +66,22 @@
 (setq el-get-evil
       '((:name evil
                :after (progn
-                        ))))
+                        ))
+        (:name evil-leader)
+        ))
+      
 
 (el-get 'sync (loop for src in el-get-evil collect (el-get-source-name src)))
 
+(evil-mode 1)
 
-(evil-define-key 'normal pelm-minor-mode-map "gb" 'evil-mode)
 
 (evil-define-command pelm/evil-maybe-exit ()
   :repeat change
   (interactive)
   (let ((modified (buffer-modified-p)))
     (insert "j")
-    (let ((evt (read-event (format "Insert %c to exit insert state" ?n)
+    (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
                nil 0.5)))
       (cond
        ((null evt) (message ""))
