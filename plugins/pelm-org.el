@@ -13,6 +13,7 @@
 (require 'org-checklist)
 (require 'org-contacts)
 (require 'org-crypt)
+(require 'evil-org)
 
 (add-hook 'org-mode-hook
           '(lambda ()
