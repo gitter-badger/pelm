@@ -1,3 +1,33 @@
+*** 1.6.0 / 2012-09-18
+
+- extract the evil as a plugin
+- daily commit Tue Sep 18 18:40:13 CST 2012
+- daily commit Mon Sep 17 17:53:53 CST 2012
+- daily commit Fri Sep 14 18:29:32 CST 2012
+- daily commit Wed Sep 12 18:28:48 CST 2012
+- daily commit Tue Sep 11 18:30:11 CST 2012
+- auto commit Mon Sep 10 17:38:43 CST 2012
+- daily commit Thu Sep  6 18:32:17 CST 2012
+- Merge branch 'master' of github.com:eggcaker/pelm
+- daily commit Wed Sep  5 00:02:20 CST 2012
+- daily commit Mon Sep  3 18:27:47 CST 2012
+- upgrade jabber
+- daily commit Fri Aug 31 18:04:38 CST 2012
+- added find-doc function for android, change mac font
+- daily commit Thu Aug 30 18:28:14 CST 2012
+- moved the color-theme-railscast to vender, update orgmode,added short key for jump window
+- added jabber back
+- daily commit Tue Aug 28 18:39:19 CST 2012
+- daily commit Sun Aug 26 17:36:03 CST 2012
+- daily commit Fri Aug 24 18:40:26 CST 2012
+- daily commit Thu Aug 23 18:23:27 CST 2012
+- auto commit Tue Aug 21 22:32:34 CST 2012
+- Merge branch 'master' of github.com:eggcaker/pelm
+- daily commit Tue Aug 21 19:01:28 CST 2012
+- Merge branch 'master' of github.com:eggcaker/pelm
+- daily commit Tue Aug 21 08:28:07 CST 2012
+- auto commit Mon Aug 20 13:13:04 CST 2012
+
 *** 1.5.2 / 2012-08-20
 
 - test version generate

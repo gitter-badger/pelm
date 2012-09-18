@@ -47,7 +47,7 @@
 (pelm-add-sub-folders-to-load-path pelm-el-get-dir)
 
 
-(defconst pelm-version-number "1.5.0-SNAPSHOT"
+(defconst pelm-version-number "1.6.0"
   "PELM version number.")
  
 (defun pelm-version ()
