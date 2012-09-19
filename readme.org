@@ -122,3 +122,15 @@ Thanks [[http://tapoueh.org/][Dimitri Fontaine]] built the [[https://github.com/
 *** TODO pelm-ui
 *** TODO pelm-yas
 *** TODO pelm-lisp
+
+
+** NOTES
+#+BEGIN_SRC emacs-lisp
+(setq exec-path (split-string 
+                 (concat "~/.rvm/rubies/ruby-1.9.3-head/bin:/usr/local/bin:~/.oh-my-zsh/bin:" (getenv "PATH"))
+                 path-separator))
+
+#+END_SRC
+
+
+

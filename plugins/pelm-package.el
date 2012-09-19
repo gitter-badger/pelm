@@ -1,4 +1,4 @@
-;;; pelm-ac.el --- PELM talking with el-get 
+;;; pelm-package.el --- PELM talking with elpa
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
