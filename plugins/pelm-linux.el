@@ -18,7 +18,5 @@
 (when (string-match "linux" system-configuration)
   (define-key pelm-keymap "uf" 'pelm-linux-toggle-fullscreen))
 
-
-
 (provide 'pelm-linux)
 ;;; ends pelm-linux.el here

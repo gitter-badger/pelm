@@ -17,6 +17,7 @@ org-clock-save.el
 .smex-items
 _site
 _deploy
+.gh-pages
 weibo.emacs
 emms
 swank
