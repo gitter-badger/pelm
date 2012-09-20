@@ -12,6 +12,8 @@
 
 
 (add-to-list 'load-path (concat pelm-dir "/el-get/el-get"))
+(setq el-get-user-package-directory (concat pelm-plugins-dir "conf"))
+
 
 (unless (require 'el-get nil t)
   (url-retrieve 
@@ -20,6 +22,7 @@
      (let (el-get-master-branch)
        (goto-char (point-max))
        (eval-print-last-sexp)))))
+
 (el-get 'sync)
 
 ;; set pelm recipes
@@ -52,9 +55,9 @@
 
 ;; now set pelm packages
 (setq pelm:el-get-packages
-      '(el-get				; el-get is self-hosting
-        auto-complete			; complete as you type with overlays
-        color-theme	                ; nice looking emacs
+      '(el-get
+        auto-complete
+        color-theme
         psvn
         magithub
         fuzzy
@@ -67,7 +70,6 @@
         emacs-w3m
         clojure-mode
         slime
-        ;nxhtml
         offlineimap
         sunrise-commander
         browse-kill-ring

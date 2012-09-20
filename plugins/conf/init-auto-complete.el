@@ -1,14 +1,4 @@
-;;; pelm-ac.el --- PELM ac-mode 
-;;
-;; Copyright (c) 2011-2015 eggcaker
-;;
-;; Authors: eggcaker <eggcaker@gmail.com>
-;; URL: http://caker.me/pelm
-
-
-;; This file is not part of GNU Emacs
-
-;;; Code:
+;;; auto-complete configuration, loaded by el-get
 
 (require 'auto-complete)
 (require 'auto-complete-config)
@@ -24,11 +14,8 @@
 (define-key ac-complete-mode-map "\C-p" 'ac-previous); auto completion 
 
 
-; should be add to the pelm  local file,
-; it's too slow on my poor mac book !
-;(require 'ajc-java-complete-config)
-;(add-hook 'java-mode-hook 'ajc-java-complete-mode)
+(message "auto-complete laoded")
 
 
-(provide 'pelm-ac)
-;;pelm-ac.el ends here
+
+

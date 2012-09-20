@@ -21,10 +21,7 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-;(color-theme-gnome2)
-
-;(require 'color-theme-railscasts)
-;(color-theme-railscasts)
+(color-theme-hober)
 
 ;;disable splash screen and tools bar
 (custom-set-variables
