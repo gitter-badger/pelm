@@ -1,6 +1,6 @@
 ;; PELM - init.el
 ;; Author: caker
-;; Last modified: 2012-09-19
+;; Last modified: 2012-09-20
 ;; Version: 1.7.0
 
 (require 'cl)
@@ -30,7 +30,7 @@
 (add-to-list 'load-path pelm-vendor-dir)
 (add-to-list 'load-path pelm-el-get-dir)
 
-(load (concat pelm-dir "pre-init"))
+(load (concat pelm-dir "pre-init-local") 'noerror)
 (run-hooks 'pelm-pre-init-hook)
 
 ;; define pelm plugins
@@ -79,13 +79,12 @@
      (require 'pelm-windows)))
 
 ;; pelm-post-hook 
-(load (concat pelm-dir "post-init"))
+(load (concat pelm-dir "post-init-local") 'noerror)
 (run-hooks 'pelm-post-init-hook)
 
 
-;; PELM loaded ,show load time 
+;; PELM loaded, show the load time 
 (message  "PELM loaded in %ds" (destructuring-bind (hi lo ms rs) (current-time)
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
 ;;; ends init.el here
-
