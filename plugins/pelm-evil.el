@@ -56,23 +56,8 @@
 
 (define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs) ; save and quit
 (define-key evil-normal-state-map ";e" 'eval-last-sexp)
-;; simulate vim's "nnoremap <space> 10jzz"
-(define-key evil-normal-state-map " " (lambda ()
-                                        (interactive)
-                                        (next-line 10)
-                                        (evil-scroll-line-down 10)
-                                        ))
 
-;; simulate vim's "nnoremap <backspace> 10kzz"
-
-(define-key evil-normal-state-map [backspace] (lambda ()
-                                                (interactive)
-                                                (previous-line 10)
-                                                (evil-scroll-line-up 10)
-                                                ))
-
-
-(define-minor-mode pelm-evil-org-mdoe
+(define-minor-mode pelm-evil-org-mode
   :init-value nil
   :lighter "PEO"
   :keymap (make-sparse-keymap)
@@ -101,7 +86,7 @@
 )
 
 ;; normal & insert state shortcuts.
-(mapcar (lambda (state)
+(mapc (lambda (state)
           (evil-define-key state pelm-evil-org-mode-map
             (kbd "M-l") 'org-metaright
             (kbd "M-h") 'org-metaleft
