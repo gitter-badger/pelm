@@ -1,16 +1,17 @@
 ;; PELM - init.el
 ;; Author: caker
-;; Last modified: 2012-06-22
-;; Version: 1.5.1
+;; Last modified: 2012-09-20
+;; Version: 1.7.0
 
-(require 'cl) 
-
-(defvar *pelm-start-time* (current-time))
-(add-to-list 'load-path "~/.emacs.d")
+;; pelm start time 
+(defvar *pelm-load-start* (current-time))
 
 (defvar pelm-dir (file-name-directory load-file-name)
   "The root dir of the PELM distribution.")
 
+;; define hooks to run function before and after load the pelm 
+(defvar pelm-pre-init-hook nil)
+(defvar pelm-post-init-hook nil)
 
 (defvar pelm-plugins-dir (concat pelm-dir "plugins/")
   "This directory houses all of the built-in plem plugin.
@@ -22,84 +23,64 @@
 (defvar pelm-el-get-dir (concat pelm-dir "el-get/")
   "This directory house the el-get packages")
 
-
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
 (add-to-list 'load-path pelm-el-get-dir)
 
+(load (concat pelm-dir "pre-init-local") 'noerror)
+(run-hooks 'pelm-pre-init-hook)
 
-;; the PELM have pre-init.el and post-init.el which you can do your own code
-;; pre-init.el load at begin, for example: if you using emacs < 24,you
-;; can require org-mode here by :
-;; (require 'org)  or you can load it from pre-init-private.org, see below
-(load-file "~/.emacs.d/pre-init.el")
-
-;; load the pre-init-local files if they exists
-;; both of files are under .gitignore,
-;; so it' wont' be version-controlled. The idea is to make
-;; this file load other version-controlled or private stuff
-;; before the pelm load.
-(if (file-exists-p "~/.emacs.d/pre-init-local.org")
-    (org-babel-load-file "~/.emacs.d/pre-init-local.org"))
-
-(if (file-exists-p "~/.emacs.d/pre-init-local.el")
-    (load-file "~/.emacs.d/pre-init-local.el"))
-
+;; define pelm plugins
+(setq pelm-plugins 
+      '(
+        runtime
+        package
+        editor
+        keys
+        ui
+        shell
+        server
+        ac
+        git
+        yas
+        org
+        evil
+        c
+        markups
+        scala
+        java
+        php
+        js
+        lisp
+        objc
+        misc
+        blog
+        mail
+        fun
+        android
+))
 
 ;; load plugins 
-(require 'pelm-package)
-(require 'pelm-runtime)
-(require 'pelm-editor)
-(require 'pelm-keys)
-(require 'pelm-ui)
-(require 'pelm-shell)
-(require 'pelm-server)
-(require 'pelm-ac)
-(require 'pelm-git)
-(require 'pelm-yas)
-(require 'pelm-org)
-(require 'pelm-evil)
+(mapcar (lambda (x) 
+	  (require (intern (format "pelm-%s" x)) nil t))
+	pelm-plugins)
 
-;; load mode
-(require 'pelm-c)
-(require 'pelm-markups)
-(require 'pelm-scala)
-(require 'pelm-java)
-(require 'pelm-php)
-(require 'pelm-js)
-(require 'pelm-lisp)
-(require 'pelm-objc)
-;;misc
-(require 'pelm-misc)
-(require 'pelm-blog)
+(cond
+    ((string-match "apple-darwin" system-configuration)
+     (require 'pelm-mac))
+   
+    ((string-match "linux" system-configuration)
+     (require 'pelm-linux))
 
+    ((string-match "nt" system-configuration)
+     (require 'pelm-windows)))
 
-(require 'pelm-mail)
+;; pelm-post-hook 
+(load (concat pelm-dir "post-init-local") 'noerror)
+(run-hooks 'pelm-post-init-hook)
 
-;(require 'pelm-fun)
-
-;; lab
-(require 'pelm-android)
-
-;;; os files
-(require 'pelm-mac)
-(require 'pelm-linux)
-
-;;; personal configs ignored by git
-
-;; orgmode file 
-(if (file-exists-p "~/.emacs.d/post-init-local.org")
-    (org-babel-load-file "~/.emacs.d/post-init-local.org"))
-
-;; el file
-(if (file-exists-p "~/.emacs.d/post-init-local.el")
-    (load-file "~/.emacs.d/post-init-local.el"))
-
-
-(message (format "PELM loaded in %ds" (destructuring-bind (hi lo ms rs) (current-time)
-                           (- (+ hi lo) (+ (first *pelm-start-time*) (second *pelm-start-time*))))))
-
-(package-manager-show-load-time)
-
+;; PELM loaded, show the load time 
+(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms rs) (current-time)
+                                (- (+ hi lo) (+ (first *pelm-load-start*)
+                                                (second *pelm-load-start*)))))
 ;;; ends init.el here
-

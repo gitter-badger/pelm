@@ -11,9 +11,6 @@
 ;;; Code:
 
 
-
-(require 'cl)
-
 (add-to-list 'load-path (concat pelm-dir "/el-get/el-get"))
 
 (unless (require 'el-get nil t)

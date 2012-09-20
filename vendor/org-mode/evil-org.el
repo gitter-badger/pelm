@@ -54,8 +54,8 @@
   "<" 'org-metaleft
   ">" 'org-metaright)
 
-;; leader shortcuts in normal state. (disabled for now)
-;; (evil-leader/set-key 'normal evil-org-mode-map
+;; leader shortcuts in normal state.
+; (evil-leader/set-key 'normal evil-org-mode-map
 ;;   "c" 'org-cycle
 ;;   "e" 'org-export-dispatch
 ;;   "n" 'outline-next-visible-heading
