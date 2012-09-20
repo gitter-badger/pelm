@@ -79,18 +79,5 @@
 (setq mu4e-html2text-command "w3m -dump -T text/html")
 (setq w3m-command "/usr/local/bin/w3m")
 
-
-;; password encrypt 
-(require 'epa-file)
-(epa-file-enable)
-(require 'netrc)
-(require 'offlineimap)
-(setq smtpmail-auth-credentials (expand-file-name "~/.netrc.gpg"))
-
-(defun offlineimap-get-password (host port)
-  (let* ((netrc (netrc-parse (expand-file-name "~/.netrc.gpg")))
-         (hostentry (netrc-machine netrc host port port)))
-    (when hostentry (netrc-get hostentry "password"))))
-
 (provide 'pelm-mail)
 ;;; pelm-mail.el ends here
