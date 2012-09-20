@@ -3,6 +3,9 @@
 ;; Last modified: 2012-06-22
 ;; Version: 1.5.1
 
+(require 'cl) 
+
+(defvar *pelm-start-time* (current-time))
 (add-to-list 'load-path "~/.emacs.d")
 
 (defvar pelm-dir (file-name-directory load-file-name)
@@ -92,6 +95,9 @@
 (if (file-exists-p "~/.emacs.d/post-init-local.el")
     (load-file "~/.emacs.d/post-init-local.el"))
 
+
+(message (format "PELM loaded in %ds" (destructuring-bind (hi lo ms rs) (current-time)
+                           (- (+ hi lo) (+ (first *pelm-start-time*) (second *pelm-start-time*))))))
 
 (package-manager-show-load-time)
 
