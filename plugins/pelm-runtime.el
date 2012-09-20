@@ -43,10 +43,16 @@
 
 (defvar pelm-minor-mode-map (make-keymap) "pelm-minor-mode keymap.")
 
+(defgroup pelm nil
+    "PELM customization group"
+    :prefix "pelm-")
 
 (define-minor-mode pelm-minor-mode
   "A minor mode so that my key settings override annoying major modes."
-  t " PELM" 'pelm-minor-mode-map)
+  :init-value nil
+  :lighter " PELM"
+  :keymap 'pelm-minor-mode-map
+  :group 'pelm)
 
 (pelm-minor-mode 1)
 

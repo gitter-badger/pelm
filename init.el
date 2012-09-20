@@ -40,7 +40,6 @@
         ui
         shell
         server
-        ac
         git
         yas
         org
@@ -56,7 +55,6 @@
         misc
         blog
         mail
-        fun
         android
 ))
 
