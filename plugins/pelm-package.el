@@ -10,78 +10,47 @@
 
 ;;; Code:
 
-(require 'cl)
+;; elpa package manager
 
-(unless (require 'el-get nil t)
-  (url-retrieve 
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda(s)
-     (let (el-get-master-branch)
-       (goto-char (point-max))
-       (eval-print-last-sexp)))))
-(el-get 'sync)
+(setq package-archives
+      '(("gnu"         . "http://elpa.gnu.org/packages/")
+        ("marmalade"   . "http://marmalade-repo.org/packages/")))
+(package-initialize)
 
-;; set pelm recipes
-(setq el-get-sources
-      '((:name smex				; a better (ido like) M-x
-               :after   (progn
-                        (setq smex-save-file (concat pelm-dir ".smex-items"))
-                        (global-set-key (kbd "M-x") 'smex)
-                        (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+   ;'smex
 
-        (:name magit				; git meet emacs, and a binding
-               :after   (progn
-                        (global-set-key (kbd "C-x C-z") 'magit-status)))
+(defvar pelm-packages
+  (list 
+   'magit
+   'highlight-parentheses
+   'auto-pair-plus
+   'goto-last-change
+   'auto-complete 
+   'color-theme
+   'psvn
+   'magithub
+   'fuzzy
+   'lua-mode
+   'popup
+   'coffee-mode
+   'markdown-mode
+   'yaml-mode
+   'yasnippet
+   'emacs-w3m
+   'clojure-mode
+   'slime
+   'offlineimap
+   'sunrise-commander
+   'browse-kill-ring)
 
-        (:name highlight-parentheses
-               :after   (progn
-                          (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode )))
+  "Libraries that should be installed by default.")
 
+(unless package-archive-contents
+  (package-refresh-contents))
 
-        (:name auto-pair-plus
-               :after   (progn
-                          (add-hook 'emacs-lisp-mode-hook 'autopair-mode )
-                          (add-hook 'clojure-mode-hook 'autopair-mode)
-                          ))
-
-        (:name goto-last-change		; move pointer back to last change
-               :after   (progn
-                        ;; when using AZERTY keyboard, consider C-x C-_
-                        (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
-
-;; now set pelm packages
-(setq pelm:el-get-packages
-      '(el-get				; el-get is self-hosting
-        auto-complete			; complete as you type with overlays
-        color-theme	                ; nice looking emacs
-        psvn
-        magithub
-        fuzzy
-        lua-mode
-        popup
-        coffee-mode
-        markdown-mode
-        yaml-mode
-        yasnippet
-        emacs-w3m
-        clojure-mode
-        slime
-        ;nxhtml
-        offlineimap
-        sunrise-commander
-        browse-kill-ring
-        ))             
-
-(setq pelm:el-get-packages
-      (append
-       pelm:el-get-packages
-       (loop for src in el-get-sources collect (el-get-source-name src))))
-
-
-;; install new packages and init already installed packages
-(el-get 'sync pelm:el-get-packages)
-
-
+(dolist (package pelm-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 
 

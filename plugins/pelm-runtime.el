@@ -9,6 +9,8 @@
 
 ;;; Code:
 
+(require 'cl)
+
 (defun pelm-add-sub-folders-to-load-path (parent-dir)
   "Adds all first level parent-dir subdirs to the Emacs load path"
   (dolist (f (directory-files parent-dir))

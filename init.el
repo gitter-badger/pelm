@@ -3,15 +3,13 @@
 ;; Last modified: 2012-09-20
 ;; Version: 1.7.0
 
-(require 'cl)
-
 ;; pelm start time 
 (defvar *pelm-load-start* (current-time))
 
 (defvar pelm-dir (file-name-directory load-file-name)
   "The root dir of the PELM distribution.")
 
-;; hooks to run function before and after load the pelm 
+;; define hooks to run function before and after load the pelm 
 (defvar pelm-pre-init-hook nil)
 (defvar pelm-post-init-hook nil)
 
