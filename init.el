@@ -15,7 +15,6 @@
 (defvar pelm-pre-init-hook nil)
 (defvar pelm-post-init-hook nil)
 
-
 (defvar pelm-plugins-dir (concat pelm-dir "plugins/")
   "This directory houses all of the built-in plem plugin.
    you should avoid modifying the configuration there.")
@@ -27,10 +26,9 @@
 (defvar pelm-el-get-dir (concat pelm-dir "el-get/")
   "This directory house the el-get packages")
 
-(add-to-list 'load-path '(
-                          pelm-plugins-dir
-                          pelm-vendor-dir
-                          pelm-el-get-dir))
+(add-to-list 'load-path pelm-plugins-dir)
+(add-to-list 'load-path pelm-vendor-dir)
+(add-to-list 'load-path pelm-el-get-dir)
 
 (load (concat pelm-dir "pre-init"))
 (run-hooks 'pelm-pre-init-hook)
@@ -38,42 +36,42 @@
 ;; define pelm plugins
 (setq pelm-plugins 
       '(
-        pelm-package
-        pelm-runtime
-        pelm-editor
-        pelm-keys
-        pelm-ui
-        pelm-shell
-        pelm-server
-        pelm-ac
-        pelm-git
-        pelm-yas
-        pelm-org
-        pelm-evil
-        pelm-c
-        pelm-markups
-        pelm-scala
-        pelm-java
-        pelm-php
-        pelm-js
-        pelm-lisp
-        pelm-objc
-        pelm-misc
-        pelm-blog
-        pelm-mail
-        pelm-fun
-        pelm-android
+        runtime
+        package
+        editor
+        keys
+        ui
+        shell
+        server
+        ac
+        git
+        yas
+        org
+        evil
+        c
+        markups
+        scala
+        java
+        php
+        js
+        lisp
+        objc
+        misc
+        blog
+        mail
+        fun
+        android
 ))
 
 ;; load plugins 
-(dolist (plugin pelm-plugins)
-  (require plugin))
-
+(mapcar (lambda (x) 
+	  (require (intern (format "pelm-%s" x)) nil t))
+	pelm-plugins)
 
 (cond
     ((string-match "apple-darwin" system-configuration)
      (require 'pelm-mac))
-    
+   
     ((string-match "linux" system-configuration)
      (require 'pelm-linux))
 
@@ -86,7 +84,7 @@
 
 
 ;; PELM loaded ,show load time 
-(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms rs) (current-time)
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
 ;;; ends init.el here
