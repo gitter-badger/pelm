@@ -87,6 +87,7 @@
                               (inferior-emacs-lisp-mode . emacs) 
                               (shell-mode . emacs) 
                               (mu4e-main-mode . emacs)
+                              (mu4e-view-mode . emacs)
                               (mu4e-headers-mode . emacs)
                               (magit-branch-manager-mode-map . emacs) 
                               (magit-mode . emacs)) 
