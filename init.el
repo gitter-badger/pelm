@@ -2,6 +2,10 @@
 ;; Author: caker
 ;; Last modified: 2012-09-20
 ;; Version: 1.7.0
+;;
+;; TODO: move the keymap setup to runtime instead keys
+;;
+
 
 ;; pelm start time 
 (defvar *pelm-load-start* (current-time))
@@ -35,27 +39,27 @@
       '(
         runtime
         package
-        editor
         keys
         ui
-        shell
-        server
+        editor
         git
         yas
         org
         evil
         c
         markups
-        scala
+        ;scala
         java
         php
         js
         lisp
-        objc
-        misc
+        ;objc
         blog
         mail
         android
+        shell
+        misc
+        server
 ))
 
 ;; load plugins 
