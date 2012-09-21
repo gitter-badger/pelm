@@ -11,17 +11,15 @@
 ;;; Code:
 
 
-(setq el-get-evil
-      '((:name evil
-               :after (progn
-                        ))
+(setq el-get-evil-packages
+      '((:name evil)
         (:name evil-numbers)
         (:name evil-leader)
         (:name evil-surround)
         ))
       
 
-(el-get 'sync (loop for src in el-get-evil collect (el-get-source-name src)))
+(el-get 'sync (loop for src in el-get-evil-packages collect (el-get-source-name src)))
 
 (evil-mode 1)
 (global-surround-mode 1)
@@ -49,25 +47,14 @@
 (define-key evil-normal-state-map (kbd "C-.") nil)
 
 
-
-
-(define-key evil-normal-state-map ",w" 'save-buffer) ; save
-(define-key evil-normal-state-map ",q" 'kill-buffer) ; quit (current buffer; have to press RETURN)
-
-(define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs) ; save and quit
+(define-key evil-normal-state-map ",a" 'org-agenda)
 (define-key evil-normal-state-map ";e" 'eval-last-sexp)
-
-(define-minor-mode pelm-evil-org-mode
-  :init-value nil
-  :lighter "PEO"
-  :keymap (make-sparse-keymap)
-  :group 'pelm
-  )
-
-(add-hook 'org-mode-hook 'pelm-evil-org-mode)
+(define-key evil-normal-state-map ",q" 'kill-buffer)
+(define-key evil-normal-state-map ",w" 'save-buffer)
+(define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
 
 
-(evil-define-key 'normal pelm-evil-org-mode-map
+(evil-define-key 'normal org-mode-map
   "gh" 'outline-up-heading
   "gj" 'org-forward-same-level
   "gk" 'org-backward-same-level
@@ -78,11 +65,10 @@
   "L" 'org-shiftright
   "t" 'org-todo
   "$" 'org-end-of-line
-  "^" 'org-beginning-of-line
+  "0" 'org-beginning-of-line
   "-" 'org-ctrl-c-minus
   "<" 'org-metaleft
   ">" 'org-metaright
-  ";a" 'org-agenda ; access agenda buffer
 )
 
 ;; normal & insert state shortcuts.

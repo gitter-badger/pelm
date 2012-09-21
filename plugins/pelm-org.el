@@ -9,11 +9,16 @@
 
 ;;; Code:
 
+(setq el-get-org-packages
+      '((:name org-mode)
+        ))
+      
+(el-get 'sync (loop for src in el-get-org-packages collect (el-get-source-name src)))
+
 ;;require contrib lisps
 (require 'org-checklist)
 (require 'org-contacts)
 (require 'org-crypt)
-
 
 (add-hook 'org-mode-hook
           '(lambda ()
