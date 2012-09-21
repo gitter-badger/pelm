@@ -21,7 +21,7 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-(color-theme-hober)
+(color-theme-snow)
 
 ;;disable splash screen and tools bar
 (custom-set-variables

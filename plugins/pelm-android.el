@@ -10,20 +10,13 @@
 ;;; Code:
 
 (require 'android-mode)
- (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(android-mode-sdk-dir "/usr/local/Cellar/android-sdk/r20")
-)
+(require 'thingatpt)
+
+(custom-set-variables
+ '(android-mode-sdk-dir "/usr/local/Cellar/android-sdk/r20"))
 
 (setenv "ANDROID_HOME" "/usr/local/Cellar/android-sdk/r20")
 
-
-(define-key pelm-keymap "ac" 'compile)
-
-;(require 'android-mode)
 
 ;; enabled error line number jumper 
 
@@ -31,9 +24,6 @@
 (add-to-list 'compilation-error-regexp-alist-alist
        '(maven "\\[ERROR\\] \\(.+?\\):\\[\\([0-9]+\\),\\([0-9]+\\)\\].*"
            1 2 3))
-
-
-(require 'thingatpt)
 
 (defun pelm-search-android-doc ()
   "search the string from android api document"
@@ -43,7 +33,13 @@
 
 (define-key  pelm-keymap "ad" 'pelm-search-android-doc)
 
+;; regular normal state shortcuts.
+(evil-define-key 'normal android-mode-map
+  "ac" 'android-ant-debug
+  "ai" 'android-ant-installd
+  "ad" 'pelm-search-android-doc
+)
+
 
 (provide 'pelm-android)
-
 ;;pelm-android.el ends here
