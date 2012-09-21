@@ -13,6 +13,11 @@
 
 (require 'mu4e)
 (require 'org-mu4e)
+
+(define-key pelm-keymap "m" 'mu4e)
+
+
+(setq mu4e-mu-binary "/usr/local/bin/mu")
 (setq  mu4e-maildir "/Users/eggcaker/.gmail"
        mu4e-sent-folder   "/[Gmail].Sent Mail"
        mu4e-drafts-folder  "/[Gmail].Drafts" 
