@@ -21,8 +21,7 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-(color-theme-snow)
-
+(load-theme 'solarized-dark t);|dark] t)
 ;;disable splash screen and tools bar
 (custom-set-variables
  '(column-number-mode t)

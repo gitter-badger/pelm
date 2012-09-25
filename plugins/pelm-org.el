@@ -1359,7 +1359,9 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (custom-set-faces
  '(highlight ((t (:background "cyan"))))
  '(hl-line ((t (:inherit highlight :background "darkseagreen2"))))
- '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t)
+ '(org-mode-line-clock ((t (:background "DarkGreen"
+                                       ; :foreground "moccasin"
+                                        :box (:line-width -1 :style released-button)))) t)
  )
 
 

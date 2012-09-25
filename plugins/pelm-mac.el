@@ -9,12 +9,14 @@
 
 ;;; Code:
 
-;;(set-face-font 'default "Anonymous_Pro-20"))
-;;(set-face-font 'default "BPtypewrite-18"))
 
 ;; under mac, have Command as Meta and keep Option for localized input
 (when (string-match "apple-darwin" system-configuration)
-  (set-face-font 'default "Menlo-18")
+
+  (set-face-font 'default "Monaco-18")
+ ; (set-face-font 'default "Menlo-16")
+;  (set-face-font 'default "Anonymous_Pro-18")
+;  (set-face-font 'default "BPtypewrite-18")
   (setq mac-allow-anti-aliasing t)
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'none)
@@ -23,3 +25,6 @@
 
 (provide 'pelm-mac)
 ;;; ends pelm-mac.el here
+
+
+

@@ -58,6 +58,7 @@
       '(el-get
         auto-complete
         color-theme
+        color-theme-solarized
         psvn
         magithub
         fuzzy
@@ -69,7 +70,7 @@
         yasnippet
         emacs-w3m
         clojure-mode
-        slime
+;        slime
         offlineimap
         sunrise-commander
         browse-kill-ring
