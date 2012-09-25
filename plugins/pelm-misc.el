@@ -84,6 +84,7 @@
         ("eggcaker@gmail.com"
          (:connection-type . ssl)
          (:network-server . "talk.google.com")
+         (:password . (pelm-get-password "imap.gmail.com" "993"))
          (:port . 5223)
         )
        ))

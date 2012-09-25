@@ -54,8 +54,6 @@
 
 (evil-define-key 'normal org-mode-map
   "gh" 'outline-up-heading
-  "gj" 'org-forward-same-level
-  "gk" 'org-backward-same-level
   "gl" 'outline-next-visible-heading
   "H" 'org-shiftleft
   "J" 'org-shiftdown
