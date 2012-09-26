@@ -45,7 +45,7 @@
 ;;pelm-keymap conflict with evil-mode key
 (define-key evil-normal-state-map (kbd "C-.") nil)
 
-(define-key evil-normal-state-map ",a" 'org-agenda)
+(define-key evil-normal-state-map ",ga" 'org-agenda)
 (define-key evil-normal-state-map ";e" 'eval-last-sexp)
 (define-key evil-normal-state-map ",q" 'kill-buffer)
 (define-key evil-normal-state-map ",w" 'save-buffer)

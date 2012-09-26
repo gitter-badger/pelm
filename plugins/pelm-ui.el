@@ -21,7 +21,7 @@
   (set-scroll-bar-mode nil))
 
 ;; color-theme
-(load-theme 'solarized-dark t);|dark] t)
+(load-theme 'solarized-light t);|dark] t)
 ;;disable splash screen and tools bar
 (custom-set-variables
  '(column-number-mode t)

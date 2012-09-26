@@ -35,9 +35,9 @@
 
 ;; regular normal state shortcuts.
 (evil-define-key 'normal android-mode-map
-  "ac" 'android-ant-debug
-  "ai" 'android-ant-installd
-  "ad" 'pelm-search-android-doc
+  ",ac" 'android-ant-debug
+  ",ai" 'android-ant-installd
+  ",ad" 'pelm-search-android-doc
 )
 
 
