@@ -1362,7 +1362,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
  '(org-mode-line-clock ((t (:background "DarkGreen"
                                        ; :foreground "moccasin"
                                         :box (:line-width -1 :style released-button)))) t)
- )
+)
 
 
 
