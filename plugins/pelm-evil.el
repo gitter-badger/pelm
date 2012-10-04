@@ -51,10 +51,15 @@
 (define-key evil-normal-state-map ",w" 'save-buffer)
 (define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
 
+(defun pelm-goto-entry ()
+  (interactive)
+  (org-refile t)
+)
 
 (evil-define-key 'normal org-mode-map
   "gh" 'outline-up-heading
   "gl" 'outline-next-visible-heading
+  "gt" 'pelm-goto-entry 
   "H" 'org-shiftleft
   "J" 'org-shiftdown
   "K" 'org-shiftup

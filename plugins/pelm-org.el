@@ -1210,6 +1210,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                       ("a" . org-insert-subheading)
                                       ("d" . ignore)
                                       ("h" . pelm/hide-other)
+                                    ;  ("g" . ignore)
                                       ("i" progn
                                        (forward-char 1)
                                        (call-interactively 'org-insert-heading-respect-content))
