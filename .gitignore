@@ -25,3 +25,5 @@ swank
 .\#*
 #*
 abbrev_defs
+eshell
+tramp

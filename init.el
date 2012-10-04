@@ -82,7 +82,7 @@
 (run-hooks 'pelm-post-init-hook)
 
 ;; PELM loaded, show the load time 
-(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms rs) (current-time)
+(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms ) (current-time)
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
 ;;; ends init.el here
@@ -126,3 +126,4 @@
  '(highlight ((t (:background "cyan"))))
  '(hl-line ((t (:inherit highlight :background "darkseagreen2"))))
  '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))
+
