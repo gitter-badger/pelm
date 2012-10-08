@@ -37,8 +37,8 @@
 (defun pelm-enable-transparent()
   "Enable transparent mode"
   (interactive)
-  (add-to-list 'default-frame-alist '(alpha 95 50))
-  (set-frame-parameter (selected-frame) 'alpha '(78 50)))
+  (add-to-list 'default-frame-alist '(alpha 85 50))
+  (set-frame-parameter (selected-frame) 'alpha '(85 50)))
 
 (defun pelm-disable-transparent()
   "Disable transparent mode"
