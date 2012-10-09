@@ -18,7 +18,7 @@
 
 
 (setq mu4e-mu-binary "/usr/local/bin/mu")
-(setq  mu4e-maildir "/Users/eggcaker/.gmail"
+(setq  mu4e-maildir "/Users/eggcaker/.mail"
        mu4e-sent-folder   "/[Gmail].Sent Mail"
        mu4e-drafts-folder  "/[Gmail].Drafts" 
        mu4e-trash-folder  "/[Gmail].Trash"  
