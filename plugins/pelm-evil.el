@@ -60,6 +60,7 @@
   "gh" 'outline-up-heading
   "gl" 'outline-next-visible-heading
   "gt" 'pelm-goto-entry 
+  "mm" 'org-ctrl-c-ctrl-c
   "H" 'org-shiftleft
   "J" 'org-shiftdown
   "K" 'org-shiftup

@@ -74,6 +74,10 @@
         offlineimap
         sunrise-commander
         browse-kill-ring
+        js3-mode
+        mu4e
+        column-marker
+        gtags
         ))             
 
 (setq pelm:el-get-packages
