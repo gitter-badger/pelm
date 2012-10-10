@@ -1,3 +1,40 @@
+*** 1.7.0 / 2012-10-10
+
+- upgrade jade-mode version
+- remove packages
+- clean some vendor repos, move to el-get
+- Merge branch 'master' of github.com:eggcaker/pelm
+- daily commit Tue Oct  9 18:29:36 CST 2012
+- daily commit Mon Oct  8 18:30:52 CST 2012
+- Merge branch 'master' of github.com:eggcaker/pelm
+- fixed the org-refile on evil mode
+- auto commit Thu Oct  4 14:20:00 CST 2012
+- auto commit Thu Oct  4 14:17:46 CST 2012
+- ignore eshell folder
+- daily commit Fri Sep 28 17:51:08 CST 2012
+- daily commit Thu Sep 27 18:20:18 CST 2012
+- daily commit Wed Sep 26 18:24:12 CST 2012
+- daily commit Tue Sep 25 18:27:49 CST 2012
+- daily commit Fri Sep 21 18:26:58 CST 2012
+- daily commit Fri Sep 21 17:09:18 CST 2012
+- mail configuration
+- pelm-evil almost done
+- daily commit Thu Sep 20 18:35:28 CST 2012
+- evil and remove cua
+- rewrite evil for org
+- merge rewrite branch
+- Merge branch 'master' of github.com:eggcaker/pelm
+- ignore file
+- packages
+- cleanup
+- init file
+- daily commit Thu Sep 20 05:47:03 CST 2012
+- daily commit Wed Sep 19 18:28:48 CST 2012
+- ignore elpa
+- adeed ignore file for #*
+- map esc to kj
+- disaled evil mode for some modes
+
 *** 1.6.0 / 2012-09-18
 
 - extract the evil as a plugin
