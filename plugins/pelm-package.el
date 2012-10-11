@@ -78,6 +78,7 @@
         mu4e
         column-marker
         gtags
+        ace-jump-mode
         ))             
 
 (setq pelm:el-get-packages

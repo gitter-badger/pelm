@@ -16,3 +16,6 @@
 [submodule "vendor/jo-exporter"]
 	path = vendor/jo-exporter
 	url = https://github.com/eggcaker/jo-exporter.git
+[submodule "vendor/ack-and-a-half"]
+	path = vendor/ack-and-a-half
+	url = git://github.com/jhelwig/ack-and-a-half.git

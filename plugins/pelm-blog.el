@@ -10,26 +10,12 @@
 
 ;;; Code:
 
-
-;; o-blog 
-(setq pelm:blog-packages
-      '(
-        htmlize
-        o-blog
-        ))
-
-(el-get 'sync pelm:blog-packages)
-
-(define-key pelm-keymap "op" 'org-publish-blog)
-
 (require 'jo-exporter)
-
-
 
 (defun open_blog_file ()
   "open the blog file "
   (interactive)
-  (find-file "~/src/Mine/eggcaker.github.com/_src/org/blog-2012.org")
+  (find-file "~/src/personal/caker.me/_src/org/blog-2012.org")
   (end-of-buffer))
 
 (define-key pelm-keymap "b" 'open_blog_file)
