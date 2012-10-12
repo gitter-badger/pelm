@@ -51,16 +51,18 @@
 (define-key evil-normal-state-map ",q" 'kill-buffer)
 (define-key evil-normal-state-map ",w" 'save-buffer)
 (define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
-(define-key evil-normal-state-map (kbd "<tab>") 'indent-for-tab-command)
 
 (defun pelm-goto-entry ()
   (interactive)
   (org-refile t)
   )
 
-(eval-after-load "org-mode"
-  '(progn
-     (evil-define-key 'normal org-mode-map
+(evil-define-key 'normal org-mode-map "gh" 'outline-up-heading)
+(evil-define-key 'normal org-mode-map "gt" 'pelm-goto-entry)
+
+     
+(mapc (lambda (state)
+        (evil-define-key state org-mode-map
        "gh" 'outline-up-heading
        "gl" 'outline-next-visible-heading
        "gt" 'pelm-goto-entry 
@@ -74,12 +76,11 @@
        "0" 'org-beginning-of-line
        "-" 'org-ctrl-c-minus
        "<" 'org-metaleft
-       ">" 'org-metaright
-       )
+       ">" 'org-metaright)) '(normal))
 
-     ;; normal & insert state shortcuts.
-     (mapc (lambda (state)
-             (evil-define-key state pelm-evil-org-mode-map
+;; normal & insert state shortcuts.
+(mapc (lambda (state)
+             (evil-define-key state org-mode-map
                (kbd "M-l") 'org-metaright
                (kbd "M-h") 'org-metaleft
                (kbd "M-k") 'org-metaup
@@ -88,8 +89,6 @@
                (kbd "M-H") 'org-shiftmetaleft
                (kbd "M-K") 'org-shiftmetaup
                (kbd "M-J") 'org-shiftmetadown)) '(normal insert))
-     ))
-
 
 ;; initial set emacs state mode for some specie modes 
 (loop for (mode . state) in '(
