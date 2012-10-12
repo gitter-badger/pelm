@@ -16,6 +16,7 @@
 (el-get 'sync (loop for src in el-get-org-packages collect (el-get-source-name src)))
 
 ;;require contrib lisps
+(require 'org)
 (require 'org-checklist)
 (require 'org-contacts)
 (require 'org-crypt)
@@ -32,7 +33,7 @@
 
 ;;; directories setup
 (setq org-directory "~/.org-files"
-      blog-directory "~/src/Mine/eggcaker.github.com/_src/org/"
+      blog-directory "~/src/personal/caker.me/_src/org/"
       org-default-notes-file (concat org-directory "/inbox.org")
       org-contacts-files (list(concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        

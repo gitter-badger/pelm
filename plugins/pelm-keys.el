@@ -25,15 +25,17 @@
 (define-key pelm-keymap "el" 'downcase-region)
 (define-key pelm-keymap "eu" 'upcase-region)
 
+(define-key pelm-keymap "g" 'evil-goto-first-line) 
+(define-key pelm-keymap "G" 'evil-goto-line) 
+
 ;sunrise 
 (define-key pelm-keymap "d" 'sunrise)
 
 (global-set-key  "\M-n" 'scroll-up-command)
 (global-set-key  "\M-p" 'scroll-down-command)
 
-
 ;;TODO
-(defun pelm-open-plugin-file
+(defun pelm-open-plugin-file ()
   "Open the plugin file by short name"
   (interactive )
   (find-file (concat pelm-dir  "plugins/"))
