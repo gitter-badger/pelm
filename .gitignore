@@ -10,6 +10,7 @@ auto-save-list
 post-init-local.*
 pre-init.local.*
 *~
+el-get/*
 bookmarks
 org-clock-save.el
 .org-id-locations
