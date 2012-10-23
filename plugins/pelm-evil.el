@@ -44,6 +44,8 @@
 
 ;;pelm-keymap conflict with evil-mode key
 (define-key evil-normal-state-map (kbd "C-.") nil)
+;; disabled tab for evil-jump-forward use tab for indent 
+(define-key evil-normal-state-map [tab] nil) 
 (define-key evil-normal-state-map ",ga" 'org-agenda)
 (define-key evil-normal-state-map ",b" 'ido-switch-buffer)
 (define-key evil-normal-state-map ",t" 'pelm-goto-entry)
@@ -59,7 +61,8 @@
 
 (evil-define-key 'normal org-mode-map "gh" 'outline-up-heading)
 (evil-define-key 'normal org-mode-map "gt" 'pelm-goto-entry)
-
+;;TODO not works 
+(evil-define-key 'normal nxml-mode-map "gr" 'yas/expand)
      
 (mapc (lambda (state)
         (evil-define-key state org-mode-map
