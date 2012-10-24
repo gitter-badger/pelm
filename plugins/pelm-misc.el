@@ -65,7 +65,7 @@
   (interactive)
   (pelm-clock-in-task-by-id "4233C029-C856-422C-A0F6-8E6EF2E40698")
   (org-mobile-pull)
-  (async-shell-command  "~/bin/c.sw"))
+  (async-shell-command  "~/.dotfiles/bin/c.sw"))
 
 (defun go_home ()
   "push all repos before go home "
@@ -73,7 +73,7 @@
   (org-save-all-org-buffers)
   (pelm-clock-in-task-by-id "E84E9FE4-7BFF-41CD-A88A-B167DB8EA065")
   (org-mobile-push)
-  (async-shell-command "~/bin/c.gh"))
+  (async-shell-command "~/.dotfiles/bin/c.gh"))
 
 (define-key pelm-keymap "," 'start_work)
 (define-key pelm-keymap "." 'go_home)
