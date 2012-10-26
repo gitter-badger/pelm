@@ -115,6 +115,7 @@
 
 ;;ack 
 (require 'ack-and-a-half)
+(setq ack-and-a-half-executable "/usr/local/bin/ack")
 ;; Create shorter aliases
 (defalias 'ack 'ack-and-a-half)
 (defalias 'ack-same 'ack-and-a-half-same)
