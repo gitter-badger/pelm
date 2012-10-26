@@ -42,6 +42,13 @@
                                               (list evt))))))))
 (define-key evil-insert-state-map "j" #'pelm-evil-maybe-exit)
 
+
+(defun pelm-mpc-next-song ()
+  "mpc next "
+  (interactive)
+  (shell-command "mpc next"))
+
+
 ;;pelm-keymap conflict with evil-mode key
 (define-key evil-normal-state-map (kbd "C-.") nil)
 ;; disabled tab for evil-jump-forward use tab for indent 
@@ -51,6 +58,7 @@
 (define-key evil-normal-state-map ",t" 'pelm-goto-entry)
 (define-key evil-normal-state-map ";e" 'eval-last-sexp)
 (define-key evil-normal-state-map ",q" 'kill-buffer)
+(define-key evil-normal-state-map ",n" 'pelm-mpc-next-song)
 (define-key evil-normal-state-map ",w" 'save-buffer)
 (define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
 
