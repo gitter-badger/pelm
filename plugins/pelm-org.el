@@ -130,9 +130,13 @@
                "* TODO %?\n%U\n %a\n " :clock-in t :clock-resume t)
               ("b" "Blog" entry (file (concat blog-directory "/blog-2012.org"))
                "* TODO %^{TITLE}  %^g\n %?" ) 
+              
               ("n" "Notes" entry (file+datetree (concat org-directory "/notes.org"))
                "* %^{Description} %^g %? 
 Added: %U") 
+              ("x" "CLI TODO" entry
+                (file (concat org-directory "/inbox.org"))
+                "* TODO %i\n%U" :immediate-finish t)
 
               ("w" "" entry ;; 'w' for 'org-protocol'
                (file+headline "notes.org" "Notes")
