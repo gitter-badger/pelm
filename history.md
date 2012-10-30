@@ -1,22 +1,12 @@
-# 1.7.0 / 2012-10-10
+1.7.0 / 2012-10-10
+===================
 
 * upgrade jade-mode version
 * remove packages
 * clean some vendor repos, move to el-get
 * Merge branch 'master' of github.com:eggcaker/pelm
-* daily commit Tue Oct  9 18:29:36 CST 2012
-* daily commit Mon Oct  8 18:30:52 CST 2012
-* Merge branch 'master' of github.com:eggcaker/pelm
 * fixed the org-refile on evil mode
-* auto commit Thu Oct  4 14:20:00 CST 2012
-* auto commit Thu Oct  4 14:17:46 CST 2012
 * ignore eshell folder
-* daily commit Fri Sep 28 17:51:08 CST 2012
-* daily commit Thu Sep 27 18:20:18 CST 2012
-* daily commit Wed Sep 26 18:24:12 CST 2012
-* daily commit Tue Sep 25 18:27:49 CST 2012
-* daily commit Fri Sep 21 18:26:58 CST 2012
-* daily commit Fri Sep 21 17:09:18 CST 2012
 * mail configuration
 * pelm-evil almost done
 * daily commit Thu Sep 20 18:35:28 CST 2012
@@ -35,7 +25,8 @@
 * map esc to kj
 * disaled evil mode for some modes
 
-# 1.6.0 / 2012-09-18
+1.6.0 / 2012-09-18
+==================
 
 * extract the evil as a plugin
 * daily commit Tue Sep 18 18:40:13 CST 2012
@@ -65,15 +56,19 @@
 * daily commit Tue Aug 21 08:28:07 CST 2012
 * auto commit Mon Aug 20 13:13:04 CST 2012
 
-*** 1.5.2 / 2012-08-20
+1.5.2 / 2012-08-20
+==================
 
 * test version generate
-*** 1.5.1 / 2012-08-20
+
+1.5.1 / 2012-08-20
+==================
 
 * changed readme
 * test history generate
 
-# 1.5.0 / 2012-08-20
+1.5.0 / 2012-08-20
+==================
 
 * auto commit Mon Aug 20 12:36:10 CST 2012
 * added sunrise package
@@ -208,18 +203,17 @@
 * added weibo-mode
 * add twitter mode, need write a new mdde for weibo
 * added csharp mode
-* a
 * added snippet for android
 * added objc-mode
-* a
 * added few snippets
 * Merge branch 'master' of github.com:eggcaker/pelm
-* aaa
 * added a linux os file
-*  addd import snippets
+* addd import snippets
 * added ess package
 
-# 1.0.0 / 2012-08-20
+1.0.0 / 2012-08-20
+==================
+
 * daily commit Fri Jul 20 18:23:01 CST 2012
 * Merge branch 'master' of github.com:eggcaker/pelm
 * something changes
@@ -413,3 +407,4 @@
 * caker.el -> pelm-caker.org
 *  el to pelm-org
 *  remove elc files
+* init commit 
