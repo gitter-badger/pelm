@@ -1,9 +1,7 @@
 ;; PELM - init.el
 ;; Author: caker
-;; Last modified: 2012-09-20
-;; Version: 1.7.0
-;;
-;; TODO: move the keymap setup to runtime instead keys
+;; Last modified: 2012-10-30
+;; Version: 1.8.0
 ;;
 
 
