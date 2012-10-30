@@ -1,3 +1,22 @@
+
+n.n.n / 2012-10-30 
+==================
+
+  * added template for cli
+  * ack path
+  * daily commit Fri Oct 26 18:33:16 CST 2012
+  * remove config from init.el
+  * daily commit Wed Oct 24 18:32:18 CST 2012
+  * daily commit Tue Oct 23 18:30:22 CST 2012
+  * daily commit Mon Oct 22 18:28:00 CST 2012
+  * merge
+  * daily commit 2012年 10月 18日 星期四 07:25:16 CST
+  * readme file
+  * daily commit Mon Oct 15 18:32:26 CST 2012
+  * el-get ignore
+  * daily commit Fri Oct 12 18:50:39 CST 2012
+  * daily commit Thu Oct 11 17:51:31 CST 2012
+  * version change
 *** 1.7.0 / 2012-10-10
 
 - upgrade jade-mode version
