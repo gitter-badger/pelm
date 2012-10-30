@@ -1,3 +1,17 @@
+
+1.8.0 / 2012-10-30 
+==================
+ 
+  * clean up history file
+  * change hitory to md format
+  * added template for cli
+  * ack path
+  * daily commit Fri Oct 26 18:33:16 CST 2012
+  * remove config from init.el
+  * merge
+  * readme file
+  * el-get ignore
+  * version change
 1.7.0 / 2012-10-10
 ===================
 
