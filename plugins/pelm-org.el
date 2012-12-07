@@ -979,8 +979,8 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 
 ;;; babel setup
-(setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.9/ditaa0_9.jar")
-(setq org-plantuml-jar-path "~/.oh-my-zsh/bin/plantuml.jar")
+(setq org-ditaa-jar-path "~/.emacs.d/vendor/ditaa.jar")
+(setq org-plantuml-jar-path "~/.emacs.d/vendor/plantuml.jar")
 
 (add-hook 'org-babel-after-execute-hook 'pelm/display-inline-images 'append)
 
