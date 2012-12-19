@@ -16,6 +16,7 @@
    '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 
 (when (string-match "linux" system-configuration)
+  (set-face-font 'default "Mono-12")
   (define-key pelm-keymap "uf" 'pelm-linux-toggle-fullscreen))
 
 (provide 'pelm-linux)
