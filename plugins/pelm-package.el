@@ -78,6 +78,7 @@
         mu4e
         column-marker
         gtags
+        android-mode
         ace-jump-mode
         ))             
 
