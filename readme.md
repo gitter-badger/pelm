@@ -50,6 +50,15 @@ after you clone the PELM, check the init.el, you can add your own code in 2 file
   
 both of them ignore by git, so can add some experimental code.
 
+## Dpendencies 
+ - libtool
+ - g++ 
+ - libglib2.0-dev
+ - libgmime-2.6-dev
+ - php5 ( for stock bin)
+ - libxapian-dev
+ - texinfo
+
 ## License
-    
+
    MIT
