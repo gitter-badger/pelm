@@ -14,7 +14,7 @@
 
 
 (require 'yasnippet) ;; not yasnippet-bundle
-(yas/initialize)
+;(yas/initialize)
 
 ;(setq yas/root-directory '(
 ;                           "~/.emacs.d/vendor/yasnippet/snippets"))
