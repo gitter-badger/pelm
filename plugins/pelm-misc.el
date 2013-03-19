@@ -100,9 +100,24 @@
  '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
  '(jabber-show-offline-contacts nil))
 
+;;; ibus
+(require 'ibus)
+(add-hook 'after-init-hook 'ibus-mode-on)
+(ibus-define-common-key ?\C-\s nil)
+(ibus-define-common-key ?\C-/ nil)
+(setq ibus-cursor-color '("red" "blue" "limegreen"))
+
+(add-hook 'after-make-frame-functions
+	  (lambda (new-frame)
+	    (select-frame new-frame)
+	    (or ibus-mode (ibus-mode-on))))
+(ibus-define-common-key ?\S-\s nil)
+(global-set-key (kbd "s-SPC") 'ibus-toggle)
+;To toggle half-width eisu mode by C-j, add the following to .emacs:
+(ibus-define-common-key ?\C-j t)
+(setq ibus-use-kana-onbiki-key t)
+(setq ibus-ibus-simultaneous-pressing-time 0.1)
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here
-
-
-

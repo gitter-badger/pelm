@@ -53,7 +53,7 @@
         lisp
         ;objc
         blog
-        mail
+;        mail
         android
         shell
         misc

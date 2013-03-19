@@ -63,7 +63,7 @@
         magithub
         fuzzy
         lua-mode
-        popup
+        ;;popup
         coffee-mode
         markdown-mode
         yaml-mode
@@ -71,14 +71,14 @@
         emacs-w3m
         clojure-mode
 ;        slime
-        offlineimap
+        ;;offlineimap
         sunrise-commander
         browse-kill-ring
         js3-mode
-        mu4e
+        ;;mu4e
         column-marker
-        gtags
-        ace-jump-mode
+        ;;gtags
+        ;;ace-jump-mode
         ))             
 
 (setq pelm:el-get-packages
