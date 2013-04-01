@@ -33,7 +33,6 @@
 
 ;;; directories setup
 (setq org-directory "~/.org-files"
-      blog-directory "~/src/personal/caker.me/_src/org/"
       org-default-notes-file (concat org-directory "/inbox.org")
       org-contacts-files (list(concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
