@@ -77,6 +77,8 @@
         js3-mode
         ;;mu4e
         column-marker
+        cl-lib
+        cperl-mode
         ;;gtags
         ;;ace-jump-mode
         ))             
