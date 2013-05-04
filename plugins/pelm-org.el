@@ -37,7 +37,7 @@
       org-contacts-files (list(concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
       org-mobile-inbox-for-pull "~/.org-files/inbox.org"
-      org-agenda-files (quote ("~/.org-files")))
+      org-agenda-files (quote ("~/.org-files" "~/.org-files/memacs")))
 
 ;;; options 
 (setq org-log-done (quote time)
