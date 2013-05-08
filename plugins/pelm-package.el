@@ -10,20 +10,32 @@
 
 ;;; Code:
 
+(require 'package)
+
+(setq package-archives 
+      (cons '("tromey" . "http://tromey.com/elpa/") package-archives))
+
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
+(el-get 'sync)
 
 (add-to-list 'load-path (concat pelm-dir "/el-get/el-get"))
 (setq el-get-user-package-directory (concat pelm-plugins-dir "conf"))
 
+;(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
+(setq el-get-verbose t)
 
-(unless (require 'el-get nil t)
-  (url-retrieve 
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda(s)
-     (let (el-get-master-branch)
-       (goto-char (point-max))
-       (eval-print-last-sexp)))))
-
-(el-get 'sync)
 
 ;; set pelm recipes
 (setq el-get-sources
@@ -44,6 +56,7 @@
 
         (:name auto-pair-plus
                :after   (progn
+                          (autopair-global-mode) ;;enabled in all buffers
                           (add-hook 'emacs-lisp-mode-hook 'autopair-mode )
                           (add-hook 'clojure-mode-hook 'autopair-mode)
                           ))
@@ -56,6 +69,7 @@
 ;; now set pelm packages
 (setq pelm:el-get-packages
       '(el-get
+	popup
         auto-complete
         color-theme
         color-theme-solarized
@@ -63,7 +77,6 @@
         magithub
         fuzzy
         lua-mode
-        ;;popup
         coffee-mode
         markdown-mode
         yaml-mode
@@ -74,13 +87,16 @@
         ;;offlineimap
         sunrise-commander
         browse-kill-ring
-        js3-mode
+       ; js3-mode
         ;;mu4e
         column-marker
-        cl-lib
+       ; cl-lib
         cperl-mode
         ;;gtags
         ;;ace-jump-mode
+	org-mode
+        dropdown-list
+        android-mode
         ))             
 
 (setq pelm:el-get-packages
