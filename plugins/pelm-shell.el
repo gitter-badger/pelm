@@ -25,7 +25,7 @@
 (xterm-mouse-mode t)  
 
 (custom-set-variables
- '(explicit-shell-file-name "~/bin/shell"))
+ '(explicit-shell-file-name "/usr/bin/zsh"))
 
 
 

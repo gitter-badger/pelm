@@ -21,7 +21,9 @@
 
 (el-get 'sync (loop for src in el-get-evil-packages collect (el-get-source-name src)))
 
+(eval-after-load "evil"
 (evil-mode 1)
+)
 (global-surround-mode 1)
 
 (evil-define-command pelm-evil-maybe-exit ()
@@ -49,10 +51,9 @@
   (shell-command "mpc next"))
 
 
-;;pelm-keymap conflict with evil-mode key
-(define-key evil-normal-state-map (kbd "C-.") nil)
-;; disabled tab for evil-jump-forward use tab for indent 
-(define-key evil-normal-state-map [tab] nil) 
+(eval-after-load "evil"
+  '(progn
+     
 (define-key evil-normal-state-map ",ga" 'org-agenda)
 (define-key evil-normal-state-map ",b" 'ido-switch-buffer)
 (define-key evil-normal-state-map ",t" 'pelm-goto-entry)
@@ -61,6 +62,11 @@
 (define-key evil-normal-state-map ",n" 'pelm-mpc-next-song)
 (define-key evil-normal-state-map ",w" 'save-buffer)
 (define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
+  ))
+;;pelm-keymap conflict with evil-mode key
+;(define-key evil-normal-state-map (kbd "C-.") nil)
+;; disabled tab for evil-jump-forward use tab for indent 
+;(define-key evil-normal-state-map [tab] nil) 
 
 (defun pelm-goto-entry ()
   (interactive)
