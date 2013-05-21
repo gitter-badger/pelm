@@ -57,18 +57,11 @@ both of them ignore by git, so can add some experimental code.
  - libgmime-2.6-dev
  - php5 ( for stock bin)
  - libxapian-dev
-<<<<<<< HEAD
-
-## License
-   MIT
-
-
-=======
  - texinfo
 
 ## License
-
    MIT
+
 
 ## Scripts
 
@@ -99,4 +92,3 @@ for file in *.snippet; do
 done
 
 ```
->>>>>>> release/1.8.0
