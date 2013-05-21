@@ -14,10 +14,10 @@
 
 
 (require 'yasnippet) ;; not yasnippet-bundle
+(yas-global-mode 1)
+
 ;(yas/initialize)
 
-;(setq yas/root-directory '(
-;                           "~/.emacs.d/vendor/yasnippet/snippets"))
 
 (yas/load-directory "~/.emacs.d/snippets")
 

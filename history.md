@@ -1,5 +1,28 @@
 
-1.8.0 / 2012-10-30 
+1.9.0 / 2013-05-21 
+==================
+
+  * added f3 snippets, and lotf changes
+  * auto commit Mon Apr  1 21:50:16 CST 2013
+  * disabled the mu4e
+  * auto commit Wed Jan 23 08:21:47 CST 2013
+  * added dependency
+  * changed w3m path
+  * merge
+  * Merge branch 'release/1.8.0' into develop
+  * Merge branch 'release/1.8.0'
+  * bump version
+  * clean up history file
+  * change hitory to md format
+  * daily commit Tue Oct 30 18:18:13 CST 2012
+  * added template for cli
+  * ack path
+  * daily commit Fri Oct 26 18:33:16 CST 2012
+  * remove config from init.el
+  * readme file
+  * el-get ignore
+
+ 1.8.0 / 2012-10-30 
 ==================
  
   * clean up history file
@@ -12,6 +35,7 @@
   * readme file
   * el-get ignore
   * version change
+
 1.7.0 / 2012-10-10
 ===================
 

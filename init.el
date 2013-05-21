@@ -53,7 +53,7 @@
         lisp
         ;objc
         blog
-        mail
+;        mail
         android
         shell
         misc
@@ -80,7 +80,7 @@
 (run-hooks 'pelm-post-init-hook)
 
 ;; PELM loaded, show the load time 
-(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms ) (current-time)
+(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms nn ) (current-time)
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
 ;;; ends init.el here

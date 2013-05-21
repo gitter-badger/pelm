@@ -82,7 +82,7 @@
 
 (setq message-kill-buffer-on-exit t)
 (setq mu4e-html2text-command "w3m -dump -T text/html")
-(setq w3m-command "/usr/local/bin/w3m")
+(setq w3m-command "w3m")
 
 ;; password encrypt 
 (require 'epa-file)
