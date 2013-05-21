@@ -38,6 +38,7 @@
         runtime
         package
         keys
+        server
         ui
         editor
         git
@@ -47,6 +48,7 @@
         c
         markups
         ;scala
+        haskell
         java
         php
         js
@@ -57,7 +59,6 @@
         android
         shell
         misc
-        server
 ))
 
 ;; load plugins 

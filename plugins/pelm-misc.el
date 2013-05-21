@@ -101,7 +101,6 @@
  '(jabber-show-offline-contacts nil))
 
 ;;; ibus
-(add-hook 'after-init-hook 'ibus-mode-on)
 (ibus-define-common-key ?\C-\s nil)
 (ibus-define-common-key ?\C-/ nil)
 (setq ibus-cursor-color '("red" "blue" "limegreen"))
@@ -112,6 +111,9 @@
 ;	    (or ibus-mode (ibus-mode-on))))
 
 (ibus-define-common-key ?\S-\s nil)
+
+;;disabled ibus by default
+(add-hook 'after-init-hook 'ibus-mode-off)
 
 (global-set-key (kbd "C-=") 'ibus-toggle)
 
