@@ -17,7 +17,7 @@
 
 (defun markdown-custom ()
   "markdown-mode-hook"
-  (setq markdown-command "markdown | smartypants"))
+  (setq markdown-command "mmd"))
 
 (add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
 

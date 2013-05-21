@@ -36,8 +36,12 @@
       org-default-notes-file (concat org-directory "/inbox.org")
       org-contacts-files (list(concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
-      org-mobile-inbox-for-pull "~/.org-files/inbox.org"
-      org-agenda-files (quote ("~/.org-files" "~/.org-files/memacs")))
+      org-mobile-inbox-for-pull "~/.org-files/inbox.org")
+
+(defvar org-gtd-other-files)
+(setf org-gtd-other-files (list "~/.org-files/memacs" "~/src/personal/iemacs.com/iemacs-todo.org"))
+
+(setf org-agenda-files (cons "~/.org-files" org-gtd-other-files))
 
 ;;; options 
 (setq org-log-done (quote time)
@@ -192,9 +196,6 @@ Added: %U")
 (global-set-key (kbd "C-<f9>") 'previous-buffer)
 (global-set-key (kbd "M-<f9>") 'org-display-inline-images)
 (global-set-key (kbd "C-x n r") 'narrow-to-region)
-(global-set-key (kbd "C-<f10>") 'next-buffer)
-(global-set-key (kbd "<f11>") 'org-clock-goto)
-(global-set-key (kbd "C-<f11>") 'org-clock-in)
 (global-set-key (kbd "C-s-<f12>") 'pelm/save-then-publish)
 (global-set-key (kbd "C-M-r") 'org-capture)
 
@@ -245,9 +246,8 @@ Added: %U")
 
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
-      (quote (("N" "Notes" tags "NOTE"
-               ((org-agenda-overriding-header "Notes")
-                (org-tags-match-list-sublevels t)))
+      (quote (
+	      ("i" "iemacs todo" tags "iEmacs" nil '("~/src/personal/iemacs.com/iemacs-todo.org") )
               ("h" "Habits" tags-todo "STYLE=\"habit\""
                ((org-agenda-overriding-header "Habits")
                 (org-agenda-sorting-strategy
@@ -327,7 +327,6 @@ Added: %U")
               ("A" "Tasks to Archive" tags "-ARCHIVE/"
                ((org-agenda-overriding-header "Tasks to Archive")
                 (org-agenda-skip-function 'pelm/skip-non-archivable-tasks))))))
-
 
 (defun pelm/skip-stuck-projects ()
 
