@@ -87,7 +87,7 @@
         ;;offlineimap
         sunrise-commander
         browse-kill-ring
-        js3-mode
+        ;js3-mode
         ;;mu4e
         column-marker
         gtags
