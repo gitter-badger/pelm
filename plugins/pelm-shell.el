@@ -36,14 +36,23 @@
     (erase-buffer)))
 
 (define-key pelm-keymap "\C-l" 'pelm-eshell-clear)
-;; eshell + zsh
 
-(let ((zshpath "/Users/eggcaker/.rvm/gems/ruby-1.9.3-head/bin:/Users/eggcaker/.rvm/gems/ruby-1.9.3-head@global/bin:/Users/eggcaker/.rvm/rubies/ruby-1.9.3-head/bin:/Users/eggcaker/.rvm/bin:/Users/eggcaker/bin:/Users/eggcaker/.oh-my-zsh/bin:/Users/eggcaker/Applications/pear/bin:/usr/local/Cellar/android-sdk/r20/tools:/usr/local/Cellar/android-sdk/r20/platform-tools:/usr/local/Cellar/android-ndk/r8/bin:/Users/eggcaker/.rvm/bin:/Users/eggcaker/.oh-my-zsh/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/texbin:"))
-  (let ((pathlst (split-string zshpath ":")))
-    (setq exec-path pathlst))
-  (setq eshell-path-env zshpath)
-  (setenv "PATH" zshpath))
+
+;; eshell + zsh
+;;TODO cleanup the zshpath
+
+(setenv "PATH"
+        (concat
+         "/home/eggcaker/.dotfiles/bin" path-separator
+         (getenv "PATH")
+         ))
+
+;;eshell alias to open file
+(defalias 'o 'find-file)
+(defalias 'oo 'find-file-other-widnow)
 
 (provide 'pelm-shell)
 
 ;;; pelm-shell.el ends here
+
+

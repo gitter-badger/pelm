@@ -14,6 +14,8 @@
 
 
 (require 'yasnippet) ;; not yasnippet-bundle
+(yas-global-mode 1)
+
 ;(yas/initialize)
 
 ;(setq yas/root-directory '(

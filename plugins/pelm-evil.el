@@ -111,6 +111,7 @@
 (loop for (mode . state) in '(
                               (inferior-emacs-lisp-mode . emacs) 
                               (shell-mode . emacs) 
+                              (eshell-mode . emacs)
                               (mu4e-main-mode . emacs)
                               (mu4e-view-mode . emacs)
                               (mu4e-headers-mode . emacs)
