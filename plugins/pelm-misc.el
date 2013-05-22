@@ -128,6 +128,14 @@
 (setq ibus-use-kana-onbiki-key t)
 (setq ibus-ibus-simultaneous-pressing-time 0.1)
 
+
+
+;;ledger
+(add-to-list 'load-path (concat pelm-vendor-dir "ledger/"))
+(require 'ledger)
+
+(add-to-list 'auto-mode-alist '("\\.journal$" . ledger-mode))
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here

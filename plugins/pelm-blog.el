@@ -30,7 +30,7 @@
       org-startup-folded nil
       org-html-doctype "html5"
       org-export-allow-BIND t
-      org-html-postamble-format '(("en" "<p class=\"postamble\">&copy; iemacs.com. Last updated: %T by %c</p>"))
+      org-html-postamble-format nil ;'(("en" "<p class=\"postamble\">&copy; iemacs.com. Last updated: %T by %c</p>"))
       org-publish-list-skipped-files t
       org-publish-use-timestamps-flag nil  ; nil for dev and t for prod
       org-export-babel-evaluate t

@@ -44,8 +44,11 @@
 (setenv "PATH"
         (concat
          "/home/eggcaker/.dotfiles/bin" path-separator
+         "/home/eggcaker/.cabal/bin" path-separator
          (getenv "PATH")
          ))
+
+
 
 ;;eshell alias to open file
 (defalias 'o 'find-file)
