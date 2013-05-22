@@ -33,7 +33,11 @@
  '(haskell-stylish-on-save t))
 
 (add-hook 'haskell-mode-hook 'haskell-hook)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+
 (add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 ;; Haskell main editing mode key bindings.
 (defun haskell-hook ()
