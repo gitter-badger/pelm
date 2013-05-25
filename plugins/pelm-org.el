@@ -1,4 +1,4 @@
-;;; pelm-org.el --- PELM org-mode 
+;;; pelm-org.el --- PELM org-mode  configurations 
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
@@ -17,9 +17,20 @@
 
 ;;require contrib lisps
 (require 'org)
+(require 'ox-latex)
+(require 'ox-html)
+(require 'ox-md)
 (require 'org-checklist)
+(require 'org-screenshot)
 (require 'org-contacts)
 (require 'org-crypt)
+(require 'ob-R)
+
+
+(setq org-export-backends '(ascii html latex md rss))
+
+;; export
+(setq org-default-language "zh-CN")
 
 (add-hook 'org-mode-hook
           '(lambda ()
@@ -131,20 +142,11 @@
 (setq org-capture-templates
       (quote (("t" "Toto" entry (file (concat org-directory "/inbox.org"))
                "* TODO %?\n%U\n %a\n " :clock-in t :clock-resume t)
-              ("b" "Blog" entry (file (concat blog-directory "/blog-2012.org"))
-               "* TODO %^{TITLE}  %^g\n %?" ) 
               
-              ("n" "Notes" entry (file+datetree (concat org-directory "/notes.org"))
-               "* %^{Description} %^g %? 
-Added: %U") 
               ("x" "CLI TODO" entry
                 (file (concat org-directory "/inbox.org"))
                 "* TODO %i\n%U" :immediate-finish t)
-
-              ("w" "" entry ;; 'w' for 'org-protocol'
-               (file+headline "notes.org" "Notes")
-               "* %^{Title}\n\nSource: %u, %c\n\n  %i")
-
+              
               ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
 
 	       
@@ -166,9 +168,6 @@ Added: %U")
 (define-key global-map "\C-cr" 'org-capture)
 (define-key global-map "\C-cl" 'org-store-link)
 (global-set-key (kbd "<f12>") 'org-agenda)
-(global-set-key (kbd "<f5>") 'pelm/org-todo)
-(global-set-key (kbd "<S-f5>") 'pelm/widen)
-(global-set-key (kbd "<f7>") 'pelm/set-truncate-lines)
 
 (global-set-key (kbd "<f9> <f9>") 'pelm/show-org-agenda)
 (global-set-key (kbd "<f9> c") 'calendar)
@@ -181,8 +180,6 @@ Added: %U")
 
 (global-set-key (kbd "<f9> I") 'pelm/punch-in)
 (global-set-key (kbd "<f9> O") 'pelm/punch-out)
-
-(global-set-key (kbd "<f9> o") 'pelm/make-org-scratch)
 
 (global-set-key (kbd "<f9> r") 'boxquote-region)
 (global-set-key (kbd "<f9> s") 'pelm/switch-to-scratch)
@@ -994,11 +991,12 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
          (ditaa . t)
          (R . t)
          (ledger . t)
+         (haskell . t)
  ;        (python . t)
          ;(ruby . t)
-;         (gnuplot . t)
-         (scala . t)
-         (clojure . t)
+         (gnuplot . t)
+ ;        (scala . t)
+ ;        (clojure . t)
          (sh . t)
    ;      (ledger . t)
          (org . t)
@@ -1397,6 +1395,92 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (add-hook 'org-clock-in-hook 'pelm/mark-next-parent-tasks-todo 'append)
 
 
+
+;; html export
+(setq org-html-coding-system 'utf-8)
+(setq org-html-head-include-default-style nil)
+(setq org-html-head-include-scripts nil)
+
+
+;; latex export 
+(setq org-latex-coding-system 'utf-8)
+(setq org-latex-date-format "%Y-%m-%d")
+(setq org-export-with-LaTeX-fragments 'imagemagick)
+(setq org-latex-create-formula-image-program 'imagemagick)
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode -output-directory %o %f" 
+                              "xelatex -interaction nonstopmode -output-directory %o %f"))
+
+
+(add-to-list 'org-latex-classes
+             '("ctexart"
+               "\\documentclass{ctexart}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+(add-to-list 'org-latex-classes
+             '("ctexrep"
+               "\\documentclass{ctexrep}"
+               ("\\part{%s}" . "\\part*{%s}")
+               ("\\chapter{%s}" . "\\chapter*{%s}")
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+(add-to-list 'org-latex-classes
+             '("ctexbook"
+               "\\documentclass{ctexbook}"
+               ("\\part{%s}" . "\\part*{%s}")
+               ("\\chapter{%s}" . "\\chapter*{%s}")
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass{beamer}
+               \\usepackage{ctex}"
+               org-beamer-sectioning))
+
+;(setq  org-latex-packages-alist
+;       '("
+;\\setCJKmainfont[ItalicFont={AR PL UKai CN}]{AR PL UMing CN}% 文鼎宋体和楷书
+;\\setCJKsansfont{WenQuanYi Zen Hei}% 文泉驿的黑体
+;\\setCJKmonofont{WenQuanYi Zen Hei}
+;\\usepackage{tikz}
+;"))
+
+;; 设置默认缩放比例为1.2.
+(setq org-format-latex-options
+      (plist-put org-format-latex-options :scale 1.2))
+
+(setq org-format-latex-header "\\documentclass{ctexart}
+\\usepackage[usenames]{color}
+\\usepackage{amsmath}
+\\usepackage[mathscr]{eucal}
+\\pagestyle{empty}             % do not remove
+\[PACKAGES]
+\[DEFAULT-PACKAGES]
+% The settings below are copied from fullpage.sty
+\\setlength{\\textwidth}{\\paperwidth}
+\\addtolength{\\textwidth}{-3cm}
+\\setlength{\\oddsidemargin}{1.5cm}
+\\addtolength{\\oddsidemargin}{-2.54cm}
+\\setlength{\\evensidemargin}{\\oddsidemargin}
+\\setlength{\\textheight}{\\paperheight}
+\\addtolength{\\textheight}{-\\headheight}
+\\addtolength{\\textheight}{-\\headsep}
+\\addtolength{\\textheight}{-\\footskip}
+\\addtolength{\\textheight}{-3cm}
+\\setlength{\\topmargin}{1.5cm}
+\\addtolength{\\topmargin}{-2.54cm}")
+
+;;;###autoload(require 'pelm-org)
 (provide 'pelm-org)
-;; pelm-org.el ends here
+
+
+;; Local Variables:
+;; coding: utf-8-unix
+;; End:
+
+;;; pelm-org.el ends here
 

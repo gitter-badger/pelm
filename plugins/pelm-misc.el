@@ -131,8 +131,8 @@
 
 
 ;;ledger
-(add-to-list 'load-path (concat pelm-vendor-dir "ledger/"))
-(require 'ledger)
+(add-to-list 'load-path "~/.emacs.d/vendor/ledger/")
+(require  'ldg-init)
 
 (add-to-list 'auto-mode-alist '("\\.journal$" . ledger-mode))
 
