@@ -30,7 +30,7 @@
       org-startup-folded nil
       org-html-doctype "html5"
       org-export-allow-BIND t
-      org-html-postamble-format nil ;'(("en" "<p class=\"postamble\">&copy; iemacs.com. Last updated: %T by %c</p>"))
+      org-html-postamble-format nil
       org-publish-list-skipped-files t
       org-publish-use-timestamps-flag nil  ; nil for dev and t for prod
       org-export-babel-evaluate t
@@ -40,56 +40,40 @@
 (defun set-org-publish-project-alist ()
   (interactive)
   (setq org-publish-project-alist
-	`(("iemacs"
-           :components ("iemacs-pages" "iemacs-assets-dir" ))
-	  ("iemacs-pages"
-	   :base-directory ,iemacs-base-directory
+	`(
+	  ("iemacs"
+	   :base-directory ,iemacs-org-directory
 	   :base-extension "org"
 	   :exclude "scripts"
-	   :makeindex t
-	   :auto-sitemap t
-	   :sitemap-ignore-case t
-	   :html-extension "html"
+	   :html-extension "md"
 	   :publishing-directory ,iemacs-publish-directory
            :publishing-function org-html-publish-to-html
-	   :htmlized-source t 
 	   :section-numbers nil
-	   :table-of-contents t 
-	   :html-head "<link rel=\"stylesheet\" href=\"/assets/css/bootstrap.min.css\" type=\"text/css\" />
-<link rel=\"stylesheet\" href=\"/assets/css/iemacs.css\" type=\"text/css\" />"
+	   :with-toc t
+           :body-only t
 	   :recursive t
-	   :html-preamble "" ;,(org-get-file-contents "~/src/personal/iemacs.com/assets/html/preamble.html")
-	   :html-postamble t
+	   :html-preamble nil
+	   :html-postamble nil
+           :completion-function iemacs-fix-toc
 	   )
-	  ("iemacs-assets-dir"
-	   :base-directory ,iemacs-base-assets-directory
-	   :base-extension "png\\|jpg\\|gif\\|pdf\\|cvs\\|css"
-	   :publishing-directory "/var/www/iemacs.com/public/assets/"
-	   :recursive t
-	   :publishing-function org-publish-attachment)
+
           )))
 
-(setq iemacs-base-directory "~/src/personal/iemacs.com/")
-(setq iemacs-base-assets-directory "~/src/personal/iemacs.com/assets/")
-(setq iemacs-publish-directory "/var/www/iemacs.com/public/")
-(set-org-publish-project-alist)
 
-(defun iemacs-fix-symbol-table ()
-  (when (string-match "org-symbols\\.html" buffer-file-name)
-    (goto-char (point-min))
-    (while (re-search-forward "<td>&amp;\\([^<;]+;\\)" nil t)
-      (replace-match (concat "<td>&" (match-string 1)) t t))))
+(defun iemacs-fix-toc ()
+  "reformat the toc part to top of file"
+  (shell-command (concat "cd " iemacs-base-directory "; make format-org")) 
+  )
 
 (defun publish-iemacs nil
-   "Publish iEmacs.com"
-   (interactive)
-   ;(add-hook 'org-publish-after-export-hook 'iemacs-fix-symbol-table)
-   (let ((org-format-latex-signal-error nil)
-	 (iemacs-base-directory "~/src/personal/iemacs.com/")
-	 (iemacs-base-assets-directory "~/src/personal/iemacs.com/assets/")
-	 (iemacs-publish-directory "/var/www/iemacs.com/public/"))
-     (set-org-publish-project-alist)
-     (org-publish-project "iemacs")))
+  "Publish iEmacs.com orgmode posts"
+  (interactive)
+  (let ((org-format-latex-signal-error nil)
+        (iemacs-base-directory "~/src/personal/iemacs.com/")
+        (iemacs-org-directory "~/src/personal/iemacs.com/org/")
+        (iemacs-publish-directory "~/src/personal/iemacs.com/"))
+    (set-org-publish-project-alist)
+    (org-publish-project "iemacs")))
 
 (provide 'pelm-blog)
 ;;; pelm-blog ends here
