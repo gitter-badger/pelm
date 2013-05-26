@@ -50,7 +50,9 @@
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
 (defvar org-gtd-other-files)
-(setf org-gtd-other-files (list "~/.org-files/memacs" "~/src/personal/iemacs.com/iemacs-todo.org"))
+;;"~/.org-files/memacs" 
+;; memacs was cool but really useful to me.
+(setf org-gtd-other-files (list "~/.emacs.d/todo.org" "~/src/personal/iemacs.com/iemacs-todo.org"))
 
 (setf org-agenda-files (cons "~/.org-files" org-gtd-other-files))
 
@@ -1403,6 +1405,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 
 ;; latex export 
+;;CODO - remove off of org.el to latex.el?
 (setq org-latex-coding-system 'utf-8)
 (setq org-latex-date-format "%Y-%m-%d")
 (setq org-export-with-LaTeX-fragments 'imagemagick)
@@ -1474,7 +1477,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 \\setlength{\\topmargin}{1.5cm}
 \\addtolength{\\topmargin}{-2.54cm}")
 
-;;;###autoload(require 'pelm-org)
 (provide 'pelm-org)
 
 
