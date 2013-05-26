@@ -1,11 +1,28 @@
+#+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate
+#+FILETAGS: PELM
+#+SEQ_TODO:   TODO(t) NEXT(i) WAITING(w@) | DONE(d) CANCELED(c@)
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c)
+#+TITLE:      TODO central file for PELM
+#+AUTHOR:     eggcaker
+#+EMAIL:      eggcaker AT gmail DOT com
+#+LANGUAGE:   en
+#+PRIORITIES: A C B
+#+CATEGORY:   PELM
+#+OPTIONS:    H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t TeX:t LaTeX:t skip:nil d:(HIDE) tags:not-in-toc
+#+ARCHIVE:    pelm-todo_archive::
+
+
+
+
+
 * shell to extract the CODO entries
 
 #+BEGIN_SRC sh 
- find ./plugins -type f -name "*.el"|xargs grep -n ";;CODO - "|awk -F\: '{print "- [ ] [["$1"::"$2"]["$3"]]"}'  >> todo.org 
+ find $HOME/.emacs.d/plugins -type f -name "*.el"|xargs grep -n ";;CODO - "|awk -F\: '{print "** TODO [["$1"::"$2"]["$3"]]"}'  >> todo.org 
 #+END_SRC
 
 
-* TODOs of PELM [1/2]
+* TODOs of PELM [0/2]
 
-- [X] [[./plugins/pelm-blog.el::78][;;CODO - implement me !]]
-- [ ] [[./plugins/pelm-org.el::1408][;;CODO - remove off of org.el to latex.el?]]
+** TODO [[/home/eggcaker/.emacs.d/plugins/pelm-blog.el::78][;;CODO - implement me !]]
+** TODO [[/home/eggcaker/.emacs.d/plugins/pelm-org.el::1408][;;CODO - remove off of org.el to latex.el?]]
