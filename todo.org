@@ -1,0 +1,11 @@
+* shell to extract the CODO entries
+
+#+BEGIN_SRC sh 
+ find ./plugins -type f -name "*.el"|xargs grep -n ";;CODO - "|awk -F\: '{print "- [ ] [["$1"::"$2"]["$3"]]"}'  >> todo.org 
+#+END_SRC
+
+
+* TODOs of PELM [1/2]
+
+- [X] [[./plugins/pelm-blog.el::78][;;CODO - implement me !]]
+- [ ] [[./plugins/pelm-org.el::1408][;;CODO - remove off of org.el to latex.el?]]
