@@ -22,7 +22,11 @@
 #+END_SRC
 
 
-* TODOs of PELM [0/2]
+* TODOs of PELM [0/3]
 
-** TODO [[/home/eggcaker/.emacs.d/plugins/pelm-blog.el::78][;;CODO - implement me !]]
-** TODO [[/home/eggcaker/.emacs.d/plugins/pelm-org.el::1408][;;CODO - remove off of org.el to latex.el?]]
+** TODO setup the pdf exort of org-mode worki properly
+:LOGBOOK:
+CLOCK: [2013-05-26 Sun 20:25]--[2013-05-27 Mon 00:31] =>  4:06
+CLOCK: [2013-05-25 Sat 17:34]--[2013-05-25 Sat 17:35] =>  0:01
+:END:
+[2013-05-25 Sat 17:34]

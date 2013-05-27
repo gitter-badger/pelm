@@ -20,6 +20,7 @@
 (require 'ox-latex)
 (require 'ox-html)
 (require 'ox-md)
+(require 'ox-beamer)
 (require 'org-checklist)
 (require 'org-screenshot)
 (require 'org-contacts)
@@ -27,7 +28,7 @@
 (require 'ob-R)
 
 
-(setq org-export-backends '(ascii html latex md rss))
+(setq org-export-backends '(ascii beamer html latex md rss))
 
 ;; export
 (setq org-default-language "zh-CN")
@@ -1000,10 +1001,9 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
  ;        (scala . t)
  ;        (clojure . t)
          (sh . t)
-   ;      (ledger . t)
          (org . t)
          (plantuml . t)
-         ;(latex . t)
+         (latex . t)
          )))
 
 ; Do not prompt to confirm evaluation
@@ -1443,14 +1443,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
                "\\documentclass{beamer}
                \\usepackage{ctex}"
                org-beamer-sectioning))
-
-;(setq  org-latex-packages-alist
-;       '("
-;\\setCJKmainfont[ItalicFont={AR PL UKai CN}]{AR PL UMing CN}% 文鼎宋体和楷书
-;\\setCJKsansfont{WenQuanYi Zen Hei}% 文泉驿的黑体
-;\\setCJKmonofont{WenQuanYi Zen Hei}
-;\\usepackage{tikz}
-;"))
+;\\setCJKmainfont[ItalicFont={AR PL UKai CN}]{AR PL UMing CN}{WenQuanYi Zen Hei Mono}
+(setq  org-latex-packages-alist
+       '("
+\\setCJKmainfont{WenQuanYi Zen Hei Mono}
+\\setCJKsansfont{WenQuanYi Zen Hei Mono}
+\\setCJKmonofont{WenQuanYi Zen Hei Mono}
+\\usepackage{tikz}
+"))
 
 ;; 设置默认缩放比例为1.2.
 (setq org-format-latex-options

@@ -75,11 +75,5 @@
     (set-org-publish-project-alist)
     (org-publish-project "iemacs")))
 
-;;CODO - implement me !
-(defun create-iemacs-item ()
-  "create a post or puzzle or review to iemacs folder"
-  (interactive)
-  
-  )
 (provide 'pelm-blog)
 ;;; pelm-blog ends here
