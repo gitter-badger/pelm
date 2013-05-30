@@ -83,22 +83,16 @@
         yasnippet
         emacs-w3m
         clojure-mode
-;        slime
         ;;offlineimap
         sunrise-commander
         browse-kill-ring
         ;js3-mode
-        ;;mu4e
         column-marker
-        gtags
         android-mode
         ace-jump-mode
-       ; cl-lib
         cperl-mode
-        ;;gtags
         ace-jump-mode
         dropdown-list
-        android-mode
         ))             
 
 (setq pelm:el-get-packages

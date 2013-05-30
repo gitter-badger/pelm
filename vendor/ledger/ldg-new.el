@@ -84,7 +84,7 @@
   (find-file "ledger-mode-dump")
   (ledger-mode-dump-group 'ledger))
  
-(provide 'ledger)
+(provide 'ldg-new)
 
 ;;; ldg-new.el ends here
 

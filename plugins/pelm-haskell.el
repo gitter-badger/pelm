@@ -13,6 +13,7 @@
 
 ;; Add the current dir for loading haskell-site-file.
 (add-to-list 'load-path ".")
+
 ;; Always load via this. If you contribute you should run `make all`
 ;; to regenerate this.
 (load "haskell-site-file")
@@ -32,12 +33,11 @@
  ;; To enable stylish on save.
  '(haskell-stylish-on-save t))
 
-(add-hook 'haskell-mode-hook 'haskell-hook)
-(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+;(add-hook 'haskell-mode-hook 'haskell-hook)
 
-(add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;(add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
+;(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 ;; Haskell main editing mode key bindings.
 (defun haskell-hook ()
@@ -54,22 +54,23 @@
   (define-key haskell-mode-map [?\C-c ?\C-z] 'haskell-interactive-switch)
   ;; “Bring” the REPL, hiding all other windows apart from the source
   ;; and the REPL.
-  (define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
+  
+; (define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
 
   ;; Build the Cabal project.
-  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+;  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
   ;; Interactively choose the Cabal command to run.
-  (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
+;  (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
 
   ;; Get the type and info of the symbol at point, print it in the
   ;; message buffer.
-  (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
-  (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+;  (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+;  (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
 
   ;; Contextually do clever things on the space key, in particular:
   ;;   1. Complete imports, letting you choose the module name.
   ;;   2. Show the type of the symbol after the space.
-  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+;  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
 
   ;; Jump to the imports. Keep tapping to jump between import
   ;; groups. C-u f8 to jump back again.
@@ -96,6 +97,56 @@
   (define-key haskell-cabal-mode-map (kbd "C-`") 'haskell-interactive-bring)
   (define-key haskell-cabal-mode-map [?\C-c ?\C-z] 'haskell-interactive-switch))
 
+;; ghc-mode setup
+;; need install the ghc-mod with cabal
+;; cabal install ghc-mod
+
+(add-to-list 'exec-path (concat (getenv "HOME" ) "/.cabal/bin"))
+(add-to-list 'load-path "~/.cabal/share/ghc-mod-2.0.2/")
+(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
+
+(defun my-smartchr-keybindings-haskell ()
+  (local-set-key (kbd "+")  (smartchr '(" + " " ++ " "+")))
+  (local-set-key (kbd "-")  (smartchr '(" - " "-- " "-")))
+  (local-set-key (kbd "*")  (smartchr '("*" " * " " <*> ")))
+  (local-set-key (kbd ")")  (smartchr '(")" " >> " " >>= ")))
+  (local-set-key (kbd "(")  (smartchr '("(" " <=< ")))
+  (local-set-key (kbd ">")  (smartchr '(" -> " " => " " > " ">")))
+  (local-set-key (kbd "<")  (smartchr '(" <- " " <= " " < " "<")))
+  (local-set-key (kbd ":")  (smartchr '(":" " :: " " : ")))
+  (local-set-key (kbd ";")  (smartchr '(";" " :: " " : ")))
+  (local-set-key (kbd "!")  (smartchr '("!" " !! " " ! ")))
+  (local-set-key (kbd "$")  (smartchr '(" $ " " <$> " "$")))
+  (local-set-key (kbd "=")  (smartchr '(" = " " /= " " == " "=")))
+  (local-set-key (kbd "|")  (smartchr '("|" " | " )))
+  (local-set-key (kbd "`")  (smartchr '("``!!'`" "`" )))
+  (local-set-key (kbd ".")  (smartchr '("." " . " )))
+  )
+
+(dolist (hook (list
+               'haskell-mode-hook
+               ))
+  (add-hook hook 'my-smartchr-keybindings-haskell))
+
+(ac-define-source ghc-mod
+  '((depends ghc)
+    (candidates . (ghc-select-completion-symbol))
+    (symbol . "s")
+    (cache)))
+
+(defun my-ac-haskell-mode ()
+  (setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-dictionary ac-source-ghc-mod)))
+(add-hook 'haskell-mode-hook 'my-ac-haskell-mode)
+
+(defun my-haskell-ac-init ()
+  (when (member (file-name-extension buffer-file-name) '("hs" "lhs"))
+    (auto-complete-mode t)
+    (setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-dictionary ac-source-ghc-mod))))
+
+(add-hook 'find-file-hook 'my-haskell-ac-init)
 
 (provide 'pelm-haskell)
 ;; pelm-haskell.el ends here
+
+

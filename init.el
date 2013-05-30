@@ -49,13 +49,14 @@
         markups
         ;scala
         haskell
+        clojure
+        lisp
         java
         php
         js
-        lisp
         ;objc
         blog
-;        mail
+        mail
         android
         shell
         misc
@@ -65,6 +66,7 @@
 (mapcar (lambda (x) 
 	  (require (intern (format "pelm-%s" x)) nil t))
 	pelm-plugins)
+
 
 (cond
     ((string-match "apple-darwin" system-configuration)
