@@ -11,14 +11,16 @@
 ;;; Code:
 
 
-;(setq gnus-select-method '(nntp "localhost"))
 
-(setq gnus-select-method  ;gnus-secondary-select-method
-         '(nnimap "gmail"
-	       (nnimap-address "localhost")
-	       (nnimap-stream network)
-	       (nnimap-authenticator login)))
+(setq gnus-select-method ;select-method  
+         '( nnimap "gmail"
+                   (nnimap-address "localhost")
+                   (nnimap-stream network)
+                   (nnimap-authenticator login))
+            )
                
+
+(add-to-list 'gnus-secondary-select-methods  '(nntp "localhost"))
 
 (setq gnus-ignored-from-addresses "eggcaker@gmail.com")
 
