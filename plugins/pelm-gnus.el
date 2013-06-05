@@ -11,16 +11,17 @@
 ;;; Code:
 
 
+(setq gnus-select-method '(nntp "localhost"))
 
-(setq gnus-select-method ;select-method  
-         '( nnimap "gmail"
-                   (nnimap-address "localhost")
-                   (nnimap-stream network)
-                   (nnimap-authenticator login))
-            )
-               
+(setq gnus-secondary-select-methods
+      '((nnimap "gmail"
+                 (nnimap-address "localhost")
+                 (nnimap-stream network)
+                 (nnimap-authenticator login))
+))
 
-(add-to-list 'gnus-secondary-select-methods  '(nntp "localhost"))
+
+
 
 (setq gnus-ignored-from-addresses "eggcaker@gmail.com")
 
@@ -53,8 +54,6 @@
                                             (summary .40 point) (article 1.0))))
 
 (auto-image-file-mode)
-(setq mm-inline-large-images t)
-(add-to-list 'mm-attachment-override-types "image/*")
 
 (setq gnus-confirm-mail-reply-to-news t
       message-kill-buffer-on-exit t

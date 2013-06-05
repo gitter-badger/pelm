@@ -23,7 +23,7 @@
 (require 'ox-beamer)
 (require 'org-checklist)
 (require 'org-screenshot)
-(require 'org-contacts)
+;(require 'org-contacts)
 (require 'org-crypt)
 (require 'ob-R)
 
@@ -46,7 +46,7 @@
 ;;; directories setup
 (setq org-directory "~/.org-files"
       org-default-notes-file (concat org-directory "/inbox.org")
-      org-contacts-files (list(concat org-directory "/contacts.org"))
+;      org-contacts-files (list(concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
@@ -150,19 +150,19 @@
                 (file (concat org-directory "/inbox.org"))
                 "* TODO %i\n%U" :immediate-finish t)
               
-              ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
-
-	       
-               "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
-:PROPERTIES:
-:URL:
-:WORK:
-:HOME:
-:MOBILE:
-:LOCATION:
-:BIRTHDAY: 
-:NOTE:
-:END:"))))
+;              ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
+;               "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
+;:PROPERTIES:
+;:URL:
+;:WORK:
+;:HOME:
+;:MOBILE:
+;:LOCATION:
+;:BIRTHDAY: 
+;:NOTE:
+;:END:")
+;
+)))
 
 ;; Custom Key Bindings
 (define-key global-map "\C-ca" 'org-agenda)
