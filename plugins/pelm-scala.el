@@ -10,7 +10,7 @@
 ;;; Code:
 
 (unless (require 'scala-mode nil t)
-  (el-get-install "scala-mode"))
+  (el-get 'sync "scala-mode"))
 
 
 (require 'scala-mode-auto)
