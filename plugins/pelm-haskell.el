@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-(el-get-install "haskell-mode")
+(el-get 'sync "haskell-mode")
 
 ;; Add the current dir for loading haskell-site-file.
 (add-to-list 'load-path ".")

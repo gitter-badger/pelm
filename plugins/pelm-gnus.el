@@ -126,6 +126,7 @@
 
 (provide 'pelm-gnus)
 
+;;; pelm-gnus.el ends here
 
 
 

@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-(el-get-install "php-mode-improved")
+(el-get 'sync "php-mode-improved")
 
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 

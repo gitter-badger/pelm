@@ -24,11 +24,14 @@
       org-export-skip-text-before-1st-heading nil
       org-export-with-sub-superscripts '{}
       org-export-with-archived-trees nil
-      org-export-highlight-first-table-line nil 
+      org-export-highlight-first-table-line t
       org-export-latex-listings-w-names nil
       org-export-htmlize-output-type 'css
       org-startup-folded nil
-      org-html-doctype "html5"
+      ;if you want to use  #+ATTR_HTML: to add a class to table, cannot use html5 for html-doctype 
+      org-html-doctype "xhtml-strict" ;"html5" 
+      ; added this to remove all default attributes for table like cellspacing...
+      org-html-table-default-attributes nil
       org-export-allow-BIND t
       org-html-postamble-format nil
       org-publish-list-skipped-files t

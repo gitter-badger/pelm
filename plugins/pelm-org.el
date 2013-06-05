@@ -9,11 +9,7 @@
 
 ;;; Code:
 
-(setq el-get-org-packages
-      '((:name org-mode)
-        ))
-      
-(el-get 'sync (loop for src in el-get-org-packages collect (el-get-source-name src)))
+(el-get-install  "org-mode")
 
 ;;require contrib lisps
 (require 'org)
@@ -23,15 +19,13 @@
 (require 'ox-beamer)
 (require 'org-checklist)
 (require 'org-screenshot)
-(require 'org-contacts)
+;(require 'org-contacts)
 (require 'org-crypt)
 (require 'ob-R)
 
 
 (setq org-export-backends '(ascii beamer html latex md rss))
 
-;; export
-(setq org-default-language "zh-CN")
 
 (add-hook 'org-mode-hook
           '(lambda ()
@@ -46,7 +40,7 @@
 ;;; directories setup
 (setq org-directory "~/.org-files"
       org-default-notes-file (concat org-directory "/inbox.org")
-      org-contacts-files (list(concat org-directory "/contacts.org"))
+   ;   org-contacts-files (list(concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
@@ -145,24 +139,11 @@
 (setq org-capture-templates
       (quote (("t" "Toto" entry (file (concat org-directory "/inbox.org"))
                "* TODO %?\n%U\n %a\n " :clock-in t :clock-resume t)
-              
               ("x" "CLI TODO" entry
                 (file (concat org-directory "/inbox.org"))
                 "* TODO %i\n%U" :immediate-finish t)
-              
-              ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
 
-	       
-               "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
-:PROPERTIES:
-:URL:
-:WORK:
-:HOME:
-:MOBILE:
-:LOCATION:
-:BIRTHDAY: 
-:NOTE:
-:END:"))))
+)))
 
 ;; Custom Key Bindings
 (define-key global-map "\C-ca" 'org-agenda)
@@ -1403,86 +1384,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-html-head-include-default-style nil)
 (setq org-html-head-include-scripts nil)
 
-
-;; latex export 
-;;CODO - remove off of org.el to latex.el?
-(setq org-latex-coding-system 'utf-8)
-(setq org-latex-date-format "%Y-%m-%d")
-(setq org-export-with-LaTeX-fragments 'imagemagick)
-(setq org-latex-create-formula-image-program 'imagemagick)
-(setq org-latex-pdf-process '("xelatex -interaction nonstopmode -output-directory %o %f" 
-                              "xelatex -interaction nonstopmode -output-directory %o %f"))
-
-
-(add-to-list 'org-latex-classes
-             '("ctexart"
-               "\\documentclass{ctexart}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-(add-to-list 'org-latex-classes
-             '("ctexrep"
-               "\\documentclass{ctexrep}"
-               ("\\part{%s}" . "\\part*{%s}")
-               ("\\chapter{%s}" . "\\chapter*{%s}")
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
-(add-to-list 'org-latex-classes
-             '("ctexbook"
-               "\\documentclass{ctexbook}"
-               ("\\part{%s}" . "\\part*{%s}")
-               ("\\chapter{%s}" . "\\chapter*{%s}")
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
-(add-to-list 'org-latex-classes
-             '("beamer"
-               "\\documentclass{beamer}
-               \\usepackage{ctex}"
-               org-beamer-sectioning))
-;\\setCJKmainfont[ItalicFont={AR PL UKai CN}]{AR PL UMing CN}{WenQuanYi Zen Hei Mono}
-(setq  org-latex-packages-alist
-       '("
-\\setCJKmainfont{WenQuanYi Zen Hei Mono}
-\\setCJKsansfont{WenQuanYi Zen Hei Mono}
-\\setCJKmonofont{WenQuanYi Zen Hei Mono}
-\\usepackage{tikz}
-"))
-
-;; 设置默认缩放比例为1.2.
-(setq org-format-latex-options
-      (plist-put org-format-latex-options :scale 1.2))
-
-(setq org-format-latex-header "\\documentclass{ctexart}
-\\usepackage[usenames]{color}
-\\usepackage{amsmath}
-\\usepackage[mathscr]{eucal}
-\\pagestyle{empty}             % do not remove
-\[PACKAGES]
-\[DEFAULT-PACKAGES]
-% The settings below are copied from fullpage.sty
-\\setlength{\\textwidth}{\\paperwidth}
-\\addtolength{\\textwidth}{-3cm}
-\\setlength{\\oddsidemargin}{1.5cm}
-\\addtolength{\\oddsidemargin}{-2.54cm}
-\\setlength{\\evensidemargin}{\\oddsidemargin}
-\\setlength{\\textheight}{\\paperheight}
-\\addtolength{\\textheight}{-\\headheight}
-\\addtolength{\\textheight}{-\\headsep}
-\\addtolength{\\textheight}{-\\footskip}
-\\addtolength{\\textheight}{-3cm}
-\\setlength{\\topmargin}{1.5cm}
-\\addtolength{\\topmargin}{-2.54cm}")
-
 (provide 'pelm-org)
-
-
-;; Local Variables:
-;; coding: utf-8-unix
-;; End:
-
 ;;; pelm-org.el ends here
 
