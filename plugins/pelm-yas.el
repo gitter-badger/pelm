@@ -19,11 +19,11 @@
 ;(yas/initialize)
 
 
-(yas/load-directory "~/.emacs.d/snippets")
+(yas-load-directory "~/.emacs.d/snippets")
 
 (require 'dropdown-list)
 
-(setq yas/prompt-functions '(yas/dropdown-prompt
+(setq yas-prompt-functions '(yas/dropdown-prompt
                              yas/ido-prompt
                              yas/completing-prompt))
 

@@ -9,17 +9,16 @@
 
 ;;; Code:
 
-(el-get-install  "org-mode")
-
-;;require contrib lisps
+(el-get 'sync "org-mode")
 (require 'org)
+(require 'org-contacts)
+(message "hello load org-contacts")
 (require 'ox-latex)
 (require 'ox-html)
 (require 'ox-md)
 (require 'ox-beamer)
 (require 'org-checklist)
 (require 'org-screenshot)
-;(require 'org-contacts)
 (require 'org-crypt)
 (require 'ob-R)
 
@@ -40,7 +39,7 @@
 ;;; directories setup
 (setq org-directory "~/.org-files"
       org-default-notes-file (concat org-directory "/inbox.org")
-   ;   org-contacts-files (list(concat org-directory "/contacts.org"))
+      org-contacts-files (list (concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
@@ -142,7 +141,19 @@
               ("x" "CLI TODO" entry
                 (file (concat org-directory "/inbox.org"))
                 "* TODO %i\n%U" :immediate-finish t)
-
+              ("c" "Contacts" entry (file "~/.org-files/contacts.org")
+               "* %(org-contacts-template-name)
+ :PROPERTIES:
+ :EMAIL: %(org-contacts-template-email)
+ :PHONE:
+ :ALIAS:
+ :NICKNAME:
+ :IGNORE:
+ :ICON:
+ :NOTE:
+ :ADDRESS:
+ :BIRTHDAY:
+ :END:")
 )))
 
 ;; Custom Key Bindings
