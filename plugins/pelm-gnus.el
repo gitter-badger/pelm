@@ -11,16 +11,17 @@
 ;;; Code:
 
 
+(setq gnus-select-method '(nntp "localhost"))
 
-(setq gnus-select-method ;select-method  
-         '( nnimap "gmail"
-                   (nnimap-address "localhost")
-                   (nnimap-stream network)
-                   (nnimap-authenticator login))
-            )
-               
+(setq gnus-secondary-select-methods
+      '((nnimap "gmail"
+                 (nnimap-address "localhost")
+                 (nnimap-stream network)
+                 (nnimap-authenticator login))
+))
 
-(add-to-list 'gnus-secondary-select-methods  '(nntp "localhost"))
+
+
 
 (setq gnus-ignored-from-addresses "eggcaker@gmail.com")
 
@@ -53,8 +54,6 @@
                                             (summary .40 point) (article 1.0))))
 
 (auto-image-file-mode)
-(setq mm-inline-large-images t)
-(add-to-list 'mm-attachment-override-types "image/*")
 
 (setq gnus-confirm-mail-reply-to-news t
       message-kill-buffer-on-exit t
@@ -74,15 +73,7 @@
 
 (setq gnus-summary-gather-subject-limit 'fuzzy)
 (setq gnus-summary-line-format "%4P %U%R%z%O %{%14&user-date;%} %{%-20,20n%} %{%ua%} %B %(%I%-60,60s%)\n")
-(defun gnus-user-format-function-a (header)
-  (let ((myself (concat "< eggcaker@gmail.com >"))
-        (references (mail-header-references header))
-        (message-id (mail-header-id header)))
-    (if (or (and (stringp references)
-                 (string-match myself references))
-            (and (stringp message-id)
-                 (string-match myself message-id)))
-        "X" "│")))
+
 (setq gnus-user-date-format-alist             
       '(((gnus-seconds-today) . "TD %H:%M")  
         (604800 . "W%w %H:%M")              
@@ -91,9 +82,9 @@
         (t . "%y-%m-%d %H:%M")))            
 
 
-(add-hook 'gnus-article-prepare-hook 'gnus-article-date-local)
-(add-hook 'gnus-select-group-hook 'gnus-group-set-timestamp) 
-(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)           
+;(add-hook 'gnus-article-prepare-hook 'gnus-article-date-local)
+;(add-hook 'gnus-select-group-hook 'gnus-group-set-timestamp) 
+;(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)           
 
 
 (gnus-add-configuration
@@ -115,24 +106,17 @@
         (not gnus-thread-sort-by-date)                            
         (not gnus-thread-sort-by-number)))                         
 
-(add-hook 'gnus-switch-on-after-hook 'gnus-group-first-unread-group) 
-(add-hook 'gnus-summary-exit-hook 'gnus-group-first-unread-group)   
+;(add-hook 'gnus-switch-on-after-hook 'gnus-group-first-unread-group) 
+;(add-hook 'gnus-summary-exit-hook 'gnus-group-first-unread-group)   
 
-(setq gnus-summary-stripe-regexp       
-      (concat "^[^"
-              gnus-sum-thread-tree-vertical
-              "]*"))
-
+(defun gnus-user-format-function-a (header)
+  (let ((myself (concat "< eggcaker@gmail.com >"))
+        (references (mail-header-references header))
+        (message-id (mail-header-id header)))
+    (if (or (and (stringp references)
+                 (string-match myself references))
+            (and (stringp message-id)
+                 (string-match myself message-id)))
+        "X" "│")))
 
 (provide 'pelm-gnus)
-
-;;; pelm-gnus.el ends here
-
-
-
-
-
-
-
-
-

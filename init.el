@@ -58,6 +58,7 @@
         blog
         mail
         android
+        gnus
         shell
         misc
 ))

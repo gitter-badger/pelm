@@ -132,9 +132,7 @@
 
 ;;ledger
 (add-to-list 'load-path "~/.emacs.d/vendor/ledger/")
-;;; TODO - not working 
-;(load-file "ldg-new.el")
-
+(require 'ldg-new)
 (add-to-list 'auto-mode-alist '("\\.journal$" . ledger-mode))
 
 (provide 'pelm-misc)
