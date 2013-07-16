@@ -1,4 +1,26 @@
 
+2.0.0 / 2013-07-16 
+==================
+
+  * added ox-man
+  * contacts bug fixed
+  * works
+  * orgmode change for blog
+  * added snippet for monthly review
+  * gnus works
+  * added gnus file
+  * added clojure and haskell,mail setup
+  * added snippets
+  * added orgmode snippet
+  * change todo format
+  * added todo file
+  * change the blog publish setup
+  * added ledger lisp file
+  * added haskell
+  * update readme
+  * merge back
+  * import code snippet files
+
 1.9.0 / 2013-05-21 
 ==================
 

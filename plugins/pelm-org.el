@@ -1,4 +1,4 @@
-;;; pelm-org.el --- PELM org-mode 
+;;; pelm-org.el --- PELM org-mode  configurations 
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
@@ -9,17 +9,22 @@
 
 ;;; Code:
 
-(setq el-get-org-packages
-      '((:name org-mode)
-        ))
-      
-(el-get 'sync (loop for src in el-get-org-packages collect (el-get-source-name src)))
-
-;;require contrib lisps
+(el-get 'sync "org-mode")
 (require 'org)
-(require 'org-checklist)
 (require 'org-contacts)
+(require 'ox-latex)
+(require 'ox-html)
+(require 'ox-md)
+(require 'ox-man)
+(require 'ox-beamer)
+(require 'org-checklist)
+(require 'org-screenshot)
 (require 'org-crypt)
+(require 'ob-R)
+
+
+(setq org-export-backends '(ascii beamer html latex md rss))
+
 
 (add-hook 'org-mode-hook
           '(lambda ()
@@ -34,12 +39,14 @@
 ;;; directories setup
 (setq org-directory "~/.org-files"
       org-default-notes-file (concat org-directory "/inbox.org")
-      org-contacts-files (list(concat org-directory "/contacts.org"))
+      org-contacts-files (list (concat org-directory "/contacts.org"))
       org-mobile-directory "~/Dropbox/org"                                                        
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
 (defvar org-gtd-other-files)
-(setf org-gtd-other-files (list "~/.org-files/memacs" "~/src/personal/iemacs.com/iemacs-todo.org"))
+;;"~/.org-files/memacs" 
+;; memacs was cool but really useful to me.
+(setf org-gtd-other-files (list "~/.emacs.d/todo.org" "~/src/personal/iemacs.com/iemacs-todo.org"))
 
 (setf org-agenda-files (cons "~/.org-files" org-gtd-other-files))
 
@@ -131,33 +138,23 @@
 (setq org-capture-templates
       (quote (("t" "Toto" entry (file (concat org-directory "/inbox.org"))
                "* TODO %?\n%U\n %a\n " :clock-in t :clock-resume t)
-              ("b" "Blog" entry (file (concat blog-directory "/blog-2012.org"))
-               "* TODO %^{TITLE}  %^g\n %?" ) 
-              
-              ("n" "Notes" entry (file+datetree (concat org-directory "/notes.org"))
-               "* %^{Description} %^g %? 
-Added: %U") 
               ("x" "CLI TODO" entry
                 (file (concat org-directory "/inbox.org"))
                 "* TODO %i\n%U" :immediate-finish t)
-
-              ("w" "" entry ;; 'w' for 'org-protocol'
-               (file+headline "notes.org" "Notes")
-               "* %^{Title}\n\nSource: %u, %c\n\n  %i")
-
-              ("c" "Contacts" entry (file (concat org-directory "/contacts.org"))
-
-	       
-               "* %?%(org-contacts-template-name) %^g%(org-contacts-template-email)
-:PROPERTIES:
-:URL:
-:WORK:
-:HOME:
-:MOBILE:
-:LOCATION:
-:BIRTHDAY: 
-:NOTE:
-:END:"))))
+              ("c" "Contacts" entry (file "~/.org-files/contacts.org")
+               "* %(org-contacts-template-name)
+ :PROPERTIES:
+ :EMAIL: %(org-contacts-template-email)
+ :PHONE:
+ :ALIAS:
+ :NICKNAME:
+ :IGNORE:
+ :ICON:
+ :NOTE:
+ :ADDRESS:
+ :BIRTHDAY:
+ :END:")
+)))
 
 ;; Custom Key Bindings
 (define-key global-map "\C-ca" 'org-agenda)
@@ -166,9 +163,6 @@ Added: %U")
 (define-key global-map "\C-cr" 'org-capture)
 (define-key global-map "\C-cl" 'org-store-link)
 (global-set-key (kbd "<f12>") 'org-agenda)
-(global-set-key (kbd "<f5>") 'pelm/org-todo)
-(global-set-key (kbd "<S-f5>") 'pelm/widen)
-(global-set-key (kbd "<f7>") 'pelm/set-truncate-lines)
 
 (global-set-key (kbd "<f9> <f9>") 'pelm/show-org-agenda)
 (global-set-key (kbd "<f9> c") 'calendar)
@@ -181,8 +175,6 @@ Added: %U")
 
 (global-set-key (kbd "<f9> I") 'pelm/punch-in)
 (global-set-key (kbd "<f9> O") 'pelm/punch-out)
-
-(global-set-key (kbd "<f9> o") 'pelm/make-org-scratch)
 
 (global-set-key (kbd "<f9> r") 'boxquote-region)
 (global-set-key (kbd "<f9> s") 'pelm/switch-to-scratch)
@@ -994,16 +986,16 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
          (ditaa . t)
          (R . t)
          (ledger . t)
+         (haskell . t)
  ;        (python . t)
          ;(ruby . t)
-;         (gnuplot . t)
-         (scala . t)
-         (clojure . t)
+         (gnuplot . t)
+ ;        (scala . t)
+ ;        (clojure . t)
          (sh . t)
-   ;      (ledger . t)
          (org . t)
          (plantuml . t)
-         ;(latex . t)
+         (latex . t)
          )))
 
 ; Do not prompt to confirm evaluation
@@ -1397,6 +1389,12 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (add-hook 'org-clock-in-hook 'pelm/mark-next-parent-tasks-todo 'append)
 
 
+
+;; html export
+(setq org-html-coding-system 'utf-8)
+(setq org-html-head-include-default-style nil)
+(setq org-html-head-include-scripts nil)
+
 (provide 'pelm-org)
-;; pelm-org.el ends here
+;;; pelm-org.el ends here
 

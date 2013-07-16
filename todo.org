@@ -1,0 +1,35 @@
+#+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate
+#+FILETAGS: PELM
+#+SEQ_TODO:   TODO(t) NEXT(i) WAITING(w@) | DONE(d) CANCELED(c@)
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c)
+#+TITLE:      TODO central file for PELM
+#+AUTHOR:     eggcaker
+#+EMAIL:      eggcaker AT gmail DOT com
+#+LANGUAGE:   en
+#+PRIORITIES: A C B
+#+CATEGORY:   PELM
+#+OPTIONS:    H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t TeX:t LaTeX:t skip:nil d:(HIDE) tags:not-in-toc
+#+ARCHIVE:    pelm-todo_archive::
+
+
+
+
+
+* shell to extract the CODO entries
+
+#+BEGIN_SRC sh 
+ find $HOME/.emacs.d/plugins -type f -name "*.el"|xargs grep -n ";;CODO - "|awk -F\: '{print "** TODO [["$1"::"$2"]["$3"]]"}'  >> todo.org 
+#+END_SRC
+
+
+* TODOs of PELM [1/1]
+
+** CANCELED setup the pdf exort of org-mode worki properly
+CLOSED: [2013-06-03 Mon 08:47]
+:LOGBOOK:
+- State "CANCELED"   from "TODO"       [2013-06-03 Mon 08:47] \\
+  maybe not for now
+CLOCK: [2013-05-26 Sun 20:25]--[2013-05-27 Mon 00:31] =>  4:06
+CLOCK: [2013-05-25 Sat 17:34]--[2013-05-25 Sat 17:35] =>  0:01
+:END:
+[2013-05-25 Sat 17:34]

@@ -53,19 +53,16 @@
 
 (eval-after-load "evil"
   '(progn
-     
-(define-key evil-normal-state-map ",ga" 'org-agenda)
-(define-key evil-normal-state-map ",b" 'ido-switch-buffer)
-(define-key evil-normal-state-map ",t" 'pelm-goto-entry)
-(define-key evil-normal-state-map ";e" 'eval-last-sexp)
-(define-key evil-normal-state-map ",q" 'kill-buffer)
-(define-key evil-normal-state-map ",n" 'pelm-mpc-next-song)
-(define-key evil-normal-state-map ",w" 'save-buffer)
-(define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
-  ))
-;;pelm-keymap conflict with evil-mode key
-;(define-key evil-normal-state-map (kbd "C-.") nil)
-;; disabled tab for evil-jump-forward use tab for indent 
+     (define-key evil-normal-state-map ",ga" 'org-agenda)
+     (define-key evil-normal-state-map ",b" 'ido-switch-buffer)
+     (define-key evil-normal-state-map ",t" 'pelm-goto-entry)
+     (define-key evil-normal-state-map ";e" 'eval-last-sexp)
+     (define-key evil-normal-state-map ",q" 'kill-buffer)
+     (define-key evil-normal-state-map ",n" 'pelm-mpc-next-song)
+     (define-key evil-normal-state-map ",w" 'save-buffer)
+     (define-key evil-normal-state-map (kbd "C-.") nil)
+     (define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
+     ))
 ;(define-key evil-normal-state-map [tab] nil) 
 
 (defun pelm-goto-entry ()
@@ -75,8 +72,6 @@
 
 (evil-define-key 'normal org-mode-map "gh" 'outline-up-heading)
 (evil-define-key 'normal org-mode-map "gt" 'pelm-goto-entry)
-;;TODO not works 
-(evil-define-key 'normal nxml-mode-map "gr" 'yas/expand)
      
 (mapc (lambda (state)
         (evil-define-key state org-mode-map
@@ -112,6 +107,9 @@
                               (inferior-emacs-lisp-mode . emacs) 
                               (shell-mode . emacs) 
                               (eshell-mode . emacs)
+                              (org-mode . emacs)
+                              (haskell-interactive-mode . emacs)
+                              (inferior-haskell-mode . emacs) 
                               (mu4e-main-mode . emacs)
                               (mu4e-view-mode . emacs)
                               (mu4e-headers-mode . emacs)

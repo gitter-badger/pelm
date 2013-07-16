@@ -39,13 +39,16 @@
 
 
 ;; eshell + zsh
-;;TODO cleanup the zshpath
 
 (setenv "PATH"
         (concat
          "/home/eggcaker/.dotfiles/bin" path-separator
+         "/home/eggcaker/.rvm/gems/ruby-1.9.3-p362/bin" path-separator
+         "/home/eggcaker/.cabal/bin" path-separator
          (getenv "PATH")
          ))
+
+
 
 ;;eshell alias to open file
 (defalias 'o 'find-file)

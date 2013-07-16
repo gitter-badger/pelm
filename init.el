@@ -38,6 +38,7 @@
         runtime
         package
         keys
+        server
         ui
         editor
         git
@@ -47,23 +48,26 @@
         c
         markups
         ;scala
+        haskell
+        clojure
+        lisp
         java
         php
         js
-        lisp
         ;objc
         blog
-;        mail
+        mail
         android
+        gnus
         shell
         misc
-        server
 ))
 
 ;; load plugins 
 (mapcar (lambda (x) 
 	  (require (intern (format "pelm-%s" x)) nil t))
 	pelm-plugins)
+
 
 (cond
     ((string-match "apple-darwin" system-configuration)

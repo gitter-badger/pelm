@@ -101,7 +101,6 @@
  '(jabber-show-offline-contacts nil))
 
 ;;; ibus
-(add-hook 'after-init-hook 'ibus-mode-on)
 (ibus-define-common-key ?\C-\s nil)
 (ibus-define-common-key ?\C-/ nil)
 (setq ibus-cursor-color '("red" "blue" "limegreen"))
@@ -112,6 +111,9 @@
 ;	    (or ibus-mode (ibus-mode-on))))
 
 (ibus-define-common-key ?\S-\s nil)
+
+;;disabled ibus by default
+(add-hook 'after-init-hook 'ibus-mode-off)
 
 (global-set-key (kbd "C-=") 'ibus-toggle)
 
@@ -125,6 +127,13 @@
 (ibus-define-common-key ?\C-j t)
 (setq ibus-use-kana-onbiki-key t)
 (setq ibus-ibus-simultaneous-pressing-time 0.1)
+
+
+
+;;ledger
+(add-to-list 'load-path "~/.emacs.d/vendor/ledger/")
+(require 'ldg-new)
+(add-to-list 'auto-mode-alist '("\\.journal$" . ledger-mode))
 
 (provide 'pelm-misc)
 

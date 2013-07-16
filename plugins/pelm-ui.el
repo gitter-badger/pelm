@@ -10,18 +10,19 @@
 ;;; Code
 
 ;; disabled menu-bar-mode
-(unless (eq system-type 'darwin)
-  (menu-bar-mode -1))
+(menu-bar-mode -1)
 
 ;; disable blink cursor 
 (blink-cursor-mode -1)
 
 ;; hidden scroll bar
-(when window-system
-  (set-scroll-bar-mode nil))
+(set-scroll-bar-mode nil)
 
 ;; color-theme
-(load-theme 'solarized-light t);|dark] t)
+;|dark] t)
+
+(color-theme-solarized-light)
+
 ;;disable splash screen and tools bar
 (custom-set-variables
  '(column-number-mode t)

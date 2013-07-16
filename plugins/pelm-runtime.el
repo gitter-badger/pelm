@@ -9,8 +9,6 @@
 
 ;;; Code:
 
-(require 'cl)
-
 (defun pelm-add-sub-folders-to-load-path (parent-dir)
   "Adds all first level parent-dir subdirs to the Emacs load path"
   (dolist (f (directory-files parent-dir))
@@ -43,6 +41,7 @@
 
 (defvar pelm-minor-mode-map (make-keymap) "pelm-minor-mode keymap.")
 
+;;; CODO define the pelm group not working
 (defgroup pelm nil
     "PELM customization group"
     :prefix "pelm-")
