@@ -48,7 +48,7 @@
 	   :base-directory ,iemacs-org-directory
 	   :base-extension "org"
 	   :exclude "scripts"
-	   :html-extension "md"
+	   :html-extension "html"
 	   :publishing-directory ,iemacs-publish-directory
            :publishing-function org-html-publish-to-html
 	   :section-numbers nil
@@ -65,16 +65,16 @@
 
 (defun iemacs-fix-toc ()
   "reformat the toc part to top of file"
-  (shell-command (concat "cd " iemacs-base-directory "; make format-org")) 
+  (shell-command (concat "cd " iemacs-base-directory "; ./scripts/shell/format-org.sh")) 
   )
 
 (defun publish-iemacs nil
   "Publish iEmacs.com orgmode posts"
   (interactive)
   (let ((org-format-latex-signal-error nil)
-        (iemacs-base-directory "~/src/personal/iemacs.com/")
-        (iemacs-org-directory "~/src/personal/iemacs.com/org/")
-        (iemacs-publish-directory "~/src/personal/iemacs.com/"))
+        (iemacs-base-directory "~/src/personal/iemacs.org/")
+        (iemacs-org-directory "~/src/personal/iemacs.org/_orgwiki/")
+        (iemacs-publish-directory "~/src/personal/iemacs.org/wiki/"))
     (set-org-publish-project-alist)
     (org-publish-project "iemacs")))
 

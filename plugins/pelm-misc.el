@@ -100,35 +100,6 @@
  '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
  '(jabber-show-offline-contacts nil))
 
-;;; ibus
-(ibus-define-common-key ?\C-\s nil)
-(ibus-define-common-key ?\C-/ nil)
-(setq ibus-cursor-color '("red" "blue" "limegreen"))
-
-;(add-hook 'after-make-frame-functions
-;	  (lambda (new-frame)
-;	    (select-frame new-frame)
-;	    (or ibus-mode (ibus-mode-on))))
-
-(ibus-define-common-key ?\S-\s nil)
-
-;;disabled ibus by default
-(add-hook 'after-init-hook 'ibus-mode-off)
-
-(global-set-key (kbd "C-=") 'ibus-toggle)
-
-;; if only use ibus-toggle to toggle ibus will got some warning say :  
-;; IMContext ID (0) is mismatched when press M-x.
-;; it's better add this to complte disable the ibus. 
-
-(global-set-key (kbd "<f10>") 'ibus-mode-on)
-(global-set-key (kbd "C-<f10>") 'ibus-mode-off)
-;To toggle half-width eisu mode by C-j, add the following to .emacs:
-(ibus-define-common-key ?\C-j t)
-(setq ibus-use-kana-onbiki-key t)
-(setq ibus-ibus-simultaneous-pressing-time 0.1)
-
-
 
 ;;ledger
 (add-to-list 'load-path "~/.emacs.d/vendor/ledger/")

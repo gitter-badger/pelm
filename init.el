@@ -88,3 +88,20 @@
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
 ;;; ends init.el here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(inhibit-startup-screen t)
+ '(joc-eshell-prompt-newline t)
+ '(org-agenda-files (quote ("/home/eggcaker/.org-files/biz.org" "/home/eggcaker/.org-files/contacts.org" "/home/eggcaker/.org-files/gtd.org" "/home/eggcaker/.org-files/inbox.org" "/home/eggcaker/.org-files/learn.org" "/home/eggcaker/.org-files/maybe.org" "/home/eggcaker/.org-files/personal.org" "/home/eggcaker/.org-files/work.org" "~/.emacs.d/todo.org")))
+ '(scroll-bar-width nil t)
+ '(tool-bar-mode nil nil (tool-bar)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
