@@ -46,7 +46,7 @@
 (defvar org-gtd-other-files)
 ;;"~/.org-files/memacs" 
 ;; memacs was cool but really useful to me.
-(setf org-gtd-other-files (list "~/.emacs.d/todo.org" "~/src/personal/iemacs.com/iemacs-todo.org"))
+(setf org-gtd-other-files (list "~/.emacs.d/todo.org" ))
 
 (setf org-agenda-files (cons "~/.org-files" org-gtd-other-files))
 
@@ -239,7 +239,6 @@
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
       (quote (
-	      ("i" "iemacs todo" tags "iEmacs" nil '("~/src/personal/iemacs.com/iemacs-todo.org") )
               ("h" "Habits" tags-todo "STYLE=\"habit\""
                ((org-agenda-overriding-header "Habits")
                 (org-agenda-sorting-strategy
