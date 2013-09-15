@@ -65,16 +65,16 @@
 
 (defun iemacs-fix-toc ()
   "reformat the toc part to top of file"
-  (shell-command (concat "cd " iemacs-base-directory "; ./scripts/shell/format-org.sh")) 
+  (shell-command (concat "cd " iemacs-base-directory "/_site; ./format-org.sh")) 
   )
 
 (defun publish-iemacs nil
   "Publish iEmacs.com orgmode posts"
   (interactive)
   (let ((org-format-latex-signal-error nil)
-        (iemacs-base-directory "~/src/personal/iemacs.org/")
-        (iemacs-org-directory "~/src/personal/iemacs.org/_orgwiki/")
-        (iemacs-publish-directory "~/src/personal/iemacs.org/wiki/"))
+        (iemacs-base-directory "~/src/personal/wiki.iemacs.org/")
+        (iemacs-org-directory "~/src/personal/wiki.iemacs.org/")
+        (iemacs-publish-directory "~/src/personal/wiki.iemacs.org/_site/"))
     (set-org-publish-project-alist)
     (org-publish-project "iemacs")))
 
