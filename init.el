@@ -33,7 +33,6 @@
 
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
-(add-to-list 'load-path pelm-el-get-dir)
 (add-to-list 'load-path user-emacs-directory)
 
 ;; init cask file 
@@ -56,23 +55,23 @@
 (setq pelm-plugins 
       '(
         runtime
-        package
+;        package
+        ;org
+        evil
         keys
-        server
+        ;server
         ui
         editor
         git
         yas
-        org
-        evil
         c
         markups
         ;scala
-        haskell
-        clojure
+       ; haskell
+        ;clojure
         lisp
         java
-        php
+       ; php
         js
         ;objc
         blog

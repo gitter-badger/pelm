@@ -21,11 +21,8 @@
 ;; add the first level subfolders of vendor 
 (pelm-add-sub-folders-to-load-path pelm-vendor-dir)
 
-;; add the first level subfolders of el-get
-(pelm-add-sub-folders-to-load-path pelm-el-get-dir)
 
-
-(defconst pelm-version-number "1.8.0"
+(defconst pelm-version-number "2.2.0"
   "PELM version number.")
  
 (defun pelm-version ()

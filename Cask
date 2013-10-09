@@ -10,6 +10,7 @@
 (depends-on "ack-and-a-half")
 (depends-on "coffee-mode")
 (depends-on "color-theme")
+(depends-on "color-theme-solarized")
 (depends-on "commander")
 (depends-on "diff-hl")
 (depends-on "ecukes")
@@ -52,3 +53,8 @@
 (depends-on "macrostep")
 (depends-on "rhtml-mode")
 (depends-on "git")
+(depends-on "column-marker")
+(depends-on "evil")
+(depends-on "evil-leader")
+(depends-on "evil-tabs")
+

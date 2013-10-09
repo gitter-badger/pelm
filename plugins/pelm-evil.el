@@ -11,20 +11,9 @@
 ;;; Code:
 
 
-(setq el-get-evil-packages
-      '((:name evil)
-        (:name evil-numbers)
-        (:name evil-leader)
-        (:name evil-surround)
-        ))
-
-
-(el-get 'sync (loop for src in el-get-evil-packages collect (el-get-source-name src)))
-
 (eval-after-load "evil"
-(evil-mode 1)
+  (evil-mode 1)
 )
-(global-surround-mode 1)
 
 (evil-define-command pelm-evil-maybe-exit ()
   :repeat change
