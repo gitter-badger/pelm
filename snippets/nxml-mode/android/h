@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: android:ayout_height
-# key : h
-# --
-android:layout_height="${1:$$(yas/choose-value '("fill_parent" "wrap_content"))}"

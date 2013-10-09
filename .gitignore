@@ -30,3 +30,11 @@ eshell
 tramp
 DS_Store
 session.*
+.cask
+*.elc
+/elpa
+/tramp
+/projectile.cache
+/var
+
+

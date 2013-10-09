@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: android:layout_width
-# key : w
-# --
-android:layout_widget="${1:$$(yas/choose-value '("fill_parent" "wrap_content"))}"

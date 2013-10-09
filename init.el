@@ -1,13 +1,22 @@
 ;; PELM - init.el
 ;; Author: caker
-;; Last modified: 2012-10-30
-;; Version: 1.8.0
+;; Last modified: 2013-10-10
+;; Version: 2.5.0
+;; Built on top of cask and pallet
 ;;
 
 
 ;; pelm start time 
 (defvar *pelm-load-start* (current-time))
 
+;; Turn off early to avoid momentary display
+(mapc 
+  (lambda (mode)
+    (if (fboundp mode)
+      (funcall mode -1)))
+   '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+
+;; PELM root directory
 (defvar pelm-dir (file-name-directory load-file-name)
   "The root dir of the PELM distribution.")
 
@@ -22,13 +31,24 @@
 (defvar pelm-vendor-dir (concat pelm-dir "vendor/")
   "This directory house third part packages of emacs")
 
-(defvar pelm-el-get-dir (concat pelm-dir "el-get/")
-  "This directory house the el-get packages")
-
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
 (add-to-list 'load-path pelm-el-get-dir)
+(add-to-list 'load-path user-emacs-directory)
 
+;; init cask file 
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+(require 'pallet)
+(require 's)
+(require 'dash)
+(require 'f)
+(require 'git)
+(require 'evm)
+(require 'ert)
+(require 'misc)
+
+;; pre-init-local hook
 (load (concat pelm-dir "pre-init-local") 'noerror)
 (run-hooks 'pelm-pre-init-hook)
 
@@ -88,20 +108,3 @@
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
 ;;; ends init.el here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(inhibit-startup-screen t)
- '(joc-eshell-prompt-newline t)
- '(org-agenda-files (quote ("/home/eggcaker/.org-files/biz.org" "/home/eggcaker/.org-files/contacts.org" "/home/eggcaker/.org-files/gtd.org" "/home/eggcaker/.org-files/inbox.org" "/home/eggcaker/.org-files/learn.org" "/home/eggcaker/.org-files/maybe.org" "/home/eggcaker/.org-files/personal.org" "/home/eggcaker/.org-files/work.org" "~/.emacs.d/todo.org")))
- '(scroll-bar-width nil t)
- '(tool-bar-mode nil nil (tool-bar)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
