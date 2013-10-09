@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: android:focusable
-# key : fa
-# --
-android:focusable="${1:$$(yas/choose-value '("true" "false"))}"
-$0

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: android:padding
-# key : p
-# --
-android:padding="${1:5dp}"
-$0

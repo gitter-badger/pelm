@@ -21,7 +21,7 @@
 ;; color-theme
 ;|dark] t)
 
-(color-theme-solarized-light)
+;(color-theme-solarized-light)
 
 ;;disable splash screen and tools bar
 (custom-set-variables

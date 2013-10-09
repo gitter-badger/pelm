@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: android:background
-# key : b 
-# --
-android:background="#{1:ff0000}"

@@ -1,21 +1,12 @@
-[submodule "snippets/java-mode"]
-	path = snippets/java-mode
-	url = git://github.com/eggcaker/android-snippets.git
 [submodule "vendor/google-contacts"]
 	path = vendor/google-contacts
 	url = http://git.naquadah.org/git/google-contacts.el.git
 [submodule "vendor/objc-mode"]
 	path = vendor/objc-mode
 	url = https://github.com/emacsmirror/objc-c-mode.git
-[submodule "vendor/jade-mode"]
-	path = vendor/jade-mode
-	url = https://github.com/brianc/jade-mode.git
-[submodule "vendor/android-mode"]
-	path = vendor/android-mode
-	url = http://github.com/eggcaker/android-mode.git
 [submodule "vendor/jo-exporter"]
 	path = vendor/jo-exporter
 	url = https://github.com/eggcaker/jo-exporter.git
-[submodule "vendor/ack-and-a-half"]
-	path = vendor/ack-and-a-half
-	url = git://github.com/jhelwig/ack-and-a-half.git
+[submodule "snippets"]
+	path = snippets
+	url = git://github.com/eggcaker/yasnippets.git

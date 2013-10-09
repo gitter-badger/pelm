@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# contributor : eggcaker <eggcaker@gmail.com>
-# name: android:focusableInTouchMode
-# key : fitm
-# --
-android:focusableInTouchMode="${1:$$(yas/choose-value '("true" "false"))}"
-$0
