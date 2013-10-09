@@ -74,7 +74,7 @@
        ; php
         js
         ;objc
-        blog
+       ; blog
         mail
         android
         gnus

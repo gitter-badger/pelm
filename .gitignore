@@ -35,6 +35,7 @@ session.*
 /elpa
 /tramp
 /projectile.cache
+/projectile-*
 /var
 
 

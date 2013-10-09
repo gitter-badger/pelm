@@ -106,6 +106,8 @@
 (require 'ldg-new)
 (add-to-list 'auto-mode-alist '("\\.journal$" . ledger-mode))
 
+(projectile-global-mode)
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here

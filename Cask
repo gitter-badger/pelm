@@ -57,4 +57,5 @@
 (depends-on "evil")
 (depends-on "evil-leader")
 (depends-on "evil-tabs")
-
+(depends-on "dropdown-list")
+(depends-on "android-mode")
