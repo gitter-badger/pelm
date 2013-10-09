@@ -25,6 +25,7 @@
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "jade-mode")
+(depends-on "stylus-mode")
 (depends-on "js2-mode")
 (depends-on "markdown-mode")
 (depends-on "multiple-cursors")
