@@ -1,5 +1,0 @@
-- (${1:void})initialWaitOver:(NSTimer*)timer {
-	self.initialWaitOver= YES;
-	if (![self.services count])
-		[self.tableView reloadData];
-}

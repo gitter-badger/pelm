@@ -1,6 +1,3 @@
-[submodule "snippets/java-mode"]
-	path = snippets/java-mode
-	url = git://github.com/eggcaker/android-snippets.git
 [submodule "vendor/google-contacts"]
 	path = vendor/google-contacts
 	url = http://git.naquadah.org/git/google-contacts.el.git
