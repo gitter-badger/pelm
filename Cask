@@ -10,6 +10,7 @@
 (depends-on "ack-and-a-half")
 (depends-on "coffee-mode")
 (depends-on "color-theme")
+(depends-on "rainbow-delimiters")
 (depends-on "color-theme-solarized")
 (depends-on "commander")
 (depends-on "diff-hl")
