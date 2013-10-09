@@ -1,4 +1,13 @@
 
+2.2.0 / 2013-10-09 
+==================
+  * added depends
+  * cleanup the modules
+  * cleanup
+  * remove snippets , added cask file
+  * convert to cask format 
+  * blog setup
+
 2.0.1 / 2013-08-19 
 ==================
 
