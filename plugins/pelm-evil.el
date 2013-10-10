@@ -22,7 +22,7 @@
   "f" 'projectile-find-file
   "b" 'ido-switch-buffer
   "w" 'save-buffer
-  "k" 'kill-buffer)
+  "k" 'kill-buffer-no-question)
 
 (evil-define-command pelm-evil-maybe-exit ()
   :repeat change

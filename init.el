@@ -56,7 +56,7 @@
       '(
         runtime
 ;        package
-        ;org
+;        org
         evil
         keys
         ;server

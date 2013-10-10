@@ -9,18 +9,18 @@
 
 ;;; Code:
 
-(el-get 'sync "org-mode")
+
 (require 'org)
-(require 'org-contacts)
-(require 'ox-latex)
-(require 'ox-html)
-(require 'ox-md)
-(require 'ox-man)
-(require 'ox-beamer)
-(require 'org-checklist)
-(require 'org-screenshot)
-(require 'org-crypt)
-(require 'ob-R)
+;(require 'org-contacts)
+;(require 'ox-latex)
+;(require 'ox-html)
+;(require 'ox-md)
+;(require 'ox-man)
+;(require 'ox-beamer)
+;(require 'org-checklist)
+;(require 'org-screenshot)
+;(require 'org-crypt)
+;(require 'ob-R)
 
 
 (setq org-export-backends '(ascii beamer html latex md rss))

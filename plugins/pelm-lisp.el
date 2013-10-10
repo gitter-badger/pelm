@@ -11,7 +11,7 @@
 ;;; Code:
 ;; configuration
 
-
+(require 'paredit)
 (add-hook 'emacs-lisp-mode-hook 'subword-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 
