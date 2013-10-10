@@ -75,9 +75,9 @@
         js
         ;objc
        ; blog
-        mail
+        ;mail
         android
-        gnus
+        ;gnus
         shell
         misc
 ))

@@ -52,5 +52,6 @@
 
 (pelm-minor-mode 1)
 
+(require 'pelm-defuns)
 (provide 'pelm-runtime)
 ;;; pelm-runtime.el ends here

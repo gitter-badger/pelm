@@ -10,10 +10,19 @@
 
 ;;; Code:
 
+(require 'evil-tabs)
 
-(eval-after-load "evil"
-  (evil-mode 1)
-)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+
+(eval-after-load "evil"  (evil-mode 1))
+
+(evil-leader/set-key
+  "e" 'find-file
+  "f" 'projectile-find-file
+  "b" 'ido-switch-buffer
+  "w" 'save-buffer
+  "k" 'kill-buffer)
 
 (evil-define-command pelm-evil-maybe-exit ()
   :repeat change
@@ -33,35 +42,6 @@
                                               (list evt))))))))
 (define-key evil-insert-state-map "j" #'pelm-evil-maybe-exit)
 
-
-(defun pelm-mpc-next-song ()
-  "mpc next "
-  (interactive)
-  (shell-command "mpc next"))
-
-
-(eval-after-load "evil"
-  '(progn
-     (define-key evil-normal-state-map ",ga" 'org-agenda)
-     (define-key evil-normal-state-map ",b" 'ido-switch-buffer)
-     (define-key evil-normal-state-map ",t" 'pelm-goto-entry)
-     (define-key evil-normal-state-map ";e" 'eval-last-sexp)
-     (define-key evil-normal-state-map ",q" 'kill-buffer)
-     (define-key evil-normal-state-map ",n" 'pelm-mpc-next-song)
-     (define-key evil-normal-state-map ",w" 'save-buffer)
-     (define-key evil-normal-state-map (kbd "C-.") nil)
-     (define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs)
-     ))
-;(define-key evil-normal-state-map [tab] nil) 
-
-(defun pelm-goto-entry ()
-  (interactive)
-  (org-refile t)
-  )
-
-(evil-define-key 'normal org-mode-map "gh" 'outline-up-heading)
-(evil-define-key 'normal org-mode-map "gt" 'pelm-goto-entry)
-     
 (mapc (lambda (state)
         (evil-define-key state org-mode-map
        "gh" 'outline-up-heading
@@ -78,18 +58,6 @@
        "-" 'org-ctrl-c-minus
        "<" 'org-metaleft
        ">" 'org-metaright)) '(normal))
-
-;; normal & insert state shortcuts.
-(mapc (lambda (state)
-             (evil-define-key state org-mode-map
-               (kbd "M-l") 'org-metaright
-               (kbd "M-h") 'org-metaleft
-               (kbd "M-k") 'org-metaup
-               (kbd "M-j") 'org-metadown
-               (kbd "M-L") 'org-shiftmetaright
-               (kbd "M-H") 'org-shiftmetaleft
-               (kbd "M-K") 'org-shiftmetaup
-               (kbd "M-J") 'org-shiftmetadown)) '(normal insert))
 
 ;; initial set emacs state mode for some specie modes 
 (loop for (mode . state) in '(

@@ -12,6 +12,7 @@
 ;; no backups
 (setq make-backup-files nil)
 
+(drag-stuff-global-mode)
 
 ;;ido setups 
 (setq ido-enable-flex-matching t)

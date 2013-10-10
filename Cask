@@ -1,4 +1,6 @@
 (source "melpa" "http://melpa.milkbox.net/packages/")
+(source "marmalade" "http://marmalade-repo.org/packages/")
+
 
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
@@ -6,7 +8,7 @@
 (depends-on "cask")
 (depends-on "coffee-mode")
 (depends-on "color-theme")
-(depends-on "color-theme-sanityinc-solarized")
+(depends-on "color-theme-solarized")
 (depends-on "column-marker")
 (depends-on "commander")
 (depends-on "dash")

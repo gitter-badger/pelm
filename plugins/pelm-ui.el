@@ -19,9 +19,8 @@
 (set-scroll-bar-mode nil)
 
 ;; color-theme
-;|dark] t)
-
-;(color-theme-solarized-light)
+(color-theme-initialize)
+(color-theme-solarized-light)
 
 ;;disable splash screen and tools bar
 (custom-set-variables

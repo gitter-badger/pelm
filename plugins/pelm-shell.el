@@ -10,8 +10,13 @@
 ;;; Code:
 
 ;; shortcut for shell
-;(global-set-key "\C-x\C-z" 'shell) 
+(global-set-key (kbd "M-e") 'eshell) 
+
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+(add-hook 'eshell-first-time-mode-hook
+          (lambda ()
+            (add-to-list 'eshell-visual-commands "htop")))
 
 (eval-after-load 'shell
   '(progn
@@ -48,14 +53,19 @@
          (getenv "PATH")
          ))
 
-
-
 ;;eshell alias to open file
 (defalias 'o 'find-file)
 (defalias 'oo 'find-file-other-widnow)
+(defalias 'g 'eshell/go-to-root)
+
+(setq eshell-history-size 5000)
+(setq eshell-save-history-on-exit t)
+
+(defun eshell/go-to-root ()
+  (let ((root (find-project-root (eshell/pwd))))
+    (if root (cd root))))
 
 (provide 'pelm-shell)
-
 ;;; pelm-shell.el ends here
 
 
