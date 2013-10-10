@@ -10,6 +10,7 @@
 ;;; Code:
 
 
+(global-set-key (kbd "C-x C-z") 'magit-status)
 
 (provide 'pelm-git)
 ;;perlm-git.el ends here
