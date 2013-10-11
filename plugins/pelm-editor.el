@@ -123,6 +123,9 @@
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
+(require 'auto-complete)
+(auto-complete-mode)
+
 
 (provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   
