@@ -38,6 +38,9 @@
 
 (defvar pelm-minor-mode-map (make-keymap) "pelm-minor-mode keymap.")
 
+(global-set-key [(control .)] 'pelm-keymap)
+(define-prefix-command 'pelm-keymap)
+
 ;;; CODO define the pelm group not working
 (defgroup pelm nil
     "PELM customization group"

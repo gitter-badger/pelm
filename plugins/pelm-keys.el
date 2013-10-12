@@ -8,8 +8,6 @@
 ;; This file is not part of GNU Emacs
 
 
-(global-set-key [(control .)] 'pelm-keymap)
-(define-prefix-command 'pelm-keymap)
 
 ;;(windmove-default-keybindings)
 (global-set-key (kbd "\e <left>") 'windmove-left)

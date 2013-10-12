@@ -55,13 +55,11 @@
 (setq pelm-plugins 
       '(
         runtime
-;        package
-;        org
-        evil
-        keys
-        ;server
-        ui
         editor
+        evil
+        ui
+        org
+        keys
         git
         yas
         c
@@ -80,13 +78,13 @@
         ;gnus
         shell
         misc
+        server
 ))
 
 ;; load plugins 
 (mapcar (lambda (x) 
 	  (require (intern (format "pelm-%s" x)) nil t))
 	pelm-plugins)
-
 
 (cond
     ((string-match "apple-darwin" system-configuration)

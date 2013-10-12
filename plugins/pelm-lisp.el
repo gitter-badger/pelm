@@ -14,7 +14,6 @@
 (require 'paredit)
 (add-hook 'emacs-lisp-mode-hook 'subword-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 
 
