@@ -67,3 +67,4 @@
 (depends-on "wrap-region")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
+(depends-on "jabber")

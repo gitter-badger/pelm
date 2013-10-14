@@ -101,11 +101,6 @@
  '(jabber-show-offline-contacts nil))
 
 
-;;ledger
-(add-to-list 'load-path "~/.emacs.d/vendor/ledger/")
-(require 'ldg-new)
-(add-to-list 'auto-mode-alist '("\\.journal$" . ledger-mode))
-
 (projectile-global-mode)
 
 (provide 'pelm-misc)
