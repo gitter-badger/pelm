@@ -56,9 +56,9 @@
       '(
         runtime
         editor
-        evil
         ui
         org
+        evil
         keys
         git
         yas
