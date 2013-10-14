@@ -1,15 +1,7 @@
-[submodule "vendor/google-contacts"]
-	path = vendor/google-contacts
-	url = http://git.naquadah.org/git/google-contacts.el.git
 [submodule "vendor/objc-mode"]
 	path = vendor/objc-mode
 	url = https://github.com/emacsmirror/objc-c-mode.git
-[submodule "vendor/jo-exporter"]
-	path = vendor/jo-exporter
-	url = https://github.com/eggcaker/jo-exporter.git
 [submodule "snippets"]
 	path = snippets
 	url = git://github.com/eggcaker/yasnippets.git
-[submodule "vendor/org-mode"]
-	path = vendor/org-mode
-	url = git://orgmode.org/org-mode.git
+
