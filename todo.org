@@ -24,12 +24,3 @@
 
 * TODOs of PELM [1/1]
 
-** CANCELED setup the pdf exort of org-mode worki properly
-CLOSED: [2013-06-03 Mon 08:47]
-:LOGBOOK:
-- State "CANCELED"   from "TODO"       [2013-06-03 Mon 08:47] \\
-  maybe not for now
-CLOCK: [2013-05-26 Sun 20:25]--[2013-05-27 Mon 00:31] =>  4:06
-CLOCK: [2013-05-25 Sat 17:34]--[2013-05-25 Sat 17:35] =>  0:01
-:END:
-[2013-05-25 Sat 17:34]
