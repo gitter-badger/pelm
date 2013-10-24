@@ -13,9 +13,9 @@
 (require 'thingatpt)
 
 (custom-set-variables
- '(android-mode-sdk-dir "/usr/local/Cellar/android-sdk/r20"))
+ '(android-mode-sdk-dir "/usr/local/opt/android-sdk"))
 
-(setenv "ANDROID_HOME" "/usr/local/Cellar/android-sdk/r20")
+(setenv "ANDROID_HOME" "/usr/local/opt/android-sdk")
 
 
 ;; enabled error line number jumper 
@@ -28,17 +28,21 @@
 (defun pelm-search-android-doc ()
   "search the string from android api document"
   (interactive )
-  (browse-url (concat "http://developer.android.com/reference/packages.html#q=" 
+  (browse-url (concat "https://developer.android.com/reference/packages.html#q=" 
                                      (thing-at-point 'word))))
 
 (define-key  pelm-keymap "ad" 'pelm-search-android-doc)
-
+(eval-after-load 'android-mode 
+  '(progn 
+     (message "android loadded")
 ;; regular normal state shortcuts.
 (evil-define-key 'normal android-mode-map
-  ",ac" 'android-ant-debug
-  ",ai" 'android-ant-installd
-  ",ad" 'pelm-search-android-doc
-)
+  ",ac" 'android-build-debug
+  ",al" 'android-logcat
+  ",as" 'android-start-app
+  ",ar" 'android-build-reinstall
+  ",au" 'android-build-uninstall
+  ",ad" 'pelm-search-android-doc)))
 
 
 (provide 'pelm-android)
