@@ -20,7 +20,8 @@
 
 ;; color-theme
 (color-theme-initialize)
-(color-theme-solarized-light)
+;(color-theme-solarized-light)
+(load-file "~/.emacs.d/themes/pelm-light-theme.el")
 
 ;;disable splash screen and tools bar
 (custom-set-variables

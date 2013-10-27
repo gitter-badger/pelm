@@ -18,7 +18,13 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 
+
 (eval-after-load "evil"  (evil-mode 1))
+
+;; tab 
+(elscreen-start)
+(define-key evil-normal-state-map "gT" 'elscreen-previous) ;previous tab
+(define-key evil-normal-state-map "gt" 'elscreen-next) ;next tab
 
 (evil-define-command pelm/evil-maybe-exit ()
   :repeat change

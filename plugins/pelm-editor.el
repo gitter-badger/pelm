@@ -124,7 +124,10 @@
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 (require 'auto-complete)
+(require 'auto-complete-config)
 (auto-complete-mode)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
+(ac-config-default)
 
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
