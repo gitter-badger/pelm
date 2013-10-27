@@ -99,6 +99,21 @@
              "C-SPC" 'evil-ace-jump-char-to-mode
              "S-SPC" 'evil-ace-jump-word-mode)
 
+
+
+;; change mode-line color by evil state
+   (lexical-let ((default-color (cons (face-background 'mode-line)
+                                      (face-foreground 'mode-line))))
+     (add-hook 'post-command-hook
+       (lambda ()
+         (let ((color (cond ((minibufferp) default-color)
+                            ((evil-insert-state-p) '("#328fde" . "#f1f1f1"))
+                            ((evil-emacs-state-p)  '("#444488" . "#f1f1f1"))
+                            ((buffer-modified-p)   '("#006fa0" . "#f1f1f1"))
+                            (t default-color))))
+           (set-face-background 'mode-line (car color))
+           (set-face-foreground 'mode-line (cdr color))))))
+
 (provide 'pelm-evil)
 ;;; pelm-evil.el ends here.
 
