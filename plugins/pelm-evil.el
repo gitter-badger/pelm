@@ -11,20 +11,16 @@
 ;;; Code:
 
 (require 'evil-tabs)
+(require 'evil-numbers)
+(require 'goto-chg)
+(require 'pelm-util)
 
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 
 (eval-after-load "evil"  (evil-mode 1))
 
-(evil-leader/set-key
-  "e" 'find-file
-  "f" 'projectile-find-file
-  "b" 'ido-switch-buffer
-  "w" 'save-buffer
-  "k" 'kill-buffer-no-question)
-
-(evil-define-command pelm-evil-maybe-exit ()
+(evil-define-command pelm/evil-maybe-exit ()
   :repeat change
   (interactive)
   (let ((modified (buffer-modified-p)))
@@ -40,24 +36,6 @@
        
        (t (setq unread-command-events (append unread-command-events
                                               (list evt))))))))
-(define-key evil-insert-state-map "j" #'pelm-evil-maybe-exit)
-
-(mapc (lambda (state)
-        (evil-define-key state org-mode-map
-       "gh" 'outline-up-heading
-       "gl" 'outline-next-visible-heading
-       "gt" 'pelm-goto-entry 
-       "mm" 'org-ctrl-c-ctrl-c
-       "H" 'org-shiftleft
-       "J" 'org-shiftdown
-       "K" 'org-shiftup
-       "L" 'org-shiftright
-       "t" 'org-todo
-       "$" 'org-end-of-line
-       "0" 'org-beginning-of-line
-       "-" 'org-ctrl-c-minus
-       "<" 'org-metaleft
-       ">" 'org-metaright)) '(normal))
 
 ;; initial set emacs state mode for some specie modes 
 (loop for (mode . state) in '(
@@ -75,6 +53,51 @@
                               (jabber-roster-mode . emacs)
                               (magit-mode . emacs)) 
       do (evil-set-initial-state mode state))
+
+
+(fill-keymap evil-normal-state-map
+             "Y"     (kbd "y$")
+             "+"     'evil-numbers/inc-at-pt
+             "-"     'evil-numbers/dec-at-pt
+             "SPC"   'evil-ace-jump-char-mode
+             "S-SPC" 'evil-ace-jump-word-mode
+             "C-SPC" 'evil-ace-jump-line-mode
+             "go"    'goto-char
+             "C-t"   'transpose-chars
+             "C-:"   'eval-expression
+             ":"     'evil-repeat-find-char-reverse
+             "gH"    'evil-window-top
+             "gL"    'evil-window-bottom
+             "gM"    'evil-window-middle
+             "H"     'beginning-of-line
+             "L"     'end-of-line
+             )
+
+(fill-keymap evil-motion-state-map
+             "y"     'evil-yank
+             "Y"     (kbd "y$")
+             "_"     'evil-first-non-blank
+             "C-e"   'end-of-line
+             "C-S-d" 'evil-scroll-up
+             "C-S-f" 'evil-scroll-page-up
+             "_"     'evil-first-non-blank
+             "C-y"   nil)
+
+(fill-keymap evil-insert-state-map
+;             "SPC" 'pelm/yas-expand-or-spc
+             "j"   'pelm/evil-maybe-exit
+             "C-h" 'backward-delete-char
+             "C-k" 'kill-line
+             "C-y" 'yank
+             "C-e" 'end-of-line)
+
+(fill-keymaps (list evil-operator-state-map
+                    evil-visual-state-map)
+             ;; works like `f'
+             "SPC"   'evil-ace-jump-char-mode
+             ;; works like `t'
+             "C-SPC" 'evil-ace-jump-char-to-mode
+             "S-SPC" 'evil-ace-jump-word-mode)
 
 (provide 'pelm-evil)
 ;;; pelm-evil.el ends here.
