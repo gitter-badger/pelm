@@ -56,21 +56,6 @@
     )
   "Functions to be executed by `SAVE-KILL-EMACS'")
 
-(defun save-kill-emacs ()
-  (interactive)
-  (mapc (lambda (f) (ignore-errors (funcall f)))
-        pelm/before-kill-hook
-        )
-  (if (modified-buffers?)
-      (progn
-        (when (not (eq window-system 'x))
-          (x-initialize-window-system))
-        (select-frame (make-frame-on-display (getenv "DISPLAY") '((window-system . x))))
-        (save-some-buffers)
-        (if (yes-or-no-p "Kill Emacs? ")
-            (kill-emacs)))
-    (kill-emacs)))
-
 (defun modified-buffers? ()
   "Returns first modified buffer or nil if there is none."
   (cl-loop for b in (buffer-list)

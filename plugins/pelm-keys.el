@@ -24,6 +24,8 @@
 (global-set-key  "\M-p" 'scroll-down-command)
 
 (define-key evil-normal-state-map ";" 'evil-window-map)
+(define-key evil-normal-state-map ":" 'evil-ex)
+
 (define-key evil-window-map "v" 'split-window-vertically)
 (define-key evil-window-map "s" 'split-window-horizontally)
 (define-key evil-window-map "0" 'delete-window)
