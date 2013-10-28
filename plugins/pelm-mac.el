@@ -12,6 +12,7 @@
 (setq mac-allow-anti-aliasing t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'none)
+(setq mac-function-modifier 'control) 
 
 ;(set-face-font 'default "Monaco-16")
 (set-face-font 'default "Source_Code_Pro-15")
