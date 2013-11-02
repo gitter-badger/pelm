@@ -18,18 +18,20 @@
   "k" 'kill-buffer-no-question
   "w" 'evil-window-map
   "x" 'elscreen-kill
-;  "p" 'projectile-keymap-prefix 
-)
+                                        ;  "p" 'projectile-keymap-prefix 
+  )
 
 
 (global-set-key  "\M-n" 'scroll-up-command)
 (global-set-key  "\M-p" 'scroll-down-command)
 
-(define-key evil-normal-state-map ";" 'evil-window-map)
-(define-key evil-normal-state-map ":" 'evil-ex)
+(fill-keymap evil-normal-state-map ";" 'evil-window-map)
+(fill-keymap evil-normal-state-map ":" 'evil-ex)
+(fill-keymap evil-normal-state-map "TAB"  'evil-indent)
+(fill-keymap evil-visual-state-map "TAB"  'evil-indent)
 (fill-keymap evil-normal-state-map "C-t" nil)
 (fill-keymap evil-insert-state-map "C-t" nil)
-
+(fill-keymap evil-insert-state-map "C-O" 'evil-open-above)
 (elscreen-set-prefix-key "\C-t")
 
 
