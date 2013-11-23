@@ -4,6 +4,7 @@
 
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
+(depends-on "ag")
 (depends-on "android-mode")
 (depends-on "auto-complete")
 (depends-on "cask")
@@ -19,6 +20,7 @@
 (depends-on "ecukes")
 (depends-on "evil")
 (depends-on "evil-leader")
+(depends-on "evil-nerd-commenter")
 (depends-on "evil-numbers")
 (depends-on "evil-tabs")
 (depends-on "evm")
@@ -29,6 +31,7 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "git")
+(depends-on "gnuplot")
 (depends-on "haml-mode")
 (depends-on "haskell-mode")
 (depends-on "highlight-parentheses")

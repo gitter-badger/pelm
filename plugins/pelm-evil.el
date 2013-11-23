@@ -20,6 +20,7 @@
 
 
 (eval-after-load "evil"  (evil-mode 1))
+(evilnc-default-hotkeys)
 
 
 (evil-define-command pelm/evil-maybe-exit ()
