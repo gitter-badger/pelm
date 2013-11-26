@@ -12,7 +12,6 @@
   ;; common keys
   "e" 'find-file
   "t" 'elscreen-create
-  "s" 'save-buffer
   "f" 'projectile-find-file
   "b" 'ido-switch-buffer
   "k" 'kill-buffer-no-question

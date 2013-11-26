@@ -47,10 +47,6 @@
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
 (defvar org-gtd-other-files)
-;;"~/.org-files/memacs" 
-;; memacs was cool but really useful to me.
-(setf org-gtd-other-files (list "~/.emacs.d/todo.org" ))
-
 (setf org-agenda-files (cons "~/.org-files" org-gtd-other-files))
 
 ;;; options 

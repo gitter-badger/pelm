@@ -32,6 +32,7 @@
 (depends-on "flycheck-cask")
 (depends-on "git")
 (depends-on "gnuplot")
+(depends-on "gnuplot-mode")
 (depends-on "haml-mode")
 (depends-on "haskell-mode")
 (depends-on "highlight-parentheses")
