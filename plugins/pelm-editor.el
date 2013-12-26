@@ -132,5 +132,7 @@
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
+; auto revert
+(global-auto-revert-mode 1)
 (provide 'pelm-editor)
 ;;; pelm-editor.el ends here				   

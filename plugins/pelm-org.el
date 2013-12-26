@@ -46,7 +46,7 @@
       org-mobile-directory "~/Dropbox/org"                                                        
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
-(defvar org-gtd-other-files)
+(defvar org-gtd-other-files '("~/src/personal/scrum/scrum.org"))
 (setf org-agenda-files (cons "~/.org-files" org-gtd-other-files))
 
 ;;; options 
