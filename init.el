@@ -33,7 +33,7 @@
 
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
-(add-to-list 'load-path user-emacs-directory)
+;(add-to-list 'load-path user-emacs-directory)
 
 ;; init cask file 
 (require 'cask "~/.cask/cask.el")
@@ -79,6 +79,7 @@
         shell
         misc
         server
+        scrum
 ))
 
 ;; load plugins 

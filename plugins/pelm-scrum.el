@@ -10,3 +10,7 @@
 ;;; Code:
 
 (require 'scrum)
+
+
+(provide 'pelm-scrum)
+;;; pelm-scrum.el ends here

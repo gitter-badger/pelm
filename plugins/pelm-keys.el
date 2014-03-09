@@ -11,13 +11,11 @@
 (evil-leader/set-key
   ;; common keys
   "e" 'find-file
-  "t" 'elscreen-create
+  "r" 'org-capture
   "f" 'projectile-find-file
   "b" 'ido-switch-buffer
   "k" 'kill-buffer-no-question
   "w" 'evil-window-map
-  "x" 'elscreen-kill
-                                        ;  "p" 'projectile-keymap-prefix 
   )
 
 
@@ -31,7 +29,6 @@
 (fill-keymap evil-normal-state-map "C-t" nil)
 (fill-keymap evil-insert-state-map "C-t" nil)
 (fill-keymap evil-insert-state-map "C-O" 'evil-open-above)
-(elscreen-set-prefix-key "\C-t")
 
 
 (define-key evil-window-map "v" 'split-window-vertically)

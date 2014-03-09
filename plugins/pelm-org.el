@@ -111,13 +111,12 @@
 
 ;;; TODO keywords 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-              (sequence "TODO(t)" "READING(r)" "|" "FINISHED(f!/!)")
+      (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" )))
 
       org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "blue" :weight bold)
+              ("STARTED" :foreground "blue" :weight bold)
               ("DONE" :foreground "forest green" :weight bold)
               ("WAITING" :foreground "orange" :weight bold)
               ("HOLD" :foreground "magenta" :weight bold)
@@ -129,7 +128,7 @@
               ("HOLD" ("WAITING" . t) ("HOLD" . t))
               (done ("WAITING") ("HOLD"))
               ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("STARTED" ("WAITING") ("CANCELLED") ("HOLD"))
               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
 
@@ -251,7 +250,7 @@
                            ((org-agenda-overriding-header "Stuck Projects")
                             ;(org-tags-match-list-sublevels 'indented)
                             (org-agenda-skip-function 'pelm/skip-non-stuck-projects)))
-                (tags-todo "-NEXT"
+                (tags-todo "-STARTED"
                            ((org-agenda-overriding-header "Next Tasks")
                             (org-agenda-skip-function 'pelm/skip-projects-and-habits-and-single-tasks)
                             (org-agenda-todo-ignore-scheduled t)
@@ -289,7 +288,7 @@
               ("#" "Stuck Projects" tags-todo "-CANCELLED/!"
                ((org-agenda-overriding-header "Stuck Projects")
                 (org-agenda-skip-function 'pelm/skip-non-stuck-projects)))
-              ("n" "Next Tasks" tags-todo "-WAITING-CANCELLED/!NEXT"
+              ("n" "Next Tasks" tags-todo "-WAITING-CANCELLED/!STARTED"
                ((org-agenda-overriding-header "Next Tasks")
                 (org-agenda-skip-function 'pelm/skip-projects-and-habits-and-single-tasks)
                 (org-agenda-todo-ignore-scheduled t)
@@ -329,7 +328,7 @@
                  (has-next ))
             (save-excursion
               (forward-line 1)
-              (while (and (not has-next) (< (point) subtree-end) (re-search-forward "^\\*+ NEXT " subtree-end t))
+              (while (and (not has-next) (< (point) subtree-end) (re-search-forward "^\\*+ STARTED " subtree-end t))
                 (unless (member "WAITING" (org-get-tags-at))
                   (setq has-next t))))
             (if has-next
@@ -385,7 +384,7 @@
 (setq org-clock-history-length 36)
 ;; Resume clocking task on clock-in if the clock is open
 (setq org-clock-in-resume t)
-;; Change tasks to NEXT when clocking in
+;; Change tasks to STARTED when clocking in
 (setq org-clock-in-switch-to-state 'pelm/clock-in-to-next)
 ;; Separate drawers for clocking and logs
 (setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
@@ -407,15 +406,15 @@
 (setq pelm/keep-clock-running nil)
 
 (defun pelm/clock-in-to-next (kw)
-  "Switch a task from TODO to NEXT when clocking in.
+  "Switch a task from TODO to STARTED when clocking in.
 Skips capture tasks, projects, and subprojects.
-Switch projects and subprojects from NEXT back to TODO"
+Switch projects and subprojects from STARTED back to TODO"
   (when (not (and (boundp 'org-capture-mode) org-capture-mode))
     (cond
      ((and (member (org-get-todo-state) (list "TODO"))
            (pelm/is-task-p))
-      "NEXT")
-     ((and (member (org-get-todo-state) (list "NEXT"))
+      "STARTED")
+     ((and (member (org-get-todo-state) (list "STARTED"))
            (pelm/is-project-p))
       "TODO"))))
 
@@ -602,7 +601,7 @@ Callers of this function already widen the buffer view."
                  (has-next (save-excursion
                              (forward-line 1)
                              (and (< (point) subtree-end)
-                                  (re-search-forward "^\\*+ \\(NEXT\\) " subtree-end t)))))
+                                  (re-search-forward "^\\*+ \\(STARTED\\) " subtree-end t)))))
             (if has-next
                 next-headline
               nil)) ; a stuck project, has subtasks but no next task
@@ -650,7 +649,7 @@ Callers of this function already widen the buffer view."
 
 (defun pelm/skip-project-tasks-maybe ()
   "Show tasks related to the current restriction.
-When restricted to a project, skip project and sub project tasks, habits, NEXT tasks, and loose tasks.
+When restricted to a project, skip project and sub project tasks, habits, STARTED tasks, and loose tasks.
 When not restricted, skip project and sub-project tasks, habits, and project related tasks."
   (save-restriction
     (widen)
@@ -667,7 +666,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
         subtree-end)
        ((and limit-to-project
              (pelm/is-project-subtree-p)
-             (member (org-get-todo-state) (list "NEXT")))
+             (member (org-get-todo-state) (list "STARTED")))
         subtree-end)
        (t
         nil)))))
@@ -765,7 +764,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 ; For tag searches ignore tasks with scheduled and deadline dates
 (setq org-agenda-tags-todo-honor-ignore-options t)
-
+(setq org-list-indent-offset 2)
 (setq org-agenda-span 'day)
 
 (setq org-stuck-projects (quote ("" nil nil "")))
@@ -850,7 +849,7 @@ Callers of this function already widen the buffer view."
                  (has-next (save-excursion
                              (forward-line 1)
                              (and (< (point) subtree-end)
-                                  (re-search-forward "^\\*+ \\(NEXT\\) " subtree-end t)))))
+                                  (re-search-forward "^\\*+ \\(STARTED\\) " subtree-end t)))))
             (if has-next
                 next-headline
               nil)) ; a stuck project, has subtasks but no next task
@@ -898,7 +897,7 @@ Callers of this function already widen the buffer view."
 
 (defun pelm/skip-project-tasks-maybe ()
   "Show tasks related to the current restriction.
-When restricted to a project, skip project and sub project tasks, habits, NEXT tasks, and loose tasks.
+When restricted to a project, skip project and sub project tasks, habits, STARTED tasks, and loose tasks.
 When not restricted, skip project and sub-project tasks, habits, and project related tasks."
   (save-restriction
     (widen)
@@ -915,7 +914,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
         subtree-end)
        ((and limit-to-project
              (pelm/is-project-subtree-p)
-             (member (org-get-todo-state) (list "NEXT")))
+             (member (org-get-todo-state) (list "STARTED")))
         subtree-end)
        (t
         nil)))))
@@ -1373,14 +1372,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 
 (defun pelm/mark-next-parent-tasks-todo ()
-  "Visit each parent task and change NEXT states to TODO"
+  "Visit each parent task and change STARTED states to TODO"
   (let ((mystate (or (and (fboundp 'state)
                           org-state)
                      (nth 2 (org-heading-components)))))
-    (when (equal mystate "NEXT")
+    (when (equal mystate "STARTED")
       (save-excursion
         (while (org-up-heading-safe)
-          (when (member (nth 2 (org-heading-components)) (list "NEXT"))
+          (when (member (nth 2 (org-heading-components)) (list "STARTED"))
             (org-todo "TODO")))))))
 
 (add-hook 'org-after-todo-state-change-hook 'pelm/mark-next-parent-tasks-todo 'append)

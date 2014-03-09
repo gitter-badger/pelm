@@ -9,10 +9,9 @@
 
 ;;; Code:
 
-(el-get 'sync "php-mode-improved")
-
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-
+(require 'php+-mode)
+(php+-mode-setup)
+(add-to-list 'auto-mode-alist '("\\.php$" . php+-mode))
 
 ;(require 'flymake)
 

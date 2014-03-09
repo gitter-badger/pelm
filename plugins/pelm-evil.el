@@ -10,7 +10,6 @@
 
 ;;; Code:
 
-(require 'evil-tabs)
 (require 'evil-numbers)
 (require 'goto-chg)
 (require 'pelm-util)
