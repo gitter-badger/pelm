@@ -22,6 +22,8 @@
 (color-theme-initialize)
 (color-theme-solarized-light)
 ;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
+;(color-theme-solarized-light)
+;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
 
 ;;disable splash screen and tools bar
 (custom-set-variables
@@ -111,7 +113,10 @@
 (global-linum-mode 0)
 (define-key pelm-keymap "ul" 'global-linum-mode)
 
+<<<<<<< HEAD
 (setq main-line-separator-style 'contour)
 
+=======
+>>>>>>> 1e259eb84c1224dd631cd997922bcfd454a0f4b9
 (provide 'pelm-ui)
 ;; pelm-ui.el ends here

@@ -48,6 +48,7 @@
 (depends-on "jabber")
 (depends-on "jade-mode")
 (depends-on "jinja2-mode")
+(depends-on "js2-mode")
 (depends-on "js3-mode")
 (depends-on "json-mode")
 (depends-on "macrostep")
