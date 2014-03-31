@@ -113,10 +113,7 @@
 (global-linum-mode 0)
 (define-key pelm-keymap "ul" 'global-linum-mode)
 
-<<<<<<< HEAD
 (setq main-line-separator-style 'contour)
 
-=======
->>>>>>> 1e259eb84c1224dd631cd997922bcfd454a0f4b9
 (provide 'pelm-ui)
 ;; pelm-ui.el ends here
