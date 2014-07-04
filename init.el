@@ -72,14 +72,15 @@
        ; php
         js
         ;objc
-        blog
+        ;blog
         ;mail
-        android
+        ;android
         ;gnus
-        shell
+        ;shell
         misc
         server
-        scrum
+        go
+        ;scrum
 ))
 
 ;; load plugins 

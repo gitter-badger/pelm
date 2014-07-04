@@ -51,6 +51,7 @@
                               (jabber-chat-mode . emacs)
                               (epresent-mode . emacs)
                               (jabber-roster-mode . emacs)
+                              (2048-mode . emacs)
                               (magit-mode . emacs)) 
       do (evil-set-initial-state mode state))
 

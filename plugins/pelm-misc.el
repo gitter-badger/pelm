@@ -1,6 +1,6 @@
 ;;; pelm-misc.el --- PELM misc
 ;;
-;; Copyright (c) 2011-2015 eggcaker
+;; Copyight (c) 2011-2015 eggcaker
 ;;
 ;; Authors: eggcaker <eggcaker@gmail.com>
 ;; URL: http://caker.me/pelm
@@ -106,6 +106,15 @@
 
 (define-key pelm-keymap "p" 'epresent-run)
 
+
+;; games
+
+(eval-after-load "2048-game"  
+   '(progn
+  (define-key 2048-mode-map (kbd "k") '2048-up)
+  (define-key 2048-mode-map (kbd "j") '2048-down)
+  (define-key 2048-mode-map (kbd "h") '2048-left)
+  (define-key 2048-mode-map (kbd "l") '2048-right)))
 
 (provide 'pelm-misc)
 
