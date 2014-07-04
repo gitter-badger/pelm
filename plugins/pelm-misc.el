@@ -103,6 +103,10 @@
 
 (projectile-global-mode)
 
+
+(define-key pelm-keymap "p" 'epresent-run)
+
+
 (provide 'pelm-misc)
 
 ;; pelm-misc.el ends here

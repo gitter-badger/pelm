@@ -49,6 +49,7 @@
                               (mu4e-headers-mode . emacs)
                               (magit-branch-manager-mode-map . emacs) 
                               (jabber-chat-mode . emacs)
+                              (epresent-mode . emacs)
                               (jabber-roster-mode . emacs)
                               (magit-mode . emacs)) 
       do (evil-set-initial-state mode state))

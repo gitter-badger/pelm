@@ -10,7 +10,7 @@
 
 (evil-leader/set-key
   ;; common keys
-  "e" 'find-file
+  "e" 'find-file ;'helm-mini
   "r" 'org-capture
   "f" 'projectile-find-file
   "b" 'ido-switch-buffer
@@ -18,7 +18,7 @@
   "w" 'evil-window-map
   )
 
-
+;(global-set-key (kbd  "C-x C-f") 'helm-find-files)
 (global-set-key  "\M-n" 'scroll-up-command)
 (global-set-key  "\M-p" 'scroll-down-command)
 

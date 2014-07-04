@@ -18,6 +18,7 @@
 (require 'ox-latex)
 (require 'ox-html)
 (require 'ox-md)
+(require 'ox-reveal)
 (require 'ox-man)
 (require 'ox-beamer)
 (require 'org-checklist)
@@ -26,12 +27,16 @@
 (require 'ob-R)
 
 
-(setq org-export-backends '(ascii beamer html latex md rss))
+;; added reveal export 
+(setq org-reveal-root "file:///Users/eggcaker/src/apps/reveal.js/")
+
+
+(setq org-export-backends '(ascii beamer html latex md rss reveal))
 
 
 (add-hook 'org-mode-hook
           '(lambda ()
-             (yas/minor-mode-on)
+             (yas-minor-mode-on)
              (auto-complete-mode)
              (org-defkey org-mode-map "\C-c[" 'undefined)
              (org-defkey org-mode-map "\C-c]" 'undefined)))

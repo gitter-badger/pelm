@@ -21,8 +21,7 @@
 ;; color-theme
 (color-theme-initialize)
 (color-theme-solarized-light)
-;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
-;(color-theme-solarized-light)
+;(color-theme-solarized-dark)
 ;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
 
 ;;disable splash screen and tools bar
@@ -54,22 +53,7 @@
 ;;disable transparent mode
 (define-key pelm-keymap "utd" 'pelm-disable-transparent)
 
-
-
-;; switch buffer
-(require 'iswitchb)
-(iswitchb-mode t)
-;; iswitchb ignores
-(add-to-list 'iswitchb-buffer-ignore "^ ")
-(add-to-list 'iswitchb-buffer-ignore "*Messages*")
-(add-to-list 'iswitchb-buffer-ignore "*ECB")
-(add-to-list 'iswitchb-buffer-ignore "*Buffer")
-(add-to-list 'iswitchb-buffer-ignore "*Completions")
-(add-to-list 'iswitchb-buffer-ignore "*ftp ")
-(add-to-list 'iswitchb-buffer-ignore "*bsh")
-(add-to-list 'iswitchb-buffer-ignore "^[tT][aA][gG][sS]$")
-
-;; auto rebuffer 
+;auto rebuffer 
 (global-auto-revert-mode t) 
 
 ;; kill buffer without confirm
