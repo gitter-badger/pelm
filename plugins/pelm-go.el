@@ -13,11 +13,9 @@
 (add-hook 'before-save-hook 'gofmt-before-save)
 (add-hook 'go-mode-hook 
           (lambda ()
+            (setq tab-width 2 indent-tabs-mode nil) ;; indent with spaces not tabs
+            (local-set-key (kbd "C-c i") 'go-goto-imports)
             (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-
-
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "C-c i") 'go-goto-imports)))
 
 (provide 'pelm-go)
 ;; pelm-go.el ends here
