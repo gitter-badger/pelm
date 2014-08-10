@@ -12,6 +12,33 @@
 
 (require 'evil-numbers)
 (require 'goto-chg)
+(require 'evil)
+(require 'evil-nerd-commenter)
+(require 'evil-indent-textobject)
+(require 'evil-visualstar)
+(require 'evil-jumper)
+
+
+(global-evil-leader-mode t)
+(global-evil-surround-mode t)
+(evil-exchange-install)
+
+(setq evil-search-module 'evil-search)
+(setq evil-magic 'very-magic)
+
+(setq evil-emacs-state-cursor '("red" box))
+(setq evil-normal-state-cursor '("green" box))
+(setq evil-visual-state-cursor '("orange" box))
+(setq evil-insert-state-cursor '("red" bar))
+(setq evil-replace-state-cursor '("red" bar))
+(setq evil-operator-state-cursor '("red" hollow))
+
+(setq evilnc-hotkey-comment-operator "gc")
+
+(setq evil-jumper-auto-center t)
+(setq evil-jumper-file (concat pelm-cache-dir "evil-jumps"))
+(setq evil-jumper-auto-save-interval 3600)
+
 
 (global-evil-leader-mode)
 
@@ -52,11 +79,11 @@
                               (magit-mode . emacs)) 
       do (evil-set-initial-state mode state))
 
-
-
 (defadvice evil-ex-search-next (after advice-for-evil-ex-search-next activate)
   (recenter))
 
+(defadvice evil-ex-search-previous (after advice-for-evil-ex-search-previous activate)
+  (recenter))
 
 (provide 'pelm-evil)
 ;;; pelm-evil.el ends here.

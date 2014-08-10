@@ -31,6 +31,9 @@
 (defvar pelm-vendor-dir (concat pelm-dir "vendor/")
   "This directory house third part packages of emacs")
 
+(defvar pelm-cache-dir (concat pelm-dir "cache/")
+  "This directory for cache files.")
+
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
 ;(add-to-list 'load-path user-emacs-directory)
