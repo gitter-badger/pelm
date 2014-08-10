@@ -1,4 +1,6 @@
-;;; pelm-server.el --- PELM  emacs server
+;; pelm-server.el --- PELM  emacs server
+;;
+;;; Commentary:
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
@@ -11,9 +13,12 @@
 
 ;; emacs server start
 ;; only started when running on GUI emacs
+(require 'server)
 (if window-system
-    (server-start))
+    (unless (server-running-p)
+      (server-start)
+   ))
+
 
 (provide 'pelm-server)
-
-;;perlm-server.el ends here
+;;; pelm-server.el ends here

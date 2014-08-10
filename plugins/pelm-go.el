@@ -15,6 +15,7 @@
           (lambda ()
             (setq tab-width 2 indent-tabs-mode nil) ;; indent with spaces not tabs
             (local-set-key (kbd "C-c i") 'go-goto-imports)
+            (add-hook 'before-save-hook 'gofmt-before-save)
             (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
 
 (provide 'pelm-go)

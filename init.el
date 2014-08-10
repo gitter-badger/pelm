@@ -71,15 +71,15 @@
         java
        ; php
         js
-        ;objc
+        objc
         ;blog
         ;mail
-        ;android
+        android
         ;gnus
-        ;shell
+        shell
         misc
         server
-        go
+        ;go
         ;scrum
 ))
 
@@ -91,9 +91,9 @@
 (cond
     ((string-match "apple-darwin" system-configuration)
      (require 'pelm-mac))
-   
+
     ((string-match "linux" system-configuration)
-     (require 'pelm-linux))
+      (require 'pelm-linux))
 
     ((string-match "nt" system-configuration)
      (require 'pelm-windows)))

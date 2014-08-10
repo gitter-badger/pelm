@@ -45,5 +45,11 @@
   ",ad" 'pelm-search-android-doc)))
 
 
+
+;; build.gradle should use groovy 
+(add-to-list 'auto-mode-alist '("\\.gradle$" . groovy-mode))
+
 (provide 'pelm-android)
-;;pelm-android.el ends here
+;;; pelm-android.el ends here
+
+

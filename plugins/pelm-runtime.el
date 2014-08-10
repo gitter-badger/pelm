@@ -9,6 +9,9 @@
 
 ;;; Code:
 
+
+(require 'pelm-defuns)
+
 (defun pelm-add-sub-folders-to-load-path (parent-dir)
   "Adds all first level parent-dir subdirs to the Emacs load path"
   (dolist (f (directory-files parent-dir))
@@ -53,8 +56,10 @@
   :keymap 'pelm-minor-mode-map
   :group 'pelm)
 
+
 (pelm-minor-mode 1)
 
-(require 'pelm-defuns)
+
+
 (provide 'pelm-runtime)
 ;;; pelm-runtime.el ends here

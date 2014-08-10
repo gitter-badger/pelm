@@ -12,11 +12,8 @@
 
 (require 'evil-numbers)
 (require 'goto-chg)
-(require 'pelm-util)
 
 (global-evil-leader-mode)
-(evil-leader/set-leader ",")
-
 
 (eval-after-load "evil"  (evil-mode 1))
 (evil-define-command pelm/evil-maybe-exit ()
@@ -56,64 +53,10 @@
       do (evil-set-initial-state mode state))
 
 
-(fill-keymap evil-normal-state-map
-             "Y"     (kbd "y$")
-             "+"     'evil-numbers/inc-at-pt
-             "-"     'evil-numbers/dec-at-pt
-             "SPC"   'evil-ace-jump-char-mode
-             "S-SPC" 'evil-ace-jump-word-mode
-             "C-SPC" 'evil-ace-jump-line-mode
-             "go"    'goto-char
-             "C-t"   'transpose-chars
-             "C-:"   'eval-expression
-             ":"     'evil-repeat-find-char-reverse
-             "gH"    'evil-window-top
-             "gL"    'evil-window-bottom
-             "gM"    'evil-window-middle
-             "H"     'beginning-of-line
-             "L"     'end-of-line
-             )
 
-(fill-keymap evil-motion-state-map
-             "y"     'evil-yank
-             "Y"     (kbd "y$")
-             "_"     'evil-first-non-blank
-             "C-e"   'end-of-line
-             "C-S-d" 'evil-scroll-up
-             "C-S-f" 'evil-scroll-page-up
-             "_"     'evil-first-non-blank
-             "C-y"   nil)
+(defadvice evil-ex-search-next (after advice-for-evil-ex-search-next activate)
+  (recenter))
 
-(fill-keymap evil-insert-state-map
-;             "SPC" 'pelm/yas-expand-or-spc
-             "j"   'pelm/evil-maybe-exit
-             "C-h" 'backward-delete-char
-             "C-k" 'kill-line
-             "C-y" 'yank
-             "C-e" 'end-of-line)
-
-(fill-keymaps (list evil-operator-state-map
-                    evil-visual-state-map)
-             ;; works like `f'
-             "SPC"   'evil-ace-jump-char-mode
-             ;; works like `t'
-             "C-SPC" 'evil-ace-jump-char-to-mode
-             "S-SPC" 'evil-ace-jump-word-mode)
-
-
-
-;; change mode-line color by evil state
-   (lexical-let ((default-color (cons (face-background 'mode-line)
-                                      (face-foreground 'mode-line))))
-     (add-hook 'post-command-hook
-       (lambda ()
-         (let ((color (cond ((minibufferp) default-color)
-                            ((evil-insert-state-p) '("#328fde" . "#f1f1f1"))
-                            ((evil-emacs-state-p)  '("#444488" . "#f1f1f1"))
-                            ((buffer-modified-p)   '("#006fa0" . "#f1f1f1"))
-                            (t default-color))))
-           (set-face-background 'mode-line (car color))
-           (set-face-foreground 'mode-line (cdr color))))))
 
 (provide 'pelm-evil)
 ;;; pelm-evil.el ends here.

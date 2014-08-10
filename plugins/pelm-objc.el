@@ -12,20 +12,6 @@
 
 (require 'objc-c-mode)
 
-(setq el-get-xcode
-      '((:name xcode
-               :after (progn
-                        (add-hook 'objc-mode-hook
-                                  (lambda ()
-                                    (define-key objc-mode-map (kbd "C-c C-c b") 'xcode-compile)
-                                    (define-key objc-mode-map (kbd "C-c r") 'xcode-compile-and-run))))
-               :type git
-               :url "https://github.com/mig/xcode.el.git"
-               :load "xcode.el")))
-
-
-(el-get 'sync (loop for src in el-get-xcode collect (el-get-source-name src)))
-
 (add-to-list 'auto-mode-alist '("\\.mm?$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
 
@@ -88,6 +74,40 @@
         (interactive "p")
         (kmacro-exec-ring-item (quote ([11 25 escape down return return 25 backspace 32 123 return 125 return escape up 14 1] 0 "%d")) arg)))
 
+
+
+(require 'anything)
+(require 'anything-config)
+
+(defvar anything-c-source-objc-headline
+  '((name . "Objective-C Headline")
+    (headline  "^[-+@]\\|^#pragma mark")))
+
+(defun objc-headline ()
+  (interactive)
+  ;; Set to 500 so it is displayed even if all methods are not narrowed down.
+  (let ((anything-candidate-number-limit 500))
+    (anything-other-buffer '(anything-c-source-objc-headline)
+                           "*ObjC Headline*")))
+
+(eval-after-load 'objc-mode 
+  (evil-leader/set-key 
+    "." 'find-tag
+    "*" 'pop-tag-mark
+    "t" 'ff-find-other-file
+    "h" 'objc-headline
+    ))
+
+(require 'xcode-document-viewer)
+(setq xcdoc:document-path "/Applications/Xcode.app/Contents/Developer/Documentation/DocSets/com.apple.adc.documentation.AppleiOS7.1.iOSLibrary.docset")
+
+(setq xcdoc:open-w3m-other-buffer t)
+
+
+
 (provide 'pelm-objc)
 
 ;;pelm-objc.el ends here
+
+
+

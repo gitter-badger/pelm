@@ -19,10 +19,14 @@
 (set-scroll-bar-mode nil)
 
 ;; color-theme
-(color-theme-initialize)
-(color-theme-solarized-light)
+;(color-theme-initialize)
 ;(color-theme-solarized-dark)
+;(color-theme-solarized-light)
 ;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
+(require 'powerline)
+(require 'moe-theme)
+(moe-light)
+(powerline-moe-theme)
 
 ;;disable splash screen and tools bar
 (custom-set-variables
