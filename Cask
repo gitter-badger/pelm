@@ -2,6 +2,7 @@
 (source marmalade)
 (source org)
 
+(depends-on "pallet")
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
 (depends-on "ag")
@@ -67,7 +68,6 @@
 (depends-on "org")
 (depends-on "org-plus-contrib")
 (depends-on "page-break-lines")
-(depends-on "pallet")
 (depends-on "paredit")
 (depends-on "php-mode")
 (depends-on "popwin")
@@ -92,3 +92,4 @@
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
 (depends-on "guide-key")
+(depends-on "neotree")

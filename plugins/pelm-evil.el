@@ -22,7 +22,7 @@
 (global-evil-leader-mode t)
 (global-evil-surround-mode t)
 (evil-exchange-install)
-
+(global-evil-matchit-mode t)
 (setq evil-search-module 'evil-search)
 (setq evil-magic 'very-magic)
 

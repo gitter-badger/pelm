@@ -27,7 +27,7 @@
                              yas/ido-prompt
                              yas/completing-prompt))
 
-(add-hook 'jabber-chat-mode-hook 'yas/minor-mode)
+(add-hook 'jabber-chat-mode-hook 'yas-minor-mode)
 
 (provide 'pelm-yas)
 
