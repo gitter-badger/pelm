@@ -47,6 +47,11 @@
 (add-hook 'coffee-mode-hook
   '(lambda() (coffee-custom)))
 
-(provide 'pelm-js)
 
+
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
+
+(provide 'pelm-js)
 ;; pelm-js.el ends here
