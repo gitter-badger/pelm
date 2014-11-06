@@ -106,5 +106,13 @@
 
 (setq main-line-separator-style 'contour)
 
+;; Alternatively, you can paint your mode-line in White but then
+;; you'll have to manually paint it in black again
+;; (custom-set-faces
+;;  '(mode-line-highlight ((t nil)))
+;;  '(mode-line ((t (:foreground "white" :background "white"))))
+;;  '(mode-line-inactive ((t (:background "white" :foreground "white")))))
+
 (provide 'pelm-ui)
 ;; pelm-ui.el ends here
+

@@ -82,7 +82,7 @@
         shell
         misc
         server
-        ;go
+        go
         ;scrum
 ))
 

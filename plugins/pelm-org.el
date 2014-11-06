@@ -25,7 +25,7 @@
 (require 'org-screenshot)
 (require 'org-crypt)
 (require 'ob-R)
-
+(require 'ob-java)
 
 ;; added reveal export 
 (setq org-reveal-root "file:///Users/eggcaker/src/apps/reveal.js/")
@@ -61,7 +61,7 @@
       org-src-fontify-natively t
       org-use-fast-todo-selection t
       org-treat-S-cursor-todo-selection-as-state-change nil
-      org-habit-graph-column 50
+      org-habit-graph-column 102
       org-refile-use-outline-path nil ;Stop using paths for refile targets - we file directly with IDO
       org-outline-path-complete-in-steps nil
       org-refile-allow-creating-parent-nodes (quote confirm) ;
@@ -987,17 +987,19 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
  ;        (dot . t)
          (ditaa . t)
          (R . t)
-         (ledger . t)
-         (haskell . t)
+         ;(ledger . t)
+         ;(haskell . t)
  ;        (python . t)
          ;(ruby . t)
          (gnuplot . t)
  ;        (scala . t)
  ;        (clojure . t)
          (sh . t)
+         (js . t)
+         (java . t)
          (org . t)
-         (plantuml . t)
-         (latex . t)
+         ;(plantuml . t)
+         ;(latex . t)
          )))
 
 ; Do not prompt to confirm evaluation
@@ -1183,6 +1185,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-table-export-default-format "orgtbl-to-csv")
 (setq org-show-following-heading t)
 (setq org-show-hierarchy-above t)
+(setq org-habit-following-days 30) 
 (setq org-show-siblings (quote ((default))))
 (run-at-time "06:00" 86400 '(lambda () (setq org-habit-show-habits t)))
 (setq global-auto-revert-mode t)
