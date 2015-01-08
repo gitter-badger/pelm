@@ -17,7 +17,7 @@
 
 (when (string-match "linux" system-configuration)
   (define-key pelm-keymap "uf" 'pelm-linux-toggle-fullscreen)
-  (set-face-font 'default "WenQuanYi Zen Hei Mono-12")
+  (set-face-font 'default "mplus-1mn-regular-14")
   )
 
 (provide 'pelm-linux)
