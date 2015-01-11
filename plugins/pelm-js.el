@@ -76,21 +76,21 @@
 (add-hook 'css-mode-hook 'skewer-css-mode)
 (add-hook 'html-mode-hook 'skewer-html-mode)
 
-(require 'slime-js)
-  (add-hook 'js3-mode-hook
-            (lambda ()
-              (slime-js-minor-mode 1)))
-  (add-hook 'css-mode-hook
-            (lambda ()
-              (define-key css-mode-map (kbd "M-C-x") 'slime-js-refresh-css)
-              (define-key css-mode-map (kbd "C-c C-r") 'slime-js-embed-css))))
+;(require 'slime-js)
+(add-hook 'js3-mode-hook
+  (lambda ()
+    (slime-js-minor-mode 1)))
+
+(add-hook 'css-mode-hook
+  (lambda ()
+    (define-key css-mode-map (kbd "M-C-x") 'slime-js-refresh-css)
+    (define-key css-mode-map (kbd "C-c C-r") 'slime-js-embed-css)))
 
 ;; Wow, swank-js has lots of dependencies.
-(when (and (require 'slime nil 'noerror)
-           (require 'js3-mode nil 'noerror)
-           (executable-find "npm")
-           (executable-find "swank-js"))
-  (ome-install 'swank-js))
+;(require 'slime)
+(require 'js3-mode nil 'noerror)
+(executable-find "npm")
+(executable-find "swank-js")
 
 (eval-after-load 'auto-complete
   '(progn
@@ -102,7 +102,7 @@
 
 (eval-after-load 'slime
   '(progn
-     (slime-setup '(slime-repl slime-js)))
+     (slime-setup '(slime-repl slime-js))))
 
 
 (provide 'pelm-js)

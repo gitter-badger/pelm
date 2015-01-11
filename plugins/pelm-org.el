@@ -36,7 +36,7 @@
 
 (add-hook 'org-mode-hook
           '(lambda ()
-             (yas-minor-mode-on)
+             ;(yas-minor-mode-on)
              (auto-complete-mode)
              (org-defkey org-mode-map "\C-c[" 'undefined)
              (org-defkey org-mode-map "\C-c]" 'undefined)))

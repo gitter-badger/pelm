@@ -1,3 +1,4 @@
+(source gnu)
 (source melpa)
 (source marmalade)
 (source org)
@@ -93,3 +94,9 @@
 (depends-on "neotree")
 (depends-on "slime-js")
 (depends-on "skewer-mode")
+(depends-on "ox-reveal")
+(depends-on "editorconfig")
+(depends-on "anything")
+(depends-on "helm")
+(depends-on "org-page")
+

@@ -17,10 +17,10 @@
 
 * shell to extract the CODO entries
 
-#+BEGIN_SRC sh 
- find $HOME/.emacs.d/plugins -type f -name "*.el"|xargs grep -n ";;CODO - "|awk -F\: '{print "** TODO [["$1"::"$2"]["$3"]]"}'  >> todo.org 
+#+BEGIN_SRC sh
+ find $HOME/.emacs.d/plugins -type f -name "*.el"|xargs grep -n ";;CODO - "|awk -F\: '{print "** TODO [["$1"::"$2"]["$3"]]"}'  >> todo.org
 #+END_SRC
 
 
 * TODOs of PELM [1/1]
-
+** TODO the slime-js not working

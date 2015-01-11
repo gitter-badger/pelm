@@ -24,9 +24,11 @@
 
 (color-theme-initialize)
 ;(color-theme-solarized-dark)
-(color-theme-solarized-light)
+;(color-theme-solarized-light)
 ;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
-(require 'powerline)
+(load-theme 'monokai t)
+
+;(require 'powerline)
 ;(require 'moe-theme)
 ;(moe-light)
 ;(powerline-moe-theme)
@@ -96,9 +98,9 @@
 
 (add-hook hook (lambda () 
   (interactive) 
-  (column-marker-1 98) 
-  (column-marker-2 99)                   
-  (column-marker-3 100))))
+  (column-marker-1 100)
+  (column-marker-2 110)
+  (column-marker-3 120))))
 
 ;; show line-number on the left panel
 (global-linum-mode 0)
