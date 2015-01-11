@@ -1,4 +1,4 @@
-;;; pelm-keys.el --- PELM global shortkeys 
+;;; pelm-keys.el --- PELM global shortkeys
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
@@ -28,7 +28,7 @@
 
 (after 'evil
   (after "evil-leader-autoloads"
-    (evil-leader/set-leader ",")
+    (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
       ;; common keys
       "e" 'find-file ;'helm-mini
@@ -39,13 +39,13 @@
       "w" 'evil-window-map)
 
     (after "magit-autoloads"
-      (evil-leader/set-key 
+      (evil-leader/set-key
         "g s" 'magit-status
         "g b" 'magit-branch
         "g c" 'magit-commit
         "g l" 'magit-log
         )))
-    
+
   (fill-keymap evil-normal-state-map
     "Y"     (kbd "y$")
     "+"     'evil-numbers/inc-at-pt
@@ -76,15 +76,15 @@
     "C-k" 'kill-line
     "C-y" 'yank
     "C-e" 'end-of-line)
-  
+
   (after "ace-jump-mode-autoloads"
-    (fill-keymap evil-operator-state-map 
+    (fill-keymap evil-operator-state-map
       "z" 'evil-ace-jump-char-mode)
     (fill-keymap evil-normal-state-map
       "s" 'evil-ace-jump-char-mode)
     (fill-keymap evil-motion-state-map
       "C-SPC" 'evil-ace-jump-line-mode))
-    
+
   (after "helm-autoloads"
     (fill-keymap evil-normal-state-map
       "g b" 'helm-mini
@@ -99,7 +99,7 @@
       (fill-keymap evil-normal-state-map
          "SPC-l" 'helm-swoop
          "SPC L" 'helm-multi-swoop)))
- 
+
   (fill-keymap evil-normal-state-map ";" 'evil-window-map)
   (fill-keymap evil-normal-state-map ":" 'evil-ex)
   (fill-keymap evil-normal-state-map "TAB"  'evil-indent)
@@ -132,6 +132,6 @@
 
 
 
-;; projectile 
+;; projectile
 (provide 'pelm-keys)
 ;;; pelm-keys.el ends here

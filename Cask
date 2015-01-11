@@ -91,4 +91,5 @@
 (depends-on "yasnippet")
 (depends-on "guide-key")
 (depends-on "neotree")
+(depends-on "slime-js")
 (depends-on "skewer-mode")

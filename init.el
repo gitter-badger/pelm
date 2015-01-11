@@ -6,11 +6,11 @@
 ;;
 
 
-;; pelm start time 
+;; pelm start time
 (defvar *pelm-load-start* (current-time))
 
 ;; Turn off early to avoid momentary display
-(mapc 
+(mapc
   (lambda (mode)
     (if (fboundp mode)
       (funcall mode -1)))
@@ -20,7 +20,7 @@
 (defvar pelm-dir (file-name-directory load-file-name)
   "The root dir of the PELM distribution.")
 
-;; define hooks to run function before and after load the pelm 
+;; define hooks to run function before and after load the pelm
 (defvar pelm-pre-init-hook nil)
 (defvar pelm-post-init-hook nil)
 
@@ -38,7 +38,7 @@
 (add-to-list 'load-path pelm-vendor-dir)
 ;(add-to-list 'load-path user-emacs-directory)
 
-;; init cask file 
+;; init cask file
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (require 'pallet)
@@ -55,7 +55,7 @@
 (run-hooks 'pelm-pre-init-hook)
 
 ;; define pelm plugins
-(setq pelm-plugins 
+(setq pelm-plugins
       '(
         runtime
         editor
@@ -75,9 +75,9 @@
        ; php
         js
         objc
-        ;blog
+        blog
         ;mail
-        android
+        ;android
         ;gnus
         shell
         misc
@@ -86,8 +86,8 @@
         ;scrum
 ))
 
-;; load plugins 
-(mapcar (lambda (x) 
+;; load plugins
+(mapcar (lambda (x)
 	  (require (intern (format "pelm-%s" x)) nil t))
 	pelm-plugins)
 
@@ -101,11 +101,11 @@
     ((string-match "nt" system-configuration)
      (require 'pelm-windows)))
 
-;; pelm-post-hook 
+;; pelm-post-hook
 (load (concat pelm-dir "post-init-local") 'noerror)
 (run-hooks 'pelm-post-init-hook)
 
-;; PELM loaded, show the load time 
+;; PELM loaded, show the load time
 (message  "PELM loaded in %ds" (destructuring-bind (hi lo ms nn ) (current-time)
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
