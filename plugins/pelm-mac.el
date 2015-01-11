@@ -15,7 +15,10 @@
 (setq mac-function-modifier 'control) 
 
 ;(set-face-font 'default "Monaco-16")
-(set-face-font 'default "Source_Code_Pro-17")
+(set-default-font "M+ 1mn light 20")
+
+;(set-face-font 'default "Source_Code_Pro-17")
+;(set-face-font 'default "mplus-1mn-light-18")
 ;(set-face-font 'default "Menlo-16")
 ;(set-face-font 'default "Anonymous_Pro-18")
 ; (set-face-font 'default "BPtypewrite-18")

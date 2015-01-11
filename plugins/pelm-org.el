@@ -14,7 +14,7 @@
 ;(add-to-list 'load-path "~/.emacs.d/vendor/org-mode/contrib/lisp")
 
 (require 'org)
-(require 'org-contacts)
+;(require 'org-contacts)
 (require 'ox-latex)
 (require 'ox-html)
 (require 'ox-md)
