@@ -12,9 +12,6 @@
 #+ARCHIVE:    pelm-todo_archive::
 
 
-
-
-
 * shell to extract the CODO entries
 
 #+BEGIN_SRC sh

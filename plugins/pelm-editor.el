@@ -14,7 +14,7 @@
 
 (drag-stuff-global-mode)
 
-;;ido setups 
+;;ido setups
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
@@ -88,7 +88,7 @@
 
 ;;
 ;; ace jump mode major function
-;; 
+;;
 
 (autoload
   'ace-jump-mode
@@ -99,7 +99,7 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 
-;; 
+;;
 ;; enable a more powerful jump back function from ace jump mode
 ;;
 (autoload
@@ -114,7 +114,7 @@
 ;;If you use evil
 ;(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
 
-;;ack 
+;;ack
 (require 'ack-and-a-half)
 (setq ack-and-a-half-executable "/usr/local/bin/ack")
 ;; Create shorter aliases
@@ -132,7 +132,12 @@
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+
+
 ; auto revert
 (global-auto-revert-mode 1)
 (provide 'pelm-editor)
-;;; pelm-editor.el ends here				   
+;;; pelm-editor.el ends here

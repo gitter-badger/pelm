@@ -12,10 +12,10 @@
 (setq mac-allow-anti-aliasing t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'none)
-(setq mac-function-modifier 'control) 
+(setq mac-function-modifier 'control)
 
 ;(set-face-font 'default "Monaco-16")
-(set-default-font "M+ 1mn light 20")
+(set-default-font "M+ 1mn 21")
 
 ;(set-face-font 'default "Source_Code_Pro-17")
 ;(set-face-font 'default "mplus-1mn-light-18")
@@ -35,16 +35,14 @@
 ;; In dired, move deletions to trash
 (setq delete-by-moving-to-trash t)'
 
-
-
 (defun finder ()
-    "Opens file directory in Finder."
-      (interactive)
-        (let ((file (buffer-file-name)))
-              (if file
-                        (shell-command
-                                   (format "%s %s" (executable-find "open") (file-name-directory file)))
-                              (error "Buffer is not attached to any file."))))
+  "Opens file directory in Finder."
+  (interactive)
+  (let ((file (buffer-file-name)))
+    (if file
+      (shell-command
+        (format "%s %s" (executable-find "open") (file-name-directory file)))
+      (error "Buffer is not attached to any file."))))
 
 ;; Use GNU ls - install with:
 ;;    brew install xz
@@ -52,8 +50,6 @@
 (setq insert-directory-program "gls")
 
 (exec-path-from-shell-initialize)
-
-
 
 (provide 'pelm-mac)
 ;;; ends pelm-mac.el here

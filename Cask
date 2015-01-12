@@ -99,4 +99,6 @@
 (depends-on "anything")
 (depends-on "helm")
 (depends-on "org-page")
-
+(depends-on "writeroom-mode")
+(depends-on "tern")
+(depends-on "tern-auto-complete")

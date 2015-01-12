@@ -12,6 +12,7 @@
 
 (load "editorconfig")
 (require 'coffee-mode)
+(require 'js3-mode)
 
 (add-hook 'js3-mode-hook
   (lambda ()
@@ -26,6 +27,7 @@
       js3-paren-indent-offset 2
       js3-square-indent-offset 4)
     (tern-mode 1)
+    (flymake-mode 1)
     (linum-mode 1)))
 
 (add-to-list 'ac-modes 'js3-mode)
@@ -77,9 +79,12 @@
 (add-hook 'html-mode-hook 'skewer-html-mode)
 
 ;(require 'slime-js)
+
+
 (add-hook 'js3-mode-hook
   (lambda ()
-    (slime-js-minor-mode 1)))
+    ;(slime-js-minor-mode 1)
+    ))
 
 (add-hook 'css-mode-hook
   (lambda ()
@@ -88,7 +93,6 @@
 
 ;; Wow, swank-js has lots of dependencies.
 ;(require 'slime)
-(require 'js3-mode nil 'noerror)
 (executable-find "npm")
 (executable-find "swank-js")
 
@@ -97,13 +101,15 @@
      (add-to-list 'ac-modes 'js-mode)
      (add-to-list 'ac-modes 'js2-mode)
      (add-to-list 'ac-modes 'js3-mode)
-     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+     ;(add-hook 'slime-mode-hook 'set-up-slime-ac)
      (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
 
 (eval-after-load 'slime
   '(progn
      (slime-setup '(slime-repl slime-js))))
 
+(add-hook 'js2-mode-hook #'flycheck-mode)
+(add-hook 'js3-mode-hook #'flycheck-mode)
 
 (provide 'pelm-js)
 ;; pelm-js.el ends here
