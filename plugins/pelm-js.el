@@ -27,8 +27,7 @@
       js3-paren-indent-offset 2
       js3-square-indent-offset 4)
     (tern-mode 1)
-    (flymake-mode 1)
-    (linum-mode 1)))
+    (flymake-mode 1)))
 
 (add-to-list 'ac-modes 'js3-mode)
 
