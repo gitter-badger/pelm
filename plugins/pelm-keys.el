@@ -52,6 +52,7 @@
       "au"  'undo-tree-visualize)
     ;; buffers --------------------------------------------------------------------
     (evil-leader/set-key
+      "bf" 'projectile-recentf
       "bb" 'ido-switch-buffer
       "bd"  'delete-current-buffer-file
       "be"  'erase-buffer
@@ -61,8 +62,8 @@
       "bn"  'switch-to-next-buffer
       "bp"  'switch-to-prev-buffer
       "bR"  (lambda () (interactive) (revert-buffer nil t))
-      "br"  'rename-current-buffer-file
-      "bw"  'toggle-read-only)
+      "br"  'rename-current-buffer-file)
+
     ;; describe functions ---------------------------------------------------------
     (evil-leader/set-key
       "hdf" 'describe-function
@@ -121,6 +122,7 @@
 
     ;; toggle ---------------------------------------------------------------------
     (evil-leader/set-key
+      "ta" 'org-agent
       "t8" 'toggle-fill-column-indicator
       "tF" 'fringe-mode
       "tff" 'toggle-frame-fullscreen
@@ -170,13 +172,13 @@
       "mta"  (lambda () (interactive) (ert t))
       "mtf" 'ert)
 
-
+;; git -------------------------
     (after "magit-autoloads"
       (evil-leader/set-key
-        "g s" 'magit-status
-        "g b" 'magit-branch
-        "g c" 'magit-commit
-        "g l" 'magit-log
+        "gs" 'magit-status
+        "gb" 'magit-branch
+        "gc" 'magit-commit
+        "gl" 'magit-log
         )))
 
   (fill-keymap evil-normal-state-map

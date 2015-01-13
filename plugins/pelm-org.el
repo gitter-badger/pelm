@@ -162,6 +162,7 @@
 )))
 
 ;; Custom Key Bindings
+;; TODO: replace this keys to evil leader keys with leader-key/ o for all org-mode staff.
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
 (define-key global-map "\C-cc" 'org-capture)
