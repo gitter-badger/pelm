@@ -1,9 +1,11 @@
-;;; pelm-org.el --- PELM org-mode  configurations 
+;;; package --- pelm-org.el --- PELM org-mode  configurations
+;;; Commentary:
+;;  the configuration for org-mode to do GTD staff.
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
 ;; Authors: eggcaker <eggcaker@gmail.com>
-;; URL: http://caker.me/pelm
+;; URL: http://iemacs.org/pelm
 
 ;; This file is not part of GNU Emacs
 
@@ -27,7 +29,7 @@
 (require 'ob-R)
 (require 'ob-java)
 
-;; added reveal export 
+;; added reveal export
 (setq org-reveal-root "file:///Users/eggcaker/src/apps/reveal.js/")
 
 
@@ -48,13 +50,13 @@
 (setq org-directory "~/.org-files"
       org-default-notes-file (concat org-directory "/inbox.org")
       org-contacts-files (list (concat org-directory "/contacts.org"))
-      org-mobile-directory "~/Dropbox/org"                                                        
+      org-mobile-directory "~/Dropbox/org"
       org-mobile-inbox-for-pull "~/.org-files/inbox.org")
 
 (defvar org-gtd-other-files '("~/src/personal/scrum/scrum.org"))
 (setf org-agenda-files (cons "~/.org-files" org-gtd-other-files))
 
-;;; options 
+;;; options
 (setq org-log-done (quote time)
       org-log-into-drawer "LOGBOOK"
       org-alphabetical-lists t
@@ -114,7 +116,7 @@
       '("\\`auto/" "\\.prv/" "_region_" "\\`CVS/" "\\`#" "\\`.#" "\\.DS_Store"
         "\\`\\.\\./" "\\`\\./"))
 
-;;; TODO keywords 
+;;; TODO keywords
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" )))
@@ -193,8 +195,6 @@
 (global-set-key (kbd "C-x n r") 'narrow-to-region)
 (global-set-key (kbd "C-s-<f12>") 'pelm/save-then-publish)
 (global-set-key (kbd "C-M-r") 'org-capture)
-
-
 
 ; Enable habit tracking (and a bunch of other modules)
 (setq org-modules (quote (org-bbdb
@@ -343,7 +343,7 @@
 
 
 (defun pelm/org-auto-exclude-function (tag)
-  "Automatic task exclusion in the agenda with / RET"
+  "Automatic task exclusion in the agenda with / TAG."
   (and (cond
         (
          (string= tag "hold") t)
@@ -361,7 +361,7 @@
       (org-shifttab)
       (org-reveal)
       (org-cycle)))
-  
+
   (defun pelm/set-truncate-lines ()
     "Toggle value of truncate-lines and refresh window display."
     (interactive)
@@ -370,7 +370,7 @@
     (save-excursion
       (set-window-start (selected-window)
                         (window-start (selected-window)))))
-  
+
 (defun pelm/org-auto-exclude-function (tag)
   "Automatic task exclusion in the agenda with / RET"
   (and (cond
@@ -709,9 +709,9 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 (setq org-id-method (quote uuidgen))
 
 
-;;; communiate with shell command 
-;;; create a task with uuid 
-;;; shell command like 
+;;; communiate with shell command
+;;; create a task with uuid
+;;; shell command like
 ;; emacsclient -e '(ec/clock-in-dit-task)'
 ;; # do some stuff here
 ;; emacsclient -e '(ec/resume-clock)'
@@ -1031,8 +1031,8 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 ; Activate appointments so we get notifications
 (appt-activate t)
 
-;; alert time 
-(setq appt-message-warning-time 2)   
+;; alert time
+(setq appt-message-warning-time 2)
 
 ; If we leave Emacs running overnight - reset the appointments one minute after midnight
 (run-at-time "24:01" nil 'pelm/org-agenda-to-appt)
@@ -1172,7 +1172,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-enforce-todo-dependencies t)
 
-;; TODO try and remove if I don't like it 
+;; TODO try and remove if I don't like it
 (setq org-startup-indented t)
 
 (setq org-cycle-separator-lines 1)
@@ -1185,7 +1185,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-table-export-default-format "orgtbl-to-csv")
 (setq org-show-following-heading t)
 (setq org-show-hierarchy-above t)
-(setq org-habit-following-days 30) 
+(setq org-habit-following-days 30)
 (setq org-show-siblings (quote ((default))))
 (run-at-time "06:00" 86400 '(lambda () (setq org-habit-show-habits t)))
 (setq global-auto-revert-mode t)
@@ -1194,7 +1194,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-special-ctrl-k t)
 (setq org-yank-adjusted-subtrees t)
 
-;;;speed command 
+;;;speed command
 (setq org-use-speed-commands t)
 (setq org-speed-commands-user (quote (("0" . ignore)
                                       ("1" . ignore)
@@ -1346,7 +1346,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
             (org-agenda-set-restriction-lock restriction-type))))))))
 
 
-(add-hook 'org-agenda-mode-hook 
+(add-hook 'org-agenda-mode-hook
           '(lambda () (hl-line-mode t))
           'append)
 
@@ -1371,7 +1371,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (run-at-time "00:55" 3600 'org-save-all-org-buffers)
 
 
-;; crypt setup 
+;; crypt setup
 (org-crypt-use-before-save-magic)
 
 ;; GPG key to use for encryption
@@ -1401,5 +1401,5 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-html-head-include-scripts nil)
 
 (provide 'pelm-org)
-;;; pelm-org.el ends here
 
+;;; pelm-org.el ends here

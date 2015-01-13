@@ -1,4 +1,4 @@
-;;; pelm-objc.el --- PELM  objc 
+;;; pelm-objc.el --- PELM  objc
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
@@ -35,7 +35,7 @@
 	("\\.cpp$" (".hpp" ".hh" ".h"))
 	("\\.hpp$" (".cpp" ".c"))))
 
-(setq max-specpdl-size 5) 
+(setq max-specpdl-size 5)
 (defconst my-objc-style
   '("objc"
     (c-indent-comments-syntactically-p . t)
@@ -90,8 +90,8 @@
     (anything-other-buffer '(anything-c-source-objc-headline)
                            "*ObjC Headline*")))
 
-(eval-after-load 'objc-mode 
-  (evil-leader/set-key 
+(eval-after-load 'objc-mode
+  (evil-leader/set-key
     "." 'find-tag
     "*" 'pop-tag-mark
     "t" 'ff-find-other-file
@@ -103,11 +103,6 @@
 
 (setq xcdoc:open-w3m-other-buffer t)
 
-
-
 (provide 'pelm-objc)
 
-;;pelm-objc.el ends here
-
-
-
+;;; pelm-objc.el ends here

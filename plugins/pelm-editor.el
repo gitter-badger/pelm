@@ -10,8 +10,9 @@
 ;;; Code:
 
 ;; no backups
-(setq make-backup-files nil)
 
+(require 'smartparens)
+(setq make-backup-files nil)
 (drag-stuff-global-mode)
 
 ;;ido setups

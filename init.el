@@ -24,14 +24,14 @@
 (defvar pelm-pre-init-hook nil)
 (defvar pelm-post-init-hook nil)
 
-(defvar pelm-plugins-dir (concat pelm-dir "plugins/")
+(defconst pelm-plugins-dir (concat pelm-dir "plugins/")
   "This directory houses all of the built-in plem plugin.
    you should avoid modifying the configuration there.")
 
-(defvar pelm-vendor-dir (concat pelm-dir "vendor/")
+(defconst pelm-vendor-dir (concat pelm-dir "vendor/")
   "This directory house third part packages of emacs")
 
-(defvar pelm-cache-dir (concat pelm-dir "cache/")
+(defconst pelm-cache-dir (concat pelm-dir "cache/")
   "This directory for cache files.")
 
 (add-to-list 'load-path pelm-plugins-dir)
@@ -55,51 +55,51 @@
 (run-hooks 'pelm-pre-init-hook)
 
 ;; define pelm plugins
-(setq pelm-plugins
-      '(
-        runtime
-        editor
-        ui
-        org
-        yas
-        evil
-        keys
-        git
-        c
-        markups
-        ;scala
-       ; haskell
-        ;clojure
-        lisp
-        java
-       ; php
-        js
-        objc
-        blog
-        ;mail
-        ;android
-        ;gnus
-        shell
-        misc
-        server
-        go
-        ;scrum
-))
+(defvar pelm-plugins
+  '(
+     runtime
+     editor
+     ui
+     org
+     yas
+     evil
+     keys
+     git
+          markups
+     ;;scala
+     ;; haskell
+     ;;clojure
+     lisp
+     c
+     go
+     js
+     java
+     ;; php
+     ;;objc
+     blog
+     ;;mail
+     ;;android
+     ;;gnus
+     shell
+     misc
+     server
+     ;;scrum
+     ))
 
 ;; load plugins
-(mapcar (lambda (x)
-	  (require (intern (format "pelm-%s" x)) nil t))
+(mapc (lambda (x)
+        (require (intern (format "pelm-%s" x)) nil t))
 	pelm-plugins)
 
 (cond
-    ((string-match "apple-darwin" system-configuration)
-     (require 'pelm-mac))
+  ((string-match "apple-darwin" system-configuration)
+    (require 'pelm-mac))
 
-    ((string-match "linux" system-configuration)
-      (require 'pelm-linux))
+  ((string-match "linux" system-configuration)
+    (require 'pelm-linux))
 
-    ((string-match "nt" system-configuration)
-     (require 'pelm-windows)))
+  ((string-match "nt" system-configuration)
+    (require 'pelm-windows)))
 
 ;; pelm-post-hook
 (load (concat pelm-dir "post-init-local") 'noerror)
@@ -109,4 +109,3 @@
 (message  "PELM loaded in %ds" (destructuring-bind (hi lo ms nn ) (current-time)
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
-;;; ends init.el here
