@@ -35,9 +35,6 @@
       ;; common keys
       "!" 'shell-command
       "u" 'universal-argument
-      ;;"e" 'find-file ;'helm-mini
-      ;;"c" 'org-capture
-      ;"b" 'ido-switch-buffer
       "k" 'kill-buffer-no-question
       "w" 'evil-window-map)
 
@@ -50,6 +47,7 @@
       "ase" 'eshell
       "asi" 'shell
       "au"  'undo-tree-visualize)
+
     ;; buffers --------------------------------------------------------------------
     (evil-leader/set-key
       "bf" 'projectile-recentf
@@ -70,12 +68,15 @@
       "hdk" 'describe-key
       "hdm" 'describe-mode
       "hdv" 'describe-variable)
+
     ;; errors ---------------------------------------------------------------------
     (evil-leader/set-key
       "en" 'next-error
       "ep" 'previous-error)
+
     ;; find -----------------------------------------------------------------------
     (evil-leader/set-key
+      "fp" 'eww-open-file
       "fi" 'ido-find-file
       "ff" 'projectile-find-file
       "fg" 'rgrep)
@@ -83,6 +84,7 @@
     (evil-leader/set-key
       "fS" 'evil-write-all
       "fs" 'evil-write)
+
     ;; insert stuff ---------------------------------------------------------------
     (evil-leader/set-key
       "ij"  (lambda (count)
@@ -92,15 +94,9 @@
                 (evil-move-end-of-line)
                 (while (> count 0)
                   (insert "\n")
-                  (setq count (1- count)))))
-      "ik" 'evil-insert-line-above)
-    ;; format ---------------------------------------------------------------------
-    ;; replace J (no leader) key binding for a more frequent action:
-    ;; go and indent line below the point
-    ;; <SPC> J split the current line at point and indent it
-    ;; evil-join can still be perfomed with <SPC> j k
-    ;;(define-key evil-normal-state-map "J" (lambda () (interactive) (join-line 1) (sp-newline)))
+                  (setq count (1- count))))))
 
+    ;; format ---------------------------------------------------------------------
     (evil-leader/set-key
       "J" 'sp-split-sexp
       "jJ" (lambda () (interactive) (sp-split-sexp 1) (sp-newline))
@@ -111,8 +107,11 @@
       "jh" (lambda () (interactive) (push-mark (point)) (evil-beginning-of-line))
       "jl" (lambda () (interactive) (push-mark (point)) (evil-end-of-line)))
 
-    ;; Compilation ----------------------------------------------------------------
-    (evil-leader/set-key "C" 'compile)
+    ;; org-mode and GTD staff use o prefix ----------------------------------------
+    (evil-leader/set-key
+      "oa" 'org-agent
+      "oc" 'org-capture
+      )
 
     ;; spell check  ---------------------------------------------------------------
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -123,21 +122,20 @@
 
     ;; toggle ---------------------------------------------------------------------
     (evil-leader/set-key
-      "ta" 'org-agent
       "t8" 'toggle-fill-column-indicator
       "tF" 'fringe-mode
+      "tw" 'writeroom-mode
       "tff" 'toggle-frame-fullscreen
       "tfm" 'toggle-frame-maximized
       "tn" 'global-linum-mode
-      "tw" 'toggle-read-only)
+      "tm" 'hidden-mode-line-mode
+      "tro" 'toggle-read-only)
+
     ;; window ---------------------------------------------------------------------
-    ;; (evil-leader/set-key "wb" 'evenly-split-window-right)
     (evil-leader/set-key
       "w2"  'layout-double-columns
       "w3"  'layout-triple-columns
-      "wb"  'split-window-right
       "wc"  'delete-window
-      "wd"  'toggle-current-window-dedication
       "wH"  'evil-window-move-far-left
       "wh"  'evil-window-left
       "wJ"  'evil-window-move-very-bottom
@@ -146,19 +144,10 @@
       "wk"  'evil-window-up
       "wL"  'evil-window-move-far-right
       "wl"  'evil-window-right
-      "wM"  'toggle-maximize-centered-buffer
-      "wm"  'toggle-maximize-buffer
       "wr"  'rotate-windows
-      "wR"  'rotate-windows-backward
-      ;; "wv"  'evenly-split-window-below)
       "wv"  'split-window-below
-      ;;"wsh" 'shrink-window-horizontally
-      ;;"wsj" 'shrink-window
-      ;;"wsk" 'enlarge-window
-      ;;"wsl" 'enlarge-window-horizontally
-      "wU"  'winner-redo
-      "wu"  'winner-undo
       "ww"  'other-window)
+
     ;; text -----------------------------------------------------------------------
     (evil-leader/set-key
       "xdw" 'delete-trailing-whitespace
