@@ -109,3 +109,4 @@
 (message  "PELM loaded in %ds" (destructuring-bind (hi lo ms nn ) (current-time)
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
+;;; ends init.el here

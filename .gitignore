@@ -39,5 +39,6 @@ session.*
 /var
 incubator
 cache
-
+recentf
+ido.last
 
