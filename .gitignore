@@ -41,4 +41,5 @@ incubator
 cache
 recentf
 ido.last
-
+pelm*.el
+smex-items

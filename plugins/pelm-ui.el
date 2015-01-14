@@ -7,7 +7,7 @@
 
 ;; This file is not part of GNU Emacs 
 
-;;; Code
+;;; Code:
 
 ;; disabled menu-bar-mode
 (menu-bar-mode -1)
@@ -141,7 +141,7 @@
      (concat "Hidden Mode Line Mode enabled.  "
              "Use M-x hidden-mode-line-mode to make the mode-line appear."))))
 
-(hidden-mode-line-mode 1)
+(hidden-mode-line-mode)
 
 (after "org"
   (mapc (lambda(fb) (set-fringe-bitmap-face fb 'org-hide))
@@ -150,4 +150,45 @@
 
 (provide 'pelm-ui)
 ;;; pelm-ui.el ends here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
