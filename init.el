@@ -110,3 +110,45 @@
                                 (- (+ hi lo) (+ (first *pelm-load-start*)
                                                 (second *pelm-load-start*)))))
 ;;; ends init.el here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(explicit-shell-file-name "/usr/bin/zsh")
+ '(inhibit-startup-screen t)
+ '(jabber-auto-reconnect nil)
+ '(jabber-avatar-verbose nil)
+ '(jabber-chat-buffer-format "*-jabber-%n-*")
+ '(jabber-history-enabled t)
+ '(jabber-mode-line-mode t)
+ '(jabber-roster-buffer "*-jabber-*")
+ '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
+ '(jabber-show-offline-contacts nil)
+ '(jabber-vcard-avatars-retrieve nil)
+ '(joc-eshell-prompt-newline t)
+ '(js3-auto-indent-p t)
+ '(js3-curly-indent-offset 2)
+ '(js3-enter-indents-newline t)
+ '(js3-expr-indent-offset 2)
+ '(js3-indent-on-enter-key t)
+ '(js3-lazy-commas t)
+ '(js3-lazy-dots t)
+ '(js3-lazy-operators t)
+ '(js3-paren-indent-offset 2)
+ '(js3-square-indent-offset 2)
+ '(magit-use-overlays nil)
+ '(scroll-bar-width nil t)
+ '(tool-bar-mode nil nil (tool-bar))
+ '(global-writeroom-mode 1)
+ '(writeroom-border-width 20)
+ '(writeroom-width 110))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(highlight ((t (:background "cyan"))))
+ '(hl-line ((t (:inherit highlight :background "darkseagreen2"))))
+ '(org-mode-line-clock ((t (:background "DarkGreen" :box (:line-width -1 :style released-button)))) t))

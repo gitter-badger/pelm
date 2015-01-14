@@ -99,7 +99,8 @@
     ;; go and indent line below the point
     ;; <SPC> J split the current line at point and indent it
     ;; evil-join can still be perfomed with <SPC> j k
-    (define-key evil-normal-state-map "J" (lambda () (interactive) (join-line 1) (sp-newline)))
+    ;;(define-key evil-normal-state-map "J" (lambda () (interactive) (join-line 1) (sp-newline)))
+
     (evil-leader/set-key
       "J" 'sp-split-sexp
       "jJ" (lambda () (interactive) (sp-split-sexp 1) (sp-newline))
