@@ -65,7 +65,7 @@
                                (inferior-emacs-lisp-mode . emacs)
                                (shell-mode . emacs)
                                (eshell-mode . emacs)
-                               (org-mode . emacs)
+                               ;;(org-mode . evil)
                                (haskell-interactive-mode . emacs)
                                (inferior-haskell-mode . emacs)
                                (mu4e-main-mode . emacs)

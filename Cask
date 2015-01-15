@@ -31,7 +31,7 @@
 (depends-on "evil-matchit")
 (depends-on "evil-exchange")
 (depends-on "evil-surround")
-(depends-on "evil-jumper")
+;;(depends-on "evil-jumper")
 (depends-on "evm")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
