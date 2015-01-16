@@ -109,7 +109,7 @@
 
     ;; org-mode and GTD staff use o prefix ----------------------------------------
     (evil-leader/set-key
-      "oa" 'org-agent
+      "oa" 'org-agenda
       "oc" 'org-capture
       )
 

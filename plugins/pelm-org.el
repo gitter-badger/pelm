@@ -16,6 +16,7 @@
 ;(add-to-list 'load-path "~/.emacs.d/vendor/org-mode/contrib/lisp")
 
 (require 'org)
+(require  'org-habit)
 ;(require 'org-contacts)
 (require 'ox-latex)
 (require 'ox-html)
@@ -138,28 +139,103 @@
               ("STARTED" ("WAITING") ("CANCELLED") ("HOLD"))
               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
+(defvar pelm/org-basic-task-template "* TODO %^{Task}
+SCHEDULED: %^t
+:PROPERTIES:
+:Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|4:00}
+:END
+%?
+" "Basic task data.")
 
-;;; capture template
 (setq org-capture-templates
-      (quote (("t" "Toto" entry (file (concat org-directory "/inbox.org"))
-               "* TODO %?\n%U\n %a\n " :clock-in t :clock-resume t)
-              ("x" "CLI TODO" entry
-                (file (concat org-directory "/inbox.org"))
-                "* TODO %i\n%U" :immediate-finish t)
-              ("c" "Contacts" entry (file "~/.org-files/contacts.org")
-               "* %(org-contacts-template-name)
- :PROPERTIES:
- :EMAIL: %(org-contacts-template-email)
- :PHONE:
- :ALIAS:
- :NICKNAME:
- :IGNORE:
- :ICON:
- :NOTE:
- :ADDRESS:
- :BIRTHDAY:
- :END:")
-)))
+      `(("t" "Tasks" entry
+         (file+headline "~/.org-files/inbox.org" "Tasks")
+         ,pelm/org-basic-task-template)
+        ("T" "Quick task" entry
+         (file+headline "~/.org-files/inbox.org" "Tasks")
+         "* TODO %^{Task}"
+         :immediate-finish t)
+        ("e" "Emacs idea" entry
+         (file+headline "~/.org-files/emacs.org" "Emacs")
+         "* TODO %^{Task}"
+         :immediate-finish t)
+        ("b" "Business task" entry
+         (file+headline "~/.org-files/biz.org" "Tasks")
+         ,pelm/org-basic-task-template)
+        ("p" "People task" entry
+         (file+headline "~/.org-files/people.org" "Tasks")
+         ,pelm/org-basic-task-template)
+        ("j" "Journal entry" plain
+         (file+datetree "~/.org-files/journal.org")
+         "%K - %a\n%i\n%?\n"
+         :unnarrowed t)
+        ("J" "Journal entry with date" plain
+         (file+datetree+prompt "~/.org-files/journal.org")
+         "%K - %a\n%i\n%?\n"
+         :unnarrowed t)
+        ("db" "Done - Business" entry
+         (file+headline "~/.org-files/biz.org" "Tasks")
+         "* DONE %^{Task}\nSCHEDULED: %^t\n%?")
+        ("dp" "Done - People" entry
+         (file+headline "~/.org-files/people.org" "Tasks")
+         "* DONE %^{Task}\nSCHEDULED: %^t\n%?")
+        ("dt" "Done - Task" entry
+         (file+headline "~/.org-files/organizer.org" "Tasks")
+         "* DONE %^{Task}\nSCHEDULED: %^t\n%?")
+        ("q" "Quick note" item
+         (file+headline "~/.org-files/organizer.org" "Quick notes"))
+         ;;("l" "Ledger entries")
+         ;; ("lm" "MBNA" plain
+         ;;          (file "~/personal/ledger")
+         ;;          "%(org-read-date) %^{Payee}
+         ;;   Liabilities:MBNA
+         ;;   Expenses:%^{Account}  $%^{Amount}
+         ;; " :immediate-finish t)
+         ;; ("ln" "No Frills" plain
+         ;;          (file "~/personal/ledger")
+         ;;          "%(let ((org-read-date-prefer-future nil)) (org-read-date)) * No Frills
+         ;;   Liabilities:MBNA
+         ;;   Assets:Wayne:Groceries  $%^{Amount}
+         ;; " :immediate-finish t)
+         ;; ("lc" "Cash" plain
+         ;;          (file "~/personal/ledger")
+         ;;          "%(org-read-date) * %^{Payee}
+         ;;   Expenses:Cash
+         ;;   Expenses:%^{Account}  %^{Amount}
+         ;; ")
+         ("b" "Book" entry
+           (file+datetree "~/.org-files/books.org" "Inbox")
+           "* %^{Title}  %^g
+%i
+*Author(s):* %^{Author} \\\\
+*ISBN:* %^{ISBN}
+
+%?
+
+*Review on:* %^t \\
+%a
+%U"
+           :clock-in :clock-resume)
+         ("c" "Contact" entry (file "~/.org-files/contacts.org")
+           "* %(org-contacts-template-name)
+:PROPERTIES:
+:EMAIL: %(org-contacts-template-email)
+:PHONE:
+:ALIAS:
+:NICKNAME:
+:IGNORE:
+:ICON:
+:NOTE:
+:ADDRESS:
+:BIRTHDAY:
+:END:")
+         ("n" "Daily note" table-line (file+olp "~/.org-files/organizer.org" "Daily notes")
+          "| %u | %^{Note} |"
+          :immediate-finish t)
+         ("r" "Notes" entry
+          (file+datetree "~/.org-files/organizer.org")
+          "* %?\n\n%i\n"
+          )))
 
 ;; Custom Key Bindings
 ;; TODO: replace this keys to evil leader keys with leader-key/ o for all org-mode staff.
@@ -169,16 +245,10 @@
 (define-key global-map "\C-cr" 'org-capture)
 (define-key global-map "\C-cl" 'org-store-link)
 (global-set-key (kbd "<f12>") 'org-agenda)
-
-(global-set-key (kbd "<f9> <f9>") 'pelm/show-org-agenda)
 (global-set-key (kbd "<f9> c") 'calendar)
 (global-set-key (kbd "<f9> f") 'boxquote-insert-file)
 (global-set-key (kbd "<f9> g") 'gnus)
-(global-set-key (kbd "<f9> h") 'pelm/hide-other)
 (global-set-key (kbd "<f9> n") 'org-narrow-to-subtree)
-(global-set-key (kbd "<f9> w") 'widen)
-(global-set-key (kbd "<f9> u") 'pelm/narrow-up-one-level)
-
 (global-set-key (kbd "<f9> I") 'pelm/punch-in)
 (global-set-key (kbd "<f9> O") 'pelm/punch-out)
 
@@ -353,17 +423,7 @@
 
 (setq org-agenda-auto-exclude-function 'pelm/org-auto-exclude-function)
 
-
-
- (defun pelm/hide-other ()
-    (interactive)
-    (save-excursion
-      (org-back-to-heading 'invisible-ok)
-      (org-shifttab)
-      (org-reveal)
-      (org-cycle)))
-
-  (defun pelm/set-truncate-lines ()
+(defun pelm/set-truncate-lines ()
     "Toggle value of truncate-lines and refresh window display."
     (interactive)
     (setq truncate-lines (not truncate-lines))
@@ -373,7 +433,7 @@
                         (window-start (selected-window)))))
 
 (defun pelm/org-auto-exclude-function (tag)
-  "Automatic task exclusion in the agenda with / RET"
+  "Automatic task exclusion in the agenda with / TAG."
   (and (cond
         ((string= tag "hold")         t)
         )
@@ -1402,5 +1462,4 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-html-head-include-scripts nil)
 
 (provide 'pelm-org)
-
 ;;; pelm-org.el ends here
