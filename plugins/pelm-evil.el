@@ -67,6 +67,7 @@
                                (eshell-mode . emacs)
                                ;;(org-mode . evil)
                                (haskell-interactive-mode . emacs)
+                               (calendar-mode . emacs)
                                (inferior-haskell-mode . emacs)
                                (mu4e-main-mode . emacs)
                                (mu4e-view-mode . emacs)
