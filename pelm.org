@@ -64,6 +64,10 @@ Turn off early to avoid momentary display
   #+BEGIN_SRC emacs-lisp
   (defconst pelm-cache-dir (concat pelm-dir "cache/"))
   #+END_SRC
+- The theme directory of PELM
+  #+BEGIN_SRC emacs-lisp
+  (add-to-list 'custom-theme-load-path (concat pelm-dir "themes/"))
+  #+END_SRC
 
 ** Added PELM's directoies to load path
 #+BEGIN_SRC emacs-lisp
