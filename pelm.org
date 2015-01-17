@@ -11,151 +11,200 @@
 #+OPTIONS:    H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t TeX:t LaTeX:t skip:nil d:(HIDE) tags:not-in-toc
 #+ARCHIVE:    pelm-todo_archive::
 
-* PELM 
+* PELM
 
-Yet another emacs configurations
- 
+PELM - a "literate" Emacs Lisp Manager for Emacs (24.0 and greater).
+
+What's the P means? the P can be one of Personal or Public (if you like it)
+I hope every body like it. Any fork is welcome!
+
+** Install
+
+1. clone source code from github to .emacs.d
+#+BEGIN_SRC sh
+$ cd ~
+$ git clone http://github.com/eggckaer/pelm.git .emacs.d
+$ cd .emacs.d
+$ git submodule init
+$ git submodule update
+#+END_SRC
+2. install dependencies with [[https://github.com/cask/cask][Cask]]
+#+BEGIN_SRC sh
+cd ~/.emacs.d
+cask install
+#+END_SRC
+3. there is no step 3 !
+
+** Predefined
+
+Turn off early to avoid momentary display
+
 #+BEGIN_SRC emacs-lisp
-;; Turn off early to avoid momentary display
 (mapc
   (lambda (mode)
     (if (fboundp mode)
       (funcall mode -1)))
    '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+#+END_SRC
 
-;; PELM root directory
-(defvar pelm-dir (file-name-directory load-file-name)
-  "The root dir of the PELM distribution.")
+** Define the PELM directories
+- The root dir of the PELM distribution
+  #+BEGIN_SRC emacs-lisp
+  (defvar pelm-dir (file-name-directory load-file-name))
+  #+END_SRC
+- The plugins dir of the PELM
+  #+BEGIN_SRC emacs-lisp
+  (defconst pelm-plugins-dir (concat pelm-dir "plugins/"))
+  #+END_SRC
+- The vendor directory of the PELM
+  #+BEGIN_SRC emacs-lisp
+  (defconst pelm-vendor-dir (concat pelm-dir "vendor/"))
+  #+END_SRC
+- The cache directory of the PELM
+  #+BEGIN_SRC emacs-lisp
+  (defconst pelm-cache-dir (concat pelm-dir "cache/"))
+  #+END_SRC
 
-;; define hooks to run function before and after load the pelm
-(defvar pelm-pre-init-hook nil)
-(defvar pelm-post-init-hook nil)
-
-(defconst pelm-plugins-dir (concat pelm-dir "plugins/")
-  "This directory houses all of the built-in plem plugin.
-   you should avoid modifying the configuration there.")
-
-(defconst pelm-vendor-dir (concat pelm-dir "vendor/")
-  "This directory house third part packages of emacs")
-
-(defconst pelm-cache-dir (concat pelm-dir "cache/")
-  "This directory for cache files.")
-
+** Added PELM's directoies to load path
+#+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
-;(add-to-list 'load-path user-emacs-directory)
+#+END_SRC
 
+** PELM hooks
+#+BEGIN_SRC  emacs-lisp
+(defvar pelm-pre-init-hook nil)
+(defvar pelm-post-init-hook nil)
+#+END_SRC
+
+** Dependencies packages
+#+BEGIN_SRC emacs-lisp
 (require 'pallet)
 (require 's)
 (require 'dash)
 (require 'f)
 (require 'git)
-(require 'evm)
 (require 'ert)
 (require 'misc)
-
-;; pre-init-local hook
+#+END_SRC
+** Run the pre-init-hook
+#+BEGIN_SRC  emacs-lisp
 (load (concat pelm-dir "pre-init-local") 'noerror)
 (run-hooks 'pelm-pre-init-hook)
+#+END_SRC
+** PELM plugins
 
-;; define pelm plugins
+Function for loading other parts of the PELM.
+
+#+NAME: pelm-load
+#+BEGIN_SRC emacs-lisp
+(defun pelm-load (file &optional header-or-tag)
+  "Load configuration from other pelm-*.org files.
+   If the optional argument is the id of a subtree then only
+   configuration from within that subtree will be loaded.  If it is
+   not an id then it will be interpreted as a tag, and only subtrees
+   marked with the given tag will be loaded.
+
+   For example, to load all of pelm-lisp.org simply
+   add (pelm-load \"lisp\") to your configuration.
+
+   To load only the 'window-system' config from
+   pelm-misc-recommended.org add
+   (pelm-load \"misc-recommended\" \"window-system\")
+   to your configuration."
+  (let ((file (expand-file-name (if (string-match "pelm-.+\.org" file)
+                                    file
+                                  (format "pelm-%s.org" file))
+                                pelm-plugins-dir)))
+    (org-babel-load-file
+     (if header-or-tag
+         (let* ((base (file-name-nondirectory file))
+                (dir  (file-name-directory file))
+                (partial-file (expand-file-name
+                               (concat "." (file-name-sans-extension base)
+                                       ".part." header-or-tag ".org")
+                               dir)))
+           (unless (file-exists-p partial-file)
+             (with-temp-file partial-file
+               (insert
+                (with-temp-buffer
+                  (insert-file-contents file)
+                  (save-excursion
+                    (condition-case nil
+                        (progn
+                          (org-link-search (concat"#"header-or-tag))
+                          (org-narrow-to-subtree)
+                          (buffer-string))
+                      (error ;; collect all entries with as tags
+                       (let (body)
+                         (org-map-entries
+                          (lambda ()
+                            (save-restriction
+                              (org-narrow-to-subtree)
+                              (setq body (concat body "\n" (buffer-string)))))
+                          header-or-tag)
+                         body))))))))
+           partial-file)
+       file))))
+  #+END_SRC
+
+*** Load plugins
+
+#+BEGIN_SRC emacs-lisp
+(pelm-load "runtime")
+(pelm-load "editor")
+(pelm-load "ui")
+(pelm-load "org")
+(pelm-load "evil")
+(pelm-load "keys")
+(pelm-load "yas")
+
+
+
+(pelm-load "misc")
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
 (defvar pelm-plugins
   '(
-     runtime
-     editor
-     ui
-     org
-     yas
-     evil
-     keys
-     git
-          markups
-     ;;scala
-     ;; haskell
-     ;;clojure
-     lisp
-     c
-     go
-     js
-     java
-     ;; php
-     ;;objc
-     blog
-     ;;mail
-     ;;android
-     ;;gnus
-     shell
-     misc
-     server
-     ;;scrum
-     ))
+    git
+    markups
+    ;;scala
+    ;;haskell
+    ;;clojure
+    lisp
+    c
+    go
+    js
+    java
+    ;; php
+    ;;objc
+    blog
+    ;;mail
+    ;;android
+    ;;gnus
+    shell
+    ;;scrum
+))
 
-;; load plugins
-(mapc (lambda (x)
-        (require (intern (format "pelm-%s" x)) nil t))
-	pelm-plugins)
+#+END_SRC
 
+** System Specific Files
+#+BEGIN_SRC  emacs-lisp
 (cond
   ((string-match "apple-darwin" system-configuration)
-    (require 'pelm-mac))
+    (pelm-load  "pelm-mac.org"))
 
   ((string-match "linux" system-configuration)
-    (require 'pelm-linux))
+    (pelm-load "pelm-linux.org"))
 
   ((string-match "nt" system-configuration)
-    (require 'pelm-windows)))
+    (pelm-load "pelm-windows")))
 
-;; pelm-post-hook
+#+END_SRC
+
+** Run the PELM post hook
+#+BEGIN_SRC emacs-lisp
 (load (concat pelm-dir "post-init-local") 'noerror)
 (run-hooks 'pelm-post-init-hook)
-
-;; PELM loaded, show the load time
-;(message  "PELM loaded in %ds" (destructuring-bind (hi lo ms nn ) (current-time)
- ;                               (- (+ hi lo) (+ (first *pelm-load-start*)
-  ;                                              (second *pelm-load-start*)))))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(explicit-shell-file-name "/usr/bin/zsh")
- '(inhibit-startup-screen t)
- '(jabber-auto-reconnect nil)
- '(jabber-avatar-verbose nil)
- '(jabber-chat-buffer-format "*-jabber-%n-*")
- '(jabber-history-enabled t)
- '(jabber-mode-line-mode t)
- '(jabber-roster-buffer "*-jabber-*")
- '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
- '(jabber-show-offline-contacts nil)
- '(jabber-vcard-avatars-retrieve nil)
- '(joc-eshell-prompt-newline t)
- '(js3-auto-indent-p t)
- '(js3-curly-indent-offset 2)
- '(js3-enter-indents-newline t)
- '(js3-expr-indent-offset 2)
- '(js3-indent-on-enter-key t)
- '(js3-lazy-commas t)
- '(js3-lazy-dots t)
- '(js3-lazy-operators t)
- '(js3-paren-indent-offset 2)
- '(js3-square-indent-offset 2)
- '(magit-use-overlays nil)
- '(scroll-bar-width nil t)
- '(tool-bar-mode nil nil (tool-bar))
- '(global-writeroom-mode 1)
- '(writeroom-border-width 20)
- '(writeroom-width 110))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(highlight ((t (:background "cyan"))))
- '(hl-line ((t (:inherit highlight :background "darkseagreen2"))))
- '(org-mode-line-clock ((t (:background "DarkGreen" :box (:line-width -1 :style released-button)))) t))
-
-
 #+END_SRC

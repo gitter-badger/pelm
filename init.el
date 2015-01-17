@@ -26,4 +26,5 @@
 
 (org-babel-load-file "~/.emacs.d/pelm.org")
 
-(defvar *pelm-load-start* (current-time))
+(provide 'init)
+;;; init.el ends here

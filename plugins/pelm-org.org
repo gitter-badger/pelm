@@ -1,3 +1,10 @@
+* PELM-org
+
+** TODO refactory code
+
+** The lisp code
+
+#+BEGIN_SRC emacs-lisp
 ;;; package --- pelm-org.el --- PELM org-mode  configurations
 ;;; Commentary:
 ;;  the configuration for org-mode to do GTD staff.
@@ -8,12 +15,6 @@
 ;; URL: http://iemacs.org/pelm
 
 ;; This file is not part of GNU Emacs
-
-;;; Code:
-
-
-;(add-to-list 'load-path "~/.emacs.d/vendor/org-mode/lisp")
-;(add-to-list 'load-path "~/.emacs.d/vendor/org-mode/contrib/lisp")
 
 (require 'org)
 (require  'org-habit)
@@ -1463,3 +1464,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (provide 'pelm-org)
 ;;; pelm-org.el ends here
+
+
+
+
+#+END_SRC

@@ -1,3 +1,5 @@
+* PELM-yas
+#+BEGIN_SRC emacs-lisp
 
 ;;; pelm-yas.el --- PELM yasnippet
 ;;
@@ -29,3 +31,5 @@
                              yas/completing-prompt))
 
 (add-hook 'jabber-chat-mode-hook 'yas-minor-mode)
+
+#+END_SRC

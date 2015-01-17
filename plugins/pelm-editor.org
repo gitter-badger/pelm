@@ -1,3 +1,5 @@
+
+#+BEGIN_SRC emacs-lisp
 ;;; pelm-editor.el --- PELM editor
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
@@ -14,6 +16,7 @@
 (require 'smartparens)
 (setq make-backup-files nil)
 (drag-stuff-global-mode)
+(projectile-global-mode)
 
 ;;ido setups
 (setq ido-enable-flex-matching t)
@@ -118,6 +121,7 @@
 ;;ack
 (require 'ack-and-a-half)
 (setq ack-and-a-half-executable "/usr/local/bin/ack")
+
 ;; Create shorter aliases
 (defalias 'ack 'ack-and-a-half)
 (defalias 'ack-same 'ack-and-a-half-same)
@@ -136,9 +140,12 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+(require 'writeroom-mode)
 
-
-; auto revert
 (global-auto-revert-mode 1)
-(provide 'pelm-editor)
-;;; pelm-editor.el ends here
+(custom-set-variables
+ '(global-writeroom-mode 1)
+ '(writeroom-border-width 20)
+ '(writeroom-width 110))
+
+#+END_SRC

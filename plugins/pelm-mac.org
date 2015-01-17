@@ -1,3 +1,8 @@
+* PELM-mac
+
+** TODO refcatory code
+
+#+BEGIN_SRC emacs-lisp
 ;;; pelm-mac.el --- PELM configuration for mac
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
@@ -53,3 +58,4 @@
 
 (provide 'pelm-mac)
 ;;; ends pelm-mac.el here
+#+END_SRC

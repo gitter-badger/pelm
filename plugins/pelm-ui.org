@@ -1,3 +1,6 @@
+* PELM-ui
+** TODO refactory code
+#+BEGIN_SRC emacs-lisp
 
 ;;; package pelm-ui.el  UI optimizations and tweaks 
 ;;
@@ -146,7 +149,49 @@
 
 (after "org"
   (mapc (lambda(fb) (set-fringe-bitmap-face fb 'org-hide))
-        fringe-bitmaps))
+	fringe-bitmaps))
 
 (provide 'pelm-ui)
 ;;; pelm-ui.el ends here
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

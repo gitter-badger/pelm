@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-
+#+BEGIN_SRC emacs-lisp
 (require 'pelm-defuns)
 
 (defun pelm-add-sub-folders-to-load-path (parent-dir)
@@ -59,7 +59,6 @@
 
 (pelm-minor-mode 1)
 
-
-
 (provide 'pelm-runtime)
 ;;; pelm-runtime.el ends here
+#+END_SRC

@@ -1,4 +1,10 @@
-;;; package --- pelm-evil.el PELM vim is the evil, but I like it !
+* PELM-evil
+
+vim is the evil, but I like it !
+
+#+BEGIN_SRC emacs-lisp
+
+;;; package --- pelm-evil.el 
 ;;; Commentary:
 ;;  The evil configurations
 ;;
@@ -88,3 +94,5 @@
 
 (provide 'pelm-evil)
 ;;; pelm-evil.el ends here
+
+#+END_SRC

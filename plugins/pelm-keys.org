@@ -1,3 +1,9 @@
+* PELM-keys
+
+** TODO refactory code added documents
+
+#+BEGIN_SRC emacs-lisp
+
 ;;; package --- pelm-keys.el PELM shortkeys
 ;;; Commentary:
 ;;   all shortkeys
@@ -11,13 +17,14 @@
 
 ;;; Code:
 
+(require 'guide-key)
+
 (defmacro bind (&rest commands)
   "Convience macro which create a lambda interactive COMMANDS."
   `(lambda ()
      (interactive)
      ,@commands))
 
-(require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-x" "C-c" ","))
 (guide-key-mode 1)
 (setq guide-key/recursive-key-sequence-flag t)
@@ -235,10 +242,9 @@
   (define-key ac-completing-map (kbd "C-n") 'ac-next)
   (define-key ac-completing-map (kbd "C-p") 'ac-previous))
 
-
 ;;(global-set-key (kbd  "C-x C-f") 'helm-find-files)
 (global-set-key  "\M-n" 'scroll-up-command)
 (global-set-key  "\M-p" 'scroll-down-command)
 
-(provide 'pelm-keys)
-;;; pelm-keys.el ends here
+
+#+END_SRC
