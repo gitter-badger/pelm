@@ -1,4 +1,9 @@
-;;; pelm-shell.el --- PELM shell configuration 
+* PELM-shell
+** TODO refactory and added document
+** Codes
+#+BEGIN_SRC emacs-lisp
+
+;;; pelm-shell.el --- PELM shell configuration
 ;;
 ;; Copyright (c) 2011-2015 eggcaker
 ;;
@@ -10,8 +15,7 @@
 ;;; Code:
 
 ;; shortcut for shell
-(global-set-key (kbd "M-e") 'eshell) 
-
+(global-set-key (kbd "M-e") 'eshell)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (add-hook 'eshell-first-time-mode-hook
@@ -27,11 +31,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
-(xterm-mouse-mode t)  
+(xterm-mouse-mode t)
 
 (custom-set-variables
- '(explicit-shell-file-name "/usr/bin/zsh"))
-
+ '(explicit-shell-file-name "/usr/local/bin/zsh"))
 
 
 (defun pelm-eshell-clear ()
@@ -40,20 +43,17 @@
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
-(define-key pelm-keymap "\C-l" 'pelm-eshell-clear)
-
+(evil-leader/set-key
+  "el" 'pelm-eshell-clear)
 
 ;; eshell + zsh
 
 (setenv "PATH"
         (concat
-         "/home/eggcaker/.dotfiles/bin" path-separator
-         "/home/eggcaker/.rvm/gems/ruby-1.9.3-p362/bin" path-separator
-         "/home/eggcaker/.cabal/bin" path-separator
-         (getenv "PATH")
-         ))
+         "~/.zsh-it/bin" path-separator
+         (getenv "PATH")))
 
-;;eshell alias to open file
+;; Eshell alias to open file
 (defalias 'o 'find-file)
 (defalias 'oo 'find-file-other-widnow)
 (defalias 'g 'eshell/go-to-root)
@@ -65,7 +65,4 @@
   (let ((root (find-project-root (eshell/pwd))))
     (if root (cd root))))
 
-(provide 'pelm-shell)
-;;; pelm-shell.el ends here
-
-
+#+END_SRC

@@ -1,28 +1,21 @@
-;;; pelm-c.el --- PELM c-mode
-;;
-;; Copyright (c) 2011-2015 eggcaker
-;;
-;; Authors: eggcaker <eggcaker@gmail.com>
-;; URL: http://caker.me/pelm
+* PELM-c configurations
 
-;; This file is not part of GNU Emacs
-
-;;; Code:
+#+BEGIN_SRC emacs-lisp
 
 (defconst pelm-c-style
   '((c-offsets-alist . ((substatement-open . 0)
-			(defun-block-intro . 4)
-			(statement-block-intro . 4)
-			(case-label . 4)
+			(defun-block-intro . 2)
+			(statement-block-intro . 2)
+			(case-label . 2)
 			;;(inclass . 0)
             ;;(topmost-intro . 0)
-			(inher-cont . 4)
-			(inline-open . 4)))
+			(inher-cont . 2)
+			(inline-open . 2)))
     (c-echo-syntactic-information-p . t)))
 
 (defun pelm-c-mode-common-hook ()
   (c-add-style "pelm-c" pelm-c-style t)
-  (setq tab-width 4 indent-tabs-mode nil)) ;; indent with spaces not tabs
+  (setq tab-width 2 indent-tabs-mode nil)) ;; indent with spaces not tabs
 
 (add-hook 'c-mode-common-hook  'pelm-c-mode-common-hook)
 
@@ -30,27 +23,25 @@
 (setq c-mode-hook
       (function (lambda()
 		  (setq indent-tabs-mode nil)
-		  (setq c-indent-level 4))))
+		  (setq c-indent-level 2))))
 (setq objc-mode-hook
       (function (lambda ()
 		  (setq indent-tabs-mode nil)
-		  (setq c-indent-level 4))))
+		  (setq c-indent-level 2))))
 (setq c++-mode-hook
       (function (lambda ()
 		  (setq indent-tabs-mode nil)
-		  (setq c-indent-level 4))))
+		  (setq c-indent-level 2))))
 
 (setq nxml-mode-hook
       (function (lambda ()
 		  (setq indent-tabs-mode nil)
-		  (setq c-indent-level 4))))
+		  (setq c-indent-level 2))))
 
-(setq tab-width 4)
+(setq tab-width 2)
 
 (add-hook 'first-change-hook
           (lambda () (setq indent-tabs-mode nil)))
-
-
 
 (defun run-current-file ()
  "Runs the compilation of the current file.
@@ -76,8 +67,5 @@
 			      (or (getenv "CFLAGS") "-ansi -pedantic -Wall -g")
 			      file))))))
 
-(provide 'pelm-c)
-
-;; pelm-c.el ends here
-
+#+END_SRC
 

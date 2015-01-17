@@ -1,0 +1,12 @@
+* PELM-lisp
+
+** TODO refactory code and add document
+#+BEGIN_SRC emacs-lisp
+
+;; Copyright (c) 2011-2015 eggcaker
+(require 'paredit)
+(add-hook 'emacs-lisp-mode-hook 'subword-mode)
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+
+#+END_SRC

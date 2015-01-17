@@ -158,37 +158,26 @@ Function for loading other parts of the PELM.
 (pelm-load "evil")
 (pelm-load "keys")
 (pelm-load "yas")
-
-
-
-(pelm-load "misc")
-#+END_SRC
-
-#+BEGIN_SRC  emacs-lisp
-(defvar pelm-plugins
-  '(
-    git
-    markups
+;;markups
     ;;scala
     ;;haskell
     ;;clojure
-    lisp
-    c
-    go
-    js
-    java
+(pelm-load "lisp")
+(pelm-load "c")
+    ;;go
+(pelm-load "js")
+    ;;java
     ;; php
     ;;objc
-    blog
+(pelm-load "blog")
     ;;mail
     ;;android
     ;;gnus
-    shell
+(pelm-load "shell")
     ;;scrum
-))
 
+(pelm-load "misc")
 #+END_SRC
-
 ** System Specific Files
 #+BEGIN_SRC  emacs-lisp
 (cond
@@ -208,3 +197,25 @@ Function for loading other parts of the PELM.
 (load (concat pelm-dir "post-init-local") 'noerror)
 (run-hooks 'pelm-post-init-hook)
 #+END_SRC
+
+** Customize
+
+after you clone the PELM, you can add your own code in 2 files :
+- pre-init-local.el
+- post-init-local.el
+
+the PELM loaded =pre-init-local.el= before allplugins and load
+=post-init-local.el= after all plugins loaded. both of them ignore
+by git, so can add some experimental code.
+
+** Dpendencies
+- libtool
+- g++
+- libglib2.0-dev
+- libgmime-2.6-dev
+- php5 ( for stock bin)
+- libxapian-dev
+- texinfo
+
+** License
+MIT

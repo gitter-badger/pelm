@@ -1,15 +1,8 @@
-;;; pelm-misc.el --- PELM blog 
-;;
-;; Copyright (c) 2011-2015 eggcaker
-;;
-;; Authors: eggcaker <eggcaker@gmail.com>
-;; URL: http://iemacs.com/pelm
+* PELM-blog
 
-
-;; This file is not part of GNU Emacs
-
-;;; Code:
-
+** TODO refactory code and add document
+** codes
+#+BEGIN_SRC emacs-lisp
 (require 'org-page)
 (setq op/repository-directory "~/src/personal/iemacs")
 (setq op/theme-root-directory  "~/src/personal/iemacs/themes")
@@ -21,5 +14,4 @@
 (setq op/personal-github-link "http://github.com/eggcaker")
 (setq op/personal-google-analytics-id "")
 
-(provide 'pelm-blog)
-;;; pelm-blog ends here
+#+END_SRC

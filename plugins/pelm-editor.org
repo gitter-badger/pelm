@@ -1,4 +1,7 @@
+* PELM-editor
 
+** TODO refactory and added document
+** Code
 #+BEGIN_SRC emacs-lisp
 ;;; pelm-editor.el --- PELM editor
 ;;
@@ -14,9 +17,15 @@
 ;; no backups
 
 (require 'smartparens)
+(require 'auto-complete)
+(require 'auto-complete-config)
+
+(setq ac-comphist-file "~/.emacs.d/.cache/ac-comphist.dat")
 (setq make-backup-files nil)
 (drag-stuff-global-mode)
+
 (projectile-global-mode)
+(setq projectile-known-projects-file "~/.emacs.d/.cache/projectile.cache.files")
 
 ;;ido setups
 (setq ido-enable-flex-matching t)
@@ -128,9 +137,6 @@
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
-(require 'auto-complete)
-(require 'auto-complete-config)
-(auto-complete-mode)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (ac-config-default)
 

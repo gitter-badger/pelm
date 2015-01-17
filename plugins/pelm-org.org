@@ -37,6 +37,7 @@
 
 (setq org-export-backends '(ascii beamer html latex md rss reveal))
 
+(setq org-clock-persist-file "~/.emacs.d/.cache/org-clock-save.el")
 
 (add-hook 'org-mode-hook
           '(lambda ()
@@ -144,7 +145,7 @@
 SCHEDULED: %^t
 :PROPERTIES:
 :Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|4:00}
-:END
+:END:
 %?
 " "Basic task data.")
 
@@ -300,7 +301,6 @@ SCHEDULED: %^t
 
 
 
-
 ;;;; Refile settings
 ; Exclude DONE state tasks from refile targets
 (defun pelm/verify-refile-target ()
@@ -394,6 +394,9 @@ SCHEDULED: %^t
                ((org-agenda-overriding-header "Tasks to Archive")
                 (org-agenda-skip-function 'pelm/skip-non-archivable-tasks))))))
 
+
+
+
 (defun pelm/skip-stuck-projects ()
 
   "Skip trees that are not stuck projects"
@@ -461,6 +464,9 @@ SCHEDULED: %^t
 (setq org-clock-out-remove-zero-time-clocks t)
 ;; Clock out when moving task to a done state
 (setq org-clock-out-when-done t)
+
+
+
 ;; Save the running clock and all clock history when exiting Emacs, load it on startup
 (setq org-clock-persist t)
 ;; Do not prompt to resume an active clock
@@ -520,6 +526,9 @@ as the default task."
       (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
           (org-clock-in '(16))
         (pelm/clock-in-organization-task-as-default)))))
+
+
+
 
 (defun pelm/punch-out ()
   (interactive)
@@ -649,6 +658,8 @@ Callers of this function already widen the buffer view."
       (setq org-tags-match-list-sublevels 'indented)
     (setq org-tags-match-list-sublevels nil))
   nil)
+
+
 
 (defun pelm/list-sublevels-for-projects ()
   "Set org-tags-match-list-sublevels so when restricted to a subtree we list all subtasks.
@@ -808,8 +819,9 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 ; global Effort estimate values
 ; global STYLE property values for completion
-(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 0:00")
-                                    ("STYLE_ALL" . "habit"))))
+;; TODO: some bugs
+;(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00")
+;                                    ("STYLE_ALL" . "habit"))))
 
 
 
@@ -905,6 +917,7 @@ Callers of this function already widen the buffer view."
       (setq org-tags-match-list-sublevels t)
     (setq org-tags-match-list-sublevels nil))
   nil)
+
 
 (defun pelm/skip-non-stuck-projects ()
   "Skip trees that are not stuck projects"
@@ -1464,8 +1477,4 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (provide 'pelm-org)
 ;;; pelm-org.el ends here
-
-
-
-
 #+END_SRC
