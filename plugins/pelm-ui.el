@@ -1,33 +1,33 @@
 
-;;; package pelm-ui.el  UI optimizations and tweaks 
+;;; package pelm-ui.el  UI optimizations and tweaks
 ;;
-;; Copyright (c) 2011 eggcaker 
-;; 
+;; Copyright (c) 2011 eggcaker
+;;
 ;; Author: eggcaker <eggcaker@gmail.com>
 ;; URL: http://caker.me/pelm
 
-;; This file is not part of GNU Emacs 
+;; This file is not part of GNU Emacs
 
 ;;; Code:
 
 ;; disabled menu-bar-mode
 (menu-bar-mode -1)
 
-;; disable blink cursor 
+;; disable blink cursor
 (blink-cursor-mode -1)
-
 ;; hidden scroll bar
 (set-scroll-bar-mode nil)
 
 ;; color-theme
-
-;(load-theme 'leuven t)
-
 (color-theme-initialize)
-;(color-theme-solarized-dark)
-;(color-theme-solarized-light)
-;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
-(load-theme 'monokai t)
+;;(color-theme-solarized-dark)
+;;(color-theme-solarized-light)
+;;(load-file "~/.emacs.d/themes/pelm-light-theme.el")
+;;(load-theme 'monokai t)
+(load-theme 'molokai t)
+
+(setq molokai-theme-kit t)
+
 
 ;(require 'powerline)
 ;(require 'moe-theme)
@@ -63,8 +63,8 @@
 ;;disable transparent mode
 (define-key pelm-keymap "utd" 'pelm-disable-transparent)
 
-;auto rebuffer 
-(global-auto-revert-mode t) 
+;auto rebuffer
+(global-auto-revert-mode t)
 
 ;; kill buffer without confirm
 (defun kill-buffer-no-question ()
@@ -86,19 +86,19 @@
 (setq initial-scratch-message nil)
 
 ;; highlight column80
-(require 'column-marker) 
-(dolist (hook '(emacs-lisp-mode-hook 
-                cperl-mode-hook 
-                shell-mode-hook 
-                text-mode-hook 
+(require 'column-marker)
+(dolist (hook '(emacs-lisp-mode-hook
+                cperl-mode-hook
+                shell-mode-hook
+                text-mode-hook
                 java-mode-hook
-                change-log-mode-hook 
-                makefile-mode-hook 
-                message-mode-hook 
-                texinfo-mode-hook)) 
+                change-log-mode-hook
+                makefile-mode-hook
+                message-mode-hook
+                texinfo-mode-hook))
 
-(add-hook hook (lambda () 
-  (interactive) 
+(add-hook hook (lambda ()
+  (interactive)
   (column-marker-1 100)
   (column-marker-2 110)
   (column-marker-3 120))))
