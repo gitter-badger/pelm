@@ -8,8 +8,7 @@
 #+LANGUAGE:   en
 #+PRIORITIES: A C B
 #+CATEGORY:   PELM
-#+OPTIONS:    H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t TeX:t LaTeX:t skip:nil d:(HIDE) tags:not-in-toc
-#+ARCHIVE:    pelm-todo_archive::
+#+OPTIONS:    H:3 num:nil toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t TeX:t LaTeX:t skip:nil d:(HIDE) tags:not-in-toc
 
 * PELM
 
@@ -34,7 +33,6 @@ cd ~/.emacs.d
 cask install
 #+END_SRC
 3. there is no step 3 !
-
 ** Predefined
 
 Turn off early to avoid momentary display
@@ -46,7 +44,6 @@ Turn off early to avoid momentary display
       (funcall mode -1)))
    '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 #+END_SRC
-
 ** Define the PELM directories
 - The root dir of the PELM distribution
   #+BEGIN_SRC emacs-lisp
@@ -68,19 +65,16 @@ Turn off early to avoid momentary display
   #+BEGIN_SRC emacs-lisp
   (add-to-list 'custom-theme-load-path (concat pelm-dir "themes/"))
   #+END_SRC
-
 ** Added PELM's directoies to load path
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path pelm-plugins-dir)
 (add-to-list 'load-path pelm-vendor-dir)
 #+END_SRC
-
 ** PELM hooks
 #+BEGIN_SRC  emacs-lisp
 (defvar pelm-pre-init-hook nil)
 (defvar pelm-post-init-hook nil)
 #+END_SRC
-
 ** Dependencies packages
 #+BEGIN_SRC emacs-lisp
 (require 'pallet)
@@ -195,13 +189,11 @@ Function for loading other parts of the PELM.
     (pelm-load "pelm-windows")))
 
 #+END_SRC
-
 ** Run the PELM post hook
 #+BEGIN_SRC emacs-lisp
 (load (concat pelm-dir "post-init-local") 'noerror)
 (run-hooks 'pelm-post-init-hook)
 #+END_SRC
-
 ** Customize
 
 after you clone the PELM, you can add your own code in 2 files :
@@ -211,7 +203,6 @@ after you clone the PELM, you can add your own code in 2 files :
 the PELM loaded =pre-init-local.el= before allplugins and load
 =post-init-local.el= after all plugins loaded. both of them ignore
 by git, so can add some experimental code.
-
 ** Dpendencies
 - libtool
 - g++
@@ -220,6 +211,5 @@ by git, so can add some experimental code.
 - php5 ( for stock bin)
 - libxapian-dev
 - texinfo
-
 ** License
 MIT

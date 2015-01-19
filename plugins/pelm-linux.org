@@ -1,3 +1,10 @@
+* PELM-linux
+
+
+** Code
+
+#+BEGIN_SRC emacs-lisp
+
 ;;; package --- pelm-linux.el  PELM configuration for linux
 ;;; Commentary:
 ;; Linux configurations
@@ -24,3 +31,5 @@
 
 (provide 'pelm-linux)
 ;;; pelm-linux.el ends here
+
+#+END_SRC
