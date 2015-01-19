@@ -75,6 +75,7 @@
          (:port . 5223))))
 
 (custom-set-variables
+ '(auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
   '(jabber-auto-reconnect nil)
   '(jabber-avatar-verbose nil)
   '(jabber-vcard-avatars-retrieve nil)
