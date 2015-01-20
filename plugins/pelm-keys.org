@@ -136,6 +136,7 @@
       "tfm" 'toggle-frame-maximized
       "tn" 'global-linum-mode
       "tm" 'hidden-mode-line-mode
+      "tt" 'global-wakatime-mode
       "tro" 'toggle-read-only)
 
     ;; window ---------------------------------------------------------------------

@@ -1,21 +1,6 @@
 * PELM-misc
-** TODO refactory code
-
+** Date format & function to insert date or time
 #+BEGIN_SRC emacs-lisp
-
-;;; pelm-misc.el --- PELM misc
-;;
-;; Copyight (c) 2011-2015 eggcaker
-;;
-;; Authors: eggcaker <eggcaker@gmail.com>
-;; URL: http://caker.me/pelm
-
-
-;; This file is not part of GNU Emacs
-
-;;; Code:
-
-
 (defun pelm/insert-date ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %A")))
@@ -28,30 +13,19 @@
   "xid" 'pelm/insert-date
   "xit" 'pelm/insert-time)
 
-(require 'find-dired)
-(setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
-
 (setq display-time-day-and-date t
       display-time-24hr-format t)
-
-;  (setq system-time-locale "en_US.utf8")
-   (setq system-time-locale "C")
-
+(setq system-time-locale "C")
 (display-time )
-
-;(setq system-time-locale "C")
-
-(fset 'format_xml
-      (lambda (&optional arg)
-        "Keyboard macro."
-        (interactive "p")
-        (kmacro-exec-ring-item (quote ([19 34 32 13 return] 0 "%d")) arg)))
+#+END_SRC
+** Start work & end work, right now, just push or pull few repo.
+#+BEGIN_SRC emacs-lisp
 
 (defun pelm/start-work()
   "pull all repos before start work "
   (interactive)
   (pelm-clock-in-task-by-id "4233C029-C856-422C-A0F6-8E6EF2E40698")
-  (org-mobile-pull)
+  ;;(org-mobile-pull)
   (async-shell-command  "~/.zsh-it/bin/c.sw"))
 
 (defun pelm/end-work()
@@ -59,12 +33,16 @@
   (interactive)
   (org-save-all-org-buffers)
   (pelm-clock-in-task-by-id "E84E9FE4-7BFF-41CD-A88A-B167DB8EA065")
-  (org-mobile-push)
+  ;;(org-mobile-push)
   (async-shell-command "~/.zsh-it/bin/c.gh"))
 
-(evil-leader/set-key
+  (evil-leader/set-key
       "ps" 'pelm/start-work
       "pe" 'pelm/end-work)
+
+#+END_SRC
+** Jabber account
+#+BEGIN_SRC emacs-lisp
 
 (require 'jabber)
 (setq jabber-account-list
@@ -74,6 +52,10 @@
          (:network-server . "talk.google.com")
          (:port . 5223))))
 
+#+END_SRC
+** Custome set variables
+
+#+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
   '(jabber-auto-reconnect nil)
@@ -86,9 +68,10 @@
   '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
   '(jabber-show-offline-contacts nil))
 
-(define-key pelm-keymap "p" 'epresent-run)
+#+END_SRC
+** 2048 Game
 
-;; 2048 game
+#+BEGIN_SRC emacs-lisp
 (eval-after-load "2048-game"
    '(progn
   (define-key 2048-mode-map (kbd "k") '2048-up)
@@ -96,11 +79,20 @@
   (define-key 2048-mode-map (kbd "h") '2048-left)
   (define-key 2048-mode-map (kbd "l") '2048-right)))
 
-;; emacs server start
-;; only started when running on GUI emacs
+#+END_SRC
+** Emacs Server
+
+only started when running on GUI emacs
+
+#+BEGIN_SRC emacs-lisp
 (require 'server)
 (if window-system
     (unless (server-running-p)
       (server-start)))
 
+#+END_SRC
+** TODO Waketime not works
+#+BEGIN_SRC emacs-lisp
+;;(require 'wakatime-mode)
+;;(global-wakatime-mode)
 #+END_SRC

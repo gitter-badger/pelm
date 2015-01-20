@@ -1,5 +1,5 @@
 #+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate
-#+FILETAGS:   PELM
+#+FILETAGS:   PELM - the P[ersonal|ublic] Emacs Lisp Manager
 #+SEQ_TODO:   TODO(t) NEXT(i) WAITING(w@) | DONE(d) CANCELED(c@)
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c)
 #+TITLE:      PELM
@@ -196,13 +196,16 @@ Function for loading other parts of the PELM.
 #+END_SRC
 ** Customize
 
-after you clone the PELM, you can add your own code in 2 files :
-- pre-init-local.el
-- post-init-local.el
+after you clone the PELM, you can add your own code in the three files:
+- =pre-init-local.el= called before all plugins loading
+- =post-init-local.el= called after all plugins loadded
+- =pelm-private.el= called at end of pelm loading
 
-the PELM loaded =pre-init-local.el= before allplugins and load
-=post-init-local.el= after all plugins loaded. both of them ignore
-by git, so can add some experimental code.
+all three files are ignored by git, so you can add some experimental code and private customize.
+*** Load the pelm-private.el for some prviate configurations. ex. apk token.
+#+BEGIN_SRC emacs-lisp
+(load (concat pelm-dir "pelm-private") 'noerror)
+#+END_SRC
 ** Dpendencies
 - libtool
 - g++
@@ -212,4 +215,3 @@ by git, so can add some experimental code.
 - libxapian-dev
 - texinfo
 ** License
-MIT
