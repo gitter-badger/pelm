@@ -35,9 +35,9 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
  '(column-number-mode t)
-  '(custom-safe-themes
-     (quote
-       ("54e9b56e67f57d28ba348ab27159938e0e911ce1359d3e25b2f618a211c8c4a1" "c3c0a3702e1d6c0373a0f6a557788dfd49ec9e66e753fb24493579859c8e95ab" default)))
+ '(custom-safe-themes
+   (quote
+    ("54e9b56e67f57d28ba348ab27159938e0e911ce1359d3e25b2f618a211c8c4a1" "c3c0a3702e1d6c0373a0f6a557788dfd49ec9e66e753fb24493579859c8e95ab" default)))
  '(explicit-shell-file-name "/usr/local/bin/zsh")
  '(global-writeroom-mode 1 nil (writeroom-mode))
  '(inhibit-startup-screen t)
@@ -50,6 +50,7 @@
  '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
  '(jabber-show-offline-contacts nil)
  '(jabber-vcard-avatars-retrieve nil)
+ '(jiralib-url "https://pacerhealth.atlassian.net")
  '(joc-eshell-prompt-newline t)
  '(js3-auto-indent-p t)
  '(js3-curly-indent-offset 2)
