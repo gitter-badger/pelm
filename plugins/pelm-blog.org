@@ -58,6 +58,7 @@
 	   :auto-sitemap t
      :index-title "Sitemap"
 	   :sitemap-ignore-case t
+     :sitemap-title "Sitemap for iemacs.org"
 	   :html-extension "html"
 	   :publishing-directory ,iemacs-publish-directory
            :publishing-function org-html-publish-to-html
@@ -101,6 +102,3 @@
      (org-publish-project "iemacs")))
 
 #+END_SRC
-
-#+RESULTS:
-: publish-iemacs
