@@ -102,3 +102,5 @@
 (depends-on "writeroom-mode")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
+(depends-on "go-mode")
+
