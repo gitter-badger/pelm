@@ -1,6 +1,6 @@
 (source gnu)
 (source melpa)
-;;(source marmalade)
+(source marmalade)
 (source org)
 
 (depends-on "pallet")
