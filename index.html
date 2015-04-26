@@ -1,52 +1,50 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Pelm by eggcaker</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/eggcaker/pelm">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/eggcaker/pelm/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/eggcaker/pelm/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    <section class="page-header">
+      <h1 class="project-name">Pelm</h1>
+      <h2 class="project-tagline">an &quot;P&quot; Emacs Lisp Manager</h2>
+      <a href="https://github.com/eggcaker/pelm" class="btn">View on GitHub</a>
+      <a href="https://github.com/eggcaker/pelm/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/eggcaker/pelm/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Pelm</h1>
-          <p>an &quot;P&quot; Emacs Lisp Manager</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/eggcaker">eggcaker</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
-
-        <h1>
-<a name="pelm" class="anchor" href="#pelm"><span class="octicon octicon-link"></span></a>PELM</h1>
-
-<p>PELM - a "literate" Emacs Lisp Manager for Emacs (24.0 and greater).</p>
-
-<p>What's the P means? the P can be one of Personal or Public (if you like it) I hope every body like it, but maybe not. any fork is welcome!</p>
+    <section class="main-content">
+      <h1>
+<a id="pelm" class="anchor" href="#pelm" aria-hidden="true"><span class="octicon octicon-link"></span></a>PELM</h1>
 
 <h2>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+<a id="an-p-emacs-lisp-manager" class="anchor" href="#an-p-emacs-lisp-manager" aria-hidden="true"><span class="octicon octicon-link"></span></a>an "P" Emacs Lisp Manager</h2>
+
+<p>What's the P ? the P can be one of Personal or Public (if you like it) I hope every body like it, but maybe not.
+any fork is welcome!</p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>cask install with <code>brew install cask</code>
+</li>
+<li>libtool</li>
+<li>g++</li>
+<li>libglib2.0-dev</li>
+<li>libgmime-2.6-dev</li>
+<li>php5 ( for stock bin)</li>
+<li>libxapian-dev</li>
+<li>texinfo</li>
+</ul>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
 
 <p>clone source code from github to .emacs.d</p>
 
@@ -66,16 +64,17 @@ $ git submodule init
 $ git submodule update  
 </code></pre>
 
-<p>when you start emacs at first time after you cloned the PELM, you may get warning from el-get 
-install package, just ignore that, exit emacs and reopen Emacs.</p>
+<p>when you start emacs at first time after you cloned the PELM, 
+you may get warning from install package, just ignore that, exit emacs and reopen Emacs.</p>
 
-<p>Byte compile (optional but recommented)</p>
+<h2>
+<a id="byte-compile-optional-but-recommented" class="anchor" href="#byte-compile-optional-but-recommented" aria-hidden="true"><span class="octicon octicon-link"></span></a>Byte compile (optional but recommented)</h2>
 
 <pre><code>C-u 0 M-x byte-recompile-directory
 </code></pre>
 
 <h2>
-<a name="customize" class="anchor" href="#customize"><span class="octicon octicon-link"></span></a>Customize</h2>
+<a id="customize" class="anchor" href="#customize" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customize</h2>
 
 <p>after you clone the PELM, check the init.el, you can add your own code in 2 files :</p>
 
@@ -90,58 +89,24 @@ install package, just ignore that, exit emacs and reopen Emacs.</p>
 
 <p>the PELM loaded after all plugins</p>
 </li>
-</ul><p>both of them ignore by git, so can add some experimental code.</p>
+</ul>
+
+<p>both of them ignore by git, so can add some experimental code.</p>
 
 <h2>
-<a name="dpendencies" class="anchor" href="#dpendencies"><span class="octicon octicon-link"></span></a>Dpendencies</h2>
-
-<ul>
-<li>libtool</li>
-<li>g++ </li>
-<li>libglib2.0-dev</li>
-<li>libgmime-2.6-dev</li>
-<li>php5 ( for stock bin)</li>
-<li>libxapian-dev</li>
-<li>texinfo</li>
-</ul><h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>MIT</p>
 
-<h2>
-<a name="scripts" class="anchor" href="#scripts"><span class="octicon octicon-link"></span></a>Scripts</h2>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/eggcaker/pelm">Pelm</a> is maintained by <a href="https://github.com/eggcaker">eggcaker</a>.</span>
 
-<h3>
-<a name="script-for-import-snippet" class="anchor" href="#script-for-import-snippet"><span class="octicon octicon-link"></span></a>script for import snippet</h3>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
 
-<div class="highlight highlight-sh"><pre>
-<span class="c">#!/bin/bash</span>
+    </section>
 
-<span class="k">for </span>file in *.snippet; <span class="k">do</span> 
-    <span class="c">#mv $file "`echo $file|sed -e 's/sublime-//g'`" ;</span>
-    <span class="nv">desc</span><span class="o">=</span><span class="s2">"`cat $file |grep '&lt;/description&gt;'| sed -e 's/&lt;description&gt;\(.*\)&lt;\/description&gt;/\1/g'`"</span>;
-    <span class="nv">key</span><span class="o">=</span><span class="s2">"`cat $file |grep '&lt;\/tabTrigger&gt;'| sed -e 's/&lt;tabTrigger&gt;\(.*\)&lt;\/tabTrigger&gt;/\1/g'`"</span>;
-
-    <span class="nb">echo</span> <span class="s2">"# -*- mode: snippet -*-"</span> &gt; tmp;
-    <span class="nb">echo</span> <span class="s2">"# contributor : eggcaker &lt;eggcaker@gmail.com&gt;"</span> &gt;&gt; tmp;
-    <span class="nb">echo</span> <span class="s2">"# name : $desc"</span> &gt;&gt; tmp;
-    <span class="nb">echo</span> <span class="s2">"# key : $key"</span> &gt;&gt; tmp;
-    <span class="nb">echo</span> <span class="s2">"# --"</span> &gt;&gt; tmp;
-
-    awk <span class="s1">'/CDATA\[/,/]]/ {print $1;}'</span> <span class="nv">$file</span> |sed -e <span class="s1">'s/&lt;content&gt;&lt;!\[CDATA\[//g'</span>|sed -e <span class="s1">'s/\]\]&gt;&lt;\/content&gt;//g'</span>  &gt; tmp2;
-
-    sed <span class="s1">'/^$/d'</span> tmp2 &gt;&gt; tmp;
-
-    mv tmp <span class="nv">$file</span>;
-    rm tmp2
-
-<span class="k">done</span>
-
-</pre></div>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+  
   </body>
 </html>
+
