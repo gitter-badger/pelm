@@ -1,6 +1,6 @@
 (source gnu)
 (source melpa)
-;;(source marmalade)
+(source marmalade)
 (source org)
 
 (depends-on "pallet")
@@ -102,3 +102,5 @@
 (depends-on "writeroom-mode")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
+(depends-on "go-mode")
+(depends-on "vimrc-mode")
