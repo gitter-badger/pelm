@@ -103,4 +103,4 @@
 (depends-on "tern")
 (depends-on "tern-auto-complete")
 (depends-on "go-mode")
-
+(depends-on "vimrc-mode")
