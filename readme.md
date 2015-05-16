@@ -1,5 +1,7 @@
 # PELM
 
+[![Join the chat at https://gitter.im/eggcaker/pelm](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eggcaker/pelm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## an "P" Emacs Lisp Manager
 
 What's the P ? the P can be one of Personal or Public (if you like it) I hope every body like it, but maybe not.
